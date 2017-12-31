@@ -1,0 +1,14 @@
+{
+  "name": "nanoutils",
+  "version": "0.0.1",
+  "description": "Tiniest JavaScript utils library",
+  "main": "index.js",
+  "repository": "https://github.com/kelin2025/nanoutils",
+  "author": "Kelin2025 <kelin2025@yandex.ru>",
+  "license": "MIT",
+  "scripts": { "test": "jest --watch --verbose", "size": "size-limit" },
+  "devDependencies": {
+    "jest": "^22.0.4",
+    "size-limit": "^0.13.2"
+  }
+}
