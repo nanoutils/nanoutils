@@ -1,0 +1,4 @@
+// @flow
+opaque type Placeholder = { -[k: string]: any }
+
+declare module.exports: Placeholder
