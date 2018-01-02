@@ -1,4 +1,4 @@
 // @flow
-opaque type Placeholder = { -[k: string]: any }
+opaque type Placeholder = $ReadOnly<{}>
 
 declare module.exports: Placeholder
