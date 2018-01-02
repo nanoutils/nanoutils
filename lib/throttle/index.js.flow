@@ -1,0 +1,1 @@
+declare module.exports = <T>(time: number, cb: T) => T
