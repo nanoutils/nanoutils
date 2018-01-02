@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (cb: Function) => (...args: any[]) => boolean
