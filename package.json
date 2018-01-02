@@ -9,9 +9,13 @@
   "scripts": {
     "dev": "jest --watchAll --verbose",
     "test": "jest",
-    "size": "size-limit"
+    "size": "size-limit",
+    "add-method": "node misc/cli/add-method.js"
   },
   "devDependencies": {
+    "chalk": "^2.3.0",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.62.0",
     "jest": "^22.0.4",
     "size-limit": "^0.13.2"
   }
