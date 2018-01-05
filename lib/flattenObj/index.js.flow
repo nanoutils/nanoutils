@@ -1,2 +1,2 @@
 // @flow
-declare module.exports: (obj: {}, nest?: string[] | string) => {}
+declare module.exports: (obj: {}) => {}

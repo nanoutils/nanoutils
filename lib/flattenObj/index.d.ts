@@ -1,4 +1,1 @@
-export default function flattenObj(
-  obj: object,
-  nest?: string[] | string
-): object
+export default function flattenObj(obj: object): object
