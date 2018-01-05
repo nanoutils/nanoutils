@@ -1,8 +1,10 @@
 const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
+const minimist = require('minimist')
 
-const names = process.argv.slice(2)
+const args = minimist(process.argv.slice(2))
+const names = args._
 
 names.forEach(name => {
   const methodPath = path.resolve('lib', name)
@@ -19,10 +21,18 @@ test("no tests yet", () => {})`
   try {
     fs.mkdirSync(`${methodPath}`)
   } catch (err) {
-    console.error(
-      chalk.bold.white.bgRed(' WARN '),
-      chalk.red(`Overwrite ${chalk.bold(name)} method`)
-    )
+    if (!args.f) {
+      console.log(
+        chalk.bold.white.bgRed(' ERR '),
+        chalk.red(`Method ${chalk.bold(name)} already exists`)
+      )
+      return
+    } else {
+      console.error(
+        chalk.bold.black.bgYellow(' WARN '),
+        chalk.yellow(`Override ${chalk.bold(name)} method`)
+      )
+    }
   }
 
   fs.writeFile(`${methodPath}/index.js`, methodTemplate, () => {})
