@@ -17,7 +17,7 @@ More nano's for the God of nano's!
 ## Can I use it in my project?
 
 Not yet. I can't give you any promises that something won't be changed on this stage.
-But you can boost progress with your contributions. Visit [dev](https://github.com/Kelin2025/nanoutils/tree/dev) branch to see progres.  
+But you can boost progress with your contributions. You can view this repo to see the progress.  
 Also I'll be especially grateful for someone who'll help me with TS/Flow typings because I'm not typings guru.
 
 ## Roadmap
