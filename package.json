@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "jest --watchAll --verbose",
     "test": "jest",
-    "size": "size-limit",
+    "size": "node ./misc/cli/check-size.js",
     "add-method": "node misc/cli/add-method.js"
   },
   "devDependencies": {
