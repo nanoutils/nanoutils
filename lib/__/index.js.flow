@@ -1,0 +1,4 @@
+// @flow
+opaque type Placeholder = $ReadOnly<{}>
+
+declare module.exports: Placeholder

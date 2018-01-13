@@ -1,13 +1,21 @@
 {
   "name": "nanoutils",
-  "version": "0.0.1",
+  "version": "0.0.1-dev.0",
   "description": "Tiniest JavaScript utils library",
   "main": "index.js",
   "repository": "https://github.com/kelin2025/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
-  "scripts": { "test": "jest --watch --verbose", "size": "size-limit" },
+  "scripts": {
+    "dev": "jest --watchAll --verbose",
+    "test": "jest",
+    "size": "size-limit",
+    "add-method": "node misc/cli/add-method.js"
+  },
   "devDependencies": {
+    "chalk": "^2.3.0",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.62.0",
     "jest": "^22.0.4",
     "size-limit": "^0.13.2"
   }

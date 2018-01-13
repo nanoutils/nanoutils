@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (arr: any[] | any) => any[]
