@@ -46,10 +46,10 @@ Flags:
 It will create `lib/method` dir with following files:
 
 ```
-index.js        File with method
-index.d.ts      TypeScript typings
-index.js.flow   Flow type declaration
-method.test.js  Test for method (I use Jest)
+index.js File with method
+index.d.ts TypeScript typings
+index.js.flow Flow type declaration
+method.test.js Test for method (I use Jest)
 ```
 
 ### Check sizes of methods
@@ -58,8 +58,8 @@ method.test.js  Test for method (I use Jest)
 npm size <...methods>
 
 Params
-    methods            List of method names (separated by space) you want to check.
-                       If no methods it will check size of all methods
+methods           List of method names (separated by space) you want to check.
+                  If no methods it will check size of all methods
 ```
 
 I use [size-limit](https://github.com/ai/size-limit) to check the size of methods.
