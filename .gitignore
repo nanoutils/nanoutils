@@ -57,5 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
-# VS Coed directory
+# VS Code dir
 .vscode
