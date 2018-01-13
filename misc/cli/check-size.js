@@ -21,7 +21,10 @@ const wrapper = (len, data) =>
 const legend = () =>
   `║ ${chalk.bold('Method'.padEnd(15))}║${chalk.bold('Size'.padStart(7))} ║`
 
-const content = m => `║ ${m.name.padEnd(15)}║${`${m.size}`.padStart(5)} B ║\n`
+const content = m =>
+  `║ ${m.name.padEnd(15)}║${chalk[m.size > 1024 ? 'red' : 'green'](
+    `${m.size}`.padStart(5)
+  )} B ║\n`
 
 const log = data => wrapper(25, data.map(content).join(''))
 
