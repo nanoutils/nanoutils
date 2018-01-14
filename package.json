@@ -1,6 +1,6 @@
 {
   "name": "nanoutils",
-  "version": "0.0.1-dev.0",
+  "version": "0.0.2",
   "description": "Tiniest JavaScript utils library",
   "main": "index.js",
   "repository": "https://github.com/kelin2025/nanoutils",
