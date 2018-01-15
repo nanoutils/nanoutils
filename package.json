@@ -1,8 +1,9 @@
 {
   "name": "nanoutils",
-  "version": "0.0.2",
+  "version": "0.0.3-dev.0",
   "description": "Tiniest JavaScript utils library",
   "main": "index.js",
+  "module": "index.js",
   "repository": "https://github.com/kelin2025/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
