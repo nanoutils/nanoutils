@@ -3,7 +3,7 @@ const path = require('path')
 const chalk = require('chalk')
 const getSize = require('size-limit')
 
-const getPath = name => path.resolve('lib', name, 'index.js')
+const getPath = name => path.resolve('cjs', name, 'index.js')
 
 const getSizeAndSave = name =>
   getSize(getPath(name)).then(size => ({ name, size }))
@@ -13,10 +13,10 @@ const alphabetically = (a, b) => {
   return aLower > bLower ? 1 : aLower == bLower ? 0 : -1
 }
 
-const separator = len => `╟${'─'.repeat(len)}╢\n`
-
 const wrapper = (len, data) =>
   console.log(`╔${'═'.repeat(len)}╗\n${legend()}\n${data}╚${'═'.repeat(len)}╝`)
+
+const separator = len => `╟${'─'.repeat(len)}╢\n`
 
 const legend = () =>
   `║ ${chalk.bold('Method'.padEnd(15))}║${chalk.bold('Size'.padStart(7))} ║`
@@ -31,7 +31,9 @@ const log = data => wrapper(25, data.map(content).join(''))
 const args = process.argv.slice(2)
 
 const libDir = path.resolve('lib')
-const methods = args.length ? args : fs.readdirSync(libDir)
+const methods = args.length
+  ? args
+  : fs.readdirSync(libDir).filter(i => i !== 'index.js')
 
 Promise.all(methods.map(getSizeAndSave)).then(sizes => {
   log(sizes.sort(alphabetically))

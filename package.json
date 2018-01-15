@@ -12,7 +12,8 @@
     "size": "node ./misc/cli/check-size.js",
     "add-method": "node misc/cli/add-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build": "npm run build:cjs && create-index --ignoreUnsafe --update lib",
+    "build":
+      "npm run build:cjs && create-index --ignoreUnsafe --update lib && npm size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
