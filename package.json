@@ -2,8 +2,7 @@
   "name": "nanoutils",
   "version": "0.0.3-dev.0",
   "description": "Tiniest JavaScript utils library",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/kelin2025/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
@@ -11,10 +10,16 @@
     "dev": "jest --watchAll --verbose",
     "test": "jest",
     "size": "node ./misc/cli/check-size.js",
-    "add-method": "node misc/cli/add-method.js"
+    "add-method": "node misc/cli/add-method.js",
+    "build:cjs": "babel lib --out-dir cjs --ignore test.js",
+    "build": "npm run build:cjs && create-index --ignoreUnsafe --update lib",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "chalk": "^2.3.0",
+    "create-index": "^2.3.0",
     "flow": "^0.2.3",
     "flow-bin": "^0.62.0",
     "jest": "^22.0.4",
