@@ -8,7 +8,7 @@ const names = args._
 
 names.forEach(name => {
   const methodPath = path.resolve('lib', name)
-  const methodTemplate = `export defaukt function ${name}() {
+  const methodTemplate = `export default function ${name}() {
 
 }`
   const tsTemplate = `export default function ${name}(): void`
