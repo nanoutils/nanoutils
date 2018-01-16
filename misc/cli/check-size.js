@@ -3,7 +3,7 @@ const path = require('path')
 const chalk = require('chalk')
 const getSize = require('size-limit')
 
-const getPath = name => path.resolve('cjs', name, 'index.js')
+const getPath = name => path.resolve('lib', name, 'index.js')
 
 const getSizeAndSave = name =>
   getSize(getPath(name)).then(size => ({ name, size }))
