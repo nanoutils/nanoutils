@@ -6,23 +6,32 @@ const minimist = require('minimist')
 const args = minimist(process.argv.slice(2))
 const names = args._
 
-console.log(args)
+const methodPath = name => path.resolve('lib', name)
 
-names.forEach(name => {
-  const methodPath = path.resolve('lib', name)
-  const methodTemplate = `export default function ${name}() {
+const methodTemplate = name => `export default function ${name}() {
 
 }`
-  const tsTemplate = `export default function ${name}(): void`
-  const flowTemplate = `// @flow
+
+const curriedMethodTemplate = name => `import curry from '../curry'
+
+export default curry(function ${name}() {
+
+}`
+
+const tsTemplate = name => `export default function ${name}(): void`
+
+const flowTemplate = name => `// @flow
 declare module.exports: () => void`
-  const testTemplate = `var ${name} = require('.')
+
+const testTemplate = name => `var ${name} = require('.')
 
 test("no tests yet", () => {})`
-  const noTestsTemplate = `var ${name} = require('.')`
 
+const noTestsTemplate = name => `var ${name} = require('.')`
+
+names.forEach(name => {
   try {
-    fs.mkdirSync(`${methodPath}`)
+    fs.mkdirSync(`${methodPath(name)}`)
   } catch (err) {
     if (!args.f) {
       console.log(
@@ -38,16 +47,26 @@ test("no tests yet", () => {})`
     }
   }
 
-  fs.writeFile(`${methodPath}/index.js`, methodTemplate, () => {})
+  fs.writeFile(
+    `${methodPath(name)}/index.js`,
+    args.curried ? curriedMethodTemplate(name) : methodTemplate(name),
+    () => {}
+  )
 
   if (!('types' in args) || args.types) {
-    fs.writeFile(`${methodPath}/index.d.ts`, tsTemplate, () => {})
-    fs.writeFile(`${methodPath}/index.js.flow`, flowTemplate, () => {})
+    fs.writeFile(`${methodPath(name)}/index.d.ts`, tsTemplate(name), () => {})
+    fs.writeFile(
+      `${methodPath(name)}/index.js.flow`,
+      flowTemplate(name),
+      () => {}
+    )
   }
 
   fs.writeFile(
-    `${methodPath}/${name}.test.js`,
-    !('tests' in args) || args.tests ? testTemplate : noTestsTemplate,
+    `${methodPath(name)}/${name}.test.js`,
+    !('tests' in args) || args.tests
+      ? testTemplate(name)
+      : noTestsTemplate(name),
     () => {}
   )
 })
