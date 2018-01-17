@@ -16,7 +16,7 @@ const curriedMethodTemplate = name => `import curry from '../curry'
 
 export default curry(function ${name}() {
 
-}`
+})`
 
 const tsTemplate = name => `export default function ${name}(): void`
 
