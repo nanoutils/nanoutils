@@ -6,6 +6,8 @@ const minimist = require('minimist')
 const args = minimist(process.argv.slice(2))
 const names = args._
 
+console.log(args)
+
 names.forEach(name => {
   const methodPath = path.resolve('lib', name)
   const methodTemplate = `export default function ${name}() {
@@ -17,6 +19,7 @@ declare module.exports: () => void`
   const testTemplate = `var ${name} = require('.')
 
 test("no tests yet", () => {})`
+  const noTestsTemplate = `var ${name} = require('.')`
 
   try {
     fs.mkdirSync(`${methodPath}`)
@@ -36,7 +39,15 @@ test("no tests yet", () => {})`
   }
 
   fs.writeFile(`${methodPath}/index.js`, methodTemplate, () => {})
-  fs.writeFile(`${methodPath}/index.d.ts`, tsTemplate, () => {})
-  fs.writeFile(`${methodPath}/index.js.flow`, flowTemplate, () => {})
-  fs.writeFile(`${methodPath}/${name}.test.js`, testTemplate, () => {})
+
+  if (!('types' in args) || args.types) {
+    fs.writeFile(`${methodPath}/index.d.ts`, tsTemplate, () => {})
+    fs.writeFile(`${methodPath}/index.js.flow`, flowTemplate, () => {})
+  }
+
+  fs.writeFile(
+    `${methodPath}/${name}.test.js`,
+    !('tests' in args) || args.tests ? testTemplate : noTestsTemplate,
+    () => {}
+  )
 })
