@@ -1,6 +1,6 @@
 {
   "name": "nanoutils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Tiniest JavaScript utils library",
   "main": "lib/index.js",
   "repository": "https://github.com/kelin2025/nanoutils",
@@ -13,7 +13,7 @@
     "add-method": "node misc/cli/add-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
     "build":
-      "npm run build:cjs && create-index --ignoreUnsafe --update lib && npm size",
+      "npm run build:cjs && create-index --ignoreUnsafe --update lib && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
