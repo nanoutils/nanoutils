@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: <T, U>(cb: (payload: T) => U) => (a: T, b: T) => number
