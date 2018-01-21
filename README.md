@@ -42,6 +42,7 @@ Params:
 Flags:
     -f                Overwrite methods (if exists)
     --curried         Add curried method
+                      you can use --curried=<N> to add curryN
     --types           Add index.d.ts and index.js.flow for method typings
 ```
 
