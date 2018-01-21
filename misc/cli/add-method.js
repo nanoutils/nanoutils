@@ -18,6 +18,12 @@ export default curry(function ${name}() {
 
 })`
 
+const curriedNumMethodTemplate = (name, num) => `import curryN from '../curryN'
+
+export default curryN(${num}, function ${name}() {
+
+})`
+
 const tsTemplate = name => `export default function ${name}(): void`
 
 const flowTemplate = name => `// @flow
@@ -31,7 +37,7 @@ names.forEach(name => {
   try {
     fs.mkdirSync(`${methodPath(name)}`)
   } catch (err) {
-    if (!args.f) {
+    if (!args.force) {
       console.log(
         chalk.bold.white.bgRed(' ERR '),
         chalk.red(`Method ${chalk.bold(name)} already exists`)
@@ -47,7 +53,11 @@ names.forEach(name => {
 
   fs.writeFile(
     `${methodPath(name)}/index.js`,
-    args.curried ? curriedMethodTemplate(name) : methodTemplate(name),
+    args.curried
+      ? typeof args.curried === 'number'
+        ? curriedNumMethodTemplate(name, args.curried)
+        : curriedMethodTemplate(name)
+      : methodTemplate(name),
     () => {}
   )
 
