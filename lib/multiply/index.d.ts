@@ -1,0 +1,1 @@
+export default function multiply<T, U>(n: T, m: U): number
