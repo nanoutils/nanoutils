@@ -27,8 +27,6 @@ const testTemplate = name => `var ${name} = require('.')
 
 test("no tests yet", () => {})`
 
-const noTestsTemplate = name => `var ${name} = require('.')`
-
 names.forEach(name => {
   try {
     fs.mkdirSync(`${methodPath(name)}`)
@@ -53,7 +51,7 @@ names.forEach(name => {
     () => {}
   )
 
-  if (!('types' in args) || args.types) {
+  if ('types' in args && args.types) {
     fs.writeFile(`${methodPath(name)}/index.d.ts`, tsTemplate(name), () => {})
     fs.writeFile(
       `${methodPath(name)}/index.js.flow`,
@@ -64,9 +62,7 @@ names.forEach(name => {
 
   fs.writeFile(
     `${methodPath(name)}/${name}.test.js`,
-    !('tests' in args) || args.tests
-      ? testTemplate(name)
-      : noTestsTemplate(name),
+    testTemplate(name),
     () => {}
   )
 })

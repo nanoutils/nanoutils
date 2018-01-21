@@ -41,15 +41,17 @@ Params:
 
 Flags:
     -f                Overwrite methods (if exists)
+    --curried         Add curried method
+    --types           Add index.d.ts and index.js.flow for method typings
 ```
 
 It will create `lib/method` dir with following files:
 
 ```
-index.js File with method
-index.d.ts TypeScript typings
-index.js.flow Flow type declaration
-method.test.js Test for method (I use Jest)
+index.js        File with method
+index.d.ts      TypeScript typings
+index.js.flow   Flow type declaration
+method.test.js  Test for method (I use Jest)
 ```
 
 ### Check sizes of methods
