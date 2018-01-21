@@ -1,0 +1,1 @@
+export default function divide<T, U>(n: T, m: U): number
