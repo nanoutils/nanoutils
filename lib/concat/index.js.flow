@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (arg: mixed, ...values: mixed) => mixed
