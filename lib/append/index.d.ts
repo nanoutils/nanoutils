@@ -1,0 +1,1 @@
+export default function append<T>(t: T, arr: T[]): T[]
