@@ -42,7 +42,7 @@ names.forEach(name => {
         chalk.bold.white.bgRed(' ERR '),
         chalk.red(`Method ${chalk.bold(name)} already exists`)
       )
-      return
+      process.exit(1)
     } else {
       console.error(
         chalk.bold.black.bgYellow(' WARN '),
