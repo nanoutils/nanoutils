@@ -9,8 +9,9 @@
   "scripts": {
     "dev": "jest --watchAll --verbose",
     "test": "jest",
-    "size": "node ./misc/cli/check-size.js",
-    "add-method": "node misc/cli/add-method.js",
+    "size": "node ./misc/cli/size.js",
+    "method:add": "node ./misc/cli/add-method.js",
+    "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
     "build":
       "npm run build:cjs && create-index --ignoreUnsafe --update lib && npm run size",
