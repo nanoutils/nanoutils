@@ -19,11 +19,11 @@ const wrapper = (len, data) =>
 const separator = len => `╟${'─'.repeat(len)}╢\n`
 
 const legend = () =>
-  `║ ${chalk.bold('Method')}║${chalk.bold('Size')} ║`
+  `║ ${chalk.bold('Method'.padEnd(15))}║${chalk.bold('Size'.padStart(7))} ║`
 
 const content = m =>
-  `║ ${m.name}║${chalk[m.size > 1024 ? 'red' : 'green'](
-    `${m.size}`
+  `║ ${m.name.padEnd(15)}║${chalk[m.size > 1024 ? 'red' : 'green'](
+    `${m.size}`.padStart(5)
   )} B ║\n`
 
 const log = data => wrapper(25, data.map(content).join(''))
