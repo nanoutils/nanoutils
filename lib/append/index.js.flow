@@ -1,0 +1,3 @@
+declare module.exports {
+  append<T>(t: T, arr: [T]) => [T] 
+}
