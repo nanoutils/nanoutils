@@ -1,1 +1,1 @@
-export default function flatten(arr: any[] | any): any[]
+export default function flattenDeep(arr: any[] | any): any[]
