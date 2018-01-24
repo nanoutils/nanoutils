@@ -1,2 +1,2 @@
 // @flow
-declare module.exports: (arg: mixed, ...values: mixed) => mixed
+declare module.exports: (arg: Array<mixed>|string, ...values: Array<mixed>|string) => Array<mixed>|string
