@@ -37,4 +37,22 @@ const methods = args.length
 
 Promise.all(methods.map(getSizeAndSave)).then(sizes => {
   log(sizes.sort(alphabetically))
+  const over = sizes.filter(i => i.size > 1024)
+  if (over.length) {
+    const longestName = over
+      .map(i => i.name)
+      .reduce((max, cur) => (cur > max ? cur : max), 0)
+    console.log('')
+    console.log(
+      chalk.bold.white.bgRed(' ERR '),
+      chalk.red(
+        `You have ${over.length} method${over.length > 1 ? 's' : ''} over 1KB`
+      )
+    )
+    console.log(
+      over.map(i => `${i.name.padEnd(longestName)}: ${i.size} B`).join('\n'),
+      '\n'
+    )
+    process.exit(1)
+  }
 })
