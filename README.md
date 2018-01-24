@@ -5,7 +5,7 @@ Tiniest JavaScript utils library
 ## Inspiration
 
 I support nano-hype in JavaScript and want to create as much nano-things as possible.  
-So I'm starting a challenge - write my own lodash where no one method will be over 1KB size.  
+So I'm starting a challenge - write Ramda clone where no one method will be over 1KB size.  
 More nano's for the God of nano's!
 
 ## Basic ideas
@@ -23,7 +23,7 @@ Also I'll be especially grateful for someone who'll help me with TS/Flow typings
 ## Roadmap
 
 * [ ] Create methods list (in progress)
-* [ ] Complete all lodash methods with 100% tests and types coverage
+* [ ] Complete all Ramda/lodash methods with 100% tests and types coverage
 * [ ] Create a to split nanoutils to separated packages
 * [ ] Try to reduce methods sizes even more
 
