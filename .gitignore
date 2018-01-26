@@ -63,3 +63,6 @@ typings/
 # Build details
 cjs/
 lib/index.js
+
+# MacOS
+.DS_Store

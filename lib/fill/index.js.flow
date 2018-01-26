@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (val: string, start: ?number, end: ?number) => (arr: Array<mixed>) => Array<string>
