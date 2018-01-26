@@ -22,9 +22,9 @@ Also I'll be especially grateful for someone who'll help me with TS/Flow typings
 
 ## Roadmap
 
-* [ ] Create methods list (in progress)
-* [ ] Complete all Ramda/lodash methods with 100% tests and types coverage
-* [ ] Create a to split nanoutils to separated packages
+* [ ] Create methods list
+* [ ] Complete all needed methods (we get list of methods from Ramda) with 100% tests and types coverage
+* [ ] Create a tool to split nanoutils to separated packages
 * [ ] Try to reduce methods sizes even more
 
 ## NPM scripts
@@ -50,8 +50,8 @@ It will create `lib/method` dir with following files:
 
 ```
 index.js        File with method
-index.d.ts      TypeScript typings
-index.js.flow   Flow type declaration
+index.d.ts      TypeScript typings (if --types passed)
+index.js.flow   Flow type declaration (if --types passed)
 method.test.js  Test for method (I use Jest)
 ```
 
