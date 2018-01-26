@@ -1,2 +1,2 @@
 // @flow
-declare module.exports: (arr: Array<mixed>) => Array<mixed>
+declare module.exports: (arr: Array<mixed>) => Array<$NonMaybeType<mixed>>
