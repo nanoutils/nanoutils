@@ -33,7 +33,7 @@ Promise
   // Check size for every method
   .then(methods => {
     const getMaxLen = (max, cur) => (cur.length > max ? cur.length : max)
-    longestName = methods.reduce(getMaxLen, 0)
+    longestName = methods.reduce(getMaxLen, 6)
     const getIndex = name => path.resolve('lib', name, 'index.js')
     const sizeLimit = name =>
       getSize(getIndex(name)).then(size => ({ name, size }))
