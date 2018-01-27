@@ -7,6 +7,8 @@ const minimist = require('minimist')
 
 let longestName
 const args = minimist(process.argv.slice(2))
+const readdir = util.promisify(fs.readdir)
+const writeFile = util.promisify(fs.writeFile)
 const createRow = cols => '║ ' + cols.join(' ║ ') + ' ║'
 const formatName = name => chalk.bold(name.padEnd(longestName))
 const formatSize = size => `${size}`.padStart(4) + ' B'
@@ -15,7 +17,7 @@ Promise
   // Get lib path
   .resolve(path.resolve('lib'))
   // Get list of methods
-  .then(util.promisify(fs.readdir))
+  .then(readdir)
   // Exclude index.js and _internals
   .then(methods => {
     const exclude = m => !['index.js', '_internal'].includes(m)
@@ -66,6 +68,19 @@ Promise
     const content = methods.map(i => i.border).join('\n')
 
     console.log([topper, header, hrline, content, bottom].join('\n'))
+    return methods
+  })
+  // Save it to SIZES.md
+  .then(methods => {
+    if (!args._.length) {
+      const header = '## Nanoutils methods size'
+      const str = methods.map(i => `* ${i.name} - ${i.size} B`).join('\n')
+      const footer =
+        '## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
+      return writeFile('SIZES.md', [header, str, footer].join('\n')).then(
+        () => methods
+      )
+    }
     return methods
   })
   // Draw list of failed methods
