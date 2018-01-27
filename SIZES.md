@@ -1,133 +1,136 @@
 ## Nanoutils methods size
-* __ - 27 B
-* a2p - 72 B
-* add - 266 B
-* adjust - 281 B
-* all - 275 B
-* allPass - 270 B
-* always - 32 B
-* and - 258 B
-* any - 275 B
-* anyPass - 270 B
-* ap - 60 B
-* aperture - 298 B
-* append - 260 B
-* apply - 258 B
-* applySpec - 325 B
-* applyTo - 258 B
-* ascend - 57 B
-* both - 48 B
-* clamp - 266 B
-* clone - 261 B
-* compact - 51 B
-* comparator - 48 B
-* complement - 46 B
-* compose - 93 B
-* composeP - 111 B
-* concat - 273 B
-* cond - 291 B
-* construct - 298 B
-* constructN - 285 B
-* contains - 517 B
-* converge - 274 B
-* curry - 255 B
-* curryN - 238 B
-* debounce - 72 B
-* dec - 32 B
-* descend - 57 B
-* difference - 543 B
-* differenceWith - 280 B
-* divide - 257 B
-* drop - 295 B
-* dropLast - 297 B
-* dropLastWhile - 296 B
-* dropWhile - 289 B
-* either - 48 B
-* eqBy - 519 B
-* eqLens - 521 B
-* equals - 491 B
-* eqWith - 258 B
-* F - 53 B
-* fill - 94 B
-* filter - 310 B
-* flatten - 70 B
-* flattenObj - 288 B
-* flip - 84 B
-* get - 705 B
-* getLens - 261 B
-* gt - 256 B
-* gte - 257 B
-* head - 31 B
-* identity - 29 B
-* ifElse - 268 B
-* inc - 32 B
-* indexBy - 274 B
-* indexed - 40 B
-* indexOf - 291 B
-* init - 307 B
-* invoker - 287 B
-* is - 274 B
-* isInteger - 48 B
-* isNil - 33 B
-* join - 262 B
-* last - 37 B
-* lastIndexOf - 294 B
-* lens - 301 B
-* lensPath - 471 B
-* lt - 256 B
-* lte - 257 B
-* mathMod - 306 B
-* mean - 67 B
-* median - 74 B
-* modulo - 257 B
-* multiply - 257 B
-* nAry - 81 B
-* negate - 31 B
-* noop - 57 B
-* not - 31 B
-* omit - 300 B
-* omitBy - 286 B
-* or - 258 B
-* p2a - 76 B
-* partial - 94 B
-* partialRight - 94 B
-* pick - 272 B
-* pickBy - 286 B
-* pipe - 141 B
-* pipeP - 150 B
-* placehold - 184 B
-* product - 41 B
-* reduce - 273 B
-* reduceRight - 279 B
-* reject - 311 B
-* reverse - 91 B
-* set - 708 B
-* setLens - 263 B
-* subtract - 256 B
-* sum - 46 B
-* T - 53 B
-* tail - 305 B
-* take - 295 B
-* takeLast - 295 B
-* takeLastWhile - 294 B
-* takeWhile - 291 B
-* throttle - 72 B
-* toArray - 39 B
-* unapply - 270 B
-* unless - 266 B
-* unnest - 56 B
-* unnestN - 324 B
-* until - 270 B
-* unzip - 331 B
-* unzipWith - 312 B
-* update - 711 B
-* updateLens - 271 B
-* useWith - 279 B
-* when - 267 B
-* without - 275 B
-* zip - 341 B
-* zipObject - 49 B
-* zipObjectDeep - 725 B
-* zipWith - 318 B
+
+| Method | Size |
+| --- | --- |
+| __ | 27 B |
+| a2p | 72 B |
+| add | 266 B |
+| adjust | 281 B |
+| all | 275 B |
+| allPass | 270 B |
+| always | 32 B |
+| and | 258 B |
+| any | 275 B |
+| anyPass | 270 B |
+| ap | 60 B |
+| aperture | 298 B |
+| append | 260 B |
+| apply | 258 B |
+| applySpec | 325 B |
+| applyTo | 258 B |
+| ascend | 57 B |
+| both | 48 B |
+| clamp | 266 B |
+| clone | 261 B |
+| compact | 51 B |
+| comparator | 48 B |
+| complement | 46 B |
+| compose | 93 B |
+| composeP | 111 B |
+| concat | 273 B |
+| cond | 291 B |
+| construct | 298 B |
+| constructN | 285 B |
+| contains | 517 B |
+| converge | 274 B |
+| curry | 255 B |
+| curryN | 238 B |
+| debounce | 72 B |
+| dec | 32 B |
+| descend | 57 B |
+| difference | 543 B |
+| differenceWith | 280 B |
+| divide | 257 B |
+| drop | 295 B |
+| dropLast | 297 B |
+| dropLastWhile | 296 B |
+| dropWhile | 289 B |
+| either | 48 B |
+| eqBy | 519 B |
+| eqLens | 521 B |
+| equals | 491 B |
+| eqWith | 258 B |
+| F | 53 B |
+| fill | 94 B |
+| filter | 310 B |
+| flatten | 70 B |
+| flattenObj | 288 B |
+| flip | 84 B |
+| get | 705 B |
+| getLens | 261 B |
+| gt | 256 B |
+| gte | 257 B |
+| head | 31 B |
+| identity | 29 B |
+| ifElse | 268 B |
+| inc | 32 B |
+| indexBy | 274 B |
+| indexed | 40 B |
+| indexOf | 291 B |
+| init | 307 B |
+| invoker | 287 B |
+| is | 274 B |
+| isInteger | 48 B |
+| isNil | 33 B |
+| join | 262 B |
+| last | 37 B |
+| lastIndexOf | 294 B |
+| lens | 301 B |
+| lensPath | 471 B |
+| lt | 256 B |
+| lte | 257 B |
+| mathMod | 306 B |
+| mean | 67 B |
+| median | 74 B |
+| modulo | 257 B |
+| multiply | 257 B |
+| nAry | 81 B |
+| negate | 31 B |
+| noop | 57 B |
+| not | 31 B |
+| omit | 300 B |
+| omitBy | 286 B |
+| or | 258 B |
+| p2a | 76 B |
+| partial | 94 B |
+| partialRight | 94 B |
+| pick | 272 B |
+| pickBy | 286 B |
+| pipe | 141 B |
+| pipeP | 150 B |
+| placehold | 184 B |
+| product | 41 B |
+| reduce | 273 B |
+| reduceRight | 279 B |
+| reject | 311 B |
+| reverse | 91 B |
+| set | 708 B |
+| setLens | 263 B |
+| subtract | 256 B |
+| sum | 46 B |
+| T | 53 B |
+| tail | 305 B |
+| take | 295 B |
+| takeLast | 295 B |
+| takeLastWhile | 294 B |
+| takeWhile | 291 B |
+| throttle | 72 B |
+| toArray | 39 B |
+| unapply | 270 B |
+| unless | 266 B |
+| unnest | 56 B |
+| unnestN | 324 B |
+| until | 270 B |
+| unzip | 331 B |
+| unzipWith | 312 B |
+| update | 711 B |
+| updateLens | 271 B |
+| useWith | 279 B |
+| when | 267 B |
+| without | 275 B |
+| zip | 341 B |
+| zipObject | 49 B |
+| zipObjectDeep | 725 B |
+| zipWith | 318 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size

@@ -74,12 +74,14 @@ Promise
   .then(methods => {
     if (!args._.length) {
       const header = '## Nanoutils methods size'
-      const str = methods.map(i => `* ${i.name} - ${i.size} B`).join('\n')
+      const caption = `\n| Method | Size |\n| --- | --- |`
+      const str = methods.map(i => `| ${i.name} | ${i.size} B |`).join('\n')
       const footer =
         '## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
-      return writeFile('SIZES.md', [header, str, footer].join('\n')).then(
-        () => methods
-      )
+      return writeFile(
+        'SIZES.md',
+        [header, caption, str, footer].join('\n')
+      ).then(() => methods)
     }
     return methods
   })
