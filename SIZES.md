@@ -3,7 +3,6 @@
 | Method | Size |
 | --- | --- |
 | __ | 27 B |
-| a2p | 72 B |
 | add | 300 B |
 | adjust | 316 B |
 | all | 313 B |
@@ -79,6 +78,7 @@
 | lensPath | 471 B |
 | lt | 293 B |
 | lte | 294 B |
+| map | 328 B |
 | mapAccum | 323 B |
 | mapAccumRight | 331 B |
 | mathMod | 343 B |
@@ -93,16 +93,14 @@
 | omit | 335 B |
 | omitBy | 322 B |
 | or | 293 B |
-| p2a | 76 B |
 | partial | 94 B |
 | partialRight | 94 B |
 | pick | 308 B |
 | pickBy | 322 B |
 | pipe | 141 B |
 | pipeP | 150 B |
-| placehold | 215 B |
 | product | 41 B |
-| reduce | 311 B |
+| reduce | 441 B |
 | reduceRight | 316 B |
 | reject | 345 B |
 | reverse | 91 B |
