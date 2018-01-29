@@ -6,6 +6,11 @@
   "repository": "https://github.com/kelin2025/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run size"
+    }
+  },
   "scripts": {
     "dev": "jest --watchAll --verbose",
     "test": "jest",
@@ -24,6 +29,7 @@
     "create-index": "^2.3.0",
     "flow": "^0.2.3",
     "flow-bin": "^0.62.0",
+    "ghooks": "^2.0.2",
     "jest": "^22.0.4",
     "size-limit": "^0.13.2"
   }
