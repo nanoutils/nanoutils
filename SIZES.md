@@ -32,7 +32,7 @@
 | constructN | 320 B |
 | contains | 552 B |
 | converge | 311 B |
-| countBy | 316 B |
+| countBy | 315 B |
 | curry | 297 B |
 | curryN | 275 B |
 | debounce | 72 B |
