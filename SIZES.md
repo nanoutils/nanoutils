@@ -33,6 +33,7 @@ Last update: Sun Feb 04 2018 02:28:46 GMT+0300 (MSK)
 | constructN | 320 B |
 | contains | 552 B |
 | converge | 311 B |
+| countBy | 315 B |
 | curry | 297 B |
 | curryN | 275 B |
 | debounce | 72 B |
