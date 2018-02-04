@@ -10,7 +10,7 @@
   "config": {
     "ghooks": {
       "pre-push":
-        "npm run size && git add SIZES.md && git commit -m ':speech_balloon: Recalculating size'"
+        "npm run size && git add SIZES.md && git commit --allow-empty -m ':speech_balloon: Recalculating size'"
     }
   },
   "scripts": {
@@ -33,6 +33,7 @@
     "flow-bin": "^0.62.0",
     "ghooks": "^2.0.2",
     "jest": "^22.0.4",
+    "ramda": "^0.25.0",
     "size-limit": "^0.13.2"
   }
 }
