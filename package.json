@@ -9,8 +9,7 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-push":
-        "npm run size && git add SIZES.md && git commit -m ':speech_balloon: Recalculating size'"
+      "pre-push": "npm run size && git add SIZES.md && git commit -m ':speech_balloon: Recalculating size'"
     }
   },
   "scripts": {
@@ -20,8 +19,7 @@
     "method:add": "node ./misc/cli/add-method.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build":
-      "npm run build:cjs && create-index --ignoreUnsafe --update lib && npm run size",
+    "build": "npm run build:cjs && create-index --ignoreUnsafe --update lib && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
@@ -33,6 +31,7 @@
     "flow-bin": "^0.62.0",
     "ghooks": "^2.0.2",
     "jest": "^22.0.4",
+    "ramda": "^0.25.0",
     "size-limit": "^0.13.2"
   }
 }
