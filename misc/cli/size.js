@@ -125,7 +125,7 @@ Promise
   // Save it to SIZES.md
   .then(methods => {
     if (!args._.length) {
-      const header = '## Nanoutils methods size\nLast update: ' + new Date()
+      const header = '## Nanoutils methods size'
       const caption = `\n| Method | Size |\n| --- | --- |`
       const str = methods.map(i => `| ${i.name} | ${i.size} B |`).join('\n')
       const footer =
