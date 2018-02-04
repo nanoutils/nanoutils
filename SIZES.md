@@ -132,5 +132,6 @@
 | zipObject | 49 B | n/a B | n/a B |
 | zipObjectDeep | 762 B | n/a B | n/a B |
 | zipWith | 352 B | 383 B | -31 B |
+
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
