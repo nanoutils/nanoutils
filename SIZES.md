@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
-| adjust | 316 B | 441 B | -125 B |
+| adjust | 140 B | 441 B | -301 B |
 | all | 121 B | 637 B | -516 B |
 | allPass | 91 B | 1993 B | -1902 B |
 | always | 32 B | 144 B | -112 B |
@@ -19,7 +19,7 @@
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
 | both | 48 B | 1944 B | -1896 B |
-| clamp | 303 B | 402 B | -99 B |
+| clamp | 130 B | 402 B | -272 B |
 | clone | 261 B | 463 B | -202 B |
 | compact | 51 B | n/a B | n/a B |
 | comparator | 48 B | 159 B | -111 B |
@@ -38,18 +38,18 @@
 | debounce | 72 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
 | descend | 57 B | 356 B | -299 B |
-| difference | 596 B | 1561 B | -965 B |
-| differenceWith | 316 B | 424 B | -108 B |
+| difference | 430 B | 1561 B | -1131 B |
+| differenceWith | 142 B | 424 B | -282 B |
 | divide | 81 B | 230 B | -149 B |
 | drop | 139 B | 782 B | -643 B |
 | dropLast | 141 B | 983 B | -842 B |
 | dropLastWhile | 141 B | 1443 B | -1302 B |
 | dropWhile | 134 B | 806 B | -672 B |
 | either | 48 B | 1943 B | -1895 B |
-| eqBy | 573 B | 1500 B | -927 B |
-| eqLens | 573 B | n/a B | n/a B |
+| eqBy | 407 B | 1500 B | -1093 B |
+| eqLens | 408 B | n/a B | n/a B |
 | equals | 320 B | 1369 B | -1049 B |
-| eqWith | 295 B | n/a B | n/a B |
+| eqWith | 121 B | n/a B | n/a B |
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
@@ -62,7 +62,7 @@
 | gte | 82 B | 231 B | -149 B |
 | head | 31 B | 301 B | -270 B |
 | identity | 29 B | 150 B | -121 B |
-| ifElse | 307 B | 687 B | -380 B |
+| ifElse | 130 B | 687 B | -557 B |
 | inc | 32 B | 250 B | -218 B |
 | indexBy | 97 B | 1438 B | -1341 B |
 | indexed | 40 B | n/a B | n/a B |
@@ -80,8 +80,8 @@
 | lt | 81 B | 230 B | -149 B |
 | lte | 82 B | 231 B | -149 B |
 | map | 122 B | 1710 B | -1588 B |
-| mapAccum | 323 B | 383 B | -60 B |
-| mapAccumRight | 331 B | 383 B | -52 B |
+| mapAccum | 159 B | 383 B | -224 B |
+| mapAccumRight | 168 B | 383 B | -215 B |
 | mathMod | 137 B | 281 B | -144 B |
 | mean | 67 B | 1078 B | -1011 B |
 | median | 74 B | 1156 B | -1082 B |
@@ -101,12 +101,12 @@
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
 | product | 41 B | 1061 B | -1020 B |
-| reduce | 441 B | 1021 B | -580 B |
-| reduceRight | 316 B | 361 B | -45 B |
+| reduce | 278 B | 1021 B | -743 B |
+| reduceRight | 165 B | 361 B | -196 B |
 | reject | 140 B | 1575 B | -1435 B |
 | reverse | 91 B | 212 B | -121 B |
-| set | 741 B | 411 B | +330 B |
-| setLens | 300 B | n/a B | n/a B |
+| set | 602 B | 411 B | +191 B |
+| setLens | 125 B | n/a B | n/a B |
 | subtract | 81 B | 240 B | -159 B |
 | sum | 46 B | 1069 B | -1023 B |
 | T | 53 B | 156 B | -103 B |
@@ -121,17 +121,17 @@
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
-| until | 306 B | 351 B | -45 B |
+| until | 134 B | 351 B | -217 B |
 | unzip | 198 B | n/a B | n/a B |
 | unzipWith | 148 B | n/a B | n/a B |
-| update | 747 B | 497 B | +250 B |
-| updateLens | 306 B | n/a B | n/a B |
+| update | 612 B | 497 B | +115 B |
+| updateLens | 133 B | n/a B | n/a B |
 | useWith | 107 B | 618 B | -511 B |
 | when | 87 B | 338 B | -251 B |
 | without | 98 B | 2713 B | -2615 B |
 | zip | 376 B | 273 B | +103 B |
 | zipObject | 49 B | n/a B | n/a B |
-| zipObjectDeep | 762 B | n/a B | n/a B |
+| zipObjectDeep | 621 B | n/a B | n/a B |
 | zipWith | 352 B | 383 B | -31 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
