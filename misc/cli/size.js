@@ -12,6 +12,10 @@ const writeFile = util.promisify(fs.writeFile)
 const createRow = cols => '║ ' + cols.join(' ║ ') + ' ║'
 const formatName = name => chalk.bold(name.padEnd(longestName))
 const formatSize = size => `${size}`.padStart(5) + ' B'
+const getDiff = (size, ramdaSize) =>
+  ramdaSize === 'n/a'
+    ? 'n/a'
+    : `${ramdaSize >= size ? '' : '+'}${size - ramdaSize}`
 const formatDiff = (size, ramdaSize) => {
   if (ramdaSize === 'n/a') return 'n/a'.padStart(8)
   const ok = ramdaSize >= size
@@ -126,8 +130,16 @@ Promise
   .then(methods => {
     if (!args._.length) {
       const header = '## Nanoutils methods size'
-      const caption = `\n| Method | Size |\n| --- | --- |`
-      const str = methods.map(i => `| ${i.name} | ${i.size} B |`).join('\n')
+      const caption = `\n| Method | Nano | Ramda | Diff | \n| --- | --- | --- | --- |`
+      const str = methods
+        .map(
+          i =>
+            `| ${i.name} | ${i.size} B | ${i.ramdaSize} B | ${getDiff(
+              i.size,
+              i.ramdaSize
+            )} B |`
+        )
+        .join('\n')
       const footer =
         '## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
       return writeFile(
