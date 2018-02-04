@@ -11,12 +11,12 @@ const readdir = util.promisify(fs.readdir)
 const writeFile = util.promisify(fs.writeFile)
 const createRow = cols => '║ ' + cols.join(' ║ ') + ' ║'
 const formatName = name => chalk.bold(name.padEnd(longestName))
-const formatSize = size => `${size}`.padStart(4) + ' B'
+const formatSize = size => `${size}`.padStart(5) + ' B'
 const formatDiff = (size, ramdaSize) => {
-  if (ramdaSize === 'n/a') return 'n/a'.padStart(7)
+  if (ramdaSize === 'n/a') return 'n/a'.padStart(8)
   const ok = ramdaSize >= size
   return chalk[ok ? 'green' : 'red'](
-    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(5) + ' B'
+    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(6) + ' B'
   )
 }
 
@@ -85,7 +85,7 @@ Promise
   })
   // Draw table
   .then(methods => {
-    const lens = [longestName + 2, 8, 8, 9]
+    const lens = [longestName + 2, 9, 9, 10]
     const sline = lens.map(len => '─'.repeat(len))
     const dline = lens.map(len => '═'.repeat(len))
     const topper = `╔${dline.join('╦')}╗`
@@ -93,9 +93,9 @@ Promise
     const bottom = `╚${dline.join('╩')}╝`
     const header = createRow([
       formatName('Method'),
-      chalk.bold('Nano'.padStart(6)),
-      chalk.bold('Ramda'.padStart(6)),
-      chalk.bold('Diff'.padStart(7))
+      chalk.bold('Nano'.padStart(7)),
+      chalk.bold('Ramda'.padStart(7)),
+      chalk.bold('Diff'.padStart(8))
     ])
     const content = methods.map(i => i.border).join('\n')
     const total = methods.reduce(
