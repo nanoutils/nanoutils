@@ -1,5 +1,5 @@
 ## Nanoutils methods size
-Last update: Sun Feb 04 2018 02:28:46 GMT+0300 (MSK)
+Last update: Mon Feb 05 2018 01:03:20 GMT+0300 (MSK)
 
 | Method | Size |
 | --- | --- |
