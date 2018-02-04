@@ -12,6 +12,13 @@ const writeFile = util.promisify(fs.writeFile)
 const createRow = cols => '║ ' + cols.join(' ║ ') + ' ║'
 const formatName = name => chalk.bold(name.padEnd(longestName))
 const formatSize = size => `${size}`.padStart(4) + ' B'
+const formatDiff = (size, ramdaSize) => {
+  if (ramdaSize === 'n/a') return 'n/a'.padStart(7)
+  const ok = ramdaSize >= size
+  return chalk[ok ? 'green' : 'red'](
+    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(5) + ' B'
+  )
+}
 
 Promise
   // Get lib path
@@ -37,10 +44,25 @@ Promise
     const getMaxLen = (max, cur) => (cur.length > max ? cur.length : max)
     longestName = methods.reduce(getMaxLen, 6)
     const getIndex = name => path.resolve('lib', name, 'index.js')
+    const getRamda = name => path.resolve('node_modules/ramda/es', `${name}.js`)
     const sizeLimit = name =>
-      getSize(getIndex(name)).then(size => ({ name, size }))
+      getSize(getIndex(name))
+        .then(size => ({ name, size }))
+        .then(({ name, size }) =>
+          getSize(getRamda(name))
+            .then(ramdaSize => ({
+              name,
+              size,
+              ramdaSize
+            }))
+            .catch(() => ({
+              name,
+              size,
+              ramdaSize: 'n/a'
+            }))
+        )
 
-    return Promise.all(methods.map(sizeLimit))
+    return Promise.all(methods.map(sizeLimit)).catch(console.log)
   })
   // Sort alphabetically
   .then(methods => {
@@ -53,21 +75,51 @@ Promise
   .then(methods => {
     return methods.map(i => ({
       ...i,
-      border: createRow([formatName(i.name), formatSize(i.size)])
+      border: createRow([
+        formatName(i.name),
+        formatSize(i.size),
+        formatSize(i.ramdaSize),
+        formatDiff(i.size, i.ramdaSize)
+      ])
     }))
   })
   // Draw table
   .then(methods => {
-    const topper = `╔${'═'.repeat(longestName + 2)}╦${'═'.repeat(8)}╗`
-    const hrline = `╟${'─'.repeat(longestName + 2)}╫${'─'.repeat(8)}╢`
-    const bottom = `╚${'═'.repeat(longestName + 2)}╩${'═'.repeat(8)}╝`
+    const lens = [longestName + 2, 8, 8, 9]
+    const sline = lens.map(len => '─'.repeat(len))
+    const dline = lens.map(len => '═'.repeat(len))
+    const topper = `╔${dline.join('╦')}╗`
+    const hrline = `╟${sline.join('╫')}╢`
+    const bottom = `╚${dline.join('╩')}╝`
     const header = createRow([
       formatName('Method'),
-      chalk.bold('Size'.padStart(6))
+      chalk.bold('Nano'.padStart(6)),
+      chalk.bold('Ramda'.padStart(6)),
+      chalk.bold('Diff'.padStart(7))
     ])
     const content = methods.map(i => i.border).join('\n')
+    const total = methods.reduce(
+      (res, cur) => ({
+        size: res.size + cur.size,
+        ramdaSize:
+          cur.ramdaSize === 'n/a'
+            ? res.ramdaSize
+            : res.ramdaSize + cur.ramdaSize,
+        sizeNoRamda: cur.ramdaSize === 'n/a' ? res.size : res.size + cur.size
+      }),
+      { size: 0, ramdaSize: 0 }
+    )
 
-    console.log([topper, header, hrline, content, bottom].join('\n'))
+    const totalRow = createRow([
+      formatName('total'),
+      formatSize(total.sizeNoRamda),
+      formatSize(total.ramdaSize),
+      formatDiff(total.sizeNoRamda, total.ramdaSize)
+    ])
+
+    console.log(
+      [topper, header, hrline, content, hrline, totalRow, bottom].join('\n')
+    )
     return methods
   })
   // Save it to SIZES.md
