@@ -18,6 +18,7 @@
 | applySpec | 358 B | 2075 B | -1717 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
+| assoc | 579 B | 361 B | +218 B |
 | both | 48 B | 1944 B | -1896 B |
 | clamp | 107 B | 402 B | -295 B |
 | clone | 261 B | 463 B | -202 B |
@@ -56,8 +57,6 @@
 | flatten | 70 B | 369 B | -299 B |
 | flattenObj | 308 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
-| get | 558 B | n/a B | n/a B |
-| getLens | 86 B | n/a B | n/a B |
 | gt | 81 B | 230 B | -149 B |
 | gte | 82 B | 231 B | -149 B |
 | head | 31 B | 301 B | -270 B |
@@ -94,6 +93,7 @@
 | omit | 128 B | 285 B | -157 B |
 | omitBy | 116 B | n/a B | n/a B |
 | or | 82 B | 231 B | -149 B |
+| over | 586 B | 364 B | +222 B |
 | partial | 94 B | 497 B | -403 B |
 | partialRight | 94 B | 704 B | -610 B |
 | pick | 102 B | 266 B | -164 B |
@@ -101,12 +101,12 @@
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
 | product | 41 B | 1061 B | -1020 B |
+| prop | 558 B | 286 B | +272 B |
 | reduce | 258 B | 1021 B | -763 B |
 | reduceRight | 144 B | 361 B | -217 B |
 | reject | 140 B | 1575 B | -1435 B |
 | reverse | 91 B | 212 B | -121 B |
-| set | 579 B | 411 B | +168 B |
-| setLens | 106 B | n/a B | n/a B |
+| set | 106 B | 411 B | -305 B |
 | subtract | 81 B | 240 B | -159 B |
 | sum | 46 B | 1069 B | -1023 B |
 | T | 53 B | 156 B | -103 B |
@@ -124,9 +124,9 @@
 | until | 109 B | 351 B | -242 B |
 | unzip | 198 B | n/a B | n/a B |
 | unzipWith | 148 B | n/a B | n/a B |
-| update | 586 B | 497 B | +89 B |
 | updateLens | 113 B | n/a B | n/a B |
 | useWith | 107 B | 618 B | -511 B |
+| view | 86 B | 259 B | -173 B |
 | when | 87 B | 338 B | -251 B |
 | without | 98 B | 2713 B | -2615 B |
 | zip | 376 B | 273 B | +103 B |
