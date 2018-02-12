@@ -51,6 +51,7 @@
 | eqLens | 380 B | n/a B | n/a B |
 | equals | 320 B | 1369 B | -1049 B |
 | eqWith | 101 B | n/a B | n/a B |
+| evolve | 93 B | 282 B | -189 B |
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
