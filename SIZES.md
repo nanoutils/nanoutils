@@ -85,6 +85,7 @@
 | mathMod | 137 B | 281 B | -144 B |
 | mean | 67 B | 1078 B | -1011 B |
 | median | 74 B | 1156 B | -1082 B |
+| merge | 119 B | 390 B | -271 B |
 | modulo | 81 B | 230 B | -149 B |
 | multiply | 81 B | 230 B | -149 B |
 | nAry | 101 B | 410 B | -309 B |
