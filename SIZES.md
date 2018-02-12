@@ -82,6 +82,7 @@
 | map | 122 B | 1710 B | -1588 B |
 | mapAccum | 135 B | 383 B | -248 B |
 | mapAccumRight | 146 B | 383 B | -237 B |
+| mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
 | mean | 67 B | 1078 B | -1011 B |
 | median | 74 B | 1156 B | -1082 B |
