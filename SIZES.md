@@ -51,6 +51,7 @@
 | eqLens | 380 B | n/a B | n/a B |
 | equals | 320 B | 1369 B | -1049 B |
 | eqWith | 101 B | n/a B | n/a B |
+| evolve | 93 B | 282 B | -189 B |
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
@@ -81,9 +82,12 @@
 | map | 122 B | 1710 B | -1588 B |
 | mapAccum | 135 B | 383 B | -248 B |
 | mapAccumRight | 146 B | 383 B | -237 B |
+| mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
 | mean | 67 B | 1078 B | -1011 B |
 | median | 74 B | 1156 B | -1082 B |
+| merge | 119 B | 390 B | -271 B |
+| mergeWith | 155 B | 430 B | -275 B |
 | modulo | 81 B | 230 B | -149 B |
 | multiply | 81 B | 230 B | -149 B |
 | nAry | 101 B | 410 B | -309 B |
