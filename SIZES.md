@@ -75,7 +75,7 @@
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 114 B | 1462 B | -1348 B |
 | lens | 301 B | 1745 B | -1444 B |
-| lensPath | 471 B | 2095 B | -1624 B |
+| lensPath | 473 B | 2095 B | -1622 B |
 | lt | 81 B | 230 B | -149 B |
 | lte | 82 B | 231 B | -149 B |
 | map | 122 B | 1710 B | -1588 B |
@@ -101,7 +101,7 @@
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
 | product | 41 B | 1061 B | -1020 B |
-| prop | 558 B | 286 B | +272 B |
+| prop | 557 B | 286 B | +271 B |
 | reduce | 258 B | 1021 B | -763 B |
 | reduceRight | 144 B | 361 B | -217 B |
 | reject | 140 B | 1575 B | -1435 B |
