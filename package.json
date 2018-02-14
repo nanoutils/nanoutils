@@ -9,7 +9,8 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-push": "npm run size && git add SIZES.md && git commit --allow-empty -m ':speech_balloon: Recalculating size'"
+      "pre-push":
+        "npm run size && git add SIZES.md && git commit --allow-empty -m ':speech_balloon: Recalculating size'"
     }
   },
   "scripts": {
@@ -17,9 +18,11 @@
     "test": "jest",
     "size": "node ./misc/cli/size.js",
     "method:add": "node ./misc/cli/add-method.js",
+    "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build": "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
+    "build":
+      "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
