@@ -1,6 +1,6 @@
 {
   "name": "nanoutils",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Tiniest JavaScript utils library",
   "main": "cjs/index.js",
   "module": "lib/index.js",
