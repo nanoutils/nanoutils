@@ -65,4 +65,16 @@ methods           List of method names (separated by space) you want to check.
                   If no methods it will check size of all methods
 ```
 
+### Check ramda/nanoutils diff
+
+```
+npm check <type>
+
+Params
+type           What to display?
+               - both: display methods that are both in ramda and nanoutils
+               - nano: display nanoutils methods that ramda doesn't have
+               - ramda: display ramda methods that nanoutils doesn't have
+```
+
 I use [size-limit](https://github.com/ai/size-limit) to check the size of methods.
