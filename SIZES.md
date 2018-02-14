@@ -94,6 +94,8 @@
 | negate | 31 B | 145 B | -114 B |
 | noop | 57 B | n/a B | n/a B |
 | not | 31 B | 144 B | -113 B |
+| objOf | 90 B | 240 B | -150 B |
+| of | 29 B | 151 B | -122 B |
 | omit | 128 B | 285 B | -157 B |
 | omitBy | 116 B | n/a B | n/a B |
 | or | 82 B | 231 B | -149 B |
@@ -109,6 +111,7 @@
 | reduce | 258 B | 1021 B | -763 B |
 | reduceRight | 144 B | 361 B | -217 B |
 | reject | 140 B | 1575 B | -1435 B |
+| repeat | 104 B | 364 B | -260 B |
 | reverse | 91 B | 212 B | -121 B |
 | set | 106 B | 411 B | -305 B |
 | subtract | 81 B | 240 B | -159 B |
@@ -120,6 +123,7 @@
 | takeLastWhile | 140 B | 528 B | -388 B |
 | takeWhile | 135 B | 822 B | -687 B |
 | throttle | 72 B | n/a B | n/a B |
+| times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | unapply | 308 B | 161 B | +147 B |
 | unless | 87 B | 338 B | -251 B |
