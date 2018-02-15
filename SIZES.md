@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
-| adjust | 117 B | 441 B | -324 B |
+| adjust | 121 B | 441 B | -320 B |
 | all | 121 B | 637 B | -516 B |
 | allPass | 92 B | 1993 B | -1901 B |
 | always | 32 B | 144 B | -112 B |
@@ -18,9 +18,9 @@
 | applySpec | 358 B | 2075 B | -1717 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
-| assoc | 579 B | 361 B | +218 B |
+| assoc | 581 B | 361 B | +220 B |
 | both | 48 B | 1944 B | -1896 B |
-| clamp | 107 B | 402 B | -295 B |
+| clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
 | compact | 51 B | n/a B | n/a B |
 | comparator | 48 B | 159 B | -111 B |
@@ -39,8 +39,8 @@
 | debounce | 72 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
 | descend | 57 B | 356 B | -299 B |
-| difference | 414 B | 1561 B | -1147 B |
-| differenceWith | 121 B | 424 B | -303 B |
+| difference | 415 B | 1561 B | -1146 B |
+| differenceWith | 124 B | 424 B | -300 B |
 | divide | 82 B | 230 B | -148 B |
 | drop | 139 B | 782 B | -643 B |
 | dropLast | 142 B | 983 B | -841 B |
@@ -50,7 +50,7 @@
 | eqBy | 385 B | 1500 B | -1115 B |
 | eqLens | 386 B | n/a B | n/a B |
 | equals | 321 B | 1369 B | -1048 B |
-| eqWith | 101 B | n/a B | n/a B |
+| eqWith | 103 B | n/a B | n/a B |
 | evolve | 93 B | 282 B | -189 B |
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
@@ -62,7 +62,7 @@
 | gte | 83 B | 231 B | -148 B |
 | head | 31 B | 301 B | -270 B |
 | identity | 29 B | 150 B | -121 B |
-| ifElse | 107 B | 687 B | -580 B |
+| ifElse | 110 B | 687 B | -577 B |
 | inc | 32 B | 250 B | -218 B |
 | indexBy | 98 B | 1438 B | -1340 B |
 | indexed | 40 B | n/a B | n/a B |
@@ -80,14 +80,14 @@
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
 | map | 122 B | 1710 B | -1588 B |
-| mapAccum | 135 B | 383 B | -248 B |
-| mapAccumRight | 146 B | 383 B | -237 B |
+| mapAccum | 138 B | 383 B | -245 B |
+| mapAccumRight | 149 B | 383 B | -234 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
 | mean | 67 B | 1078 B | -1011 B |
 | median | 74 B | 1156 B | -1082 B |
 | merge | 119 B | 390 B | -271 B |
-| mergeWith | 155 B | 430 B | -275 B |
+| mergeWith | 158 B | 430 B | -272 B |
 | modulo | 82 B | 230 B | -148 B |
 | multiply | 82 B | 230 B | -148 B |
 | nAry | 101 B | 410 B | -309 B |
@@ -99,7 +99,7 @@
 | omit | 129 B | 285 B | -156 B |
 | omitBy | 116 B | n/a B | n/a B |
 | or | 82 B | 231 B | -149 B |
-| over | 586 B | 364 B | +222 B |
+| over | 588 B | 364 B | +224 B |
 | partial | 94 B | 497 B | -403 B |
 | partialRight | 94 B | 704 B | -610 B |
 | pick | 102 B | 266 B | -164 B |
@@ -108,12 +108,12 @@
 | pipeP | 150 B | 1260 B | -1110 B |
 | product | 41 B | 1061 B | -1020 B |
 | prop | 556 B | 286 B | +270 B |
-| reduce | 258 B | 1021 B | -763 B |
-| reduceRight | 144 B | 361 B | -217 B |
+| reduce | 261 B | 1021 B | -760 B |
+| reduceRight | 147 B | 361 B | -214 B |
 | reject | 140 B | 1575 B | -1435 B |
 | repeat | 104 B | 364 B | -260 B |
 | reverse | 91 B | 212 B | -121 B |
-| set | 106 B | 411 B | -305 B |
+| set | 111 B | 411 B | -300 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 46 B | 1069 B | -1023 B |
 | T | 53 B | 156 B | -103 B |
@@ -129,17 +129,17 @@
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
-| until | 109 B | 351 B | -242 B |
+| until | 112 B | 351 B | -239 B |
 | unzip | 197 B | n/a B | n/a B |
 | unzipWith | 147 B | n/a B | n/a B |
-| updateLens | 113 B | n/a B | n/a B |
+| updateLens | 115 B | n/a B | n/a B |
 | useWith | 109 B | 618 B | -509 B |
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
 | without | 98 B | 2713 B | -2615 B |
-| zip | 166 B | 273 B | -107 B |
+| zip | 168 B | 273 B | -105 B |
 | zipObj | 49 B | 271 B | -222 B |
-| zipObjDeep | 599 B | n/a B | n/a B |
-| zipWith | 149 B | 383 B | -234 B |
+| zipObjDeep | 600 B | n/a B | n/a B |
+| zipWith | 151 B | 383 B | -232 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
