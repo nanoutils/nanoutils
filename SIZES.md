@@ -126,6 +126,7 @@
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | unapply | 308 B | 161 B | +147 B |
+| union | 111 B | 2988 B | -2877 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
