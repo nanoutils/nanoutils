@@ -135,6 +135,7 @@
 | updateLens | 115 B | n/a B | n/a B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
+| valuesIn | 78 B | 163 B | -85 B |
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
 | without | 98 B | 2713 B | -2615 B |
