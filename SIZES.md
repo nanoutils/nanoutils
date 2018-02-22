@@ -4,6 +4,7 @@
 | --- | --- | --- | --- |
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
+| addIndex | 117 B | 684 B | -567 B |
 | adjust | 121 B | 441 B | -320 B |
 | all | 121 B | 637 B | -516 B |
 | allPass | 92 B | 1993 B | -1901 B |
@@ -15,7 +16,7 @@
 | aperture | 127 B | 750 B | -623 B |
 | append | 88 B | 301 B | -213 B |
 | apply | 86 B | 230 B | -144 B |
-| applySpec | 358 B | 2075 B | -1717 B |
+| applySpec | 351 B | 2075 B | -1724 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
 | assoc | 581 B | 361 B | +220 B |
@@ -29,13 +30,13 @@
 | composeP | 111 B | 1330 B | -1219 B |
 | concat | 124 B | 3228 B | -3104 B |
 | cond | 113 B | 1937 B | -1824 B |
-| construct | 334 B | 790 B | -456 B |
-| constructN | 320 B | 783 B | -463 B |
+| construct | 328 B | 790 B | -462 B |
+| constructN | 314 B | 783 B | -469 B |
 | contains | 355 B | 1534 B | -1179 B |
 | converge | 99 B | 2002 B | -1903 B |
 | countBy | 111 B | 1437 B | -1326 B |
-| curry | 297 B | 550 B | -253 B |
-| curryN | 275 B | 527 B | -252 B |
+| curry | 290 B | 550 B | -260 B |
+| curryN | 268 B | 527 B | -259 B |
 | debounce | 72 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
 | descend | 57 B | 356 B | -299 B |
@@ -68,7 +69,7 @@
 | indexed | 40 B | n/a B | n/a B |
 | indexOf | 110 B | 1570 B | -1460 B |
 | init | 152 B | 493 B | -341 B |
-| invoker | 323 B | 3337 B | -3014 B |
+| invoker | 318 B | 3337 B | -3019 B |
 | is | 100 B | 252 B | -152 B |
 | isInteger | 48 B | n/a B | n/a B |
 | isNil | 33 B | 146 B | -113 B |
@@ -125,7 +126,7 @@
 | throttle | 72 B | n/a B | n/a B |
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
-| unapply | 308 B | 161 B | +147 B |
+| unapply | 301 B | 161 B | +140 B |
 | union | 116 B | 2988 B | -2872 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
