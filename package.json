@@ -1,6 +1,6 @@
 {
   "name": "nanoutils",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Tiniest JavaScript utils library",
   "main": "cjs/index.js",
   "module": "lib/index.js",
@@ -9,8 +9,7 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-push":
-        "npm run size && git add SIZES.md && git commit --allow-empty -m ':speech_balloon: Recalculating size'"
+      "pre-push": "npm run size && git add SIZES.md && git commit --allow-empty -m ':speech_balloon: Recalculating size'"
     }
   },
   "scripts": {
@@ -21,8 +20,7 @@
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build":
-      "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
+    "build": "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
