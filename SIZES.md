@@ -20,6 +20,7 @@
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
 | assoc | 581 B | 361 B | +220 B |
+| az | 51 B | n/a B | n/a B |
 | both | 48 B | 1944 B | -1896 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
@@ -115,6 +116,8 @@
 | repeat | 104 B | 364 B | -260 B |
 | reverse | 91 B | 212 B | -121 B |
 | set | 111 B | 411 B | -300 B |
+| sortBy | 91 B | 273 B | -182 B |
+| sortWith | 144 B | 285 B | -141 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 46 B | 1069 B | -1023 B |
 | T | 53 B | 156 B | -103 B |
@@ -128,6 +131,7 @@
 | toArray | 39 B | n/a B | n/a B |
 | unapply | 301 B | 161 B | +140 B |
 | union | 116 B | 2988 B | -2872 B |
+| unionWith | 134 B | 504 B | -370 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
@@ -141,6 +145,7 @@
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
 | without | 98 B | 2713 B | -2615 B |
+| za | 53 B | n/a B | n/a B |
 | zip | 168 B | 273 B | -105 B |
 | zipObj | 49 B | 271 B | -222 B |
 | zipObjDeep | 600 B | n/a B | n/a B |
