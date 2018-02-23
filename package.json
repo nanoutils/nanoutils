@@ -1,16 +1,15 @@
 {
-  "name": "nanoutils",
-  "version": "0.0.15",
+  "name": "@nanoutils/nanoutils",
+  "version": "0.0.16",
   "description": "Tiniest JavaScript utils library",
   "main": "cjs/index.js",
   "module": "lib/index.js",
-  "repository": "https://github.com/kelin2025/nanoutils",
+  "repository": "https://github.com/nanoutils/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-commit":
-        "npm run size && git add SIZES.md"
+      "pre-commit": "npm run size && git add SIZES.md"
     }
   },
   "scripts": {
@@ -21,7 +20,8 @@
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build": "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
+    "build":
+      "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
