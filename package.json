@@ -9,8 +9,8 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-push":
-        "npm run size && git add SIZES.md && git commit --allow-empty -m ':speech_balloon: Recalculating size'"
+      "pre-commit":
+        "npm run size && git add SIZES.md"
     }
   },
   "scripts": {
