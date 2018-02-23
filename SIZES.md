@@ -117,7 +117,7 @@
 | reverse | 91 B | 212 B | -121 B |
 | set | 111 B | 411 B | -300 B |
 | sortBy | 91 B | 273 B | -182 B |
-| sortWith | 151 B | 285 B | -134 B |
+| sortWith | 144 B | 285 B | -141 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 46 B | 1069 B | -1023 B |
 | T | 53 B | 156 B | -103 B |
