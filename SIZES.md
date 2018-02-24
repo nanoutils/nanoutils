@@ -21,6 +21,7 @@
 | ascend | 57 B | 356 B | -299 B |
 | assoc | 581 B | 361 B | +220 B |
 | az | 51 B | n/a B | n/a B |
+| binary | 37 B | 430 B | -393 B |
 | both | 48 B | 1944 B | -1896 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
@@ -130,6 +131,7 @@
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | unapply | 301 B | 161 B | +140 B |
+| unary | 35 B | 430 B | -395 B |
 | union | 116 B | 2988 B | -2872 B |
 | unionWith | 134 B | 504 B | -370 B |
 | unless | 87 B | 338 B | -251 B |
