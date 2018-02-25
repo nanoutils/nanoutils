@@ -38,7 +38,7 @@
 | countBy | 111 B | 1437 B | -1326 B |
 | curry | 290 B | 550 B | -260 B |
 | curryN | 268 B | 527 B | -259 B |
-| debounce | 132 B | n/a B | n/a B |
+| debounce | 129 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
 | descend | 57 B | 356 B | -299 B |
 | difference | 415 B | 1561 B | -1146 B |
