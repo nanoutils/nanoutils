@@ -19,7 +19,7 @@
 | applySpec | 351 B | 2075 B | -1724 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
-| assoc | 581 B | 361 B | +220 B |
+| assoc | 580 B | 361 B | +219 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
 | both | 48 B | 1944 B | -1896 B |
@@ -39,7 +39,7 @@
 | countBy | 111 B | 1437 B | -1326 B |
 | curry | 290 B | 550 B | -260 B |
 | curryN | 268 B | 527 B | -259 B |
-| debounce | 72 B | n/a B | n/a B |
+| debounce | 129 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
 | descend | 57 B | 356 B | -299 B |
 | difference | 415 B | 1561 B | -1146 B |
@@ -78,7 +78,7 @@
 | join | 85 B | 3343 B | -3258 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
-| lens | 301 B | 1745 B | -1444 B |
+| lens | 300 B | 1745 B | -1445 B |
 | lensPath | 473 B | 2095 B | -1622 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
@@ -132,10 +132,12 @@
 | toArray | 39 B | n/a B | n/a B |
 | unapply | 301 B | 161 B | +140 B |
 | unary | 35 B | 430 B | -395 B |
+| unfold | 110 B | 266 B | -156 B |
 | union | 116 B | 2988 B | -2872 B |
 | unionWith | 134 B | 504 B | -370 B |
+| uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
-| unnest | 56 B | 1996 B | -1940 B |
+| unnest | 56 B | 1998 B | -1942 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 112 B | 351 B | -239 B |
 | unzip | 197 B | n/a B | n/a B |
