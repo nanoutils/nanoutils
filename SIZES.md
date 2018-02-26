@@ -130,6 +130,7 @@
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | unapply | 301 B | 161 B | +140 B |
+| unfold | 110 B | 266 B | -156 B |
 | union | 116 B | 2988 B | -2872 B |
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
