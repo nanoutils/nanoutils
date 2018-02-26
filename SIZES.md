@@ -131,7 +131,7 @@
 | toArray | 39 B | n/a B | n/a B |
 | unapply | 301 B | 161 B | +140 B |
 | union | 116 B | 2988 B | -2872 B |
-| unionWith | 134 B | 504 B | -370 B |
+| unionWith | 264 B | 504 B | -240 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
