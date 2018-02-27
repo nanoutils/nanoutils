@@ -134,7 +134,7 @@
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
 | union | 116 B | 2988 B | -2872 B |
-| unionWith | 134 B | 504 B | -370 B |
+| unionWith | 264 B | 504 B | -240 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1998 B | -1942 B |
