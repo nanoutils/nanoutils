@@ -130,6 +130,7 @@
 | throttle | 72 B | n/a B | n/a B |
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
+| transpose | 104 B | 204 B | -100 B |
 | unapply | 301 B | 161 B | +140 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
