@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (trier: Function) => (catcher: Function) => Function
