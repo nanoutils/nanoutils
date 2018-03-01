@@ -130,6 +130,8 @@
 | throttle | 72 B | n/a B | n/a B |
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
+| toPairs | 62 B | 189 B | -127 B |
+| toPairsIn | 90 B | 166 B | -76 B |
 | transpose | 104 B | 204 B | -100 B |
 | tryCatch | 114 B | 487 B | -373 B |
 | unapply | 301 B | 161 B | +140 B |
