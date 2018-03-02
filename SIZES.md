@@ -19,7 +19,7 @@
 | applySpec | 351 B | 2075 B | -1724 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
-| assoc | 580 B | 361 B | +219 B |
+| assoc | 581 B | 361 B | +220 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
 | both | 48 B | 1944 B | -1896 B |
@@ -78,7 +78,7 @@
 | join | 85 B | 3343 B | -3258 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
-| lens | 300 B | 1745 B | -1445 B |
+| lens | 301 B | 1745 B | -1444 B |
 | lensPath | 473 B | 2095 B | -1622 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
@@ -143,7 +143,7 @@
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
-| unnest | 56 B | 1998 B | -1942 B |
+| unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 112 B | 351 B | -239 B |
 | unzip | 197 B | n/a B | n/a B |

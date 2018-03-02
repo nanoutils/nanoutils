@@ -16,6 +16,7 @@
     "dev": "jest --watchAll --verbose",
     "test": "jest",
     "size": "node ./misc/cli/size.js",
+    "time": "node ./misc/cli/time.js",
     "method:add": "node ./misc/cli/add-method.js",
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
