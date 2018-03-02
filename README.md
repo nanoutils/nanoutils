@@ -34,7 +34,7 @@ If you want to help, here are some tools for you.
 ### Shortcut for new methods
 
 ```
-npm add-method <...methods> [flags]
+npm run method:add <...methods> -- [flags]
 
 Params:
     methods           List with method names (separated by space)
