@@ -3,7 +3,8 @@ const path = require('path')
 const chalk = require('chalk')
 const minimist = require('minimist')
 
-const args = minimist(process.argv.slice(2))
+const args = minimist(process.argv.slice(2), { alias: { f: 'force' } })
+
 const names = args._
 
 const methodPath = name => path.resolve('lib', name)
@@ -18,11 +19,28 @@ export default curry(function ${name}() {
 
 })`
 
-const curriedNumMethodTemplate = (name, num) => `import curryN from '../curryN'
+const curriedNumMethodTemplate = (name, num) => {
+
+	const curried = {
+		2: `import _curry2 from '../_internal/_curry2'
+
+export default _curry2(function ${name}() {
+
+})`,
+3: `import _curry3 from '../_internal/_curry3'
+
+export default _curry3(function ${name}() {
+
+})`,
+		n: `import curryN from '../curryN'
 
 export default curryN(${num}, function ${name}() {
 
 })`
+	}
+
+	return !!curried[num] ? curried[num] : curried.n
+}
 
 const tsTemplate = name => `export default function ${name}(): void`
 
