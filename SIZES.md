@@ -134,9 +134,9 @@
 | unapply | 301 B | 161 B | +140 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
-| union | 319 B | 2988 B | -2669 B |
+| union | 334 B | 2988 B | -2654 B |
 | unionWith | 134 B | 504 B | -370 B |
-| uniq | 267 B | 1908 B | -1641 B |
+| uniq | 280 B | 1908 B | -1628 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
