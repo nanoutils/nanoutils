@@ -7,7 +7,7 @@
 | addIndex | 117 B | 684 B | -567 B |
 | adjust | 121 B | 441 B | -320 B |
 | all | 121 B | 637 B | -516 B |
-| allPass | 92 B | 1993 B | -1901 B |
+| allPass | 110 B | 1993 B | -1883 B |
 | always | 32 B | 144 B | -112 B |
 | and | 82 B | 229 B | -147 B |
 | any | 119 B | 635 B | -516 B |
@@ -19,7 +19,7 @@
 | applySpec | 351 B | 2075 B | -1724 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
-| assoc | 580 B | 361 B | +219 B |
+| assoc | 581 B | 361 B | +220 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
 | both | 48 B | 1944 B | -1896 B |
@@ -78,7 +78,7 @@
 | join | 85 B | 3343 B | -3258 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
-| lens | 300 B | 1745 B | -1445 B |
+| lens | 301 B | 1745 B | -1444 B |
 | lensPath | 473 B | 2095 B | -1622 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
@@ -87,7 +87,7 @@
 | mapAccumRight | 149 B | 383 B | -234 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
-| mean | 67 B | 1078 B | -1011 B |
+| mean | 65 B | 1078 B | -1013 B |
 | median | 74 B | 1156 B | -1082 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
@@ -120,7 +120,7 @@
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
 | subtract | 82 B | 240 B | -158 B |
-| sum | 46 B | 1069 B | -1023 B |
+| sum | 43 B | 1069 B | -1026 B |
 | T | 53 B | 156 B | -103 B |
 | tail | 150 B | 509 B | -359 B |
 | take | 139 B | 827 B | -688 B |
@@ -143,7 +143,7 @@
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
-| unnest | 56 B | 1998 B | -1942 B |
+| unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 112 B | 351 B | -239 B |
 | unzip | 197 B | n/a B | n/a B |
@@ -156,9 +156,9 @@
 | when | 87 B | 338 B | -251 B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
-| zip | 168 B | 273 B | -105 B |
+| zip | 183 B | 273 B | -90 B |
 | zipObj | 49 B | 271 B | -222 B |
 | zipObjDeep | 600 B | n/a B | n/a B |
-| zipWith | 151 B | 383 B | -232 B |
+| zipWith | 165 B | 383 B | -218 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
