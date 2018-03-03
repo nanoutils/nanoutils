@@ -72,7 +72,7 @@ const countTable = table => {
       str += ` ${text} |`
     }
     str += '\n'
-    if (i === 0 || i % 3 === 0) {
+    if (i === 0 || i % 4 === 0) {
       str += longests.reduce((acc, max) => {
         return acc + ' ' + '-'.repeat(max) + ' |'
       }, '|')
@@ -92,12 +92,20 @@ const groupTimes = methods => {
     }
     const nano = times.map(([ t ]) => t.toFixed(2) + 'ms')
     const ramda = times.map(([ _, t ]) => t.toFixed(2) + 'ms')
-    const diff = times.map(([ t1, t2 ]) => (t1 > t2 ? '+' : '') + (t1 - t2).toFixed(2) + 'ms')
+    const absoluteDiff = times.map(([ t1, t2 ]) => {
+      const absolute = (t1 - t2).toFixed(2)
+      return (t1 > t2 ? '+' : '') + absolute + 'ms'
+    })
+    const relativeDiff = times.map(([ t1, t2 ]) => {
+      const relative = ((t1 - t2) / t2 * 100).toFixed(2)
+      return (t1 > t2 ? '+' : '') + relative + '%'
+    })
     acc[type] = [
       ...acc[type], 
       [name, 'nano', ...nano],
       ['', 'ramda', ...ramda],
-      ['', 'diff', ...diff],
+      ['', 'diff', ...absoluteDiff],
+      ['', '', ...relativeDiff],
     ]
     return acc
   }, {})
