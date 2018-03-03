@@ -77,6 +77,63 @@ const countTable = table => {
   return str
 }
 
+const cacheTime = methods => {
+  const cachePath = path.resolve('misc', 'cache', 'time.json')
+  const cache = require(cachePath)
+
+  const addTimes = (times1, times2) => {
+    let times = []
+    let len = Math.min(times1.length, times2.length)
+    for (let i = 0; i < len; i++) {
+      const time1 = times1[i]
+      const time2 = times2[i]
+      let time = []
+      let len2 = Math.min(time1.length, time2.length)
+      for (let j = 0; j < len2; j++) {
+        time.push(time1[j] + time2[j])
+      }
+      times.push(time)
+    }
+    return times
+  }
+
+  const meanTimes = (times, n) => {
+    const newTimes = []
+    for (let i = 0; i < times.length; i++) {
+      const time = times[i]
+      let newTime = []
+      for (let j = 0; j < time.length; j++) {
+        newTime.push(time[j] / n)
+      }
+      newTimes.push(newTime)
+    }
+    return newTimes
+  }
+
+  const updatedMethods = methods.map(({ name, times, ...etc }) => {
+    if (!cache[name]) {
+      cache[name] = []
+    }
+    cache[name].push(times)
+
+    let newTimes = cache[name].slice(1).reduce(addTimes, cache[name][0])
+    newTimes = meanTimes(newTimes, cache[name].length) 
+
+    return {
+      name,
+      times: newTimes,
+      ...etc
+    }
+  })
+
+  writeFile(
+    cachePath,
+    JSON.stringify(cache, null, '\t')
+  )
+
+  return updatedMethods
+}
+
 const groupTimes = methods => {
   return methods.reduce((acc, { name, type, times }) => {
     if (type === 'two_array_percent' && !acc[type]) {
@@ -131,6 +188,8 @@ async function time() {
     }))
     // Sort alphabetically
     methods.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+    // Add already run performance cases
+    methods = cacheTime(methods)
     // Create table
     const header = '## Nanoutils method\'s time'
     const grouped = groupTimes(methods)
