@@ -65,6 +65,16 @@ methods           List of method names (separated by space) you want to check.
                   If no methods it will check size of all methods
 ```
 
+### Check time of methods
+
+```
+npm time <...methods>
+
+Params
+methods           List of method names (separated by space) you want to check.
+                  If no methods it will check time of all methods
+```
+
 ### Check ramda/nanoutils diff
 
 ```
