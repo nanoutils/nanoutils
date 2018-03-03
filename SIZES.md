@@ -87,7 +87,7 @@
 | mapAccumRight | 149 B | 383 B | -234 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
-| mean | 67 B | 1078 B | -1011 B |
+| mean | 65 B | 1078 B | -1013 B |
 | median | 74 B | 1156 B | -1082 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
@@ -120,7 +120,7 @@
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
 | subtract | 82 B | 240 B | -158 B |
-| sum | 46 B | 1069 B | -1023 B |
+| sum | 43 B | 1069 B | -1026 B |
 | T | 53 B | 156 B | -103 B |
 | tail | 150 B | 509 B | -359 B |
 | take | 139 B | 827 B | -688 B |

@@ -39,13 +39,16 @@ const multipleCompare = (f1, f2, { argss, options }) => {
 const getTimes = (name, n = 1000) => {
   const nuFunction = require(path.resolve('cjs', name, 'index.js'))
   const ramdaFunction = require(path.resolve('node_modules/ramda/src', `${name}.js`))
-  const getTime = require(path.resolve('lib', name, `${name}.performance.js`))
-  const argss = getTime(nuFunction, ramdaFunction)
+  const getArgs = require(path.resolve('lib', name, `${name}.performance.js`))
+  const { argss, type } = getArgs()
 
   const expected = argss.map(args => ramdaFunction(...args))
   const received = multipleCompare(nuFunction, ramdaFunction, { argss, n })
   
-  return received.map(([ r1, r2 ]) => [ r1.time, r2.time ])
+  return {
+    times: received.map(([ r1, r2 ]) => [ r1.time, r2.time ]),
+    type
+  }
 }
 
 const countTable = table => {
@@ -79,6 +82,27 @@ const countTable = table => {
   return str
 }
 
+const groupTimes = methods => {
+  return methods.reduce((acc, { name, type, times }) => {
+    if (type === 'two_array_percent' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
+    }
+    if (type === 'two_array_size' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
+    }
+    const nano = times.map(([ t ]) => t.toFixed(2) + 'ms')
+    const ramda = times.map(([ _, t ]) => t.toFixed(2) + 'ms')
+    const diff = times.map(([ t1, t2 ]) => (t1 > t2 ? '+' : '') + (t1 - t2).toFixed(2) + 'ms')
+    acc[type] = [
+      ...acc[type], 
+      [name, 'nano', ...nano],
+      ['', 'ramda', ...ramda],
+      ['', 'diff', ...diff],
+    ]
+    return acc
+  }, {})
+}
+
 // TODO: to complete for all functions
 async function time() {
   try {
@@ -99,33 +123,22 @@ async function time() {
     // Check time
     methods = methods.map(m => ({
       name: m,
-      time: getTimes(m)
+      ...getTimes(m)
     }))
     // Sort alphabetically
     methods.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
     // Create table
     const header = '## Nanoutils method\'s time'
-    const table = [
-      ['Method', 'Lib', '0%', '50%', '100%'],
-      ...methods.map(({ time }) => time).reduce((acc, time) => {
-        const nano = time.map(([ t ]) => t.toFixed(2) + 'ms')
-        const ramda = time.map(([ _, t ]) => t.toFixed(2) + 'ms')
-        const diff = time.map(([ t1, t2 ]) => (t1 > t2 ? '+' : '') + (t1 - t2).toFixed(2) + 'ms')
-        return [
-          ...acc, 
-          ['union', 'nano', ...nano],
-          ['', 'ramda', ...ramda],
-          ['', 'diff', ...diff],
-        ]
-      }, [])
-    ]
-    const drawing = [header, countTable(table)].join('\n')
+    const grouped = groupTimes(methods)
+    const commonTable = Object.keys(grouped).reduce((acc, group) => {
+      return [acc, countTable(grouped[group])].join('\n')
+    }, header)
     // Draw it in console
-    console.log(drawing)
+    console.log(commonTable)
     // write to file
     writeFile(
       'TIMES.md',
-      [header, countTable(table)].join('\n')
+      commonTable
     )
   } catch (error) {
     console.log(error)
