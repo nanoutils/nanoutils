@@ -10,23 +10,18 @@ const args = minimist(process.argv.slice(2))
 
 const execute = (f, { args, n }) => {
   let time = 0
-  let results = []
   for (let i = 0; i < n; i++) {
     const start = performance.now()
-    const result = f(...args)
+    f(...args)
     const end = performance.now()
     time += end - start
-    results.push(result)
   }
-  return {
-    results,
-    time: time / n
-  }
+  return time / n
 }
 const compare = (f1, f2, { args, options: { n = 100 } = {} }) => {
-  const executed1 = execute(f1, { args, n })
-  const executed2 = execute(f2, { args, n })
-  return [executed1, executed2]
+  const time1 = execute(f1, { args, n })
+  const time2 = execute(f2, { args, n })
+  return [time1, time2]
 }
 const multipleCompare = (f1, f2, { argss, options }) => {
   let times = []
@@ -46,7 +41,7 @@ const getTimes = (name, n = 1000) => {
   const received = multipleCompare(nuFunction, ramdaFunction, { argss, n })
   
   return {
-    times: received.map(([ r1, r2 ]) => [ r1.time, r2.time ]),
+    times: received,
     type
   }
 }
@@ -90,8 +85,9 @@ const groupTimes = methods => {
     if (type === 'two_array_size' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
     }
-    const nano = times.map(([ t ]) => t.toFixed(2) + 'ms')
+    const nano = times.map(([ t ]) =>  t.toFixed(2) + 'ms')
     const ramda = times.map(([ _, t ]) => t.toFixed(2) + 'ms')
+    const rest = Array(3 - times.length).fill('')
     const absoluteDiff = times.map(([ t1, t2 ]) => {
       const absolute = (t1 - t2).toFixed(2)
       return (t1 > t2 ? '+' : '') + absolute + 'ms'
@@ -102,10 +98,10 @@ const groupTimes = methods => {
     })
     acc[type] = [
       ...acc[type], 
-      [name, 'nano', ...nano],
-      ['', 'ramda', ...ramda],
-      ['', 'diff', ...absoluteDiff],
-      ['', '', ...relativeDiff],
+      [name, 'nano', ...nano, ...rest],
+      ['', 'ramda', ...ramda, ...rest],
+      ['', 'diff', ...absoluteDiff, ...rest],
+      ['', '', ...relativeDiff, ...rest],
     ]
     return acc
   }, {})
