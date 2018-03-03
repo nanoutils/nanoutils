@@ -7,7 +7,7 @@
 | addIndex | 117 B | 684 B | -567 B |
 | adjust | 121 B | 441 B | -320 B |
 | all | 121 B | 637 B | -516 B |
-| allPass | 92 B | 1993 B | -1901 B |
+| allPass | 110 B | 1993 B | -1883 B |
 | always | 32 B | 144 B | -112 B |
 | and | 82 B | 229 B | -147 B |
 | any | 119 B | 635 B | -516 B |
