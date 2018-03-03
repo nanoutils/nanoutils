@@ -156,9 +156,9 @@
 | when | 87 B | 338 B | -251 B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
-| zip | 168 B | 273 B | -105 B |
+| zip | 183 B | 273 B | -90 B |
 | zipObj | 49 B | 271 B | -222 B |
 | zipObjDeep | 600 B | n/a B | n/a B |
-| zipWith | 151 B | 383 B | -232 B |
+| zipWith | 165 B | 383 B | -218 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
