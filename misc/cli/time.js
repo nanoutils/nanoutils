@@ -44,40 +44,6 @@ const multipleCompare = (f1, f2, { argss, options }) => {
   return times
 }
 
-const unionTime = (f1, f2) => {
-  let big1 = []
-  let big2 = []
-  let big3 = []
-  for (let i = 0; i < 1000; i++) {
-		const element = i + 'aaaaa'
-    big1.push(element)
-    big2.push(i < 500 ? element : element + 'a')
-    big3.push(element + 'a')
-  }
-
-  const sets = [
-    // 50% common elements
-    [ big1, big2 ],
-    // no common
-    [ big1, big3 ],
-    // all common
-    [ big1, big1 ]
-	]
-	
-	const times = 1000;
-  const expected = [
-    f1(big1, big2),
-    f1(big1, big3),
-    big1
-  ]
-  const received = multipleCompare(f1, f2, {
-    argss: sets,
-    n: times
-  })
-
-  return { time: received.map(([ r1, r2 ]) => [ r1.time, r2.time ]) }
-}
-
 // TODO: to complete for all functions
 async function time() {
   try {
@@ -103,12 +69,22 @@ async function time() {
   }
 }
 
-const nuUnion = getNanoutilsFunction('union')
-const rUnion = getRamdaFunction('union')
+const getTimes = (name, n = 1000) => {
+  const nuFunction = getNanoutilsFunction(name)
+  const ramdaFunction = getRamdaFunction(name)
+  const getTime = require(path.resolve('lib', name, `${name}.performance.js`))
+  const argss = getTime(nuFunction, ramdaFunction)
+
+  const expected = argss.map(args => ramdaFunction(...args))
+  const received = multipleCompare(nuFunction, ramdaFunction, { argss, n })
+  
+  return { time: received.map(([ r1, r2 ]) => [ r1.time, r2.time ]) }
+}
+
 const header = '## Nanoutils method\'s time'
 const table = [
   ['Method', 'Lib', '0%', '50%', '100%'],
-  ...[unionTime(nuUnion, rUnion)].reduce((acc, { time }) => {
+  ...[getTimes('union')].reduce((acc, { time }) => {
     const nano = time.map(([ t ]) => t.toFixed(2) + 'ms')
     const ramda = time.map(([ _, t ]) => t.toFixed(2) + 'ms')
     const diff = time.map(([ t1, t2 ]) => (t1 > t2 ? '+' : '') + (t1 - t2).toFixed(2) + 'ms')
