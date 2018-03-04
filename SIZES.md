@@ -76,6 +76,7 @@
 | isInteger | 48 B | n/a B | n/a B |
 | isNil | 33 B | 146 B | -113 B |
 | join | 85 B | 3343 B | -3258 B |
+| juxt | 28 B | 2024 B | -1996 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
 | lens | 301 B | 1745 B | -1444 B |
@@ -88,7 +89,7 @@
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
 | mean | 65 B | 1078 B | -1013 B |
-| median | 74 B | 1156 B | -1082 B |
+| median | 142 B | 1156 B | -1014 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
 | min | 85 B | 232 B | -147 B |
