@@ -91,6 +91,7 @@
 | median | 74 B | 1156 B | -1082 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
+| min | 85 B | 232 B | -147 B |
 | modulo | 82 B | 230 B | -148 B |
 | multiply | 82 B | 230 B | -148 B |
 | nAry | 101 B | 410 B | -309 B |
