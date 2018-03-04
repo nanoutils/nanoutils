@@ -35,6 +35,7 @@ If you want to help, here are some tools for you.
 
 ```
 npm run method:add <...methods> -- [flags]
+yarn method:add <...methods> -- [flags]
 
 Params:
     methods           List with method names (separated by space)
@@ -44,21 +45,24 @@ Flags:
     --curried         Add curried method
                       you can use --curried=<N> to add curryN
     --types           Add index.d.ts and index.js.flow for method typings
+    --perf            Add <method>.performance.js for performance test of method
 ```
 
 It will create `lib/method` dir with following files:
 
 ```
-index.js        File with method
-index.d.ts      TypeScript typings (if --types passed)
-index.js.flow   Flow type declaration (if --types passed)
-method.test.js  Test for method (I use Jest)
+index.js                File with method
+index.d.ts              TypeScript typings (if --types passed)
+index.js.flow           Flow type declaration (if --types passed)
+method.test.js          Test for method (I use Jest)
+method.performance.js   Performance test for method (if --perf passed)
 ```
 
 ### Check sizes of methods
 
 ```
-npm size <...methods>
+npm run size <...methods>
+yarn size <...methods>
 
 Params
 methods           List of method names (separated by space) you want to check.
@@ -68,17 +72,21 @@ methods           List of method names (separated by space) you want to check.
 ### Check time of methods
 
 ```
-npm time <...methods>
+npm run time <...methods>
+yarn time <...methods>
+
 
 Params
 methods           List of method names (separated by space) you want to check.
-                  If no methods it will check time of all methods
+                  If no methods it will check time of all possible methods (which have *.performance.js file)
+                  If type is set as no_perf (by default), it will throw an error: max.performance.js must have data to return
 ```
 
 ### Check ramda/nanoutils diff
 
 ```
-npm check <type>
+npm run method:check <type>
+yarn method:check <type>
 
 Params
 type           What to display?

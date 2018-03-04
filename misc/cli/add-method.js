@@ -47,9 +47,16 @@ const tsTemplate = name => `export default function ${name}(): void`
 const flowTemplate = name => `// @flow
 declare module.exports: () => void`
 
-const testTemplate = name => `var ${name} = require('.')
+const performanceTemplate = name => `module.exports = function getData() {
+  return {
+    type: 'no_perf',
+    argss: [[], [], []]
+  }
+}`
 
-test("no tests yet", () => {})`
+const testTemplate = name => `import ${name} from '.'
+
+test('no tests yet', () => {})`
 
 names.forEach(name => {
   try {
@@ -84,6 +91,14 @@ names.forEach(name => {
     fs.writeFile(
       `${methodPath(name)}/index.js.flow`,
       flowTemplate(name),
+      () => {}
+    )
+  }
+
+  if ('perf' in args && args.perf) {
+    fs.writeFile(
+      `${methodPath(name)}/${name}.performance.js`,
+      performanceTemplate(name),
       () => {}
     )
   }

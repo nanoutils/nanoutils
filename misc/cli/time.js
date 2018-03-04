@@ -36,6 +36,9 @@ const getTimes = (name, n = 1000) => {
   const ramdaFunction = require(path.resolve('node_modules/ramda/src', `${name}.js`))
   const getArgs = require(path.resolve('lib', name, `${name}.performance.js`))
   const { argss, type } = getArgs()
+  if (type === 'no_perf') {
+    throw new Error(`${name}.performance.js must have data to return`)
+  }
 
   const expected = argss.map(args => ramdaFunction(...args))
   const received = multipleCompare(nuFunction, ramdaFunction, { argss, n })
@@ -128,7 +131,7 @@ const cacheTime = methods => {
 
   writeFile(
     cachePath,
-    JSON.stringify(cache, null, '\t')
+    JSON.stringify(cache)
   )
 
   return updatedMethods
