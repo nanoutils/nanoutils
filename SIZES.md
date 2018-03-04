@@ -121,8 +121,8 @@
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
 | split | 86 B | 3344 B | -3258 B |
-| splitAt | 28 B | 556 B | -528 B |
-| splitEvery | 28 B | 592 B | -564 B |
+| splitAt | 93 B | 556 B | -463 B |
+| splitEvery | 80 B | 592 B | -512 B |
 | splitWhen | 124 B | 284 B | -160 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 43 B | 1069 B | -1026 B |
