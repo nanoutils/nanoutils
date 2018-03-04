@@ -136,10 +136,10 @@ const cacheTime = methods => {
 
 const groupTimes = methods => {
   return methods.reduce((acc, { name, type, times }) => {
-    if (type === 'two_array_percent' && !acc[type]) {
+    if (type === 'array_percent' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
     }
-    if (type === 'two_array_size' && !acc[type]) {
+    if (type === 'array_size' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
     }
     const nano = times.map(([ t ]) =>  t.toFixed(2) + 'ms')
