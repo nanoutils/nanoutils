@@ -181,6 +181,10 @@ async function time() {
     if (!methods.length) {
       throw new TypeError('No methods matched')
     }
+    // Filter non-existing performance methods
+    methods = methods.filter(m => {
+       return fs.existsSync(path.resolve('lib', m, `${m}.performance.js`))
+    })
     // Check time
     methods = methods.map(m => ({
       name: m,
