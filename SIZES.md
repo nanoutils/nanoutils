@@ -120,7 +120,7 @@
 | set | 111 B | 411 B | -300 B |
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
-| split | 28 B | 3344 B | -3316 B |
+| split | 86 B | 3344 B | -3258 B |
 | splitAt | 28 B | 556 B | -528 B |
 | splitEvery | 28 B | 592 B | -564 B |
 | splitWhen | 124 B | 284 B | -160 B |
