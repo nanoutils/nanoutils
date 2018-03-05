@@ -23,7 +23,9 @@
 | assocPath | 167 B | 599 B | -432 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
+| bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
+| call | 69 B | 580 B | -511 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
 | compact | 51 B | n/a B | n/a B |
