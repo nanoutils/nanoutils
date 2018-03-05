@@ -9,8 +9,7 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-commit":
-        "npm run size && git add SIZES.md"
+      "pre-commit": "npm run size && git add SIZES.md"
     }
   },
   "scripts": {
@@ -21,8 +20,7 @@
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build":
-      "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
+    "build": "create-index --ignoreUnsafe --update lib && npm run build:cjs && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
@@ -30,6 +28,12 @@
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chalk": "^2.3.0",
     "create-index": "^2.3.0",
+    "eslint": "^4.16.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
     "flow": "^0.2.3",
     "flow-bin": "^0.62.0",
     "ghooks": "^2.0.2",
