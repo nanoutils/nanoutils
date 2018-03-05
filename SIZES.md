@@ -25,7 +25,7 @@
 | bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
-| chain | 117 B | 1982 B | -1865 B |
+| chain | 117 B | 1980 B | -1863 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
 | compact | 51 B | n/a B | n/a B |
@@ -44,6 +44,7 @@
 | curryN | 268 B | 527 B | -259 B |
 | debounce | 129 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
+| defaultTo | 95 B | 239 B | -144 B |
 | descend | 57 B | 356 B | -299 B |
 | difference | 415 B | 1561 B | -1146 B |
 | differenceWith | 124 B | 424 B | -300 B |
@@ -148,7 +149,7 @@
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
-| unnest | 56 B | 1998 B | -1942 B |
+| unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 112 B | 351 B | -239 B |
 | unzip | 197 B | n/a B | n/a B |
