@@ -156,7 +156,7 @@
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1998 B | -1942 B |
 | unnestN | 161 B | n/a B | n/a B |
-| until | 112 B | 351 B | -239 B |
+| until | 114 B | 351 B | -237 B |
 | unzip | 197 B | n/a B | n/a B |
 | unzipWith | 147 B | n/a B | n/a B |
 | updateLens | 115 B | n/a B | n/a B |
