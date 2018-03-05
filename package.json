@@ -1,10 +1,10 @@
 {
-  "name": "nanoutils",
-  "version": "0.0.14",
+  "name": "@nanoutils/nanoutils",
+  "version": "0.0.16",
   "description": "Tiniest JavaScript utils library",
   "main": "cjs/index.js",
   "module": "lib/index.js",
-  "repository": "https://github.com/kelin2025/nanoutils",
+  "repository": "https://github.com/nanoutils/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
   "config": {
@@ -16,6 +16,7 @@
     "dev": "jest --watchAll --verbose",
     "test": "jest",
     "size": "node ./misc/cli/size.js",
+    "time": "node ./misc/cli/time.js",
     "method:add": "node ./misc/cli/add-method.js",
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
