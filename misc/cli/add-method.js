@@ -3,7 +3,8 @@ const path = require('path')
 const chalk = require('chalk')
 const minimist = require('minimist')
 
-const args = minimist(process.argv.slice(2))
+const args = minimist(process.argv.slice(2), { alias: { f: 'force' } })
+
 const names = args._
 
 const methodPath = name => path.resolve('lib', name)
@@ -18,20 +19,44 @@ export default curry(function ${name}() {
 
 })`
 
-const curriedNumMethodTemplate = (name, num) => `import curryN from '../curryN'
+const curriedNumMethodTemplate = (name, num) => {
+
+	const curried = {
+		2: `import _curry2 from '../_internal/_curry2'
+
+export default _curry2(function ${name}() {
+
+})`,
+3: `import _curry3 from '../_internal/_curry3'
+
+export default _curry3(function ${name}() {
+
+})`,
+		n: `import curryN from '../curryN'
 
 export default curryN(${num}, function ${name}() {
 
 })`
+	}
+
+	return !!curried[num] ? curried[num] : curried.n
+}
 
 const tsTemplate = name => `export default function ${name}(): void`
 
 const flowTemplate = name => `// @flow
 declare module.exports: () => void`
 
-const testTemplate = name => `var ${name} = require('.')
+const performanceTemplate = name => `module.exports = function getData() {
+  return {
+    type: 'no_perf',
+    argss: [[], [], []]
+  }
+}`
 
-test("no tests yet", () => {})`
+const testTemplate = name => `import ${name} from '.'
+
+test('no tests yet', () => {})`
 
 names.forEach(name => {
   try {
@@ -66,6 +91,14 @@ names.forEach(name => {
     fs.writeFile(
       `${methodPath(name)}/index.js.flow`,
       flowTemplate(name),
+      () => {}
+    )
+  }
+
+  if ('perf' in args && args.perf) {
+    fs.writeFile(
+      `${methodPath(name)}/${name}.performance.js`,
+      performanceTemplate(name),
       () => {}
     )
   }

@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (def: mixed) => (val: ?mixed) => mixed
