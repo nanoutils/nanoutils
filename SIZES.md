@@ -43,6 +43,7 @@
 | curryN | 268 B | 527 B | -259 B |
 | debounce | 129 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
+| defaultTo | 102 B | 239 B | -137 B |
 | descend | 57 B | 356 B | -299 B |
 | difference | 415 B | 1561 B | -1146 B |
 | differenceWith | 124 B | 424 B | -300 B |
