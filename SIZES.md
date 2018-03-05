@@ -22,7 +22,10 @@
 | assoc | 530 B | 361 B | +169 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
+| bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
+| call | 69 B | 580 B | -511 B |
+| chain | 117 B | 1982 B | -1865 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
 | compact | 51 B | n/a B | n/a B |
@@ -76,6 +79,7 @@
 | isInteger | 48 B | n/a B | n/a B |
 | isNil | 33 B | 146 B | -113 B |
 | join | 85 B | 3343 B | -3258 B |
+| juxt | 56 B | 2024 B | -1968 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
 | lens | 301 B | 1745 B | -1444 B |
@@ -88,7 +92,7 @@
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
 | mean | 65 B | 1078 B | -1013 B |
-| median | 74 B | 1156 B | -1082 B |
+| median | 142 B | 1156 B | -1014 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
 | min | 85 B | 232 B | -147 B |
@@ -144,7 +148,7 @@
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
-| unnest | 56 B | 1996 B | -1940 B |
+| unnest | 56 B | 1998 B | -1942 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 112 B | 351 B | -239 B |
 | unzip | 197 B | n/a B | n/a B |
