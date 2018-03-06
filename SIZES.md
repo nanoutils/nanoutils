@@ -67,6 +67,8 @@
 | filter | 139 B | 1549 B | -1410 B |
 | find | 106 B | 644 B | -538 B |
 | findIndex | 112 B | 652 B | -540 B |
+| findLast | 113 B | 582 B | -469 B |
+| findLastIndex | 120 B | 603 B | -483 B |
 | flatten | 70 B | 369 B | -299 B |
 | flattenObj | 308 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
