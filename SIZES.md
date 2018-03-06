@@ -55,6 +55,7 @@
 | dropLastWhile | 141 B | 1443 B | -1302 B |
 | dropWhile | 134 B | 806 B | -672 B |
 | either | 48 B | 1943 B | -1895 B |
+| endsWith | 90 B | 1943 B | -1853 B |
 | eqBy | 385 B | 1500 B | -1115 B |
 | eqLens | 386 B | n/a B | n/a B |
 | equals | 321 B | 1369 B | -1048 B |
