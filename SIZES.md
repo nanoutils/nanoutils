@@ -65,6 +65,7 @@
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
+| find | 106 B | 644 B | -538 B |
 | flatten | 70 B | 369 B | -299 B |
 | flattenObj | 308 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
