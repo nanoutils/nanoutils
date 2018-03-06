@@ -25,7 +25,7 @@
 | bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
-| chain | 117 B | 1982 B | -1865 B |
+| chain | 117 B | 1980 B | -1863 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
 | compact | 51 B | n/a B | n/a B |
@@ -49,7 +49,6 @@
 | difference | 415 B | 1561 B | -1146 B |
 | differenceWith | 124 B | 424 B | -300 B |
 | divide | 82 B | 230 B | -148 B |
-| doWhile | 112 B | n/a B | n/a B |
 | drop | 139 B | 782 B | -643 B |
 | dropLast | 142 B | 983 B | -841 B |
 | dropLastWhile | 141 B | 1443 B | -1302 B |
@@ -84,8 +83,8 @@
 | juxt | 56 B | 2024 B | -1968 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
-| lens | 300 B | 1745 B | -1445 B |
-| lensPath | 423 B | 2095 B | -1672 B |
+| lens | 301 B | 1745 B | -1444 B |
+| lensPath | 424 B | 2095 B | -1671 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
 | map | 122 B | 1710 B | -1588 B |
@@ -154,7 +153,7 @@
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
-| unnest | 56 B | 1998 B | -1942 B |
+| unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 114 B | 351 B | -237 B |
 | unzip | 197 B | n/a B | n/a B |
@@ -165,11 +164,12 @@
 | valuesIn | 78 B | 163 B | -85 B |
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
+| whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
 | zip | 183 B | 273 B | -90 B |
 | zipObj | 49 B | 271 B | -222 B |
-| zipObjDeep | 547 B | n/a B | n/a B |
+| zipObjDeep | 548 B | n/a B | n/a B |
 | zipWith | 165 B | 383 B | -218 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
