@@ -16,16 +16,17 @@
 | aperture | 127 B | 750 B | -623 B |
 | append | 88 B | 301 B | -213 B |
 | apply | 86 B | 230 B | -144 B |
-| applySpec | 351 B | 2075 B | -1724 B |
+| applySpec | 355 B | 2075 B | -1720 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
 | assoc | 530 B | 361 B | +169 B |
+| assocPath | 167 B | 599 B | -432 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
 | bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
-| chain | 117 B | 1982 B | -1865 B |
+| chain | 117 B | 1980 B | -1863 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
 | compact | 51 B | n/a B | n/a B |
@@ -35,13 +36,13 @@
 | composeP | 111 B | 1330 B | -1219 B |
 | concat | 124 B | 3228 B | -3104 B |
 | cond | 113 B | 1937 B | -1824 B |
-| construct | 328 B | 790 B | -462 B |
-| constructN | 314 B | 783 B | -469 B |
+| construct | 330 B | 790 B | -460 B |
+| constructN | 317 B | 783 B | -466 B |
 | contains | 355 B | 1534 B | -1179 B |
 | converge | 99 B | 2002 B | -1903 B |
 | countBy | 111 B | 1437 B | -1326 B |
-| curry | 290 B | 550 B | -260 B |
-| curryN | 268 B | 527 B | -259 B |
+| curry | 293 B | 550 B | -257 B |
+| curryN | 271 B | 527 B | -256 B |
 | debounce | 129 B | n/a B | n/a B |
 | dec | 32 B | 252 B | -220 B |
 | defaultTo | 95 B | 239 B | -144 B |
@@ -75,7 +76,7 @@
 | indexed | 40 B | n/a B | n/a B |
 | indexOf | 110 B | 1570 B | -1460 B |
 | init | 152 B | 493 B | -341 B |
-| invoker | 318 B | 3337 B | -3019 B |
+| invoker | 321 B | 3337 B | -3016 B |
 | is | 100 B | 252 B | -152 B |
 | isInteger | 48 B | n/a B | n/a B |
 | isNil | 33 B | 146 B | -113 B |
@@ -83,8 +84,8 @@
 | juxt | 56 B | 2024 B | -1968 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
-| lens | 300 B | 1745 B | -1445 B |
-| lensPath | 423 B | 2095 B | -1672 B |
+| lens | 301 B | 1745 B | -1444 B |
+| lensPath | 424 B | 2095 B | -1671 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
 | map | 122 B | 1710 B | -1588 B |
@@ -118,7 +119,10 @@
 | product | 41 B | 1061 B | -1020 B |
 | prop | 506 B | 286 B | +220 B |
 | reduce | 261 B | 1021 B | -760 B |
-| reduceRight | 147 B | 361 B | -214 B |
+| reduceBy | 324 B | 1424 B | -1100 B |
+| reduceRight | 132 B | 361 B | -229 B |
+| reduceWhile | 318 B | 1074 B | -756 B |
+| reduceWhileRight | 323 B | n/a B | n/a B |
 | reject | 140 B | 1575 B | -1435 B |
 | repeat | 104 B | 364 B | -260 B |
 | reverse | 91 B | 212 B | -121 B |
@@ -146,14 +150,14 @@
 | toUpper | 41 B | 3347 B | -3306 B |
 | transpose | 104 B | 204 B | -100 B |
 | tryCatch | 106 B | 487 B | -381 B |
-| unapply | 301 B | 161 B | +140 B |
+| unapply | 304 B | 161 B | +143 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
 | union | 116 B | 2988 B | -2872 B |
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
-| unnest | 56 B | 1998 B | -1942 B |
+| unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 112 B | 351 B | -239 B |
 | unzip | 197 B | n/a B | n/a B |
@@ -168,7 +172,7 @@
 | za | 53 B | n/a B | n/a B |
 | zip | 183 B | 273 B | -90 B |
 | zipObj | 49 B | 271 B | -222 B |
-| zipObjDeep | 547 B | n/a B | n/a B |
+| zipObjDeep | 548 B | n/a B | n/a B |
 | zipWith | 165 B | 383 B | -218 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
