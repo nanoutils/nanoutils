@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (prop: mixed) => (obj1: Object) => (obj2: Object) => Boolean
