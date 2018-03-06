@@ -66,6 +66,7 @@
 | flatten | 70 B | 369 B | -299 B |
 | flattenObj | 308 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
+| forEach | 102 B | 392 B | -290 B |
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
 | head | 31 B | 301 B | -270 B |
@@ -76,6 +77,8 @@
 | indexed | 40 B | n/a B | n/a B |
 | indexOf | 110 B | 1570 B | -1460 B |
 | init | 152 B | 493 B | -341 B |
+| insert | 124 B | 378 B | -254 B |
+| insertAll | 132 B | 379 B | -247 B |
 | invoker | 321 B | 3337 B | -3016 B |
 | is | 100 B | 252 B | -152 B |
 | isInteger | 48 B | n/a B | n/a B |
@@ -118,6 +121,7 @@
 | pipeP | 150 B | 1260 B | -1110 B |
 | product | 41 B | 1061 B | -1020 B |
 | prop | 506 B | 286 B | +220 B |
+| range | 108 B | 342 B | -234 B |
 | reduce | 261 B | 1021 B | -760 B |
 | reduceBy | 324 B | 1424 B | -1100 B |
 | reduceRight | 132 B | 361 B | -229 B |
@@ -126,6 +130,7 @@
 | reject | 140 B | 1575 B | -1435 B |
 | repeat | 104 B | 364 B | -260 B |
 | reverse | 91 B | 212 B | -121 B |
+| scan | 129 B | 373 B | -244 B |
 | set | 111 B | 411 B | -300 B |
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
@@ -141,6 +146,7 @@
 | takeLast | 140 B | 808 B | -668 B |
 | takeLastWhile | 140 B | 528 B | -388 B |
 | takeWhile | 135 B | 822 B | -687 B |
+| tap | 100 B | 540 B | -440 B |
 | throttle | 72 B | n/a B | n/a B |
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
