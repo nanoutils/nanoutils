@@ -65,7 +65,7 @@
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
-| find | 106 B | 644 B | -538 B |
+| find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
 | findLast | 113 B | 582 B | -469 B |
 | findLastIndex | 131 B | 603 B | -472 B |
