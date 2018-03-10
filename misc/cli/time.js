@@ -42,7 +42,7 @@ const getTimes = (name, n = 1000) => {
 
   const expected = argss.map(args => ramdaFunction(...args))
   const received = multipleCompare(nuFunction, ramdaFunction, { argss, n })
-  
+
   return {
     times: received,
     type
@@ -120,7 +120,7 @@ const cacheTime = methods => {
     cache[name].push(times)
 
     let newTimes = cache[name].slice(1).reduce(addTimes, cache[name][0])
-    newTimes = meanTimes(newTimes, cache[name].length) 
+    newTimes = meanTimes(newTimes, cache[name].length)
 
     return {
       name,
@@ -145,7 +145,10 @@ const groupTimes = methods => {
     if (type === 'array_size' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
     }
-    const nano = times.map(([ t ]) =>  t.toFixed(2) + 'ms')
+    if (type === 'object_size' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '100', '1000', '100000']]
+    }
+    const nano = times.map(([ t ]) => t.toFixed(2) + 'ms')
     const ramda = times.map(([ _, t ]) => t.toFixed(2) + 'ms')
     const rest = Array(3 - times.length).fill('')
     const absoluteDiff = times.map(([ t1, t2 ]) => {
@@ -157,7 +160,7 @@ const groupTimes = methods => {
       return (t1 > t2 ? '+' : '') + relative + '%'
     })
     acc[type] = [
-      ...acc[type], 
+      ...acc[type],
       [name, 'nano', ...nano, ...rest],
       ['', 'ramda', ...ramda, ...rest],
       ['', 'diff', ...absoluteDiff, ...rest],
