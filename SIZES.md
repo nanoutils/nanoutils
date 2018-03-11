@@ -70,6 +70,7 @@
 | flip | 84 B | 591 B | -507 B |
 | forEach | 102 B | 392 B | -290 B |
 | fromPairs | 60 B | 173 B | -113 B |
+| forEachObjIndexed | 119 B | 593 B | -474 B |
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
 | head | 31 B | 301 B | -270 B |
@@ -168,7 +169,7 @@
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
-| until | 112 B | 351 B | -239 B |
+| until | 114 B | 351 B | -237 B |
 | unzip | 197 B | n/a B | n/a B |
 | unzipWith | 147 B | n/a B | n/a B |
 | updateLens | 115 B | n/a B | n/a B |
@@ -177,6 +178,7 @@
 | valuesIn | 78 B | 163 B | -85 B |
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
+| whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
 | zip | 183 B | 273 B | -90 B |
