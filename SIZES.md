@@ -65,12 +65,16 @@
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
+| find | 110 B | 644 B | -534 B |
+| findIndex | 112 B | 652 B | -540 B |
+| findLast | 113 B | 582 B | -469 B |
+| findLastIndex | 131 B | 603 B | -472 B |
 | flatten | 70 B | 369 B | -299 B |
 | flattenObj | 308 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
 | forEach | 102 B | 392 B | -290 B |
-| fromPairs | 60 B | 173 B | -113 B |
 | forEachObjIndexed | 119 B | 593 B | -474 B |
+| fromPairs | 60 B | 173 B | -113 B |
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
 | head | 31 B | 301 B | -270 B |
