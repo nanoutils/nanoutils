@@ -148,6 +148,9 @@ const groupTimes = methods => {
     if (type === 'object_size' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '100', '1000', '100000']]
     }
+    if (type === 'find_item' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', 'start', 'half', 'end']]
+    }
     const nano = times.map(([ t ]) => t.toFixed(2) + 'ms')
     const ramda = times.map(([ _, t ]) => t.toFixed(2) + 'ms')
     const rest = Array(3 - times.length).fill('')
@@ -164,7 +167,7 @@ const groupTimes = methods => {
       [name, 'nano', ...nano, ...rest],
       ['', 'ramda', ...ramda, ...rest],
       ['', 'diff', ...absoluteDiff, ...rest],
-      ['', '', ...relativeDiff, ...rest],
+      ['', '', ...relativeDiff, ...rest]
     ]
     return acc
   }, {})
@@ -189,7 +192,7 @@ async function time() {
     }
     // Filter non-existing performance methods
     methods = methods.filter(m => {
-       return fs.existsSync(path.resolve('lib', m, `${m}.performance.js`))
+      return fs.existsSync(path.resolve('lib', m, `${m}.performance.js`))
     })
     // Check time
     methods = methods.map(m => ({
