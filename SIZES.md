@@ -75,6 +75,7 @@
 | forEach | 102 B | 392 B | -290 B |
 | forEachObjIndexed | 119 B | 593 B | -474 B |
 | fromPairs | 60 B | 173 B | -113 B |
+| groupBy | 129 B | 1519 B | -1390 B |
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
 | has | 85 B | 240 B | -155 B |
