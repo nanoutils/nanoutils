@@ -104,11 +104,14 @@
 | mapAccumRight | 149 B | 383 B | -234 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mathMod | 137 B | 281 B | -144 B |
+| max | 97 B | 232 B | -135 B |
+| maxBy | 130 B | 342 B | -212 B |
 | mean | 65 B | 1078 B | -1013 B |
 | median | 142 B | 1156 B | -1014 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
-| min | 85 B | 232 B | -147 B |
+| min | 96 B | 232 B | -136 B |
+| minBy | 130 B | 342 B | -212 B |
 | modulo | 82 B | 230 B | -148 B |
 | multiply | 82 B | 230 B | -148 B |
 | nAry | 101 B | 410 B | -309 B |
