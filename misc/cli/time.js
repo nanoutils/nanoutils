@@ -145,6 +145,9 @@ const groupTimes = methods => {
     if (type === 'array_size' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
     }
+    if (type === 'array_size_1e5' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '1000', '10000', '100000']]
+    }
     if (type === 'object_size' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '100', '1000', '100000']]
     }
