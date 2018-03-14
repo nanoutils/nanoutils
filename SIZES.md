@@ -168,6 +168,7 @@
 | toPairs | 62 B | 189 B | -127 B |
 | toPairsIn | 90 B | 166 B | -76 B |
 | toUpper | 41 B | 3347 B | -3306 B |
+| transduce | 210 B | 1082 B | -872 B |
 | transpose | 104 B | 204 B | -100 B |
 | tryCatch | 106 B | 487 B | -381 B |
 | unapply | 304 B | 161 B | +143 B |
