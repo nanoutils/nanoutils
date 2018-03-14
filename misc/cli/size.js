@@ -17,10 +17,10 @@ const getDiff = (size, ramdaSize) =>
     ? 'n/a'
     : `${ramdaSize >= size ? '' : '+'}${size - ramdaSize}`
 const formatDiff = (size, ramdaSize) => {
-  if (ramdaSize === 'n/a') return 'n/a'.padStart(8)
+  if (ramdaSize === 'n/a') return 'n/a'.padStart(9)
   const ok = ramdaSize >= size
   return chalk[ok ? 'green' : 'red'](
-    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(6) + ' B'
+    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(7) + ' B'
   )
 }
 
@@ -89,7 +89,7 @@ Promise
   })
   // Draw table
   .then(methods => {
-    const lens = [longestName + 2, 10, 10, 10]
+    const lens = [longestName + 2, 10, 10, 11]
     const sline = lens.map(len => '─'.repeat(len))
     const dline = lens.map(len => '═'.repeat(len))
     const topper = `╔${dline.join('╦')}╗`
@@ -99,7 +99,7 @@ Promise
       formatName('Method'),
       chalk.bold('Nano'.padStart(8)),
       chalk.bold('Ramda'.padStart(8)),
-      chalk.bold('Diff'.padStart(8))
+      chalk.bold('Diff'.padStart(9))
     ])
     const content = methods.map(i => i.border).join('\n')
     const total = methods.reduce(
