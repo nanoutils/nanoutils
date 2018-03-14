@@ -78,6 +78,7 @@
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
 | head | 31 B | 301 B | -270 B |
+| identical | 109 B | 249 B | -140 B |
 | identity | 29 B | 150 B | -121 B |
 | ifElse | 110 B | 687 B | -577 B |
 | inc | 32 B | 250 B | -218 B |
