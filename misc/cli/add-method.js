@@ -20,26 +20,25 @@ export default curry(function ${name}() {
 })`
 
 const curriedNumMethodTemplate = (name, num) => {
-
-	const curried = {
-		2: `import _curry2 from '../_internal/_curry2'
+  const curried = {
+    2: `import _curry2 from '../_internal/_curry2'
 
 export default _curry2(function ${name}() {
 
 })`,
-3: `import _curry3 from '../_internal/_curry3'
+    3: `import _curry3 from '../_internal/_curry3'
 
 export default _curry3(function ${name}() {
 
 })`,
-		n: `import curryN from '../curryN'
+    n: `import curryN from '../curryN'
 
 export default curryN(${num}, function ${name}() {
 
 })`
-	}
+  }
 
-	return !!curried[num] ? curried[num] : curried.n
+  return curried[num] || curried.n
 }
 
 const tsTemplate = name => `export default function ${name}(): void`

@@ -19,9 +19,17 @@ const execute = (f, { args, n }) => {
   return time / n
 }
 const compare = (f1, f2, { args, options: { n = 100 } = {} }) => {
-  const time1 = execute(f1, { args, n })
-  const time2 = execute(f2, { args, n })
-  return [time1, time2]
+  if (Array.isArray(args)) {
+    return [
+      execute(f1, { args, n }),
+      execute(f2, { args, n })
+    ]
+  }
+  const { f1: args1, f2: args2 } = args
+  return [
+    execute(f1, { args: args1, n }),
+    execute(f2, { args: args2, n })
+  ]
 }
 const multipleCompare = (f1, f2, { argss, options }) => {
   let times = []
@@ -40,7 +48,6 @@ const getTimes = (name, n = 1000) => {
     throw new Error(`${name}.performance.js must have data to return`)
   }
 
-  const expected = argss.map(args => ramdaFunction(...args))
   const received = multipleCompare(nuFunction, ramdaFunction, { argss, n })
 
   return {
