@@ -77,6 +77,8 @@
 | fromPairs | 60 B | 173 B | -113 B |
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
+| has | 85 B | 240 B | -155 B |
+| hasIn | 85 B | 231 B | -146 B |
 | head | 31 B | 301 B | -270 B |
 | identical | 109 B | 249 B | -140 B |
 | identity | 29 B | 150 B | -121 B |
