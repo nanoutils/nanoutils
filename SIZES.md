@@ -34,6 +34,7 @@
 | complement | 46 B | 1916 B | -1870 B |
 | compose | 93 B | 1314 B | -1221 B |
 | composeP | 111 B | 1330 B | -1219 B |
+| composeT | 102 B | n/a B | n/a B |
 | concat | 124 B | 3228 B | -3104 B |
 | cond | 113 B | 1937 B | -1824 B |
 | construct | 330 B | 790 B | -460 B |
@@ -65,6 +66,7 @@
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
+| filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
 | findLast | 113 B | 582 B | -469 B |
@@ -106,6 +108,7 @@
 | mapAccum | 138 B | 383 B | -245 B |
 | mapAccumRight | 149 B | 383 B | -234 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
+| mapT | 45 B | n/a B | n/a B |
 | mathMod | 137 B | 281 B | -144 B |
 | max | 84 B | 232 B | -148 B |
 | maxBy | 112 B | 342 B | -230 B |
@@ -133,6 +136,7 @@
 | pickBy | 116 B | 257 B | -141 B |
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
+| pipeT | 97 B | n/a B | n/a B |
 | product | 41 B | 1061 B | -1020 B |
 | prop | 506 B | 286 B | +220 B |
 | range | 108 B | 342 B | -234 B |
@@ -168,7 +172,7 @@
 | toPairs | 62 B | 189 B | -127 B |
 | toPairsIn | 90 B | 166 B | -76 B |
 | toUpper | 41 B | 3347 B | -3306 B |
-| transduce | 210 B | 1082 B | -872 B |
+| transduce | 64 B | 1082 B | -1018 B |
 | transpose | 104 B | 204 B | -100 B |
 | tryCatch | 106 B | 487 B | -381 B |
 | unapply | 304 B | 161 B | +143 B |
