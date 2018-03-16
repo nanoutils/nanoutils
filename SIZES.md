@@ -163,6 +163,7 @@
 | take | 139 B | 827 B | -688 B |
 | takeLast | 140 B | 808 B | -668 B |
 | takeLastWhile | 140 B | 528 B | -388 B |
+| takeT | 48 B | n/a B | n/a B |
 | takeWhile | 135 B | 822 B | -687 B |
 | tap | 100 B | 540 B | -440 B |
 | throttle | 72 B | n/a B | n/a B |
