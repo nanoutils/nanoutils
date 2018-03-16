@@ -264,6 +264,7 @@
 | whereEq | 397 B | 2551 B | -2154 B |
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
+| xprod | 111 B | 284 B | -173 B |
 | za | 53 B | n/a B | n/a B |
 | zip | 162 B | 273 B | -111 B |
 | zipObj | 49 B | 271 B | -222 B |
