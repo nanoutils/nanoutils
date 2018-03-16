@@ -90,6 +90,7 @@
 | indexed | 40 B | n/a B | n/a B |
 | indexOf | 110 B | 1570 B | -1460 B |
 | init | 152 B | 493 B | -341 B |
+| innerJoin | 155 B | 439 B | -284 B |
 | insert | 124 B | 378 B | -254 B |
 | insertAll | 132 B | 379 B | -247 B |
 | invoker | 321 B | 3337 B | -3016 B |
