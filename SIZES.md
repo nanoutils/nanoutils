@@ -92,7 +92,7 @@
 | insert | 124 B | 378 B | -254 B |
 | insertAll | 132 B | 379 B | -247 B |
 | intersection | 515 B | 2360 B | -1845 B |
-| intersperse | 121 B | 409 B | -288 B |
+| intersperse | 117 B | 409 B | -292 B |
 | invoker | 321 B | 3337 B | -3016 B |
 | is | 100 B | 252 B | -152 B |
 | isInteger | 48 B | n/a B | n/a B |
@@ -149,6 +149,7 @@
 | reverse | 91 B | 212 B | -121 B |
 | scan | 129 B | 373 B | -244 B |
 | set | 111 B | 411 B | -300 B |
+| slice | 148 B | 473 B | -325 B |
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
 | split | 86 B | 3344 B | -3258 B |
