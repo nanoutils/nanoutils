@@ -1,6 +1,6 @@
 ## Nanoutils methods size
 
-| Method | Nano | Ramda | Diff | 
+| Method | Nano | Ramda | Diff |
 | --- | --- | --- | --- |
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
