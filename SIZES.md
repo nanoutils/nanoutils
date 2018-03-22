@@ -228,7 +228,7 @@
 | unapply | 112 B | 161 B | -49 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
-| union | 116 B | 2988 B | -2872 B |
+| union | 298 B | 2988 B | -2690 B |
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
