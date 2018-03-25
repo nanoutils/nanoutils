@@ -173,6 +173,7 @@
 | toPairsIn | 90 B | 166 B | -76 B |
 | toUpper | 41 B | 3347 B | -3306 B |
 | transpose | 104 B | 204 B | -100 B |
+| trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
 | unapply | 304 B | 161 B | +143 B |
 | unary | 35 B | 430 B | -395 B |
