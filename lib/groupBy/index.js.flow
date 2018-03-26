@@ -1,0 +1,2 @@
+// @flow
+declare module.exports: (func: (mixed) => string) => (list: Array<mixed>) => Object

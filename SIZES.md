@@ -77,6 +77,7 @@
 | forEach | 102 B | 392 B | -290 B |
 | forEachObjIndexed | 119 B | 593 B | -474 B |
 | fromPairs | 60 B | 173 B | -113 B |
+| groupBy | 128 B | 1519 B | -1391 B |
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
 | has | 85 B | 240 B | -155 B |
@@ -93,6 +94,10 @@
 | innerJoin | 155 B | 439 B | -284 B |
 | insert | 124 B | 378 B | -254 B |
 | insertAll | 132 B | 379 B | -247 B |
+| intersection | 515 B | 2360 B | -1845 B |
+| intersperse | 117 B | 409 B | -292 B |
+| invert | 58 B | 534 B | -476 B |
+| invertObj | 44 B | 520 B | -476 B |
 | invoker | 321 B | 3337 B | -3016 B |
 | is | 100 B | 252 B | -152 B |
 | isInteger | 48 B | n/a B | n/a B |
@@ -115,6 +120,8 @@
 | maxBy | 112 B | 342 B | -230 B |
 | mean | 65 B | 1078 B | -1013 B |
 | median | 142 B | 1156 B | -1014 B |
+| memoize | 79 B | 3140 B | -3061 B |
+| memoizeWith | 119 B | 442 B | -323 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
 | min | 85 B | 232 B | -147 B |
@@ -151,6 +158,7 @@
 | reverse | 91 B | 212 B | -121 B |
 | scan | 129 B | 373 B | -244 B |
 | set | 111 B | 411 B | -300 B |
+| slice | 148 B | 473 B | -325 B |
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
 | split | 86 B | 3344 B | -3258 B |
@@ -176,7 +184,9 @@
 | toUpper | 41 B | 3347 B | -3306 B |
 | transduce | 64 B | 1082 B | -1018 B |
 | transpose | 104 B | 204 B | -100 B |
+| trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
+| type | 109 B | 186 B | -77 B |
 | unapply | 304 B | 161 B | +143 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
