@@ -34,6 +34,7 @@
 | complement | 46 B | 1916 B | -1870 B |
 | compose | 93 B | 1314 B | -1221 B |
 | composeP | 111 B | 1330 B | -1219 B |
+| composeT | 102 B | n/a B | n/a B |
 | concat | 124 B | 3228 B | -3104 B |
 | cond | 113 B | 1937 B | -1824 B |
 | construct | 330 B | 790 B | -460 B |
@@ -65,6 +66,7 @@
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 139 B | 1549 B | -1410 B |
+| filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
 | findLast | 113 B | 582 B | -469 B |
@@ -112,6 +114,7 @@
 | mapAccum | 138 B | 383 B | -245 B |
 | mapAccumRight | 149 B | 383 B | -234 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
+| mapT | 45 B | n/a B | n/a B |
 | mathMod | 137 B | 281 B | -144 B |
 | max | 84 B | 232 B | -148 B |
 | maxBy | 112 B | 342 B | -230 B |
@@ -141,10 +144,11 @@
 | pickBy | 116 B | 257 B | -141 B |
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
+| pipeT | 97 B | n/a B | n/a B |
 | product | 41 B | 1061 B | -1020 B |
 | prop | 506 B | 286 B | +220 B |
 | range | 108 B | 342 B | -234 B |
-| reduce | 261 B | 1021 B | -760 B |
+| reduce | 295 B | 1021 B | -726 B |
 | reduceBy | 324 B | 1424 B | -1100 B |
 | reduceRight | 132 B | 361 B | -229 B |
 | reduceWhile | 318 B | 1074 B | -756 B |
@@ -168,6 +172,7 @@
 | take | 139 B | 827 B | -688 B |
 | takeLast | 140 B | 808 B | -668 B |
 | takeLastWhile | 140 B | 528 B | -388 B |
+| takeT | 48 B | n/a B | n/a B |
 | takeWhile | 135 B | 822 B | -687 B |
 | tap | 100 B | 540 B | -440 B |
 | throttle | 72 B | n/a B | n/a B |
@@ -177,6 +182,7 @@
 | toPairs | 62 B | 189 B | -127 B |
 | toPairsIn | 90 B | 166 B | -76 B |
 | toUpper | 41 B | 3347 B | -3306 B |
+| transduce | 238 B | 1082 B | -844 B |
 | transpose | 104 B | 204 B | -100 B |
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
@@ -202,9 +208,9 @@
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
-| zip | 183 B | 273 B | -90 B |
+| zip | 173 B | 273 B | -100 B |
 | zipObj | 49 B | 271 B | -222 B |
 | zipObjDeep | 548 B | n/a B | n/a B |
-| zipWith | 165 B | 383 B | -218 B |
+| zipWith | 157 B | 383 B | -226 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
