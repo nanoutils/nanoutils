@@ -148,7 +148,7 @@
 | product | 41 B | 1061 B | -1020 B |
 | prop | 506 B | 286 B | +220 B |
 | range | 108 B | 342 B | -234 B |
-| reduce | 292 B | 1021 B | -729 B |
+| reduce | 295 B | 1021 B | -726 B |
 | reduceBy | 324 B | 1424 B | -1100 B |
 | reduceRight | 132 B | 361 B | -229 B |
 | reduceWhile | 318 B | 1074 B | -756 B |
@@ -182,7 +182,7 @@
 | toPairs | 62 B | 189 B | -127 B |
 | toPairsIn | 90 B | 166 B | -76 B |
 | toUpper | 41 B | 3347 B | -3306 B |
-| transduce | 240 B | 1082 B | -842 B |
+| transduce | 241 B | 1082 B | -841 B |
 | transpose | 104 B | 204 B | -100 B |
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
