@@ -93,7 +93,7 @@
 | insertAll | 132 B | 379 B | -247 B |
 | intersection | 515 B | 2360 B | -1845 B |
 | intersperse | 117 B | 409 B | -292 B |
-| invert | 81 B | 534 B | -453 B |
+| invert | 58 B | 534 B | -476 B |
 | invertObj | 44 B | 520 B | -476 B |
 | invoker | 321 B | 3337 B | -3016 B |
 | is | 100 B | 252 B | -152 B |
