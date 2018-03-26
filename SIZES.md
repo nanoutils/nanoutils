@@ -114,7 +114,7 @@
 | maxBy | 112 B | 342 B | -230 B |
 | mean | 65 B | 1078 B | -1013 B |
 | median | 142 B | 1156 B | -1014 B |
-| memoize | 48 B | 3140 B | -3092 B |
+| memoize | 79 B | 3140 B | -3061 B |
 | memoizeWith | 119 B | 442 B | -323 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeWith | 158 B | 430 B | -272 B |
