@@ -104,6 +104,7 @@
 | isNil | 33 B | 146 B | -113 B |
 | join | 85 B | 3343 B | -3258 B |
 | juxt | 56 B | 2024 B | -1968 B |
+| keys | 34 B | 467 B | -433 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
 | lens | 301 B | 1745 B | -1444 B |
