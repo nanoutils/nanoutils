@@ -69,7 +69,7 @@
 | filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
-| findLast | 113 B | 582 B | -469 B |
+| findLast | 109 B | 582 B | -473 B |
 | findLastIndex | 131 B | 603 B | -472 B |
 | flatten | 70 B | 369 B | -299 B |
 | flattenObj | 308 B | n/a B | n/a B |
