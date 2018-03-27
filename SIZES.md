@@ -155,6 +155,7 @@
 | reduceWhileRight | 323 B | n/a B | n/a B |
 | reject | 140 B | 1575 B | -1435 B |
 | repeat | 104 B | 364 B | -260 B |
+| replace | 107 B | 341 B | -234 B |
 | reverse | 91 B | 212 B | -121 B |
 | scan | 129 B | 373 B | -244 B |
 | set | 111 B | 411 B | -300 B |
