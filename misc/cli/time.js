@@ -88,9 +88,6 @@ const countTable = table => {
 }
 
 const cacheTime = methods => {
-  const cachePath = path.resolve('misc', 'cache', 'time.json')
-  const cache = require(cachePath)
-
   const addTimes = (times1, times2) => {
     let times = []
     let len = Math.min(times1.length, times2.length)
@@ -121,13 +118,20 @@ const cacheTime = methods => {
   }
 
   const updatedMethods = methods.map(({ name, times, ...etc }) => {
-    if (!cache[name]) {
-      cache[name] = []
+    const cachePath = path.resolve('misc', 'cache', `${name}.json`)
+    if ((!fs.existsSync(cachePath))) {
+      fs.writeFileSync(cachePath, '[]')
     }
-    cache[name].push(times)
+    let cache = require(cachePath)
+    cache.push(times)
 
-    let newTimes = cache[name].slice(1).reduce(addTimes, cache[name][0])
-    newTimes = meanTimes(newTimes, cache[name].length)
+    let newTimes = cache.slice(1).reduce(addTimes, cache[0])
+    newTimes = meanTimes(newTimes, cache.length)
+
+    writeFile(
+      cachePath,
+      JSON.stringify(cache)
+    )
 
     return {
       name,
@@ -135,11 +139,6 @@ const cacheTime = methods => {
       ...etc
     }
   })
-
-  writeFile(
-    cachePath,
-    JSON.stringify(cache)
-  )
 
   return updatedMethods
 }
