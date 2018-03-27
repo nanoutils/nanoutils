@@ -100,6 +100,7 @@
 | invertObj | 44 B | 520 B | -476 B |
 | invoker | 321 B | 3337 B | -3016 B |
 | is | 100 B | 252 B | -152 B |
+| isEmpty | 68 B | 1524 B | -1456 B |
 | isInteger | 48 B | n/a B | n/a B |
 | isNil | 33 B | 146 B | -113 B |
 | join | 85 B | 3343 B | -3258 B |
