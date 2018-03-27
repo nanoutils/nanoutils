@@ -163,6 +163,9 @@ const groupTimes = methods => {
     if (type === 'find_item' && !acc[type]) {
       acc[type] = [['Method', 'Lib', 'start', 'half', 'end']]
     }
+    if (type === 'single_item' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', 'string', 'array', 'undefined']]
+    }
     const nano = times.map(([ t ]) => t.toFixed(2) + 'ms')
     const ramda = times.map(([ _, t ]) => t.toFixed(2) + 'ms')
     const rest = Array(3 - times.length).fill('')
