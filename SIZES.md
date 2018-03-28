@@ -143,6 +143,7 @@
 | once | 60 B | 342 B | -282 B |
 | or | 82 B | 231 B | -149 B |
 | over | 537 B | 364 B | +173 B |
+| pair | 83 B | 232 B | -149 B |
 | partial | 94 B | 497 B | -403 B |
 | partialRight | 94 B | 704 B | -610 B |
 | pick | 102 B | 266 B | -164 B |
