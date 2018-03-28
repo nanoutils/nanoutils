@@ -139,6 +139,7 @@
 | of | 29 B | 151 B | -122 B |
 | omit | 129 B | 285 B | -156 B |
 | omitBy | 116 B | n/a B | n/a B |
+| once | 60 B | 342 B | -282 B |
 | or | 82 B | 231 B | -149 B |
 | over | 537 B | 364 B | +173 B |
 | partial | 94 B | 497 B | -403 B |
