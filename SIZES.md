@@ -109,6 +109,7 @@
 | keysIn | 46 B | 161 B | -115 B |
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
+| length | 47 B | 190 B | -143 B |
 | lens | 301 B | 1745 B | -1444 B |
 | lensPath | 424 B | 2095 B | -1671 B |
 | lt | 82 B | 230 B | -148 B |
