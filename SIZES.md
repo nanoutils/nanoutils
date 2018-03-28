@@ -151,6 +151,7 @@
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
 | pipeT | 97 B | n/a B | n/a B |
+| prepend | 132 B | 301 B | -169 B |
 | product | 41 B | 1061 B | -1020 B |
 | prop | 506 B | 286 B | +220 B |
 | range | 108 B | 342 B | -234 B |
