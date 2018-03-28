@@ -167,6 +167,7 @@
 | scan | 129 B | 373 B | -244 B |
 | set | 111 B | 411 B | -300 B |
 | slice | 148 B | 473 B | -325 B |
+| sort | 91 B | 248 B | -157 B |
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
 | split | 86 B | 3344 B | -3258 B |
