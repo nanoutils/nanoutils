@@ -55,6 +55,11 @@ const getTimes = (name, n = 1000) => {
     type
   }
 }
+const getType = name => {
+  const getArgs = require(path.resolve('lib', name, `${name}.performance.js`))
+  const { type } = getArgs()
+  return type
+}
 
 const countTable = table => {
   const rowN = table.length
@@ -123,7 +128,9 @@ const cacheTime = methods => {
       fs.writeFileSync(cachePath, '[]')
     }
     let cache = require(cachePath)
-    cache.push(times)
+    if (times) {
+      cache.push(times)
+    }
 
     let newTimes = cache.slice(1).reduce(addTimes, cache[0])
     newTimes = meanTimes(newTimes, cache.length)
@@ -197,23 +204,20 @@ async function time() {
     let methods = await readdir(lib)
     // Methods without internal helpers
     methods = methods.filter(m => m !== '_internal')
-    // Chosen methods from args
-    methods = args._.length
-      ? methods.filter(m => args._.includes(m))
-      : methods
-    // Interrupt without methods
-    if (!methods.length) {
-      throw new TypeError('No methods matched')
-    }
     // Filter non-existing performance methods
     methods = methods.filter(m => {
       return fs.existsSync(path.resolve('lib', m, `${m}.performance.js`))
     })
-    // Check time
-    methods = methods.map(m => ({
-      name: m,
-      ...getTimes(m)
-    }))
+    // Chosen methods from args
+    methods = args._.length
+      ? methods.map(m => args._.includes(m)
+        ? { name: m, ...getTimes(m) }
+        : { name: m, type: getType(m) }
+      )
+      : methods.map(m => ({
+        name: m,
+        ...getTimes(m)
+      }))
     // Sort alphabetically
     methods.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
     // Add already run performance cases
