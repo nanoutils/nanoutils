@@ -174,7 +174,7 @@
 | splitAt | 93 B | 556 B | -463 B |
 | splitEvery | 118 B | 592 B | -474 B |
 | splitWhen | 124 B | 284 B | -160 B |
-| startsWith | 119 B | 1969 B | -1850 B |
+| startsWith | 164 B | 1969 B | -1805 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 43 B | 1069 B | -1026 B |
 | T | 53 B | 156 B | -103 B |
