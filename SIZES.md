@@ -208,6 +208,7 @@
 | until | 114 B | 351 B | -237 B |
 | unzip | 197 B | n/a B | n/a B |
 | unzipWith | 147 B | n/a B | n/a B |
+| update | 116 B | 497 B | -381 B |
 | updateLens | 115 B | n/a B | n/a B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
