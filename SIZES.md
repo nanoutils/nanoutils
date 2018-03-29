@@ -179,6 +179,7 @@
 | startsWith | 164 B | 1969 B | -1805 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 43 B | 1069 B | -1026 B |
+| symmetricDifference | 104 B | 3293 B | -3189 B |
 | T | 53 B | 156 B | -103 B |
 | tail | 150 B | 509 B | -359 B |
 | take | 139 B | 827 B | -688 B |
