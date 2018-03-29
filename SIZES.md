@@ -146,6 +146,7 @@
 | pair | 83 B | 232 B | -149 B |
 | partial | 94 B | 497 B | -403 B |
 | partialRight | 94 B | 704 B | -610 B |
+| partition | 179 B | 2175 B | -1996 B |
 | pick | 102 B | 266 B | -164 B |
 | pickBy | 116 B | 257 B | -141 B |
 | pipe | 141 B | 1245 B | -1104 B |
