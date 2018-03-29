@@ -185,6 +185,7 @@
 | takeT | 48 B | n/a B | n/a B |
 | takeWhile | 135 B | 822 B | -687 B |
 | tap | 100 B | 540 B | -440 B |
+| test | 85 B | 3235 B | -3150 B |
 | throttle | 72 B | n/a B | n/a B |
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
