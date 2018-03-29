@@ -167,7 +167,7 @@ const groupTimes = methods => {
     if (type === 'object_size_1e4' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '100', '1000', '10000']]
     }
-    if (type === 'find_item' && !acc[type]) {
+    if (type === 'start_half_end' && !acc[type]) {
       acc[type] = [['Method', 'Lib', 'start', 'half', 'end']]
     }
     if (type === 'single_item' && !acc[type]) {
