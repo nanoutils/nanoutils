@@ -214,6 +214,8 @@
 | valuesIn | 78 B | 163 B | -85 B |
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
+| where | 116 B | 273 B | -157 B |
+| whereEq | 80 B | 2551 B | -2471 B |
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
