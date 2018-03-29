@@ -161,6 +161,7 @@
 | reduceWhile | 318 B | 1074 B | -756 B |
 | reduceWhileRight | 323 B | n/a B | n/a B |
 | reject | 140 B | 1575 B | -1435 B |
+| remove | 120 B | 362 B | -242 B |
 | repeat | 104 B | 364 B | -260 B |
 | replace | 107 B | 341 B | -234 B |
 | reverse | 91 B | 212 B | -121 B |
