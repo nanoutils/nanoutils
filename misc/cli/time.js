@@ -155,11 +155,11 @@ const groupTimes = methods => {
     if (type === 'array_percent' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
     }
-    if (type === 'array_size' && !acc[type]) {
-      acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
-    }
-    if (type === 'array_size_1e5' && !acc[type]) {
+    if (type === '1e3_1e4_1e5' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '1000', '10000', '100000']]
+    }
+    if (type === '1e4_1e5_1e6' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
     }
     if (type === 'object_size_1e5' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '1000', '10000', '100000']]
@@ -184,6 +184,7 @@ const groupTimes = methods => {
       const relative = ((t1 - t2) / t2 * 100).toFixed(2)
       return (t1 > t2 ? '+' : '') + relative + '%'
     })
+    console.log(acc[type])
     acc[type] = [
       ...acc[type],
       [name, 'nano', ...nano, ...rest],
