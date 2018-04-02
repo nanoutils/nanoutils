@@ -26,6 +26,7 @@
 | bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
+| camelCase | 95 B | n/a B | n/a B |
 | chain | 117 B | 1980 B | -1863 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
@@ -172,6 +173,7 @@
 | scan | 129 B | 373 B | -244 B |
 | set | 111 B | 411 B | -300 B |
 | slice | 148 B | 473 B | -325 B |
+| snakeCase | 28 B | n/a B | n/a B |
 | sort | 91 B | 248 B | -157 B |
 | sortBy | 91 B | 273 B | -182 B |
 | sortWith | 144 B | 285 B | -141 B |
