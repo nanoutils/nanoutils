@@ -155,6 +155,12 @@ const groupTimes = methods => {
     if (type === 'array_percent' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
     }
+    if (type === '1e1_1e2_1e3' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '10', '100', '1000']]
+    }
+    if (type === '1e2_1e3_1e4' && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '100', '1000', '10000']]
+    }
     if (type === '1e3_1e4_1e5' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '1000', '10000', '100000']]
     }

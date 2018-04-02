@@ -148,7 +148,7 @@
 | partialRight | 94 B | 704 B | -610 B |
 | partition | 179 B | 2175 B | -1996 B |
 | pick | 106 B | 266 B | -160 B |
-| pickAll | 119 B | 267 B | -148 B |
+| pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
