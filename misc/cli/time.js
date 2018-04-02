@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const util = require('util')
 const minimist = require('minimist')
+const { types: PERFORMANCE_TYPES } = require('../../lib/_internal/helpers/performance')
 
 const readdir = util.promisify(fs.readdir)
 const writeFile = util.promisify(fs.writeFile)
@@ -155,16 +156,16 @@ const groupTimes = methods => {
     if (type === 'array_percent' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
     }
-    if (type === '1e1_1e2_1e3' && !acc[type]) {
+    if (type === PERFORMANCE_TYPES.TYPE_1K && !acc[type]) {
       acc[type] = [['Method', 'Lib', '10', '100', '1000']]
     }
-    if (type === '1e2_1e3_1e4' && !acc[type]) {
+    if (type === PERFORMANCE_TYPES.TYPE_10K && !acc[type]) {
       acc[type] = [['Method', 'Lib', '100', '1000', '10000']]
     }
-    if (type === '1e3_1e4_1e5' && !acc[type]) {
+    if (type === PERFORMANCE_TYPES.TYPE_100K && !acc[type]) {
       acc[type] = [['Method', 'Lib', '1000', '10000', '100000']]
     }
-    if (type === '1e4_1e5_1e6' && !acc[type]) {
+    if (type === PERFORMANCE_TYPES.TYPE_1M && !acc[type]) {
       acc[type] = [['Method', 'Lib', '10000', '100000', '1000000']]
     }
     if (type === 'object_size_1e5' && !acc[type]) {
@@ -187,7 +188,8 @@ const groupTimes = methods => {
       return (t1 > t2 ? '+' : '') + absolute + 'ms'
     })
     const relativeDiff = times.map(([ t1, t2 ]) => {
-      const relative = ((t1 - t2) / t2 * 100).toFixed(2)
+      const { min, max } = { min: Math.min(t1, t2), max: Math.max(t1, t2) }
+      const relative = ((max - min) / min * 100).toFixed(2)
       return (t1 > t2 ? '+' : '') + relative + '%'
     })
     console.log(acc[type])
