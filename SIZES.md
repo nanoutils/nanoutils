@@ -136,6 +136,8 @@
 | negate | 31 B | 145 B | -114 B |
 | noop | 57 B | n/a B | n/a B |
 | not | 31 B | 144 B | -113 B |
+| nth | 115 B | 285 B | -170 B |
+| nthArg | 55 B | 633 B | -578 B |
 | objOf | 90 B | 240 B | -150 B |
 | of | 29 B | 151 B | -122 B |
 | omit | 129 B | 285 B | -156 B |
@@ -155,6 +157,7 @@
 | pipeT | 97 B | n/a B | n/a B |
 | prepend | 89 B | 301 B | -212 B |
 | product | 41 B | 1061 B | -1020 B |
+| project | 130 B | 738 B | -608 B |
 | prop | 506 B | 286 B | +220 B |
 | range | 108 B | 342 B | -234 B |
 | reduce | 295 B | 1021 B | -726 B |
