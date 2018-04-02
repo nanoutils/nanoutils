@@ -190,7 +190,7 @@ const groupTimes = methods => {
     const relativeDiff = times.map(([ t1, t2 ]) => {
       const { min, max } = { min: Math.min(t1, t2), max: Math.max(t1, t2) }
       const relative = ((max - min) / min * 100).toFixed(2)
-      return (t1 > t2 ? '+' : '') + relative + '%'
+      return (t1 > t2 ? '+' : '-') + relative + '%'
     })
     console.log(acc[type])
     acc[type] = [
