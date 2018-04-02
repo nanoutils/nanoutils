@@ -136,6 +136,8 @@
 | negate | 31 B | 145 B | -114 B |
 | noop | 57 B | n/a B | n/a B |
 | not | 31 B | 144 B | -113 B |
+| nth | 115 B | 285 B | -170 B |
+| nthArg | 40 B | 633 B | -593 B |
 | objOf | 90 B | 240 B | -150 B |
 | of | 29 B | 151 B | -122 B |
 | omit | 129 B | 285 B | -156 B |
