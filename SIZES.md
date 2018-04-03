@@ -135,6 +135,7 @@
 | multiply | 82 B | 230 B | -148 B |
 | nAry | 101 B | 410 B | -309 B |
 | negate | 31 B | 145 B | -114 B |
+| none | 112 B | 686 B | -574 B |
 | noop | 57 B | n/a B | n/a B |
 | not | 31 B | 144 B | -113 B |
 | nth | 115 B | 285 B | -170 B |
