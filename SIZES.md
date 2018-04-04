@@ -156,11 +156,12 @@
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
 | pipeT | 97 B | n/a B | n/a B |
-| pluck | 562 B | 1783 B | -1221 B |
+| pluck | 574 B | 1783 B | -1209 B |
 | prepend | 89 B | 301 B | -212 B |
 | product | 41 B | 1061 B | -1020 B |
 | project | 130 B | 738 B | -608 B |
-| prop | 506 B | 286 B | +220 B |
+| prop | 552 B | 286 B | +266 B |
+| props | 574 B | 263 B | +311 B |
 | range | 108 B | 342 B | -234 B |
 | reduce | 295 B | 1021 B | -726 B |
 | reduceBy | 324 B | 1424 B | -1100 B |
