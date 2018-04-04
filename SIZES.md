@@ -19,7 +19,7 @@
 | applySpec | 355 B | 2075 B | -1720 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
-| assoc | 530 B | 361 B | +169 B |
+| assoc | 303 B | 361 B | -58 B |
 | assocPath | 167 B | 599 B | -432 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
@@ -111,8 +111,9 @@
 | last | 37 B | 302 B | -265 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
 | length | 47 B | 190 B | -143 B |
-| lens | 301 B | 1745 B | -1444 B |
-| lensPath | 424 B | 2095 B | -1671 B |
+| lens | 47 B | 1745 B | -1698 B |
+| lensIndex | 84 B | 2049 B | -1965 B |
+| lensPath | 196 B | 2095 B | -1899 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
 | map | 122 B | 1710 B | -1588 B |
@@ -145,7 +146,7 @@
 | omitBy | 116 B | n/a B | n/a B |
 | once | 60 B | 342 B | -282 B |
 | or | 82 B | 231 B | -149 B |
-| over | 537 B | 364 B | +173 B |
+| over | 311 B | 364 B | -53 B |
 | pair | 83 B | 232 B | -149 B |
 | partial | 94 B | 497 B | -403 B |
 | partialRight | 94 B | 704 B | -610 B |
@@ -156,11 +157,11 @@
 | pipe | 141 B | 1245 B | -1104 B |
 | pipeP | 150 B | 1260 B | -1110 B |
 | pipeT | 97 B | n/a B | n/a B |
-| pluck | 562 B | 1783 B | -1221 B |
+| pluck | 350 B | 1783 B | -1433 B |
 | prepend | 89 B | 301 B | -212 B |
 | product | 41 B | 1061 B | -1020 B |
 | project | 130 B | 738 B | -608 B |
-| prop | 506 B | 286 B | +220 B |
+| prop | 280 B | 286 B | -6 B |
 | range | 108 B | 342 B | -234 B |
 | reduce | 295 B | 1021 B | -726 B |
 | reduceBy | 324 B | 1424 B | -1100 B |
@@ -234,7 +235,7 @@
 | za | 53 B | n/a B | n/a B |
 | zip | 173 B | 273 B | -100 B |
 | zipObj | 49 B | 271 B | -222 B |
-| zipObjDeep | 548 B | n/a B | n/a B |
+| zipObjDeep | 321 B | n/a B | n/a B |
 | zipWith | 157 B | 383 B | -226 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
