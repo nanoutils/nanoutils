@@ -51,6 +51,8 @@
 | descend | 57 B | 356 B | -299 B |
 | difference | 415 B | 1561 B | -1146 B |
 | differenceWith | 124 B | 424 B | -300 B |
+| dissoc | 108 B | 258 B | -150 B |
+| dissocPath | 136 B | 708 B | -572 B |
 | divide | 82 B | 230 B | -148 B |
 | drop | 139 B | 782 B | -643 B |
 | dropLast | 142 B | 983 B | -841 B |
