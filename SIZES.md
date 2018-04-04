@@ -164,7 +164,7 @@
 | product | 41 B | 1061 B | -1020 B |
 | project | 130 B | 738 B | -608 B |
 | prop | 82 B | 286 B | -204 B |
-| props | 192 B | 263 B | -71 B |
+| props | 160 B | 263 B | -103 B |
 | range | 108 B | 342 B | -234 B |
 | reduce | 295 B | 1021 B | -726 B |
 | reduceBy | 324 B | 1424 B | -1100 B |
