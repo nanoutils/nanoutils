@@ -133,6 +133,7 @@
 | memoize | 79 B | 3140 B | -3061 B |
 | memoizeWith | 119 B | 442 B | -323 B |
 | merge | 119 B | 390 B | -271 B |
+| mergeAll | 62 B | 316 B | -254 B |
 | mergeDeepLeft | 155 B | 496 B | -341 B |
 | mergeDeepRight | 179 B | 496 B | -317 B |
 | mergeWith | 158 B | 430 B | -272 B |
