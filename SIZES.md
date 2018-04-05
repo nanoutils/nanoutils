@@ -131,6 +131,7 @@
 | memoizeWith | 119 B | 442 B | -323 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeDeepLeft | 155 B | 496 B | -341 B |
+| mergeDeepRight | 179 B | 496 B | -317 B |
 | mergeWith | 158 B | 430 B | -272 B |
 | min | 85 B | 232 B | -147 B |
 | minBy | 113 B | 342 B | -229 B |
