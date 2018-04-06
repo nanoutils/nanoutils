@@ -154,7 +154,7 @@
 | omitBy | 116 B | n/a B | n/a B |
 | once | 60 B | 342 B | -282 B |
 | or | 82 B | 231 B | -149 B |
-| over | 311 B | 364 B | -53 B |
+| over | 300 B | 364 B | -64 B |
 | pair | 83 B | 232 B | -149 B |
 | partial | 68 B | 497 B | -429 B |
 | partialRight | 94 B | 704 B | -610 B |
@@ -231,7 +231,7 @@
 | unzip | 190 B | n/a B | n/a B |
 | unzipWith | 139 B | n/a B | n/a B |
 | update | 116 B | 497 B | -381 B |
-| updateLens | 115 B | n/a B | n/a B |
+| updateLens | 126 B | n/a B | n/a B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
 | valuesIn | 78 B | 163 B | -85 B |
@@ -242,9 +242,9 @@
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
-| zip | 173 B | 273 B | -100 B |
+| zip | 162 B | 273 B | -111 B |
 | zipObj | 49 B | 271 B | -222 B |
 | zipObjDeep | 253 B | n/a B | n/a B |
-| zipWith | 157 B | 383 B | -226 B |
+| zipWith | 170 B | 383 B | -213 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
