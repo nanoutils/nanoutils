@@ -161,6 +161,7 @@
 | partition | 179 B | 2175 B | -1996 B |
 | path | 115 B | 266 B | -151 B |
 | pathEq | 449 B | 1540 B | -1091 B |
+| pathOr | 176 B | 422 B | -246 B |
 | pick | 106 B | 266 B | -160 B |
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
