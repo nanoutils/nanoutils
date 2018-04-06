@@ -70,7 +70,7 @@
 | evolve | 93 B | 282 B | -189 B |
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
-| filter | 139 B | 1549 B | -1410 B |
+| filter | 150 B | 1549 B | -1399 B |
 | filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
@@ -158,7 +158,7 @@
 | pair | 83 B | 232 B | -149 B |
 | partial | 94 B | 497 B | -403 B |
 | partialRight | 94 B | 704 B | -610 B |
-| partition | 179 B | 2175 B | -1996 B |
+| partition | 131 B | 2175 B | -2044 B |
 | pick | 106 B | 266 B | -160 B |
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
@@ -177,7 +177,7 @@
 | reduceRight | 132 B | 361 B | -229 B |
 | reduceWhile | 316 B | 1074 B | -758 B |
 | reduceWhileRight | 320 B | n/a B | n/a B |
-| reject | 140 B | 1575 B | -1435 B |
+| reject | 153 B | 1575 B | -1422 B |
 | remove | 120 B | 362 B | -242 B |
 | repeat | 104 B | 364 B | -260 B |
 | replace | 107 B | 341 B | -234 B |
