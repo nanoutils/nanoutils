@@ -171,6 +171,7 @@
 | project | 130 B | 738 B | -608 B |
 | prop | 82 B | 286 B | -204 B |
 | propEq | 383 B | 1498 B | -1115 B |
+| propIs | 135 B | 382 B | -247 B |
 | props | 160 B | 263 B | -103 B |
 | range | 108 B | 342 B | -234 B |
 | reduce | 295 B | 1021 B | -726 B |
