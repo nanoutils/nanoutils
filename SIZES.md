@@ -159,6 +159,10 @@
 | partial | 68 B | 497 B | -429 B |
 | partialRight | 94 B | 704 B | -610 B |
 | partition | 131 B | 2175 B | -2044 B |
+| path | 107 B | 266 B | -159 B |
+| pathEq | 444 B | 1540 B | -1096 B |
+| pathOr | 173 B | 422 B | -249 B |
+| pathSatisfies | 172 B | 405 B | -233 B |
 | pick | 106 B | 266 B | -160 B |
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
@@ -170,6 +174,9 @@
 | product | 41 B | 1061 B | -1020 B |
 | project | 130 B | 738 B | -608 B |
 | prop | 82 B | 286 B | -204 B |
+| propEq | 389 B | 1498 B | -1109 B |
+| propIs | 135 B | 382 B | -247 B |
+| propOr | 110 B | 362 B | -252 B |
 | props | 134 B | 263 B | -129 B |
 | range | 108 B | 342 B | -234 B |
 | reduce | 295 B | 1021 B | -726 B |
