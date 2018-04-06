@@ -218,7 +218,7 @@
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
 | type | 109 B | 186 B | -77 B |
-| unapply | 304 B | 161 B | +143 B |
+| unapply | 112 B | 161 B | -49 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
 | union | 116 B | 2988 B | -2872 B |
