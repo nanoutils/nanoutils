@@ -19,7 +19,7 @@
 | applySpec | 355 B | 2075 B | -1720 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
-| assoc | 303 B | 361 B | -58 B |
+| assoc | 310 B | 361 B | -51 B |
 | assocPath | 167 B | 599 B | -432 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
@@ -244,7 +244,7 @@
 | za | 53 B | n/a B | n/a B |
 | zip | 173 B | 273 B | -100 B |
 | zipObj | 49 B | 271 B | -222 B |
-| zipObjDeep | 321 B | n/a B | n/a B |
+| zipObjDeep | 311 B | n/a B | n/a B |
 | zipWith | 157 B | 383 B | -226 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
