@@ -77,7 +77,7 @@
 | findLast | 109 B | 582 B | -473 B |
 | findLastIndex | 112 B | 603 B | -491 B |
 | flatten | 70 B | 369 B | -299 B |
-| flattenObj | 308 B | n/a B | n/a B |
+| flattenObj | 295 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
 | forEach | 102 B | 392 B | -290 B |
 | forEachObjIndexed | 119 B | 593 B | -474 B |
@@ -141,7 +141,7 @@
 | minBy | 113 B | 342 B | -229 B |
 | modulo | 82 B | 230 B | -148 B |
 | multiply | 82 B | 230 B | -148 B |
-| nAry | 101 B | 410 B | -309 B |
+| nAry | 75 B | 410 B | -335 B |
 | negate | 31 B | 145 B | -114 B |
 | none | 112 B | 686 B | -574 B |
 | noop | 57 B | n/a B | n/a B |
