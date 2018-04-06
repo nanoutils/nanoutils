@@ -40,7 +40,7 @@
 | cond | 113 B | 1937 B | -1824 B |
 | construct | 321 B | 790 B | -469 B |
 | constructN | 306 B | 783 B | -477 B |
-| contains | 355 B | 1534 B | -1179 B |
+| contains | 360 B | 1534 B | -1174 B |
 | converge | 99 B | 2002 B | -1903 B |
 | countBy | 111 B | 1437 B | -1326 B |
 | curry | 284 B | 550 B | -266 B |
@@ -49,7 +49,7 @@
 | dec | 32 B | 252 B | -220 B |
 | defaultTo | 95 B | 239 B | -144 B |
 | descend | 57 B | 356 B | -299 B |
-| difference | 415 B | 1561 B | -1146 B |
+| difference | 410 B | 1561 B | -1151 B |
 | differenceWith | 124 B | 424 B | -300 B |
 | dissoc | 108 B | 258 B | -150 B |
 | dissocPath | 136 B | 708 B | -572 B |
@@ -57,15 +57,15 @@
 | drop | 139 B | 782 B | -643 B |
 | dropLast | 149 B | 983 B | -834 B |
 | dropLastWhile | 141 B | 1443 B | -1302 B |
-| dropRepeats | 375 B | 1845 B | -1470 B |
+| dropRepeats | 331 B | 1845 B | -1514 B |
 | dropRepeatsWith | 119 B | 722 B | -603 B |
 | dropWhile | 134 B | 806 B | -672 B |
 | either | 48 B | 1943 B | -1895 B |
 | endsWith | 90 B | 1943 B | -1853 B |
-| eqBy | 385 B | 1500 B | -1115 B |
-| eqLens | 386 B | n/a B | n/a B |
+| eqBy | 391 B | 1500 B | -1109 B |
+| eqLens | 391 B | n/a B | n/a B |
 | eqProps | 107 B | 1500 B | -1393 B |
-| equals | 321 B | 1369 B | -1048 B |
+| equals | 331 B | 1369 B | -1038 B |
 | eqWith | 103 B | n/a B | n/a B |
 | evolve | 93 B | 282 B | -189 B |
 | F | 53 B | 156 B | -103 B |
@@ -99,7 +99,7 @@
 | innerJoin | 155 B | 439 B | -284 B |
 | insert | 124 B | 378 B | -254 B |
 | insertAll | 132 B | 379 B | -247 B |
-| intersection | 511 B | 2360 B | -1849 B |
+| intersection | 517 B | 2360 B | -1843 B |
 | intersperse | 117 B | 409 B | -292 B |
 | invert | 58 B | 534 B | -476 B |
 | invertObj | 44 B | 520 B | -476 B |
@@ -238,7 +238,7 @@
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
 | where | 116 B | 273 B | -157 B |
-| whereEq | 376 B | 2551 B | -2175 B |
+| whereEq | 365 B | 2551 B | -2186 B |
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
