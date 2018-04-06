@@ -16,7 +16,7 @@
 | aperture | 127 B | 750 B | -623 B |
 | append | 88 B | 301 B | -213 B |
 | apply | 86 B | 230 B | -144 B |
-| applySpec | 349 B | 2075 B | -1726 B |
+| applySpec | 170 B | 2075 B | -1905 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
 | assoc | 298 B | 361 B | -63 B |
