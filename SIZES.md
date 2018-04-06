@@ -40,7 +40,7 @@
 | cond | 113 B | 1937 B | -1824 B |
 | construct | 321 B | 790 B | -469 B |
 | constructN | 306 B | 783 B | -477 B |
-| contains | 360 B | 1534 B | -1174 B |
+| contains | 344 B | 1534 B | -1190 B |
 | converge | 99 B | 2002 B | -1903 B |
 | countBy | 111 B | 1437 B | -1326 B |
 | curry | 284 B | 550 B | -266 B |
@@ -49,7 +49,7 @@
 | dec | 32 B | 252 B | -220 B |
 | defaultTo | 95 B | 239 B | -144 B |
 | descend | 57 B | 356 B | -299 B |
-| difference | 410 B | 1561 B | -1151 B |
+| difference | 389 B | 1561 B | -1172 B |
 | differenceWith | 124 B | 424 B | -300 B |
 | dissoc | 108 B | 258 B | -150 B |
 | dissocPath | 136 B | 708 B | -572 B |
@@ -62,8 +62,8 @@
 | dropWhile | 134 B | 806 B | -672 B |
 | either | 48 B | 1943 B | -1895 B |
 | endsWith | 90 B | 1943 B | -1853 B |
-| eqBy | 391 B | 1500 B | -1109 B |
-| eqLens | 391 B | n/a B | n/a B |
+| eqBy | 359 B | 1500 B | -1141 B |
+| eqLens | 360 B | n/a B | n/a B |
 | eqProps | 107 B | 1500 B | -1393 B |
 | equals | 331 B | 1369 B | -1038 B |
 | eqWith | 103 B | n/a B | n/a B |
