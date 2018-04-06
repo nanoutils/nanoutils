@@ -128,13 +128,13 @@
 | mathMod | 137 B | 281 B | -144 B |
 | max | 84 B | 232 B | -148 B |
 | maxBy | 112 B | 342 B | -230 B |
-| mean | 65 B | 1078 B | -1013 B |
+| mean | 71 B | 1078 B | -1007 B |
 | median | 142 B | 1156 B | -1014 B |
 | memoize | 79 B | 3140 B | -3061 B |
 | memoizeWith | 119 B | 442 B | -323 B |
 | merge | 119 B | 390 B | -271 B |
 | mergeAll | 62 B | 316 B | -254 B |
-| mergeDeepLeft | 155 B | 496 B | -341 B |
+| mergeDeepLeft | 165 B | 496 B | -331 B |
 | mergeDeepRight | 179 B | 496 B | -317 B |
 | mergeWith | 158 B | 430 B | -272 B |
 | min | 85 B | 232 B | -147 B |
