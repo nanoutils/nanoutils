@@ -31,7 +31,7 @@ export default _curry2(function ${name}() {
 export default _curry3(function ${name}() {
 
 })`,
-    n: `import curryN from '../curryN'
+    n: `import curryN from '../curryN/curryN'
 
 export default curryN(${num}, function ${name}() {
 
