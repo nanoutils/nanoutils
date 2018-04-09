@@ -125,6 +125,7 @@
 | mapAccumRight | 149 B | 383 B | -234 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mapT | 45 B | n/a B | n/a B |
+| match | 90 B | 237 B | -147 B |
 | mathMod | 137 B | 281 B | -144 B |
 | max | 84 B | 232 B | -148 B |
 | maxBy | 112 B | 342 B | -230 B |
