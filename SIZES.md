@@ -118,6 +118,7 @@
 | lens | 47 B | 1745 B | -1698 B |
 | lensIndex | 84 B | 2049 B | -1965 B |
 | lensPath | 196 B | 2095 B | -1899 B |
+| lensProp | 105 B | 1967 B | -1862 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
 | map | 122 B | 1710 B | -1588 B |
