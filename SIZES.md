@@ -61,6 +61,7 @@
 | dropRepeatsWith | 119 B | 722 B | -603 B |
 | dropWhile | 116 B | 806 B | -690 B |
 | either | 48 B | 1943 B | -1895 B |
+| empty | 99 B | 380 B | -281 B |
 | endsWith | 90 B | 1943 B | -1853 B |
 | eqBy | 359 B | 1500 B | -1141 B |
 | eqLens | 360 B | n/a B | n/a B |
