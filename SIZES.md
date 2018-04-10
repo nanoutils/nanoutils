@@ -84,6 +84,7 @@
 | forEachObjIndexed | 119 B | 593 B | -474 B |
 | fromPairs | 60 B | 173 B | -113 B |
 | groupBy | 128 B | 1519 B | -1391 B |
+| groupWith | 162 B | 291 B | -129 B |
 | gt | 82 B | 230 B | -148 B |
 | gte | 83 B | 231 B | -148 B |
 | has | 85 B | 240 B | -155 B |
@@ -232,7 +233,7 @@
 | unapply | 112 B | 161 B | -49 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
-| union | 301 B | 2988 B | -2687 B |
+| union | 315 B | 2988 B | -2673 B |
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 62 B | 1908 B | -1846 B |
 | unless | 87 B | 338 B | -251 B |
