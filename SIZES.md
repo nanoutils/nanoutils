@@ -181,6 +181,7 @@
 | propIs | 135 B | 382 B | -247 B |
 | propOr | 110 B | 362 B | -252 B |
 | props | 134 B | 263 B | -129 B |
+| propSatisfies | 106 B | 338 B | -232 B |
 | range | 108 B | 342 B | -234 B |
 | reduce | 295 B | 1021 B | -726 B |
 | reduceBy | 320 B | 1424 B | -1104 B |
