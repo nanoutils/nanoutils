@@ -132,12 +132,12 @@
 | median | 142 B | 1156 B | -1014 B |
 | memoize | 79 B | 3140 B | -3061 B |
 | memoizeWith | 119 B | 442 B | -323 B |
-| merge | 119 B | 390 B | -271 B |
+| merge | 177 B | 390 B | -213 B |
 | mergeAll | 62 B | 316 B | -254 B |
-| mergeDeepLeft | 165 B | 496 B | -331 B |
-| mergeDeepRight | 179 B | 496 B | -317 B |
-| mergeWith | 177 B | 430 B | -253 B |
-| mergeWithKey | 177 B | 401 B | -224 B |
+| mergeDeepLeft | 230 B | 496 B | -266 B |
+| mergeDeepRight | 241 B | 496 B | -255 B |
+| mergeWith | 199 B | 430 B | -231 B |
+| mergeWithKey | 206 B | 401 B | -195 B |
 | min | 85 B | 232 B | -147 B |
 | minBy | 113 B | 342 B | -229 B |
 | modulo | 82 B | 230 B | -148 B |
