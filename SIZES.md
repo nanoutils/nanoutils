@@ -233,6 +233,7 @@
 | type | 109 B | 186 B | -77 B |
 | unapply | 112 B | 161 B | -49 B |
 | unary | 35 B | 430 B | -395 B |
+| uncurryN | 132 B | 618 B | -486 B |
 | unfold | 110 B | 266 B | -156 B |
 | union | 315 B | 2988 B | -2673 B |
 | unionWith | 134 B | 504 B | -370 B |
