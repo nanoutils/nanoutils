@@ -225,6 +225,7 @@
 | toLower | 40 B | 3346 B | -3306 B |
 | toPairs | 62 B | 189 B | -127 B |
 | toPairsIn | 90 B | 166 B | -76 B |
+| toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
 | transduce | 238 B | 1082 B | -844 B |
 | transpose | 104 B | 204 B | -100 B |
