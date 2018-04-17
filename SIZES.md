@@ -40,7 +40,7 @@
 | cond | 113 B | 1937 B | -1824 B |
 | construct | 321 B | 790 B | -469 B |
 | constructN | 306 B | 783 B | -477 B |
-| contains | 344 B | 1534 B | -1190 B |
+| contains | 384 B | 1534 B | -1150 B |
 | converge | 99 B | 2002 B | -1903 B |
 | countBy | 111 B | 1437 B | -1326 B |
 | curry | 284 B | 550 B | -266 B |
@@ -49,7 +49,7 @@
 | dec | 32 B | 252 B | -220 B |
 | defaultTo | 95 B | 239 B | -144 B |
 | descend | 57 B | 356 B | -299 B |
-| difference | 389 B | 1561 B | -1172 B |
+| difference | 432 B | 1561 B | -1129 B |
 | differenceWith | 124 B | 424 B | -300 B |
 | dissoc | 108 B | 258 B | -150 B |
 | dissocPath | 136 B | 708 B | -572 B |
@@ -57,16 +57,16 @@
 | drop | 125 B | 782 B | -657 B |
 | dropLast | 139 B | 983 B | -844 B |
 | dropLastWhile | 126 B | 1443 B | -1317 B |
-| dropRepeats | 331 B | 1845 B | -1514 B |
+| dropRepeats | 362 B | 1845 B | -1483 B |
 | dropRepeatsWith | 119 B | 722 B | -603 B |
 | dropWhile | 116 B | 806 B | -690 B |
 | either | 48 B | 1943 B | -1895 B |
 | empty | 99 B | 380 B | -281 B |
 | endsWith | 90 B | 1943 B | -1853 B |
-| eqBy | 359 B | 1500 B | -1141 B |
-| eqLens | 360 B | n/a B | n/a B |
+| eqBy | 398 B | 1500 B | -1102 B |
+| eqLens | 398 B | n/a B | n/a B |
 | eqProps | 107 B | 1500 B | -1393 B |
-| equals | 331 B | 1369 B | -1038 B |
+| equals | 367 B | 1369 B | -1002 B |
 | eqWith | 103 B | n/a B | n/a B |
 | evolve | 93 B | 282 B | -189 B |
 | F | 53 B | 156 B | -103 B |
@@ -101,7 +101,7 @@
 | innerJoin | 155 B | 439 B | -284 B |
 | insert | 124 B | 378 B | -254 B |
 | insertAll | 132 B | 379 B | -247 B |
-| intersection | 517 B | 2360 B | -1843 B |
+| intersection | 551 B | 2360 B | -1809 B |
 | intersperse | 117 B | 409 B | -292 B |
 | invert | 58 B | 534 B | -476 B |
 | invertObj | 44 B | 520 B | -476 B |
@@ -166,7 +166,7 @@
 | partialRight | 94 B | 704 B | -610 B |
 | partition | 131 B | 2175 B | -2044 B |
 | path | 120 B | 266 B | -146 B |
-| pathEq | 432 B | 1540 B | -1108 B |
+| pathEq | 465 B | 1540 B | -1075 B |
 | pathOr | 150 B | 422 B | -272 B |
 | pathSatisfies | 150 B | 405 B | -255 B |
 | pick | 106 B | 266 B | -160 B |
@@ -180,7 +180,7 @@
 | product | 41 B | 1061 B | -1020 B |
 | project | 130 B | 738 B | -608 B |
 | prop | 82 B | 286 B | -204 B |
-| propEq | 357 B | 1498 B | -1141 B |
+| propEq | 395 B | 1498 B | -1103 B |
 | propIs | 135 B | 382 B | -247 B |
 | propOr | 110 B | 362 B | -252 B |
 | props | 134 B | 263 B | -129 B |
@@ -236,9 +236,10 @@
 | unapply | 112 B | 161 B | -49 B |
 | unary | 35 B | 430 B | -395 B |
 | unfold | 110 B | 266 B | -156 B |
-| union | 315 B | 2988 B | -2673 B |
+| union | 340 B | 2988 B | -2648 B |
 | unionWith | 134 B | 504 B | -370 B |
-| uniq | 62 B | 1908 B | -1846 B |
+| uniq | 571 B | 1908 B | -1337 B |
+| uniqBy | 636 B | 1888 B | -1252 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
@@ -253,7 +254,7 @@
 | view | 87 B | 259 B | -172 B |
 | when | 87 B | 338 B | -251 B |
 | where | 116 B | 273 B | -157 B |
-| whereEq | 365 B | 2551 B | -2186 B |
+| whereEq | 397 B | 2551 B | -2154 B |
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | za | 53 B | n/a B | n/a B |
