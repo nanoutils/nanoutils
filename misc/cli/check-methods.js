@@ -10,7 +10,7 @@ const ramdaDir = path.resolve('node_modules/ramda/es')
 Promise.all([readdir(nanosDir), readdir(ramdaDir)])
   .then(([nanos, ramda]) => [
     nanos.filter(i => i !== 'index.js' && i !== '_internal'),
-    ramda.filter(i => i !== 'internal').map(i => i.slice(0, -3))
+    ramda.filter(i => i !== 'index.js' && i !== 'internal').map(i => i.slice(0, -3))
   ])
   .then(([nanos, ramda]) => ({
     both: nanos.filter(method => ramda.includes(method)),
