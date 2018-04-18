@@ -103,6 +103,7 @@
 | insertAll | 132 B | 379 B | -247 B |
 | intersection | 551 B | 2360 B | -1809 B |
 | intersperse | 117 B | 409 B | -292 B |
+| into | 416 B | 1638 B | -1222 B |
 | invert | 58 B | 534 B | -476 B |
 | invertObj | 44 B | 520 B | -476 B |
 | invoker | 309 B | 3337 B | -3028 B |
@@ -216,7 +217,7 @@
 | take | 125 B | 827 B | -702 B |
 | takeLast | 125 B | 808 B | -683 B |
 | takeLastWhile | 124 B | 528 B | -404 B |
-| takeT | 48 B | n/a B | n/a B |
+| takeT | 54 B | n/a B | n/a B |
 | takeWhile | 115 B | 822 B | -707 B |
 | tap | 100 B | 540 B | -440 B |
 | test | 85 B | 3235 B | -3150 B |
