@@ -11,13 +11,15 @@ const methodPath = name => path.resolve('lib', name)
 
 const methodTemplate = name => `export default function ${name}() {
 
-}`
+}
+`
 
 const curriedMethodTemplate = name => `import curry from '../curry'
 
 export default curry(function ${name}() {
 
-})`
+})
+`
 
 const curriedNumMethodTemplate = (name, num) => {
   const curried = {
@@ -25,37 +27,44 @@ const curriedNumMethodTemplate = (name, num) => {
 
 export default _curry2(function ${name}() {
 
-})`,
+})
+`,
     3: `import _curry3 from '../_internal/_curry3'
 
 export default _curry3(function ${name}() {
 
-})`,
+})
+`,
     n: `import curryN from '../curryN/curryN'
 
 export default curryN(${num}, function ${name}() {
 
-})`
+})
+`
   }
 
   return curried[num] || curried.n
 }
 
-const tsTemplate = name => `export default function ${name}(): void`
+const tsTemplate = name => `export default function ${name}(): void
+`
 
 const flowTemplate = name => `// @flow
-declare module.exports: () => void`
+declare module.exports: () => void
+`
 
 const performanceTemplate = name => `module.exports = function getData() {
   return {
     type: 'no_perf',
     argss: [[], [], []]
   }
-}`
+}
+`
 
 const testTemplate = name => `import ${name} from '.'
 
-test('no tests yet', () => {})`
+test('no tests yet', () => {})
+`
 
 names.forEach(name => {
   try {
