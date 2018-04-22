@@ -153,7 +153,7 @@ const cacheTime = methods => {
 
 const groupTimes = methods => {
   return methods.reduce((acc, { name, type, times }) => {
-    if (type === 'array_percent' && !acc[type]) {
+    if (type === PERFORMANCE_TYPES.TYPE_PERCENT && !acc[type]) {
       acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
     }
     if (type === PERFORMANCE_TYPES.TYPE_1K && !acc[type]) {
