@@ -122,7 +122,7 @@
 | lensIndex | 84 B | 2049 B | -1965 B |
 | lensPath | 196 B | 2095 B | -1899 B |
 | lensProp | 105 B | 1967 B | -1862 B |
-| lift | 435 B | 1897 B | -1462 B |
+| lift | 440 B | 1897 B | -1457 B |
 | liftN | 441 B | 1878 B | -1437 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
@@ -238,7 +238,7 @@
 | type | 109 B | 186 B | -77 B |
 | unapply | 112 B | 161 B | -49 B |
 | unary | 35 B | 430 B | -395 B |
-| uncurryN | 132 B | 618 B | -486 B |
+| uncurryN | 108 B | 618 B | -510 B |
 | unfold | 110 B | 266 B | -156 B |
 | union | 340 B | 2988 B | -2648 B |
 | unionWith | 134 B | 504 B | -370 B |
