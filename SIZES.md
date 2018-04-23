@@ -143,6 +143,8 @@
 | mergeAll | 62 B | 316 B | -254 B |
 | mergeDeepLeft | 254 B | 496 B | -242 B |
 | mergeDeepRight | 266 B | 496 B | -230 B |
+| mergeDeepWith | 262 B | 496 B | -234 B |
+| mergeDeepWithKey | 267 B | 481 B | -214 B |
 | mergeWith | 223 B | 430 B | -207 B |
 | mergeWithKey | 229 B | 401 B | -172 B |
 | min | 85 B | 232 B | -147 B |
