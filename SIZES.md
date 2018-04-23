@@ -244,6 +244,7 @@
 | unionWith | 134 B | 504 B | -370 B |
 | uniq | 571 B | 1908 B | -1337 B |
 | uniqBy | 636 B | 1888 B | -1252 B |
+| uniqWith | 138 B | 320 B | -182 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
