@@ -1,6 +1,6 @@
 {
   "name": "nanoutils",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Tiniest JavaScript utils library",
   "main": "cjs/index.js",
   "module": "lib/index.js",
@@ -21,8 +21,7 @@
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build":
-      "rm lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
+    "build": "rm lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
