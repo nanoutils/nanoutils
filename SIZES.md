@@ -10,7 +10,7 @@
 | allPass | 110 B | 1993 B | -1883 B |
 | always | 32 B | 144 B | -112 B |
 | and | 82 B | 229 B | -147 B |
-| any | 114 B | 635 B | -521 B |
+| any | 111 B | 635 B | -524 B |
 | anyPass | 90 B | 1990 B | -1900 B |
 | ap | 60 B | 1830 B | -1770 B |
 | aperture | 127 B | 750 B | -623 B |
