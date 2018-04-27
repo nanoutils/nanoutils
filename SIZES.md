@@ -11,7 +11,7 @@
 | always | 32 B | 144 B | -112 B |
 | and | 82 B | 229 B | -147 B |
 | any | 111 B | 635 B | -524 B |
-| anyPass | 90 B | 1990 B | -1900 B |
+| anyPass | 111 B | 1990 B | -1879 B |
 | ap | 60 B | 1830 B | -1770 B |
 | aperture | 127 B | 750 B | -623 B |
 | append | 88 B | 301 B | -213 B |
