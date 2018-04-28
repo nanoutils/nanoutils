@@ -49,7 +49,7 @@
 | dec | 32 B | 252 B | -220 B |
 | defaultTo | 95 B | 239 B | -144 B |
 | descend | 57 B | 356 B | -299 B |
-| difference | 466 B | 1561 B | -1095 B |
+| difference | 474 B | 1561 B | -1087 B |
 | differenceWith | 202 B | 424 B | -222 B |
 | dissoc | 108 B | 258 B | -150 B |
 | dissocPath | 136 B | 708 B | -572 B |
@@ -215,7 +215,7 @@
 | startsWith | 164 B | 1969 B | -1805 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 43 B | 1069 B | -1026 B |
-| symmetricDifference | 428 B | 3293 B | -2865 B |
+| symmetricDifference | 471 B | 3293 B | -2822 B |
 | symmetricDifferenceWith | 98 B | 3404 B | -3306 B |
 | T | 53 B | 156 B | -103 B |
 | tail | 134 B | 509 B | -375 B |
