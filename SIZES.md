@@ -216,7 +216,7 @@
 | subtract | 82 B | 240 B | -158 B |
 | sum | 43 B | 1069 B | -1026 B |
 | symmetricDifference | 471 B | 3293 B | -2822 B |
-| symmetricDifferenceWith | 98 B | 3404 B | -3306 B |
+| symmetricDifferenceWith | 239 B | 3404 B | -3165 B |
 | T | 53 B | 156 B | -103 B |
 | tail | 134 B | 509 B | -375 B |
 | take | 125 B | 827 B | -702 B |
