@@ -156,6 +156,9 @@ const groupTimes = methods => {
     if (type === PERFORMANCE_TYPES.TYPE_PERCENT && !acc[type]) {
       acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
     }
+    if (type === PERFORMANCE_TYPES.TYPE_1H && !acc[type]) {
+      acc[type] = [['Method', 'Lib', '1', '10', '100']]
+    }
     if (type === PERFORMANCE_TYPES.TYPE_1K && !acc[type]) {
       acc[type] = [['Method', 'Lib', '10', '100', '1000']]
     }
