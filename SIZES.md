@@ -168,10 +168,10 @@
 | partial | 68 B | 497 B | -429 B |
 | partialRight | 94 B | 704 B | -610 B |
 | partition | 131 B | 2175 B | -2044 B |
-| path | 120 B | 266 B | -146 B |
-| pathEq | 465 B | 1540 B | -1075 B |
-| pathOr | 150 B | 422 B | -272 B |
-| pathSatisfies | 150 B | 405 B | -255 B |
+| path | 130 B | 266 B | -136 B |
+| pathEq | 470 B | 1540 B | -1070 B |
+| pathOr | 164 B | 422 B | -258 B |
+| pathSatisfies | 160 B | 405 B | -245 B |
 | pick | 106 B | 266 B | -160 B |
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
