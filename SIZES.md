@@ -20,7 +20,7 @@
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
 | assoc | 298 B | 361 B | -63 B |
-| assocPath | 167 B | 599 B | -432 B |
+| assocPath | 184 B | 599 B | -415 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
 | bind | 85 B | 401 B | -316 B |
@@ -68,7 +68,7 @@
 | eqProps | 107 B | 1500 B | -1393 B |
 | equals | 367 B | 1369 B | -1002 B |
 | eqWith | 103 B | n/a B | n/a B |
-| evolve | 93 B | 282 B | -189 B |
+| evolve | 86 B | 282 B | -196 B |
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
 | filter | 150 B | 1549 B | -1399 B |

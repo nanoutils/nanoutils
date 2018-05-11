@@ -9,11 +9,12 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-commit": "npm run size && git add SIZES.md"
+      "pre-commit": "npm run size && npm run lint && git add SIZES.md"
     }
   },
   "scripts": {
     "dev": "jest --watchAll --verbose",
+    "lint": "eslint --fix ./lib/*/index.js",
     "test": "jest",
     "size": "node ./misc/cli/size.js",
     "time": "node ./misc/cli/time.js",
@@ -21,7 +22,8 @@
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build": "rm lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
+    "build":
+      "rm lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
