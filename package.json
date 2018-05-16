@@ -22,7 +22,7 @@
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build": "rm lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
+    "build": "shx rm -f lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
     "prepublish": "npm run build"
   },
   "devDependencies": {
@@ -41,6 +41,8 @@
     "ghooks": "^2.0.2",
     "jest": "^22.0.4",
     "ramda": "^0.25.0",
+    "rimraf": "^2.6.2",
+    "shx": "^0.2.2",
     "size-limit": "^0.13.2"
   }
 }
