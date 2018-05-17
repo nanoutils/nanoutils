@@ -81,7 +81,7 @@
 | flattenObj | 295 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
 | forEach | 102 B | 392 B | -290 B |
-| forEachObjIndexed | 119 B | 593 B | -474 B |
+| forEachObjIndexed | 105 B | 593 B | -488 B |
 | fromPairs | 60 B | 173 B | -113 B |
 | groupBy | 128 B | 1519 B | -1391 B |
 | groupWith | 162 B | 291 B | -129 B |
@@ -161,7 +161,7 @@
 | o | 106 B | 336 B | -230 B |
 | objOf | 90 B | 240 B | -150 B |
 | of | 29 B | 151 B | -122 B |
-| omit | 129 B | 285 B | -156 B |
+| omit | 121 B | 285 B | -164 B |
 | omitBy | 116 B | n/a B | n/a B |
 | once | 60 B | 342 B | -282 B |
 | or | 82 B | 231 B | -149 B |
@@ -230,7 +230,7 @@
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | toLower | 40 B | 3346 B | -3306 B |
-| toPairs | 62 B | 189 B | -127 B |
+| toPairs | 52 B | 189 B | -137 B |
 | toPairsIn | 50 B | 166 B | -116 B |
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
