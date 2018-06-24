@@ -37,7 +37,7 @@
 | composeP | 83 B | 1330 B | -1247 B |
 | composeT | 102 B | n/a B | n/a B |
 | concat | 124 B | 3228 B | -3104 B |
-| cond | 113 B | 1937 B | -1824 B |
+| cond | 68 B | 1937 B | -1869 B |
 | construct | 321 B | 790 B | -469 B |
 | constructN | 306 B | 783 B | -477 B |
 | contains | 384 B | 1534 B | -1150 B |
