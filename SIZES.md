@@ -57,7 +57,7 @@
 | drop | 125 B | 782 B | -657 B |
 | dropLast | 139 B | 983 B | -844 B |
 | dropLastWhile | 126 B | 1443 B | -1317 B |
-| dropRepeats | 362 B | 1845 B | -1483 B |
+| dropRepeats | 412 B | 1845 B | -1433 B |
 | dropRepeatsWith | 119 B | 722 B | -603 B |
 | dropWhile | 116 B | 806 B | -690 B |
 | either | 48 B | 1943 B | -1895 B |
