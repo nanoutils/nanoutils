@@ -71,7 +71,7 @@
 | evolve | 86 B | 282 B | -196 B |
 | F | 53 B | 156 B | -103 B |
 | fill | 94 B | n/a B | n/a B |
-| filter | 150 B | 1549 B | -1399 B |
+| filter | 177 B | 1549 B | -1372 B |
 | filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
@@ -169,7 +169,7 @@
 | pair | 83 B | 232 B | -149 B |
 | partial | 68 B | 497 B | -429 B |
 | partialRight | 94 B | 704 B | -610 B |
-| partition | 131 B | 2175 B | -2044 B |
+| partition | 194 B | 2175 B | -1981 B |
 | path | 130 B | 266 B | -136 B |
 | pathEq | 470 B | 1540 B | -1070 B |
 | pathOr | 164 B | 422 B | -258 B |
