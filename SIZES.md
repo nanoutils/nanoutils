@@ -77,7 +77,7 @@
 | findIndex | 112 B | 652 B | -540 B |
 | findLast | 109 B | 582 B | -473 B |
 | findLastIndex | 112 B | 603 B | -491 B |
-| flatten | 70 B | 369 B | -299 B |
+| flatten | 83 B | 369 B | -286 B |
 | flattenObj | 295 B | n/a B | n/a B |
 | flip | 84 B | 591 B | -507 B |
 | forEach | 102 B | 392 B | -290 B |
