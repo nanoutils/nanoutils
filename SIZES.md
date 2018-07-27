@@ -96,7 +96,7 @@
 | inc | 32 B | 250 B | -218 B |
 | indexBy | 110 B | 1438 B | -1328 B |
 | indexed | 40 B | n/a B | n/a B |
-| indexOf | 110 B | 1570 B | -1460 B |
+| indexOf | 99 B | 1570 B | -1471 B |
 | init | 96 B | 493 B | -397 B |
 | innerJoin | 155 B | 439 B | -284 B |
 | insert | 124 B | 378 B | -254 B |
