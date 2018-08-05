@@ -75,7 +75,7 @@
 | filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
-| findLast | 109 B | 582 B | -473 B |
+| findLast | 112 B | 582 B | -470 B |
 | findLastIndex | 112 B | 603 B | -491 B |
 | flatten | 83 B | 369 B | -286 B |
 | flattenObj | 295 B | n/a B | n/a B |
@@ -230,7 +230,7 @@
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | toLower | 40 B | 3346 B | -3306 B |
-| toPairs | 52 B | 189 B | -137 B |
+| toPairs | 56 B | 189 B | -133 B |
 | toPairsIn | 50 B | 166 B | -116 B |
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
