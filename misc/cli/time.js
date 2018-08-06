@@ -156,7 +156,7 @@ const groupTimes = methods => {
     if (type === PERFORMANCE_TYPES.TYPE_PERCENT && !acc[type]) {
       acc[type] = [['Method', 'Lib', '0%', '50%', '100%']]
     }
-    if (type === PERFORMANCE_TYPES.TYPE_1H && !acc[type]) {
+    if (type === PERFORMANCE_TYPES.TYPE_100 && !acc[type]) {
       acc[type] = [['Method', 'Lib', '1', '10', '100']]
     }
     if (type === PERFORMANCE_TYPES.TYPE_1K && !acc[type]) {
@@ -186,7 +186,7 @@ const groupTimes = methods => {
     if (type === 'object_size' && !acc[type]) {
       acc[type] = [['Method', 'Lib', '100', '1000', '100000']]
     }
-    if (type === 'start_half_end' && !acc[type]) {
+    if (type === PERFORMANCE_TYPES.TYPE_SHE && !acc[type]) {
       acc[type] = [['Method', 'Lib', 'start', 'half', 'end']]
     }
     if (type === 'single_item' && !acc[type]) {
