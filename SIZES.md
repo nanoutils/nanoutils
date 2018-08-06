@@ -49,14 +49,14 @@
 | dec | 32 B | 252 B | -220 B |
 | defaultTo | 95 B | 239 B | -144 B |
 | descend | 57 B | 356 B | -299 B |
-| difference | 474 B | 1561 B | -1087 B |
-| differenceWith | 202 B | 424 B | -222 B |
+| difference | 466 B | 1561 B | -1095 B |
+| differenceWith | 194 B | 424 B | -230 B |
 | dissoc | 108 B | 258 B | -150 B |
 | dissocPath | 136 B | 708 B | -572 B |
 | divide | 82 B | 230 B | -148 B |
 | drop | 125 B | 782 B | -657 B |
 | dropLast | 139 B | 983 B | -844 B |
-| dropLastWhile | 126 B | 1443 B | -1317 B |
+| dropLastWhile | 124 B | 1443 B | -1319 B |
 | dropRepeats | 412 B | 1845 B | -1433 B |
 | dropRepeatsWith | 119 B | 722 B | -603 B |
 | dropWhile | 116 B | 806 B | -690 B |
@@ -75,7 +75,7 @@
 | filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
 | findIndex | 112 B | 652 B | -540 B |
-| findLast | 109 B | 582 B | -473 B |
+| findLast | 112 B | 582 B | -470 B |
 | findLastIndex | 112 B | 603 B | -491 B |
 | flatten | 83 B | 369 B | -286 B |
 | flattenObj | 295 B | n/a B | n/a B |
@@ -215,8 +215,8 @@
 | startsWith | 164 B | 1969 B | -1805 B |
 | subtract | 82 B | 240 B | -158 B |
 | sum | 43 B | 1069 B | -1026 B |
-| symmetricDifference | 471 B | 3293 B | -2822 B |
-| symmetricDifferenceWith | 239 B | 3404 B | -3165 B |
+| symmetricDifference | 465 B | 3293 B | -2828 B |
+| symmetricDifferenceWith | 233 B | 3404 B | -3171 B |
 | T | 53 B | 156 B | -103 B |
 | tail | 134 B | 509 B | -375 B |
 | take | 125 B | 827 B | -702 B |
@@ -230,7 +230,7 @@
 | times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | toLower | 40 B | 3346 B | -3306 B |
-| toPairs | 52 B | 189 B | -137 B |
+| toPairs | 56 B | 189 B | -133 B |
 | toPairsIn | 50 B | 166 B | -116 B |
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
@@ -265,7 +265,7 @@
 | whereEq | 397 B | 2551 B | -2154 B |
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
-| xprod | 140 B | 284 B | -144 B |
+| xprod | 134 B | 284 B | -150 B |
 | za | 53 B | n/a B | n/a B |
 | zip | 162 B | 273 B | -111 B |
 | zipObj | 49 B | 271 B | -222 B |
