@@ -14,6 +14,8 @@
   },
   "scripts": {
     "dev": "jest --watchAll --verbose",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "lint": "eslint --fix ./lib/*/index.js",
     "test": "jest",
     "size": "node ./misc/cli/size.js",
@@ -43,6 +45,7 @@
     "ramda": "^0.25.0",
     "rimraf": "^2.6.2",
     "shx": "^0.2.2",
-    "size-limit": "^0.13.2"
+    "size-limit": "^0.13.2",
+    "vuepress": "^0.14.1"
   }
 }
