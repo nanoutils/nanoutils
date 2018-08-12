@@ -16,9 +16,12 @@ More nano's for the God of nano's!
 
 ## Can I use it in my project?
 
-Not yet. We can't give you any promises that something won't be changed on this stage.
-But you can boost progress with your contributions. You can view this repo to see the progress.  
-Also we'll be especially grateful for someone who'll help me with TS/Flow typings because we're not typings guru.
+It's production-ready, but still has following drawbacks:
+
+* No documentation (will be available soon)
+* No TS/Flow types
+
+But as it's a Ramda-supportive, you can see both docs and types here: [Ramda docs](https://ramdajs.com/docs/)
 
 ## Roadmap
 
