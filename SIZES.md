@@ -12,8 +12,8 @@
 | and | 82 B | 229 B | -147 B |
 | any | 111 B | 635 B | -524 B |
 | anyPass | 111 B | 1990 B | -1879 B |
-| ap | 88 B | 1830 B | -1742 B |
-| aperture | 133 B | 750 B | -617 B |
+| ap | 150 B | 1830 B | -1680 B |
+| aperture | 122 B | 750 B | -628 B |
 | append | 88 B | 301 B | -213 B |
 | apply | 86 B | 230 B | -144 B |
 | applySpec | 170 B | 2075 B | -1905 B |
