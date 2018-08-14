@@ -301,22 +301,15 @@ compareNames(a, a)  // 0
 
 ## `assoc`
 
-::: danger
-Temporarily is the same to [`assocPath`](#assocPath)
-::: 
-
-
-## `assocPath`
-
-Makes a shallow copy and setting or overriding value by a specified path
+Makes a shallow copy and setting or overriding value by a specified property
 
 ```js
 import { assoc } from 'nanoutils'
 
 const object = { a: { b: 2 }}
-const path = ['a', 'b']
+const property = 'c'
 
-assoc(path, 3, object)  // { a: { b: 3 } }
+assoc(property, 3, object)  // { a: { b: 2 }, c: 3 }
 ```
 
 ::: tip
@@ -326,10 +319,27 @@ It also works for arrays
 import { assoc } from 'nanoutils'
 
 const array = [[1, 2], [3]]
-const path = [0, 1]
+const property = 0
 
-assoc(path, 3, array)  // [[1, 3], [3]]
+assoc(property, 3, array)  // [3, [3]]
 ```
+:::
+
+## `assocPath`
+
+Makes a shallow copy along a specified path and setting or overriding value by it
+
+```js
+import { assocPath } from 'nanoutils'
+
+const object = { a: { b: 2 }}
+const path = ['a', 'b']
+
+assocPath(path, 3, object)  // { a: { b: 3 } }
+```
+
+::: tip
+It also works for arrays as `assoc`
 :::
 
 ## `az`
