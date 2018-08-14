@@ -23,9 +23,9 @@ export default curry(function ${name}() {
 
 const curriedNumMethodTemplate = (name, num) => {
   const curried = {
-    2: `import _curry2 from '../_internal/_curry2'
+    2: `import curry2 from '../_internal/_curry2'
 
-export default _curry2(function ${name}() {
+export default curry2(function ${name}() {
 
 })
 `,
