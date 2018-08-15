@@ -5,22 +5,22 @@
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
 | addIndex | 117 B | 684 B | -567 B |
-| adjust | 126 B | 441 B | -315 B |
+| adjust | 122 B | 441 B | -319 B |
 | all | 111 B | 637 B | -526 B |
 | allPass | 110 B | 1993 B | -1883 B |
 | always | 32 B | 144 B | -112 B |
 | and | 82 B | 229 B | -147 B |
 | any | 111 B | 635 B | -524 B |
 | anyPass | 111 B | 1990 B | -1879 B |
-| ap | 88 B | 1830 B | -1742 B |
-| aperture | 133 B | 750 B | -617 B |
+| ap | 150 B | 1830 B | -1680 B |
+| aperture | 122 B | 750 B | -628 B |
 | append | 88 B | 301 B | -213 B |
 | apply | 86 B | 230 B | -144 B |
 | applySpec | 170 B | 2075 B | -1905 B |
 | applyTo | 81 B | 228 B | -147 B |
 | ascend | 57 B | 356 B | -299 B |
-| assoc | 298 B | 361 B | -63 B |
-| assocPath | 184 B | 599 B | -415 B |
+| assoc | 208 B | 361 B | -153 B |
+| assocPath | 297 B | 599 B | -302 B |
 | az | 51 B | n/a B | n/a B |
 | binary | 37 B | 430 B | -393 B |
 | bind | 85 B | 401 B | -316 B |
@@ -269,7 +269,7 @@
 | za | 53 B | n/a B | n/a B |
 | zip | 162 B | 273 B | -111 B |
 | zipObj | 49 B | 271 B | -222 B |
-| zipObjDeep | 253 B | n/a B | n/a B |
+| zipObjDeep | 256 B | n/a B | n/a B |
 | zipWith | 170 B | 383 B | -213 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
