@@ -357,3 +357,68 @@ compareLetters(b, a)  // -1
 compareLetters(a, a)  // 0
 compareLetters(a, b)  // 1
 ```
+
+## `binary`
+
+Passes exactly 2 arguments
+
+```js
+import { binary } from 'nanoutils'
+
+const mapper = (v, i, arr) => {
+  arr.length = 0
+  return v + 1
+}
+
+const array = [1, 2]
+const array2 = [1, 2]
+
+array.map(mapper)           // [2, undefined], 'cos original array's length is 0
+array2.map(binary(mapper))  // TypeError: Cannot set property 'length' of undefined
+```
+
+::: tip
+All `nanoutils` functions are already curried so it's useless to wrap them with `binary`
+:::
+
+## `bind`
+
+Sets the context of a function
+
+```js
+import { bind } from 'nanoutils'
+
+function Person(name, cash) {
+  this.name = name
+  this.cash = cash
+}
+function stealCash() {
+  const cash = this.cash
+  this.cash = 0
+  return cash
+}
+
+const john = new Person('John', 12000)
+const stealCashFromJohn = bind(stealCash)(john)
+
+stealCashFromJohn() // 12000
+john.cash           // 0
+```
+
+## `both`
+
+Checks if two functions are `true` for arguments
+
+```js
+import { both } from 'nanoutils'
+
+const hasNumber = (...args) => args.some(arg => typeof arg === 'number')
+const hasString = (...args) => args.some(arg => typeof arg === 'string')
+
+const hasNumberAndString = both(hasNumber, hasString)
+
+hasNumberAndString(1, '2', 3, '4')  // true
+hasNumberAndString(1, 2, 3, 4)      // false, only numbers
+hasNumberAndString('1', '2', '3')   // false, only strings
+hasNumberAndString(false, true)     // false, none of them
+```
