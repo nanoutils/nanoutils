@@ -1,4 +1,4 @@
-# nanoutils
+# Introduction
 
 Tiniest JavaScript utils library
 
