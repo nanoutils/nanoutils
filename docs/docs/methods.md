@@ -418,3 +418,90 @@ hasNumberAndString(1, 2, 3, 4)      // false, only numbers
 hasNumberAndString('1', '2', '3')   // false, only strings
 hasNumberAndString(false, true)     // false, none of them
 ```
+
+## `call`
+
+Returns the result of calling function with passed arguments
+
+```js
+import { add, call } from 'nanoutils'
+
+call(add, 1, 2) // 3
+call(add)(1, 2) // 3
+```
+
+## `camelCase`
+
+Returns a string in a camel case style
+
+```js
+import { camelCase } from 'nanoutils'
+
+camelCase('-to camel_case')  // toCamelCase
+```
+
+::: tip
+Separators which are identified are:
+
+* Space ` `
+* Underscore `_`
+* Hyphen `-`
+:::
+
+## `chain`
+
+It chains binary and unary functions
+
+```js
+import { chain, length, prepend } from 'nanoutils'
+
+chain(prepend, length)([1, 2, 3])  // [3, 1, 2, 3]
+```
+
+::: tip
+`chain` is also known as `flatMap` or `flatten`
+
+It takes a function which returns an array and combines all arrays into an array
+
+```js
+import { chain } from 'nanoutils'
+
+const mapper = a => [a, -a]
+
+chain(mapper)([1, 2, 3])  // [1, -1, 2, -2, 3, -3]
+```
+:::
+
+## `clamp`
+
+## `clone`
+
+## `compact`
+
+## `comparator`
+
+## `complement`
+
+## `compose`
+
+## `composeP`
+
+## `composeT`
+
+## `concat`
+
+## `cond`
+
+## `construct`
+
+## `constructN`
+
+## `contains`
+
+## `converge`
+
+## `countBy`
+
+## `curry`
+
+## `curryN`

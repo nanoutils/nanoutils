@@ -26,7 +26,7 @@
 | bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
-| camelCase | 143 B | n/a B | n/a B |
+| camelCase | 154 B | n/a B | n/a B |
 | chain | 117 B | 1980 B | -1863 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 261 B | 463 B | -202 B |
