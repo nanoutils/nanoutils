@@ -421,7 +421,7 @@ hasNumberAndString(false, true)     // false, none of them
 
 ## `call`
 
-Returns the result of calling function with passed arguments
+Returns a result of calling a function with passed arguments
 
 ```js
 import { add, call } from 'nanoutils'
@@ -474,34 +474,165 @@ chain(mapper)([1, 2, 3])  // [1, -1, 2, -2, 3, -3]
 
 ## `clamp`
 
+Returns a valid number within a specified interval
+
+```js
+import { clamp } from 'nanoutils'
+
+const interval = [1, 5]
+
+clamp(...interval, -1)  // 1
+clamp(...interval, 3)   // 3
+clamp(...interval, 10)  // 5
+```
+
+::: danger
+A lower bound cannot be greater than an upper bound. It will lead to an unexpected behaviour
+:::
+
 ## `clone`
+
+Returns a deep clone of an argument
+
+```js
+import { clone } from 'nanoutils'
+
+const shop = { apple: 2, banana: 1, orange: 3 }
+const clonedShop = clone(shop)
+
+clonedShop          // { apple: 2, banana: 1, orange: 3 }
+clonedShop === shop // false
+```
+
+::: tip
+It clones even circular `object`s
+
+```js
+import { clone } from 'nanoutils'
+
+const object = {}
+object.ref = object
+const clonedObject = clone(object)
+
+const array = []
+array[0] = array
+const clonedArray = clone(array)
+
+clonedObject  // { ref: [Object] }, the same structure as object
+clonedArray   // [Array], the same structure as array
+```
+:::
 
 ## `compact`
 
+Removes falsy values from an array
+
+```js
+import { compact } from 'nanoutils'
+
+compact([1, 0, 2, false, 3, null, 4, NaN, '5', '', 6, undefined]) // [1, 2, 3, 4, '5', 6]
+```
+
+::: tip
+If an argument is not an array or `undefined`, it returns an empty array
+:::
+
 ## `comparator`
+
+Compares 2 values using a binary predicate and returns `-1`, `0` or `1`
+
+```js
+import { comparator } from 'nanoutils'
+
+const isGte = (a, b) => a >= b
+const isGt = (a, b) => a > b
+const isLte = (a, b) => a <= b
+const isLt = (a, b) => a < b
+
+isGte(5, 3) // -1
+isGte(3, 3) // -1
+isGte(3, 5) // 1,
+isGt(5, 3)  // -1
+isGt(3, 3)  // 0
+isGt(3, 5)  // 1
+isLte(5, 3) // 1
+isLte(3, 3) // 1
+isLte(3, 5) // -1
+isLt(5, 3)  // 1
+isLt(3, 3)  // 0
+isLt(3, 5)  // -1
+```
+
+::: danger
+Probably, it's not what you want to use in your case
+
+It can not always return `0` at all as a comparison should be strict
+:::
 
 ## `complement`
 
+Returns an opposite value for a function with specified arguments
+
+```js
+import { complement } from 'nanoutils'
+
+const hasValue = complement(value => value == null)
+
+hasValue(null)      // false
+hasValue(undefined) // false
+hasValue(3)         // true
+```
+
 ## `compose`
+
+Combines functions from right to left for a specified value
+
+```js
+import { add, compose, multiply } from 'nanoutils'
+
+compose(add(5), multiply(2))(1) // 7
+```
+
+::: danger
+Do not mix `compose` and `pipe` as a call order is different
+
+```js
+import { add, compose, multiply, pipe } from 'nanoutils'
+
+compose(add(1), multiply(2))(1)   // 3 (1 * 2 + 1)
+pipe(add(1), multiply(2))(1)      // 4 ((1 + 1) * 2)
+```
+:::
 
 ## `composeP`
 
-## `composeT`
+It's similar to `compose` but composes actions (functions which return `Promise`)
 
-## `concat`
+```js
+import { composeP } from 'nanoutils'
 
-## `cond`
+const db = {
+  users: {
+    1: {
+      name: 'John',
+      followings: []
+    },
+    2: {
+      name: 'Nick',
+      followings: [1]
+    },
+    3: {
+      name: 'Paul',
+      followings: [1, 2]
+    }
+  }
+}
 
-## `construct`
+const getUser = userId => Promise.resolve(db.users[userId])
+const getFollowingsByUser = user => Promise.resolve(user.followings)
+const getFollowingsById = userId => composeP(getFollowingsByUser, getUser)
 
-## `constructN`
-
-## `contains`
-
-## `converge`
-
-## `countBy`
-
-## `curry`
-
-## `curryN`
+getFollowingsById(3).then(followings =>
+  followings  // [1, 2]
+)
+```

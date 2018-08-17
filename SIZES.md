@@ -34,7 +34,7 @@
 | comparator | 48 B | 159 B | -111 B |
 | complement | 46 B | 1916 B | -1870 B |
 | compose | 93 B | 1314 B | -1221 B |
-| composeP | 83 B | 1330 B | -1247 B |
+| composeP | 109 B | 1330 B | -1221 B |
 | composeT | 102 B | n/a B | n/a B |
 | concat | 124 B | 3228 B | -3104 B |
 | cond | 68 B | 1937 B | -1869 B |
@@ -178,7 +178,7 @@
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
 | pipe | 141 B | 1245 B | -1104 B |
-| pipeP | 145 B | 1260 B | -1115 B |
+| pipeP | 152 B | 1260 B | -1108 B |
 | pipeT | 97 B | n/a B | n/a B |
 | pluck | 90 B | 1783 B | -1693 B |
 | prepend | 89 B | 301 B | -212 B |
