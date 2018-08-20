@@ -418,3 +418,466 @@ hasNumberAndString(1, 2, 3, 4)      // false, only numbers
 hasNumberAndString('1', '2', '3')   // false, only strings
 hasNumberAndString(false, true)     // false, none of them
 ```
+
+## `call`
+
+Returns a result of calling a function with passed arguments
+
+```js
+import { add, call } from 'nanoutils'
+
+call(add, 1, 2) // 3
+call(add)(1, 2) // 3
+```
+
+## `camelCase`
+
+Returns a string in a camel case style
+
+```js
+import { camelCase } from 'nanoutils'
+
+camelCase('-to camel_case')  // toCamelCase
+```
+
+::: tip
+Separators which are identified are:
+
+* Space ` `
+* Underscore `_`
+* Hyphen `-`
+:::
+
+## `chain`
+
+It chains binary and unary functions
+
+```js
+import { chain, length, prepend } from 'nanoutils'
+
+chain(prepend, length)([1, 2, 3])  // [3, 1, 2, 3]
+```
+
+::: tip
+`chain` is also known as `flatMap` or `flatten`
+
+It takes a function which returns an array and combines all arrays into an array
+
+```js
+import { chain } from 'nanoutils'
+
+const mapper = a => [a, -a]
+
+chain(mapper)([1, 2, 3])  // [1, -1, 2, -2, 3, -3]
+```
+:::
+
+## `clamp`
+
+Returns a valid number within a specified interval
+
+```js
+import { clamp } from 'nanoutils'
+
+const interval = [1, 5]
+
+clamp(...interval, -1)  // 1
+clamp(...interval, 3)   // 3
+clamp(...interval, 10)  // 5
+```
+
+::: danger
+A lower bound cannot be greater than an upper bound. It will lead to an unexpected behaviour
+:::
+
+## `clone`
+
+Returns a deep clone of an argument
+
+```js
+import { clone } from 'nanoutils'
+
+const shop = { apple: 2, banana: 1, orange: 3 }
+const clonedShop = clone(shop)
+
+clonedShop          // { apple: 2, banana: 1, orange: 3 }
+clonedShop === shop // false
+```
+
+::: tip
+It clones even circular `object`s
+
+```js
+import { clone } from 'nanoutils'
+
+const object = {}
+object.ref = object
+const clonedObject = clone(object)
+
+const array = []
+array[0] = array
+const clonedArray = clone(array)
+
+clonedObject  // { ref: [Object] }, the same structure as object
+clonedArray   // [Array], the same structure as array
+```
+:::
+
+## `compact`
+
+Removes falsy values from an array
+
+```js
+import { compact } from 'nanoutils'
+
+compact([1, 0, 2, false, 3, null, 4, NaN, '5', '', 6, undefined]) // [1, 2, 3, 4, '5', 6]
+```
+
+::: tip
+If an argument is not an array or `undefined`, it returns an empty array
+:::
+
+## `comparator`
+
+Compares 2 values using a binary predicate and returns `-1`, `0` or `1`
+
+```js
+import { comparator } from 'nanoutils'
+
+const isGte = (a, b) => a >= b
+const isGt = (a, b) => a > b
+const isLte = (a, b) => a <= b
+const isLt = (a, b) => a < b
+
+isGte(5, 3) // -1
+isGte(3, 3) // -1
+isGte(3, 5) // 1,
+isGt(5, 3)  // -1
+isGt(3, 3)  // 0
+isGt(3, 5)  // 1
+isLte(5, 3) // 1
+isLte(3, 3) // 1
+isLte(3, 5) // -1
+isLt(5, 3)  // 1
+isLt(3, 3)  // 0
+isLt(3, 5)  // -1
+```
+
+::: danger
+Probably, it's not what you want to use in your case
+
+It can not always return `0` at all as a comparison should be strict
+:::
+
+## `complement`
+
+Returns an opposite value for a function with specified arguments
+
+```js
+import { complement } from 'nanoutils'
+
+const hasValue = complement(value => value == null)
+
+hasValue(null)      // false
+hasValue(undefined) // false
+hasValue(3)         // true
+```
+
+## `compose`
+
+Combines functions from right to left for a specified value
+
+```js
+import { add, compose, multiply } from 'nanoutils'
+
+compose(add(5), multiply(2))(1) // 7
+```
+
+::: danger
+Do not mix `compose` and `pipe` as a call order is different
+
+```js
+import { add, compose, multiply, pipe } from 'nanoutils'
+
+compose(add(1), multiply(2))(1)   // 3 (1 * 2 + 1)
+pipe(add(1), multiply(2))(1)      // 4 ((1 + 1) * 2)
+```
+:::
+
+## `composeP`
+
+It's similar to `compose` but combines actions (functions which return `Promise`)
+
+```js
+import { composeP } from 'nanoutils'
+
+const db = {
+  users: {
+    1: {
+      name: 'John',
+      followings: []
+    },
+    2: {
+      name: 'Nick',
+      followings: [1]
+    },
+    3: {
+      name: 'Paul',
+      followings: [1, 2]
+    }
+  }
+}
+
+const getUser = userId => Promise.resolve(db.users[userId])
+const getFollowingsByUser = user => Promise.resolve(user.followings)
+const getFollowingsById = userId => composeP(getFollowingsByUser, getUser)
+
+getFollowingsById(3).then(followings =>
+  followings  // [1, 2]
+)
+```
+
+## `composeT`
+
+Combines transducers into a transducer
+
+```js
+import { add, composeT, mapT, takeT } from 'nanoutils'
+
+const pushReducer = (array, value) => {
+  array.push(value)
+  return array
+}
+const transducer = composeT(mapT(add(1)), takeT(2))
+const rootReducer = transducer(pushReducer)
+
+rootReducer([], 1)      // [2]
+rootReducer([2], 2)     // [2, 3]
+rootReducer([2, 3], 3)  // [2, 3]
+```
+
+::: tip
+It's basically used with [`transduce`](#transduce)
+
+```js
+import { add, append, composeT, flip, mapT, takeT, transduce } from 'nanoutils'
+
+const transducer = composeT(mapT(add(1)), takeT(2))
+
+transduce(transducer, flip(append), [], [1, 2, 3])  // [2, 3]
+```
+:::
+
+## `concat`
+
+Returns a concatenated string or array. Otherwise, returns `null`
+
+```js
+import { concat } from 'nanoutils'
+
+concat([1, 2], [3, 4])  // [1, 2, 3, 4]
+concat('12', '34')      // '1234'
+concat([1, 2], '34')    // null
+concat('12', [3, 4])    // null
+```
+
+## `cond`
+
+Declarative analogue of `if-else` with early return
+
+Old way:
+
+```js
+const getValue = value => {
+  if (value === 3) {
+    return 3
+  }
+  if (value > 1) {
+    return 2
+  }
+  return 1
+}
+
+getValue(1)   // 1
+getValue(2)   // 2
+getValue(3)   // 3
+```
+
+`cond` way:
+
+```js
+import { cond } from 'nanoutils'
+
+const getValue = cond([
+  [value => value === 3, () => 3],
+  [value => value > 1, () => 2],
+  [() => true, () => 1]
+])
+
+getValue(1)   // 1
+getValue(2)   // 2
+getValue(3)   // 3
+```
+
+::: tip
+As all JS functions, if you don't specify a returned value in `cond` for, it returns `undefined`
+
+```js
+import { cond } from 'nanoutils'
+
+cond([])(1) // undefined
+```
+:::
+
+## `construct`
+
+Passes arguments to a constructor to create an object
+
+```js
+import { construct } from 'nanoutils'
+
+function Person(name, address) {
+  this.name = name
+  this.address = address
+}
+
+const john = construct(Person)('John', '2573 Carolyns Circle')
+
+john.name     // 'John'
+john.address  // '2573 Carolyns Circle'
+```
+
+## `constructN`
+
+Passes a specified number of arguments to create an object
+
+```js
+import { constructN } from 'nanoutils'
+
+const Top3 = constructN(3, function() {
+  this.list = [].slice.call(arguments)
+})
+
+const fruits = Top3('apple')('orange')('banana')
+
+fruits.list // ['apple', 'orange', 'banana']
+```
+
+::: danger
+Do not mix `construct` and `constructN`
+
+`construct` is waiting for exact the same number of arguments a constructor takes (i.e. `Person` took 2 arguments: `name` and `address`)
+
+However, with `constructN` you can specify a different number of arguments if at all it was set (i.e. if a constructor uses `arguments`, a number of arguments is not computed)
+:::
+
+## `contains`
+
+Checks if a value is presented in an array
+
+```js
+import { contains } from 'nanoutils'
+
+const containsNull = contains(null)
+
+containsNull([1, 2, 3, 4, null])  // true
+containsNull([1, 2, 3, 4])        // false
+```
+
+::: tip
+An equality is checked strictly by a value
+
+It means that complex objects are checked by identical keys and values recursively, primitives are checked with `===`
+:::
+
+## `converge`
+
+Converges a value with a function which uses results of an array of functions
+
+```js
+import { converge, divide, length, sum } from 'nanoutils'
+
+const average = converge(divide, [sum, length])
+
+average([1, 1, 3, 3, 5, 5, 7, 7, 9])  // 4.555555555555555
+```
+
+::: tip
+`converge` is very convenient to extract statistical values from data and to work on vectors and matrices
+:::
+
+## `countBy`
+
+Counts repetitions and saves them to an object
+
+```js
+import { countBy, identity } from 'nanoutils'
+
+const isPermutation = (str1, str2) => {
+  const getRepeations = countBy(identity)
+  const repeats1 = getRepeations([...str1])
+  const repeats2 = getRepeations([...str2])
+  const keys1 = Object.keys(repeats1)
+  const keys2 = Object.keys(repeats2)
+  
+  if (keys1.length !== keys2.length) {
+    return false
+  }
+  return keys1.filter(key => repeats2[key] === repeats1[key]).length === keys1.length
+}
+
+isPermutation('str', 'tsr')   // true
+isPermutation('str', 'trsss') // false
+```
+
+## `curry`
+
+Returns a curried version of a function
+
+```js
+import { curry } from 'nanoutils'
+
+const add3 = curry((a, b, c) => a + b + c)
+
+add3(1, 2, 3)   // 6
+add3(1, 2)(3)   // 6
+add3(1)(2, 3)   // 6
+```
+
+::: tip
+It curries a function with arguments it takes
+:::
+
+:::danger
+If a function has a value by default, `curry` will see arguments until it
+
+```js
+import { curry } from 'nanoutils'
+
+const add3 = curry((a, b = 2, c = 3) => a + b + c)
+
+add(1, 3, 4)    // 8
+add3(1, 3)(4)   // TypeError: add3(...) is not a function
+add3(1, 3)      // 7
+add3(1)(3, 4)   // TypeError: add3(...) is not a function
+add(1)          // 6
+```
+:::
+
+## `curryN`
+
+Similar to `curry` but can specify a number of arguments (accepted minimum)
+
+```js
+import { curryN } from 'nanoutils'
+
+const add3 = curryN(1, (a, b = 2, c = 3) => a + b + c)
+
+add(1, 3, 4)  // 8
+add3(1, 3)    // 7
+add3(1)       // 6
+```
+
+::: tip
+It's convenient when a function has arguments with values by default
+:::
