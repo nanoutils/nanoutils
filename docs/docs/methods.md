@@ -856,11 +856,11 @@ import { curry } from 'nanoutils'
 
 const add3 = curry((a, b = 2, c = 3) => a + b + c)
 
-add(1, 3, 4)    // 8
+add3(1, 3, 4)    // 8
 add3(1, 3)(4)   // TypeError: add3(...) is not a function
 add3(1, 3)      // 7
 add3(1)(3, 4)   // TypeError: add3(...) is not a function
-add(1)          // 6
+add3(1)          // 6
 ```
 :::
 
@@ -871,13 +871,256 @@ Similar to `curry` but can specify a number of arguments (accepted minimum)
 ```js
 import { curryN } from 'nanoutils'
 
-const add3 = curryN(1, (a, b = 2, c = 3) => a + b + c)
+const add1 = curryN(1, (a, b = 2, c = 3) => a + b + c)
 
-add(1, 3, 4)  // 8
-add3(1, 3)    // 7
-add3(1)       // 6
+add1(1, 3, 4)  // 8
+add1(1, 3)    // 7
+add1(1)       // 6
 ```
 
 ::: tip
 It's convenient when a function has arguments with values by default
+:::
+
+## `debounce`
+
+Delays a call of function until specified time
+
+```js
+import { debounce } from 'nanoutils'
+
+const click = debounce(200, (...args) => console.log(`Click with ${args}`))
+
+click(1, 2)
+click(2, 3)
+click(3, 4)
+// in 200 ms after a last call: 'Click with 3,4'
+```
+ 
+## `dec`
+
+Decrements a number
+
+```js
+import { dec } from 'nanoutils'
+
+dec(1)        // 0
+dec('1')      // 0
+dec('1')      // 0
+dec('a')      // NaN
+dec(null)     // -1
+dec(false)    // -1
+dec(true)     // 0
+dec([])       // -1
+dec([2])      // 1
+dec([1, 2])   // NaN
+```
+
+::: tip JS-friendly
+If you pass a non-number value, it tries to convert them to a number and to decrement then. Otherwise, it returns `NaN`
+:::
+
+## `defaultTo`
+
+Returns a value if it doesn't equal to `undefined`, `null` and `NaN`
+
+```js
+import { defaultTo } from 'nanoutils'
+
+const defaultTo42 = defaultTo(42)
+
+defaultTo42(undefined)    // 42
+defaultTo42(null)         // 42
+defaultTo42(NaN)          // 42
+defaultTo42(false)        // false
+```
+
+## `descend`
+
+Given a getter function compares values in an descending 📉 order
+
+```js
+import { descend } from 'nanoutils'
+
+const byAge = descend(({ age }) => age)
+
+byAge({ age: 19 }, { age: 18 })   // -1
+byAge({ age: 18 }, { age: 18 })   // 0
+byAge({ age: 18 }, { age: 19 })   // 1
+```
+
+## `difference`
+
+Returns a difference between `array`s
+
+```js
+import { difference } from 'nanoutils'
+
+difference([1, 2, 3], [1, 2, 3, 4])           // []
+difference([1, 2, 3], [1, 2])                 // [3]
+difference([{ a: 1 }, { b: 2 }], [{ b: 2 }])  // [{ a: 1 }]
+```
+
+## `differenceWith`
+
+Given a comparator returns a difference between `array`s
+
+```js
+import { differenceWith } from 'nanoutils'
+
+const withPropA = differenceWith((obj1, obj2) => obj1.a === obj2.a)
+
+withPropA([{ a: 1, b: 2 }], [{ a: 1 }])   // []
+withPropA([{ a: 1, b: 2 }], [{ a: 2 }])   // [{ a: 1, b: 2 }]
+```
+
+## `dissoc`
+
+Returns an object without a specified field
+
+```js
+import { dissoc } from 'nanoutils'
+
+const withoutPropA = dissoc('a')
+
+withoutPropA({ a: 1 })        // {}
+withoutPropA({ a: 1, b: 2 })  // { b: 2 }
+```
+
+::: tip
+Returns a shallow copy of an object
+:::
+
+## `dissocPath`
+
+Returns an object without a specified field based on a given path
+
+```js 
+import { dissocPath } from 'nanoutils'
+
+const path = ['a', 'b', 'c']
+const dissoc = dissocPath(path)
+
+dissoc({ a: { b: { c: 1 } } })    // { a: { b: {} } }
+dissoc({ a: { b: 2 })             // { a: { b: {} } }
+```
+
+::: warning
+If a path is not fully resolved, last resolved item will become an empty object
+:::
+
+## `divide`
+
+Returns a division of two values
+
+```js
+import { divide } from 'nanoutils'
+
+divide(1, 1)          // 1
+divide(1)(1)          // 1
+divide('1')(1)        // 1
+divide('1')('1')      // 1
+divide(-1)(0)         // -Infinity
+divide(1)('a')        // NaN
+divide(null)(null)    // NaN
+divide(false)(false)  // NaN
+divide(true)(true)    // 1
+divide([])([])        // NaN
+divide([2])([2])      // 1
+```
+
+::: tip JS-friendly
+If you pass non-number values, it tries to convert them to numbers and to return a division. Otherwise, it returns `NaN`
+:::
+
+## `drop`
+
+Returns a `string` or an `array` with a specified number of dropped elements (from a beginning)
+
+```js
+import { drop } from 'nanoutils'
+
+drop(2)('1234')       // '34'
+drop(2)([1, 2, 3, 4]) // [3, 4]
+```
+
+::: tip
+Returns same `string` or `array` if a number is negative
+:::
+
+## `dropLast`
+
+Returns a `string` or an `array` with a specified number of dropped elements (from an end)
+
+```js
+import { dropLast } from 'nanoutils'
+
+dropLast(2)('1234')       // '12'
+dropLast(2)([1, 2, 3, 4]) // [1, 2]
+```
+
+::: tip
+Returns same `string` or `array` if a number is negative
+:::
+
+## `dropLastWhile`
+
+Returns a `string` or an `array` with a specified number of dropped elements (from an end while a condition returns `true`)
+
+```js
+import { dropLastWhile } from 'nanoutils'
+
+const dropWhileGreater2 = dropLastWhile(value => value > 2)
+
+dropWhileGreater2('1234')       // '12'
+dropWhileGreater2([1, 2, 3, 4]) // [1, 2]
+```
+
+::: tip
+Returns a copy of a `string` or an `array` if a condition returns `false` for a first element
+:::
+
+## `dropRepeats`
+
+Returns a `string` or an `array` which has dropped next identical elements
+
+```js
+import { dropRepeats } from 'nanoutils'
+
+dropRepeats([-1, 1, 1, 2, -2, 2])   // [-1, 1, 2, -2, 2]
+dropRepeats('112334555')            // '12345'
+```
+
+::: tip
+Identity is based on `equal`
+:::
+
+## `dropRepeatsWith`
+
+Returns a `string` or an `array` which has dropped next elements based on a function
+
+```js
+import { dropRepeatsWith } from 'nanoutils'
+
+const isAbsEqual = (a, b) => Math.abs(a) === Math.abs(b)
+
+dropRepeatsWith(isAbsEqual, [-1, 1, 1, 2, -2, 2])   // [-1, 2]
+dropRepeatsWith(isNextEqual, '112334555')           // '11355'
+```
+
+## `dropWhile`
+
+Returns a `string` or an `array` with a specified number of dropped elements (from a beginning while a condition returns `true`)
+
+```js
+import { dropWhile } from 'nanoutils'
+
+const dropWhileLess3 = dropWhile(value => value < 3)
+
+dropWhileLess3('1234')       // '34'
+dropWhileLess3([1, 2, 3, 4]) // [3, 4]
+```
+
+::: tip
+Returns a copy of a `string` or an `array` if a condition returns `false` for a first element
 :::

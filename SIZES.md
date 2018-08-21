@@ -54,12 +54,12 @@
 | dissoc | 108 B | 258 B | -150 B |
 | dissocPath | 136 B | 708 B | -572 B |
 | divide | 82 B | 230 B | -148 B |
-| drop | 125 B | 782 B | -657 B |
-| dropLast | 139 B | 983 B | -844 B |
+| drop | 92 B | 782 B | -690 B |
+| dropLast | 110 B | 983 B | -873 B |
 | dropLastWhile | 124 B | 1443 B | -1319 B |
-| dropRepeats | 412 B | 1845 B | -1433 B |
-| dropRepeatsWith | 119 B | 722 B | -603 B |
-| dropWhile | 116 B | 806 B | -690 B |
+| dropRepeats | 428 B | 1845 B | -1417 B |
+| dropRepeatsWith | 139 B | 722 B | -583 B |
+| dropWhile | 115 B | 806 B | -691 B |
 | either | 48 B | 1943 B | -1895 B |
 | empty | 99 B | 380 B | -281 B |
 | endsWith | 90 B | 1943 B | -1853 B |
@@ -97,7 +97,7 @@
 | indexBy | 110 B | 1438 B | -1328 B |
 | indexed | 40 B | n/a B | n/a B |
 | indexOf | 99 B | 1570 B | -1471 B |
-| init | 96 B | 493 B | -397 B |
+| init | 70 B | 493 B | -423 B |
 | innerJoin | 155 B | 439 B | -284 B |
 | insert | 124 B | 378 B | -254 B |
 | insertAll | 132 B | 379 B | -247 B |
@@ -218,7 +218,7 @@
 | symmetricDifference | 465 B | 3293 B | -2828 B |
 | symmetricDifferenceWith | 233 B | 3404 B | -3171 B |
 | T | 53 B | 156 B | -103 B |
-| tail | 134 B | 509 B | -375 B |
+| tail | 102 B | 509 B | -407 B |
 | take | 125 B | 827 B | -702 B |
 | takeLast | 125 B | 808 B | -683 B |
 | takeLastWhile | 124 B | 528 B | -404 B |
