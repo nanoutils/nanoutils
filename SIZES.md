@@ -29,7 +29,7 @@
 | camelCase | 143 B | n/a B | n/a B |
 | chain | 117 B | 1980 B | -1863 B |
 | clamp | 110 B | 402 B | -292 B |
-| clone | 261 B | 463 B | -202 B |
+| clone | 299 B | 463 B | -164 B |
 | compact | 51 B | n/a B | n/a B |
 | comparator | 48 B | 159 B | -111 B |
 | complement | 46 B | 1916 B | -1870 B |
@@ -74,7 +74,7 @@
 | filter | 177 B | 1549 B | -1372 B |
 | filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |
-| findIndex | 112 B | 652 B | -540 B |
+| findIndex | 124 B | 652 B | -528 B |
 | findLast | 112 B | 582 B | -470 B |
 | findLastIndex | 112 B | 603 B | -491 B |
 | flatten | 83 B | 369 B | -286 B |
