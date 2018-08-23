@@ -1077,7 +1077,7 @@ dropWhileGreater2([1, 2, 3, 4]) // [1, 2]
 ```
 
 ::: tip
-Returns a copy of a `string` or an `array` if a condition returns `false` for a first element
+Returns a copy of a `string` or an `array` if a condition returns `false` for a last element
 :::
 
 ## `dropRepeats`
@@ -1124,3 +1124,81 @@ dropWhileLess3([1, 2, 3, 4]) // [3, 4]
 ::: tip
 Returns a copy of a `string` or an `array` if a condition returns `false` for a first element
 :::
+
+## `either`
+
+Checks if at least one of functions is `true` for arguments
+
+```js
+import { either } from 'nanoutils'
+
+const hasNumber = (...args) => args.some(arg => typeof arg === 'number')
+const hasString = (...args) => args.some(arg => typeof arg === 'string')
+
+const hasNumberOrString = either(hasNumber, hasString)
+
+hasNumberOrString(1, '2', 3, '4')  // true
+hasNumberOrString(1, 2, 3, 4)      // true, at least numbers
+hasNumberOrString('1', '2', '3')   // true, at least strings
+hasNumberOrString(false, true)     // false, none of them
+```
+
+## `empty`
+
+Returns an empty value
+
+```js
+import { empty } from 'nanoutils'
+
+empty([1, 2, 3])  // []
+empty({ a: 1 })   // {}
+empty('1234')     // ''
+```
+
+::: tip
+If a value to a function is not within `value.constructor.empty`, not an `array`, an `object` or a `string`, it returns `Arguments`
+
+```js
+import { empty } from 'nanoutils'
+
+empty(123)            // []
+typeof empty(123)     // 'object'
+empty(123).toString() // '[object Arguments]'
+```
+:::
+
+## `endsWith`
+
+Check if an `array` or a `string` has a specifix suffix
+
+```js
+import { endsWith } from 'nanoutils'
+
+endsWith('ring', 'spring')  // true
+endsWith([1, 1])([1, 1, 2]) // false
+```
+
+::: warning
+If both arguments are neither a `string` nor an `array`, a function returns `undefined`
+
+```js
+import { endsWith } from 'nanoutils'
+
+endsWith(1, 'abc')                // undefined
+endsWith(function() {}, 'abc')    // undefined
+endsWith([1, 2], { 0: 1, 1: 2 })  // undefined
+endsWith('34', 1234)              // undefined
+```
+:::
+
+## `eqBy`
+
+## `eqLens`
+
+## `eqProp`
+
+## `equals`
+
+## `eqWith`
+
+## `evolve`

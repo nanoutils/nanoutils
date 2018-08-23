@@ -62,7 +62,7 @@
 | dropWhile | 115 B | 806 B | -691 B |
 | either | 48 B | 1943 B | -1895 B |
 | empty | 99 B | 380 B | -281 B |
-| endsWith | 90 B | 1943 B | -1853 B |
+| endsWith | 425 B | 1943 B | -1518 B |
 | eqBy | 398 B | 1500 B | -1102 B |
 | eqLens | 398 B | n/a B | n/a B |
 | eqProps | 107 B | 1500 B | -1393 B |
