@@ -174,7 +174,7 @@
 | pathEq | 470 B | 1540 B | -1070 B |
 | pathOr | 164 B | 422 B | -258 B |
 | pathSatisfies | 160 B | 405 B | -245 B |
-| pick | 106 B | 266 B | -160 B |
+| pick | 107 B | 266 B | -159 B |
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
 | pipe | 141 B | 1245 B | -1104 B |
