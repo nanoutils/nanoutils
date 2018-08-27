@@ -165,7 +165,7 @@
 | omitBy | 116 B | n/a B | n/a B |
 | once | 60 B | 342 B | -282 B |
 | or | 82 B | 231 B | -149 B |
-| over | 300 B | 364 B | -64 B |
+| over | 126 B | 364 B | -238 B |
 | pair | 83 B | 232 B | -149 B |
 | partial | 68 B | 497 B | -429 B |
 | partialRight | 94 B | 704 B | -610 B |
@@ -255,7 +255,6 @@
 | unzip | 190 B | n/a B | n/a B |
 | unzipWith | 139 B | n/a B | n/a B |
 | update | 116 B | 497 B | -381 B |
-| updateLens | 126 B | n/a B | n/a B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
 | valuesIn | 47 B | 163 B | -116 B |
