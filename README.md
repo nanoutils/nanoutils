@@ -25,8 +25,8 @@ But as it's a Ramda-supportive, you can see both docs and types here: [Ramda doc
 
 ## Roadmap
 
-* [ ] Create methods list
-* [ ] Complete all needed methods (we get list of methods from Ramda) with 100% tests and types coverage
+* [x] Create methods list
+* [x] Complete all needed methods (we get list of methods from Ramda) with 100% tests and types coverage
 * [ ] Create a tool to split nanoutils to separated packages
 * [ ] Try to reduce methods sizes even more
 
