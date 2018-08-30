@@ -27,8 +27,11 @@ But as it's a Ramda-supportive, you can see both docs and types here: [Ramda doc
 
 * [x] Create methods list
 * [x] Complete all needed methods (we get list of methods from Ramda) with 100% tests and types coverage
+* [ ] Add documentation for all methods
 * [ ] Create a tool to split nanoutils to separated packages
-* [ ] Try to reduce methods sizes even more
+* [ ] Cover all methods with performance tests
+* [ ] Reduce methods sizes even more
+* [ ] Compare to `lodash`, `underscore` (?)
 
 ## NPM scripts
 
