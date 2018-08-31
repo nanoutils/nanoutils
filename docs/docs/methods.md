@@ -1193,12 +1193,121 @@ endsWith('34', 1234)              // undefined
 
 ## `eqBy`
 
+Compares two arguments which are passed to a function
+
+```js
+import { eqBy, prop } from 'nanoutils'
+
+const danAbramov = { firstName: 'Dan', lastName: 'Abramov' }
+const danIvanov = { firstName: 'Dan', lastName: 'Ivanov' }
+
+eqBy(prop('firstName'), danAbramov, danIvanov)    // true
+eqBy(prop('lastName'), danAbramov, danIvanov)     // false
+```
+
+::: tip
+It compares values using [`equals`](#equals)
+:::
+
 ## `eqLens`
 
-## `eqProp`
+Compares a value with an argument which is passed to a lens-like function
+
+```js
+import { eqLens, lens } from 'nanoutils'
+
+const lastName = 'Abramov'
+const danAbramov = { firstName: 'Dan', lastName: 'Abramov' }
+const danIvanov = { firstName: 'Dan', lastName: 'Ivanov' }
+const lastNameLens = lens(person => person.lastName)
+
+eqLens(lastNameLens, lastName, danAbramov)    // true
+eqLens(lastNameLens, lastName, danIvanov)     // false
+```
+
+::: tip
+It compares values using [`equals`](#equals)
+:::
+
+## `eqProps`
+
+Compares properties of two objects by a key
+
+```js
+import { eqProps } from 'nanoutils'
+
+const danAbramov = { firstName: 'Dan', lastName: 'Abramov' }
+const danIvanov = { firstName: 'Dan', lastName: 'Ivanov' }
+
+eqProps('firstName', danIvanov, danAbramov)    // true
+eqProps('lastName', danIvanov, danAbramov)     // false
+```
+
+::: tip
+It compares values using [`equals`](#equals)
+:::
 
 ## `equals`
 
+Compares two values deeply with possible circulars
+
+```js
+import { equals } from 'nanoutils'
+
+const danAbramov = { firstName: 'Dan', lastName: 'Abramov' }
+const danIvanov = { firstName: 'Dan', lastName: 'Ivanov' }
+
+equals(danAbramov, danAbramov)    // true
+equals(danAbramov, danIvanov)     // false
+equals(danIvanov, danIvanov)      // true
+```
+
+::: tip
+It compares values using [`equals`](#equals)
+:::
+
+::: warning
+A comparison of mirror arrays and objects is not working yet
+:::
+
 ## `eqWith`
 
+Compares two values with a comparator
+
+```js
+import { eqWith } from 'nanoutils'
+
+const lengthComparison = (arr1, arr2) => arr1.length === arr2.length
+const eqWithLength = eqWith(lengthComparison)
+
+eqWithLength([1, 2], [2, 3])    // true
+eqWithLength([1, 2], [2, 3, 4]) // false
+```
+
 ## `evolve`
+
+Transforms all properties of an object with an object whose properties are transformations
+
+```js
+import { add, evolve } from 'nanoutils'
+
+const celebrateBirthday = {
+  age: add(1)
+}
+const person = {
+  name: 'Alex Berezin',
+  age: 24
+}
+
+evolve(celebrateBirthday, person)   // { name: 'Alex Berezin', age: 25 }
+```
+
+::: tip
+Always returns a new object
+:::
+
+::: warning
+Do not add properties which are absent in an object but are present in transformations
+
+It won't be present in a resulting object
+:::
