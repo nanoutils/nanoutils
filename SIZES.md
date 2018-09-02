@@ -65,7 +65,7 @@
 | endsWith | 425 B | 1943 B | -1518 B |
 | eqBy | 398 B | 1500 B | -1102 B |
 | eqLens | 398 B | n/a B | n/a B |
-| eqProps | 107 B | 1500 B | -1393 B |
+| eqProps | 397 B | 1500 B | -1103 B |
 | equals | 367 B | 1369 B | -1002 B |
 | eqWith | 103 B | n/a B | n/a B |
 | evolve | 86 B | 282 B | -196 B |
