@@ -1311,3 +1311,154 @@ Do not add properties which are absent in an object but are present in transform
 
 It won't be present in a resulting object
 :::
+
+## `F`
+
+Always returns `false`
+
+```js
+import { F } from 'nanoutils'
+
+F()     // false
+F(1)    // false
+F(true) // false
+```
+
+## `fill`
+
+Returns an array with filled values
+
+```js
+import { fill } from 'nanoutils'
+
+let marks = [4, 5, 5, 3, 4]
+
+fill()(arr)         // [4, 5, 5, 3, 4] 
+fill(0)(arr)        // [0, 0, 0, 0, 0] 
+fill(0, 2)(arr)     // [4, 5, 0, 0, 0] 
+fill(0, 2, -1)(arr) // [4, 5, 0, 0, 4] 
+```
+
+::: tip
+It returns a new (but shallow copy of) array even though a value is `undefined`
+:::
+
+## `filter`
+
+Filters values for both `array`s and `object`s
+
+```js
+import { filter } from 'nanoutils'
+
+const people = [
+  { name: 'Nick Oldman', age: 45 },
+  { name: 'Jack Newton', age: 12 }
+]
+filter(({ age }) => age >= 18, people)  // [{ name: 'Nick Oldman', age: 45 }]
+
+const peopleObj = {
+  'Nick Oldman': 45,
+  'Jack Newton': 12
+}
+filter(age => age >= 18, peopleObj)     // { 'Nick Oldman': 45 }
+```
+
+## `filterT`
+
+Creates a transducer with a filter
+
+```js
+import { filterT } from 'nanoutils'
+
+const pushReducer = (array, value) => {
+  array.push(value)
+  return array
+}
+const isEven = value => value % 2 === 0
+const transducer = filterT(isEven)
+const rootReducer = transducer(pushReducer)
+
+rootReducer([], 1)      // []
+rootReducer([], 2)      // [2]
+rootReducer([2], 3)     // [2]
+rootReducer([2], 4)     // [2, 4]
+rootReducer([2, 4], 5)  // [2, 4]
+```
+
+## `find`
+
+Finds a value in an `array` based on a predicate and returns it (a search is made from a beginning). Otherwise, returns `undefined`
+
+```js
+import { find } from 'nanoutils'
+
+const isDigit = value => value >= 0 && value < 10
+
+find(isDigit, [10, 20, 30])   // undefined
+find(isDigit, [10, 2, 3])     // 2
+```
+
+## `findIndex`
+
+Finds a value in an `array` based on a predicate and returns an index of it (a search is made from a beginning). Otherwise, returns `-1`
+
+```js
+import { findIndex } from 'nanoutils'
+
+const isDigit = value => value >= 0 && value < 10
+
+findIndex(isDigit, [10, 20, 30])    // -1
+findIndex(isDigit, [10, 2, 3])      // 1
+```
+
+## `findLast`
+
+Finds a value in an `array` based on a predicate and returns it (a search is made from an end). Otherwise, returns `undefined`
+
+```js
+import { findLast } from 'nanoutils'
+
+const isDigit = value => value >= 0 && value < 10
+
+findLast(isDigit, [10, 20, 30])   // undefined
+findLast(isDigit, [10, 2, 3])     // 3
+```
+
+## `findLastIndex`
+
+Finds a value in an `array` based on a predicate and returns an index of it (a search is made from an end). Otherwise, returns `-1`
+
+```js
+import { findLastIndex } from 'nanoutils'
+
+const isDigit = value => value >= 0 && value < 10
+
+findLastIndex(isDigit, [10, 20, 30])    // -1
+findLastIndex(isDigit, [10, 2, 3])      // 2
+```
+
+## `flatten`
+
+Returns an `array` with elements of it and its subarrays
+
+```js
+import { flatten } from 'nanoutils'
+
+var array = [1, 2, [3, [4, [5]], 6], [7], 8]
+
+flatten(array)  // [1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+::: tip
+In spite of `flatten`, `unnest` returns an array with unwrapped elements of a depth `1`
+:::
+
+## `flattenObj`
+
+## `flip`
+
+## `forEach`
+
+## `forEachObjIndexed`
+
+## `fromPairs`
