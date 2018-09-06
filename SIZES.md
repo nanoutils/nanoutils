@@ -13,7 +13,7 @@
 | any | 111 B | 635 B | -524 B |
 | anyPass | 111 B | 1990 B | -1879 B |
 | ap | 150 B | 1830 B | -1680 B |
-| aperture | 122 B | 750 B | -628 B |
+| aperture | 137 B | 750 B | -613 B |
 | append | 88 B | 301 B | -213 B |
 | apply | 86 B | 230 B | -144 B |
 | applySpec | 170 B | 2075 B | -1905 B |
@@ -102,7 +102,7 @@
 | insert | 117 B | 378 B | -261 B |
 | insertAll | 130 B | 379 B | -249 B |
 | intersection | 525 B | 2360 B | -1835 B |
-| intersperse | 117 B | 409 B | -292 B |
+| intersperse | 132 B | 409 B | -277 B |
 | into | 341 B | 1638 B | -1297 B |
 | invert | 58 B | 534 B | -476 B |
 | invertObj | 44 B | 520 B | -476 B |
@@ -127,8 +127,8 @@
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
 | map | 122 B | 1710 B | -1588 B |
-| mapAccum | 138 B | 383 B | -245 B |
-| mapAccumRight | 149 B | 383 B | -234 B |
+| mapAccum | 157 B | 383 B | -226 B |
+| mapAccumRight | 160 B | 383 B | -223 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mapT | 45 B | n/a B | n/a B |
 | match | 90 B | 237 B | -147 B |
@@ -201,7 +201,7 @@
 | repeat | 104 B | 364 B | -260 B |
 | replace | 107 B | 341 B | -234 B |
 | reverse | 91 B | 212 B | -121 B |
-| scan | 140 B | 373 B | -233 B |
+| scan | 148 B | 373 B | -225 B |
 | set | 115 B | 411 B | -296 B |
 | slice | 148 B | 473 B | -325 B |
 | snakeCase | 127 B | n/a B | n/a B |
@@ -235,7 +235,7 @@
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
 | transduce | 238 B | 1082 B | -844 B |
-| transpose | 112 B | 204 B | -92 B |
+| transpose | 119 B | 204 B | -85 B |
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
 | type | 109 B | 186 B | -77 B |
