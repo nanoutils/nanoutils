@@ -210,7 +210,7 @@
 | sortWith | 138 B | 285 B | -147 B |
 | split | 86 B | 3344 B | -3258 B |
 | splitAt | 93 B | 556 B | -463 B |
-| splitEvery | 118 B | 592 B | -474 B |
+| splitEvery | 150 B | 592 B | -442 B |
 | splitWhen | 124 B | 284 B | -160 B |
 | startsWith | 164 B | 1969 B | -1805 B |
 | subtract | 82 B | 240 B | -158 B |
@@ -252,8 +252,8 @@
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 114 B | 351 B | -237 B |
-| unzip | 218 B | n/a B | n/a B |
-| unzipWith | 161 B | n/a B | n/a B |
+| unzip | 229 B | n/a B | n/a B |
+| unzipWith | 172 B | n/a B | n/a B |
 | update | 116 B | 497 B | -381 B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
@@ -264,7 +264,7 @@
 | whereEq | 397 B | 2551 B | -2154 B |
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
-| xprod | 134 B | 284 B | -150 B |
+| xprod | 148 B | 284 B | -136 B |
 | za | 53 B | n/a B | n/a B |
 | zip | 162 B | 273 B | -111 B |
 | zipObj | 49 B | 271 B | -222 B |
