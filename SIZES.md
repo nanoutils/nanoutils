@@ -30,7 +30,7 @@
 | chain | 161 B | 1980 B | -1819 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 299 B | 463 B | -164 B |
-| compact | 51 B | n/a B | n/a B |
+| compact | 50 B | n/a B | n/a B |
 | comparator | 48 B | 159 B | -111 B |
 | complement | 46 B | 1916 B | -1870 B |
 | compose | 93 B | 1314 B | -1221 B |
@@ -126,7 +126,7 @@
 | liftN | 441 B | 1878 B | -1437 B |
 | lt | 82 B | 230 B | -148 B |
 | lte | 83 B | 231 B | -148 B |
-| map | 122 B | 1710 B | -1588 B |
+| map | 155 B | 1710 B | -1555 B |
 | mapAccum | 157 B | 383 B | -226 B |
 | mapAccumRight | 160 B | 383 B | -223 B |
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
@@ -252,7 +252,7 @@
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 114 B | 351 B | -237 B |
-| unzip | 229 B | n/a B | n/a B |
+| unzip | 215 B | n/a B | n/a B |
 | unzipWith | 172 B | n/a B | n/a B |
 | update | 116 B | 497 B | -381 B |
 | useWith | 109 B | 618 B | -509 B |
