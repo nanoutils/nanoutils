@@ -13,7 +13,7 @@
 | any | 111 B | 635 B | -524 B |
 | anyPass | 111 B | 1990 B | -1879 B |
 | ap | 150 B | 1830 B | -1680 B |
-| aperture | 137 B | 750 B | -613 B |
+| aperture | 134 B | 750 B | -616 B |
 | append | 88 B | 301 B | -213 B |
 | apply | 86 B | 230 B | -144 B |
 | applySpec | 170 B | 2075 B | -1905 B |
@@ -102,7 +102,7 @@
 | insert | 117 B | 378 B | -261 B |
 | insertAll | 130 B | 379 B | -249 B |
 | intersection | 525 B | 2360 B | -1835 B |
-| intersperse | 132 B | 409 B | -277 B |
+| intersperse | 130 B | 409 B | -279 B |
 | into | 341 B | 1638 B | -1297 B |
 | invert | 58 B | 534 B | -476 B |
 | invertObj | 44 B | 520 B | -476 B |
@@ -190,7 +190,7 @@
 | propOr | 110 B | 362 B | -252 B |
 | props | 134 B | 263 B | -129 B |
 | propSatisfies | 106 B | 338 B | -232 B |
-| range | 108 B | 342 B | -234 B |
+| range | 107 B | 342 B | -235 B |
 | reduce | 295 B | 1021 B | -726 B |
 | reduceBy | 320 B | 1424 B | -1104 B |
 | reduceRight | 129 B | 361 B | -232 B |
@@ -210,7 +210,7 @@
 | sortWith | 138 B | 285 B | -147 B |
 | split | 86 B | 3344 B | -3258 B |
 | splitAt | 93 B | 556 B | -463 B |
-| splitEvery | 150 B | 592 B | -442 B |
+| splitEvery | 147 B | 592 B | -445 B |
 | splitWhen | 124 B | 284 B | -160 B |
 | startsWith | 164 B | 1969 B | -1805 B |
 | subtract | 82 B | 240 B | -158 B |
@@ -235,7 +235,7 @@
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
 | transduce | 238 B | 1082 B | -844 B |
-| transpose | 119 B | 204 B | -85 B |
+| transpose | 116 B | 204 B | -88 B |
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
 | type | 109 B | 186 B | -77 B |
@@ -252,8 +252,8 @@
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 161 B | n/a B | n/a B |
 | until | 114 B | 351 B | -237 B |
-| unzip | 215 B | n/a B | n/a B |
-| unzipWith | 172 B | n/a B | n/a B |
+| unzip | 212 B | n/a B | n/a B |
+| unzipWith | 169 B | n/a B | n/a B |
 | update | 116 B | 497 B | -381 B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
@@ -264,7 +264,7 @@
 | whereEq | 397 B | 2551 B | -2154 B |
 | whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
-| xprod | 148 B | 284 B | -136 B |
+| xprod | 146 B | 284 B | -138 B |
 | za | 53 B | n/a B | n/a B |
 | zip | 162 B | 273 B | -111 B |
 | zipObj | 49 B | 271 B | -222 B |
