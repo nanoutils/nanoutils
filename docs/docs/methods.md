@@ -1455,10 +1455,89 @@ In spite of `flatten`, `unnest` returns an array with unwrapped elements of a de
 
 ## `flattenObj`
 
+It converts nested object into a flatten one, all keys become paths to repsective values
+
+```js
+import { flattenObj } from 'nanoutils'
+
+const people = {
+  john: {
+    name: 'John Parker',
+    age: 18
+  }
+}
+flattenObj(people)  //  { 'john.name': 'John Parker', 'john.age': 18 }
+```
+
+::: tip
+Remember that `flattenObj` is applied only to `object`s
+
+To apply it to `array`s have a look at [flatten](#flatten)
+:::
+
 ## `flip`
+
+Applies a function to a reversed arguments
+
+```js
+import { flip } from 'nanoutils'
+
+const pushReducer = (arr, v) => {
+  arr.push(v)
+  return arr
+}
+const push = flip(pushReducer)
+push(2, [1])   // [1, 2]
+```
 
 ## `forEach`
 
+Applies a function to elements of an array
+
+```js
+import { forEach } from 'nanoutils'
+
+const log = forEach(v => console.log(v))
+
+log([1, 2, 3, 4])   // Shows 1, 2, 3, 4 in the console
+```
+
+::: warning
+It may contain side-effects if a function changes elements of an array
+:::
+
 ## `forEachObjIndexed`
 
+Walks over an object with a function which can access keys and values
+
+```js
+import { forEachObjIndexed } from 'nanoutils'
+
+const obj = { a: 1, b: 4, c: 3 }
+const found = []
+const fill = (value, key) => {
+  // 96 is a code before 'a', so 'a' is first
+  if (key.charCodeAt(0) - 96 === value) {
+    found.push([key, value])
+  }
+}
+
+forEachObjIndexed(fill, obj)
+found   // [['a', 1], ['c', 3]]
+```
+
 ## `fromPairs`
+
+Collects an object from pairs of keys and values
+
+```js
+import { fromPairs } from 'nanoutils'
+
+const pairs = [['a', 1], ['b', 2]]
+
+fromPairs(pairs)  // { a: 1, b: 2 }
+```
+
+::: tip
+if pairs are not an array it returns an empty object
+:::
