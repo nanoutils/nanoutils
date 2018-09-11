@@ -70,7 +70,7 @@
 | eqWith | 103 B | n/a B | n/a B |
 | evolve | 86 B | 282 B | -196 B |
 | F | 53 B | 156 B | -103 B |
-| fill | 97 B | n/a B | n/a B |
+| fill | 69 B | n/a B | n/a B |
 | filter | 177 B | 1549 B | -1372 B |
 | filterT | 45 B | n/a B | n/a B |
 | find | 110 B | 644 B | -534 B |

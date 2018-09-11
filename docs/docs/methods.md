@@ -1392,10 +1392,10 @@ Finds a value in an `array` based on a predicate and returns it (a search is mad
 ```js
 import { find } from 'nanoutils'
 
-const isDigit = value => value >= 0 && value < 10
+const isLessThan10 = value => value >= 0 && value < 10
 
-find(isDigit, [10, 20, 30])   // undefined
-find(isDigit, [10, 2, 3])     // 2
+find(isLessThan10, [10, 20, 30])   // undefined
+find(isLessThan10, [10, 2, 3])     // 2
 ```
 
 ## `findIndex`
@@ -1405,10 +1405,10 @@ Finds a value in an `array` based on a predicate and returns an index of it (a s
 ```js
 import { findIndex } from 'nanoutils'
 
-const isDigit = value => value >= 0 && value < 10
+const isLessThan10 = value => value >= 0 && value < 10
 
-findIndex(isDigit, [10, 20, 30])    // -1
-findIndex(isDigit, [10, 2, 3])      // 1
+findIndex(isLessThan10, [10, 20, 30])    // -1
+findIndex(isLessThan10, [10, 2, 3])      // 1
 ```
 
 ## `findLast`
@@ -1418,10 +1418,10 @@ Finds a value in an `array` based on a predicate and returns it (a search is mad
 ```js
 import { findLast } from 'nanoutils'
 
-const isDigit = value => value >= 0 && value < 10
+const isLessThan10 = value => value >= 0 && value < 10
 
-findLast(isDigit, [10, 20, 30])   // undefined
-findLast(isDigit, [10, 2, 3])     // 3
+findLast(isLessThan10, [10, 20, 30])   // undefined
+findLast(isLessThan10, [10, 2, 3])     // 3
 ```
 
 ## `findLastIndex`
@@ -1431,15 +1431,15 @@ Finds a value in an `array` based on a predicate and returns an index of it (a s
 ```js
 import { findLastIndex } from 'nanoutils'
 
-const isDigit = value => value >= 0 && value < 10
+const isLessThan10 = value => value >= 0 && value < 10
 
-findLastIndex(isDigit, [10, 20, 30])    // -1
-findLastIndex(isDigit, [10, 2, 3])      // 2
+findLastIndex(isLessThan10, [10, 20, 30])    // -1
+findLastIndex(isLessThan10, [10, 2, 3])      // 2
 ```
 
 ## `flatten`
 
-Returns an `array` with elements of it and its subarrays
+Deeply unfolds all nested `array`s into one flat `array` with shallow copying not-array elements
 
 ```js
 import { flatten } from 'nanoutils'
@@ -1450,7 +1450,7 @@ flatten(array)  // [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
 ::: tip
-In spite of `flatten`, `unnest` returns an array with unwrapped elements of a depth `1`
+In spite of `unnest`, `flatten` method makes deep unfolding, not only unwraps first level
 :::
 
 ## `flattenObj`
@@ -1477,7 +1477,7 @@ To apply it to `array`s have a look at [flatten](#flatten)
 
 ## `flip`
 
-Applies a function to a reversed arguments
+Applies a function to a reversed list of arguments
 
 ```js
 import { flip } from 'nanoutils'
@@ -1489,6 +1489,18 @@ const pushReducer = (arr, v) => {
 const push = flip(pushReducer)
 push(2, [1])   // [1, 2]
 ```
+
+::: tip
+It reverses a list of arguments, not values
+
+```js
+import { flip } from 'nanoutils'
+
+const f = flip((a, b, c) => [a, b, c])
+
+f(1, 2, 3)    // [3, 2, 1]
+```
+:::
 
 ## `forEach`
 
@@ -1503,12 +1515,12 @@ log([1, 2, 3, 4])   // Shows 1, 2, 3, 4 in the console
 ```
 
 ::: warning
-It may contain side-effects if a function changes elements of an array
+It can have side-effects if you mutate an initial array
 :::
 
 ## `forEachObjIndexed`
 
-Walks over an object with a function which can access keys and values
+Iterates over `object`s' `key`-`value` pairs
 
 ```js
 import { forEachObjIndexed } from 'nanoutils'
@@ -1525,6 +1537,10 @@ const fill = (value, key) => {
 forEachObjIndexed(fill, obj)
 found   // [['a', 1], ['c', 3]]
 ```
+
+::: tip
+It doesn't iterate `prototype`'s keys and values
+:::
 
 ## `fromPairs`
 
