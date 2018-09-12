@@ -251,7 +251,7 @@
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
 | unnestN | 246 B | n/a B | n/a B |
-| until | 114 B | 351 B | -237 B |
+| until | 115 B | 351 B | -236 B |
 | unzip | 212 B | n/a B | n/a B |
 | unzipWith | 169 B | n/a B | n/a B |
 | update | 116 B | 497 B | -381 B |
