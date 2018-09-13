@@ -1311,3 +1311,249 @@ Do not add properties which are absent in an object but are present in transform
 
 It won't be present in a resulting object
 :::
+
+## `F`
+
+Always returns `false`
+
+```js
+import { F } from 'nanoutils'
+
+F()     // false
+F(1)    // false
+F(true) // false
+```
+
+## `fill`
+
+Returns an array with filled values
+
+```js
+import { fill } from 'nanoutils'
+
+let marks = [4, 5, 5, 3, 4]
+
+fill()(arr)         // [4, 5, 5, 3, 4] 
+fill(0)(arr)        // [0, 0, 0, 0, 0] 
+fill(0, 2)(arr)     // [4, 5, 0, 0, 0] 
+fill(0, 2, -1)(arr) // [4, 5, 0, 0, 4] 
+```
+
+::: tip
+It returns a new (but shallow copy of) array even though a value is `undefined`
+:::
+
+## `filter`
+
+Filters values for both `array`s and `object`s
+
+```js
+import { filter } from 'nanoutils'
+
+const people = [
+  { name: 'Nick Oldman', age: 45 },
+  { name: 'Jack Newton', age: 12 }
+]
+filter(({ age }) => age >= 18, people)  // [{ name: 'Nick Oldman', age: 45 }]
+
+const peopleObj = {
+  'Nick Oldman': 45,
+  'Jack Newton': 12
+}
+filter(age => age >= 18, peopleObj)     // { 'Nick Oldman': 45 }
+```
+
+## `filterT`
+
+Creates a transducer with a filter
+
+```js
+import { filterT } from 'nanoutils'
+
+const pushReducer = (array, value) => {
+  array.push(value)
+  return array
+}
+const isEven = value => value % 2 === 0
+const transducer = filterT(isEven)
+const rootReducer = transducer(pushReducer)
+
+rootReducer([], 1)      // []
+rootReducer([], 2)      // [2]
+rootReducer([2], 3)     // [2]
+rootReducer([2], 4)     // [2, 4]
+rootReducer([2, 4], 5)  // [2, 4]
+```
+
+## `find`
+
+Finds a value in an `array` based on a predicate and returns it (a search is made from a beginning). Otherwise, returns `undefined`
+
+```js
+import { find } from 'nanoutils'
+
+const isLessThan10 = value => value >= 0 && value < 10
+
+find(isLessThan10, [10, 20, 30])   // undefined
+find(isLessThan10, [10, 2, 3])     // 2
+```
+
+## `findIndex`
+
+Finds a value in an `array` based on a predicate and returns an index of it (a search is made from a beginning). Otherwise, returns `-1`
+
+```js
+import { findIndex } from 'nanoutils'
+
+const isLessThan10 = value => value >= 0 && value < 10
+
+findIndex(isLessThan10, [10, 20, 30])    // -1
+findIndex(isLessThan10, [10, 2, 3])      // 1
+```
+
+## `findLast`
+
+Finds a value in an `array` based on a predicate and returns it (a search is made from an end). Otherwise, returns `undefined`
+
+```js
+import { findLast } from 'nanoutils'
+
+const isLessThan10 = value => value >= 0 && value < 10
+
+findLast(isLessThan10, [10, 20, 30])   // undefined
+findLast(isLessThan10, [10, 2, 3])     // 3
+```
+
+## `findLastIndex`
+
+Finds a value in an `array` based on a predicate and returns an index of it (a search is made from an end). Otherwise, returns `-1`
+
+```js
+import { findLastIndex } from 'nanoutils'
+
+const isLessThan10 = value => value >= 0 && value < 10
+
+findLastIndex(isLessThan10, [10, 20, 30])    // -1
+findLastIndex(isLessThan10, [10, 2, 3])      // 2
+```
+
+## `flatten`
+
+Deeply unfolds all nested `array`s into one flat `array` with shallow copying not-array elements
+
+```js
+import { flatten } from 'nanoutils'
+
+var array = [1, 2, [3, [4, [5]], 6], [7], 8]
+
+flatten(array)  // [1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+::: tip
+In spite of `unnest`, `flatten` method makes deep unfolding, not only unwraps first level
+:::
+
+## `flattenObj`
+
+It converts nested object into a flatten one, all keys become paths to repsective values
+
+```js
+import { flattenObj } from 'nanoutils'
+
+const people = {
+  john: {
+    name: 'John Parker',
+    age: 18
+  }
+}
+flattenObj(people)  //  { 'john.name': 'John Parker', 'john.age': 18 }
+```
+
+::: tip
+Remember that `flattenObj` is applied only to `object`s
+
+To apply it to `array`s have a look at [flatten](#flatten)
+:::
+
+## `flip`
+
+Applies a function to a reversed list of arguments
+
+```js
+import { flip } from 'nanoutils'
+
+const pushReducer = (arr, v) => {
+  arr.push(v)
+  return arr
+}
+const push = flip(pushReducer)
+push(2, [1])   // [1, 2]
+```
+
+::: tip
+It reverses a list of arguments, not values
+
+```js
+import { flip } from 'nanoutils'
+
+const f = flip((a, b, c) => [a, b, c])
+
+f(1, 2, 3)    // [3, 2, 1]
+```
+:::
+
+## `forEach`
+
+Applies a function to elements of an array
+
+```js
+import { forEach } from 'nanoutils'
+
+const log = forEach(v => console.log(v))
+
+log([1, 2, 3, 4])   // Shows 1, 2, 3, 4 in the console
+```
+
+::: warning
+It can have side-effects if you mutate an initial array
+:::
+
+## `forEachObjIndexed`
+
+Iterates over `object`s' `key`-`value` pairs
+
+```js
+import { forEachObjIndexed } from 'nanoutils'
+
+const obj = { a: 1, b: 4, c: 3 }
+const found = []
+const fill = (value, key) => {
+  // 96 is a code before 'a', so 'a' is first
+  if (key.charCodeAt(0) - 96 === value) {
+    found.push([key, value])
+  }
+}
+
+forEachObjIndexed(fill, obj)
+found   // [['a', 1], ['c', 3]]
+```
+
+::: tip
+It doesn't iterate `prototype`'s keys and values
+:::
+
+## `fromPairs`
+
+Collects an object from pairs of keys and values
+
+```js
+import { fromPairs } from 'nanoutils'
+
+const pairs = [['a', 1], ['b', 2]]
+
+fromPairs(pairs)  // { a: 1, b: 2 }
+```
+
+::: tip
+if pairs are not an array it returns an empty object
+:::
