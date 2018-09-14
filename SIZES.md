@@ -198,7 +198,7 @@
 | reduceWhileRight | 317 B | n/a B | n/a B |
 | reject | 153 B | 1575 B | -1422 B |
 | remove | 115 B | 362 B | -247 B |
-| repeat | 119 B | 364 B | -245 B |
+| repeat | 104 B | 364 B | -260 B |
 | replace | 107 B | 341 B | -234 B |
 | reverse | 91 B | 212 B | -121 B |
 | scan | 148 B | 373 B | -225 B |
@@ -227,7 +227,7 @@
 | tap | 100 B | 540 B | -440 B |
 | test | 85 B | 3235 B | -3150 B |
 | throttle | 72 B | n/a B | n/a B |
-| times | 122 B | 326 B | -204 B |
+| times | 106 B | 326 B | -220 B |
 | toArray | 39 B | n/a B | n/a B |
 | toLower | 40 B | 3346 B | -3306 B |
 | toPairs | 56 B | 189 B | -133 B |
@@ -242,7 +242,7 @@
 | unapply | 112 B | 161 B | -49 B |
 | unary | 35 B | 430 B | -395 B |
 | uncurryN | 108 B | 618 B | -510 B |
-| unfold | 116 B | 266 B | -150 B |
+| unfold | 110 B | 266 B | -156 B |
 | union | 340 B | 2988 B | -2648 B |
 | unionWith | 154 B | 504 B | -350 B |
 | uniq | 571 B | 1908 B | -1337 B |
@@ -250,8 +250,8 @@
 | uniqWith | 138 B | 320 B | -182 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
-| unnestN | 246 B | n/a B | n/a B |
-| until | 115 B | 351 B | -236 B |
+| unnestN | 161 B | n/a B | n/a B |
+| until | 114 B | 351 B | -237 B |
 | unzip | 212 B | n/a B | n/a B |
 | unzipWith | 169 B | n/a B | n/a B |
 | update | 116 B | 497 B | -381 B |
@@ -262,7 +262,7 @@
 | when | 87 B | 338 B | -251 B |
 | where | 116 B | 273 B | -157 B |
 | whereEq | 397 B | 2551 B | -2154 B |
-| whilst | 117 B | n/a B | n/a B |
+| whilst | 112 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | xprod | 146 B | 284 B | -138 B |
 | za | 53 B | n/a B | n/a B |
