@@ -1614,3 +1614,63 @@ gte(1, 2)  // false
 gte(2, 2)  // true
 gte(3, 2)  // true
 ```
+
+## `has`
+
+Checks if an object has provided own property
+
+```js
+import { has } from 'nanoutils'
+
+const obj = {
+  a: 1,
+  __proto__: {
+    b: 2
+  }
+}
+
+has('a', obj)   // true
+has('b', obj)   // false
+```
+
+::: tip
+By own it means that `prototype` is not used to find a property
+:::
+
+## `hasIn`
+
+```js
+import { hasIn } from 'nanoutils'
+
+const obj = {
+  a: 1,
+  __proto__: {
+    b: 2
+  }
+}
+
+hasIn('a', obj)   // true
+hasIn('b', obj)   // true
+```
+
+::: tip
+Unlike [`has`](#has), `hasIn` uses `prototype` to find a property
+:::
+
+## `head`
+
+Returns first element of an `array` of `array`-ish `object` or `arguments`
+
+```js
+import { head } from 'nanoutils'
+
+function argFirst() {
+  return head(arguments)
+}
+const arr = [1, 2, 3, 4]
+const obj = { 0: 1, 1: 1 }
+
+head(arr)           // 1
+head(obj)           // 1
+argsFirst(1, 2, 3)  // 1
+```
