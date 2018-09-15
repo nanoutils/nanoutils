@@ -1557,3 +1557,60 @@ fromPairs(pairs)  // { a: 1, b: 2 }
 ::: tip
 if pairs are not an array it returns an empty object
 :::
+
+## `groupBy`
+
+Divides into groups whose key is a result of a function applied to a value from arguments
+
+```js
+import { groupBy } fronm 'nanoutils'
+
+const type = value => Array.isArray(value)
+  ? 'array'
+  : value == null
+    ? 'nullable'
+    : typeof value
+const args = [null, undefined, NaN, 0, [], { a: 1 }]
+
+groupBy(type, args) // { nullable: [null, undefined], number: [NaN, 0], array: [[]], object: [{ a: 1 }] }
+```
+
+## `groupWith`
+
+Divides into groups where elements are a part of one group if a predicate returns `true` for adjacent elements
+
+```js
+import { groupWith, identical } from 'nanoutils'
+
+const arr = [1, 1, 2, 2, 2, 1, 1]
+
+groupWith(identical, arr)   // [[1, 1], [2, 2, 2], [1, 1]]
+```
+
+## `gt`
+
+Checks if a first argument is greater than a second one
+
+```js
+import { gt } from 'nanoutils'
+
+gt(1, 2)  // false
+gt(2, 2)  // false
+gt(3, 2)  // true
+```
+
+::: tip
+It also works the same way as [`za`](#za)
+:::
+
+## `gte`
+
+Checks if a first argument is greate than or equals to a second one
+
+```js
+import { gte } from 'nanoutils'
+
+gte(1, 2)  // false
+gte(2, 2)  // true
+gte(3, 2)  // true
+```
