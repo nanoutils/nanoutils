@@ -899,7 +899,7 @@ click(3, 4)
  
 ## `dec`
 
-Decrements a value
+Decrements value
 
 ```js
 import { dec } from 'nanoutils'
@@ -917,7 +917,7 @@ dec([1, 2])   // NaN
 ```
 
 ::: tip JS-friendly
-If you pass a non-`number` value, it tries to convert them to a `number` and to decrement then. Otherwise, it returns `NaN`
+If you pass non-`number` value, it tries to convert it to `number` and to increment then. Otherwise, it returns `NaN`
 :::
 
 ## `defaultTo`
@@ -1683,3 +1683,163 @@ const obj = { 0: 1, 1: 2 }
 head(obj)   // 1
 ```
 :::
+
+## `identical`
+
+Returns `true` if its arguments are identical by reference. Otherwise it returns `false`
+
+```js
+import { identical } from 'nanoutils'
+
+identical('a', 'a')   // true
+identical({}, {})     // false
+```
+
+::: warning
+`-0` and `0` are different values
+:::
+
+::: tip
+`NaN` equals to `NaN`
+:::
+
+## `identity`
+
+Returns value which is passed to a function
+
+```js
+import { identity } from 'nanoutils'
+
+identity(false)   // false
+identity(null)    // null
+```
+
+::: tip
+Values which are passed to a function and returned by a function equal by reference
+:::
+
+## `ifElse`
+
+if-else analogue, returns value based on predicate, `onTrue` and `onFalse` functions which are applied to value
+
+```js
+import { ifElse, isInteger } from 'nanoutils'
+
+const safeInc = ifElse(isInteger, inc, always(0))
+
+safeInc(null)   // 0
+safeInc(10)     // 11
+```
+
+## `inc`
+
+Increments value
+
+```js
+import { inc } from 'nanoutils'
+
+inc(1)        // 2
+inc('1')      // 2
+inc('1')      // 2
+inc('a')      // NaN
+inc(null)     // 1
+inc(false)    // 1
+inc(true)     // 2
+inc([])       // 1
+inc([2])      // 3
+inc([1, 2])   // NaN
+```
+
+::: tip JS-friendly
+If you pass non-`number` value, it tries to convert it to `number` and to increment then. Otherwise, it returns `NaN`
+:::
+
+## `indexBy`
+
+Indexes a list of `object`s into an `object` given a key generator function
+
+```js
+import { indexBy, prop } from 'nanoutils'
+
+const changes = [
+  { id: 123, currency: 'rur' },
+  { id: 234, currency: 'usd' },
+  { id: 123, currency: 'usd' }
+]
+
+const billChangeById = indexBy(prop('id'))
+
+billChangeById(changes)
+/*
+{
+  123: { id: 123, currency: 'usd' },
+  234: { id: 234, currency: 'usd' }
+}
+*/
+```
+
+::: warning
+If a key generator returns identical keys for two different `object`s, the last one appears in a result
+:::
+
+## `indexed`
+
+Returns a function which associates every value with a respective index
+
+```js
+import { indexed } from 'nanoutils'
+
+const getObject = indexed((value, index) => ({ index: value }))
+
+getObject(0)        // { 0: 0 }
+getObject(null)     // { 1: null }
+getObject({ a: 1 }) // { 2: { a: 1 }}
+```
+
+## `indexOf`
+
+Returns index of value in a collection or `-1` if value cannot be found
+
+```js
+import { indexOf } from 'nanoutils'
+
+indexOf(1, [0, 1, 2, 3])    // 1
+indexOf('ab', '012abc')     // 3
+indexOf('abd', 'abcd')      // -1
+```
+
+::: tip
+Collection can be an `array` or a `string`
+:::
+
+::: warning
+If collection is `null`, `undefined` or hasn't implemented `indexOf` method, it returns `-1`
+:::
+
+## `init`
+
+## `innerJoin`
+
+## `insert`
+
+## `insertAll`
+
+## `intersection`
+
+## `intersperse`
+
+## `into`
+
+## `invert`
+
+## `invertObj`
+
+## `invoker`
+
+## `is`
+
+## `isEmpty`
+
+## `isInteger`
+
+## `isNil`
