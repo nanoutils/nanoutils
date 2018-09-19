@@ -1818,28 +1818,185 @@ If collection is `null`, `undefined` or hasn't implemented `indexOf` method, it 
 
 ## `init`
 
+Returns a collection without last element
+
+```js
+import { init } from 'nanoutils'
+
+init([1, 2, 3])   // [1, 2]
+init([])          // []
+init('123')       // '12'
+init('')          // ''
+```
+
+::: tip
+Works for both `array` and `string`
+:::
+
 ## `innerJoin`
+
+Returns elements of first collection by a predicate which compares values from two collections
+
+```js
+import { innerJoin } from 'nanoutils'
+
+const books = [
+  { id: 1, author: 'Ray Bredbury', name: 'Cat\'s pajamas' },
+  { id: 2, author: 'Leo Tolstoi', name: 'War and Peace' }
+]
+const ids = [1, 3]
+
+innerJoin(
+  (book, id) => book.id === id,
+  books,
+  ids
+) // [{ id: 1, author: 'Ray Bredbury', name: 'Cat\'s pajamas' }]
+```
+
+::: tip
+It returns entries saving the order of original collection
+:::
 
 ## `insert`
 
+Inserts value into an `array` at a specified index
+
+```js
+import { insert } from 'nanoutils'
+
+insert(0, 'a', ['b', 'c'])  // ['a', 'b', 'c']
+```
+
 ## `insertAll`
+
+Inserts an `array` of values into an `array` from a specified index
+
+```js
+import { insert } from 'nanoutils'
+
+insert(0, ['a', 'b'], ['c'])  // ['a', 'b', 'c']
+```
 
 ## `intersection`
 
+A result of applying `innerJoin` to 2 `array`s with predicate which is either `identical` or `equals`
+
+
+```js
+import { intersection } from 'nanoutils'
+
+intersection([1, 2, 3], [4, 3, 2])    // [3, 2]
+```
+
 ## `intersperse`
+
+Returns an `array` whose elements are joined with a specified separator
+
+```js
+import { intersperse } from 'nanoutils'
+
+intersperse(', ', ['hello', 'world'])  // ['hello', ', ', 'world']
+```
 
 ## `into`
 
+Calls `transduce` method with a respective reducer
+
+```js
+import { composeT, into, mapT, subtract, takeT } from 'nanoutils'
+
+const array = [1, 2, 3, 4, 5]
+const transducer = composeT(mapT(subtract(1)), takeT(3))
+
+into([], transducer, array)   // [0, 1, 2]
+```
+
+::: tip
+Only `array` is supported now
+:::
+
 ## `invert`
+
+Swaps keys and values with the support of repetitive values
+
+```js
+import { invert } from 'nanoutils'
+
+invert({ a: 1, b: 1, c: 2 })  // { 1: ['a', 'b'], 2: ['c'] }
+```
 
 ## `invertObj`
 
+Swaps keys and values with last-met value
+
+```js
+import { invertObj } from 'nanoutils'
+
+invert({ a: 1, b: 1, c: 2 })  // { 1: 'b', 2: 'c' }
+```
+
 ## `invoker`
+
+Returns a function by specified arity and name
+
+```js
+import { invoker } from 'nanoutils'
+
+const sliceFrom = invoker(1, 'slice')
+
+sliceFrom(3, 'abcdef')    // 'def'
+```
 
 ## `is`
 
+Returns a predicate by a specified constructor name
+
+```js
+import { is } from 'nanoutils'
+
+const isNumber = is(Number)
+const isNull = is(null)
+const isUndefined = is(undefined)
+
+isNumber(NaN)     // true
+isNull(null)      // true
+isUndefined(null) // false
+```
+
 ## `isEmpty`
+
+Checks if `array` or `string` is empty
+
+```js
+import { isEmpty } from 'nanoutils'
+
+isEmpty({ a: 1 })   // false
+isEmpty({})         // true
+isEmpty('123')      // false
+isEmpty('')         // true
+```
 
 ## `isInteger`
 
+Checks if value is integer
+
+```js
+import { isInteger } from 'nanoutils'
+
+isInteger(undefined)  // false
+isInteger(NaN)        // false
+isInteger(0.1)        // false
+isInteger(0)          // true
+```
+
 ## `isNil`
+
+Checks if value is `null`able
+
+```js
+import { isNil } from 'nanoutils'
+
+isNil(undefined)  // true
+isNil(null)       // true
+isNil(NaN)        // false
+```
