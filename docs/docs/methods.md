@@ -1683,3 +1683,7 @@ const obj = { 0: 1, 1: 2 }
 head(obj)   // 1
 ```
 :::
+
+## `keys`
+
+## `keysIn`
