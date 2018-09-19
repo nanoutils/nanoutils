@@ -2000,3 +2000,15 @@ isNil(undefined)  // true
 isNil(null)       // true
 isNil(NaN)        // false
 ```
+
+## `join`
+
+Returns `string` by joining `array`
+
+```js
+import { join } from 'nanoutils'
+
+join('-', [1, 2])   // '1-2'
+```
+
+## `juxt`
