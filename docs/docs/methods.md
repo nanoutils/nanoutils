@@ -917,7 +917,7 @@ dec([1, 2])   // NaN
 ```
 
 ::: tip JS-friendly
-If you pass non-`number` value, it tries to convert it to `number` and to increment then. Otherwise, it returns `NaN`
+If you pass non-`number` value, it tries to convert it to `number` and to decrement then. Otherwise, it returns `NaN`
 :::
 
 ## `defaultTo`
@@ -1912,7 +1912,7 @@ into([], transducer, array)   // [0, 1, 2]
 ```
 
 ::: tip
-Only `array` is supported now
+Only `array` is supported now, `pushReducer` is used for it
 :::
 
 ## `invert`
