@@ -2000,3 +2000,27 @@ isNil(undefined)  // true
 isNil(null)       // true
 isNil(NaN)        // false
 ```
+
+## `join`
+
+Returns `string` by joining `array`
+
+```js
+import { join } from 'nanoutils'
+
+join('-', [1, 2])   // '1-2'
+```
+
+## `juxt`
+
+Applies an `array` of functions to arguments
+
+```js
+import { juxt, mean, median } from 'nanoutils'
+
+const acceptArguments = f => (...args) => f(args)
+const statistics = [mean, median].map(acceptArguments)
+const countStatistics = juxt(statistics)
+
+countStatistics(1, 2, 2, 4)  // [2.25, 2]
+```
