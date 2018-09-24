@@ -899,7 +899,7 @@ click(3, 4)
  
 ## `dec`
 
-Decrements a value
+Decrements value
 
 ```js
 import { dec } from 'nanoutils'
@@ -917,7 +917,7 @@ dec([1, 2])   // NaN
 ```
 
 ::: tip JS-friendly
-If you pass a non-`number` value, it tries to convert them to a `number` and to decrement then. Otherwise, it returns `NaN`
+If you pass non-`number` value, it tries to convert it to `number` and to decrement then. Otherwise, it returns `NaN`
 :::
 
 ## `defaultTo`
@@ -1683,6 +1683,347 @@ const obj = { 0: 1, 1: 2 }
 head(obj)   // 1
 ```
 :::
+
+## `identical`
+
+Returns `true` if its arguments are identical by reference. Otherwise it returns `false`
+
+```js
+import { identical } from 'nanoutils'
+
+identical('a', 'a')   // true
+identical({}, {})     // false
+```
+
+::: warning
+`-0` and `0` are different values
+:::
+
+::: tip
+`NaN` equals to `NaN`
+:::
+
+## `identity`
+
+Returns value which is passed to a function
+
+```js
+import { identity } from 'nanoutils'
+
+identity(false)   // false
+identity(null)    // null
+```
+
+::: tip
+Values which are passed to a function and returned by a function equal by reference
+:::
+
+## `ifElse`
+
+if-else analogue, returns value based on predicate, `onTrue` and `onFalse` functions which are applied to value
+
+```js
+import { ifElse, isInteger } from 'nanoutils'
+
+const safeInc = ifElse(isInteger, inc, always(0))
+
+safeInc(null)   // 0
+safeInc(10)     // 11
+```
+
+## `inc`
+
+Increments value
+
+```js
+import { inc } from 'nanoutils'
+
+inc(1)        // 2
+inc('1')      // 2
+inc('1')      // 2
+inc('a')      // NaN
+inc(null)     // 1
+inc(false)    // 1
+inc(true)     // 2
+inc([])       // 1
+inc([2])      // 3
+inc([1, 2])   // NaN
+```
+
+::: tip JS-friendly
+If you pass non-`number` value, it tries to convert it to `number` and to increment then. Otherwise, it returns `NaN`
+:::
+
+## `indexBy`
+
+Indexes a list of `object`s into an `object` given a key generator function
+
+```js
+import { indexBy, prop } from 'nanoutils'
+
+const changes = [
+  { id: 123, currency: 'rur' },
+  { id: 234, currency: 'usd' },
+  { id: 123, currency: 'usd' }
+]
+
+const billChangeById = indexBy(prop('id'))
+
+billChangeById(changes)
+/*
+{
+  123: { id: 123, currency: 'usd' },
+  234: { id: 234, currency: 'usd' }
+}
+*/
+```
+
+::: warning
+If a key generator returns identical keys for two different `object`s, the last one appears in a result
+:::
+
+## `indexed`
+
+Returns a function which associates every value with a respective index
+
+```js
+import { indexed } from 'nanoutils'
+
+const getObject = indexed((value, index) => ({ index: value }))
+
+getObject(0)        // { 0: 0 }
+getObject(null)     // { 1: null }
+getObject({ a: 1 }) // { 2: { a: 1 }}
+```
+
+## `indexOf`
+
+Returns index of value in a collection or `-1` if value cannot be found
+
+```js
+import { indexOf } from 'nanoutils'
+
+indexOf(1, [0, 1, 2, 3])    // 1
+indexOf('ab', '012abc')     // 3
+indexOf('abd', 'abcd')      // -1
+```
+
+::: tip
+Collection can be an `array` or a `string`
+:::
+
+::: warning
+If collection is `null`, `undefined` or hasn't implemented `indexOf` method, it returns `-1`
+:::
+
+## `init`
+
+Returns a collection without last element
+
+```js
+import { init } from 'nanoutils'
+
+init([1, 2, 3])   // [1, 2]
+init([])          // []
+init('123')       // '12'
+init('')          // ''
+```
+
+::: tip
+Works for both `array` and `string`
+:::
+
+## `innerJoin`
+
+Returns elements of first collection by a predicate which compares values from two collections
+
+```js
+import { innerJoin } from 'nanoutils'
+
+const books = [
+  { id: 1, author: 'Ray Bredbury', name: 'Cat\'s pajamas' },
+  { id: 2, author: 'Leo Tolstoi', name: 'War and Peace' }
+]
+const ids = [1, 3]
+
+innerJoin(
+  (book, id) => book.id === id,
+  books,
+  ids
+) // [{ id: 1, author: 'Ray Bredbury', name: 'Cat\'s pajamas' }]
+```
+
+::: tip
+It returns entries saving the order of original collection
+:::
+
+## `insert`
+
+Inserts value into an `array` at a specified index
+
+```js
+import { insert } from 'nanoutils'
+
+insert(0, 'a', ['b', 'c'])  // ['a', 'b', 'c']
+```
+
+## `insertAll`
+
+Inserts an `array` of values into an `array` from a specified index
+
+```js
+import { insert } from 'nanoutils'
+
+insert(0, ['a', 'b'], ['c'])  // ['a', 'b', 'c']
+```
+
+## `intersection`
+
+A result of applying `innerJoin` to 2 `array`s with predicate which is either `identical` or `equals`
+
+
+```js
+import { intersection } from 'nanoutils'
+
+intersection([1, 2, 3], [4, 3, 2])    // [3, 2]
+```
+
+## `intersperse`
+
+Returns an `array` whose elements are joined with a specified separator
+
+```js
+import { intersperse } from 'nanoutils'
+
+intersperse(', ', ['hello', 'world'])  // ['hello', ', ', 'world']
+```
+
+## `into`
+
+Calls `transduce` method with a respective reducer
+
+```js
+import { composeT, into, mapT, subtract, takeT } from 'nanoutils'
+
+const array = [1, 2, 3, 4, 5]
+const transducer = composeT(mapT(subtract(1)), takeT(3))
+
+into([], transducer, array)   // [0, 1, 2]
+```
+
+::: tip
+Only `array` is supported now, `pushReducer` is used for it
+:::
+
+## `invert`
+
+Swaps keys and values with the support of repetitive values
+
+```js
+import { invert } from 'nanoutils'
+
+invert({ a: 1, b: 1, c: 2 })  // { 1: ['a', 'b'], 2: ['c'] }
+```
+
+## `invertObj`
+
+Swaps keys and values with last-met value
+
+```js
+import { invertObj } from 'nanoutils'
+
+invert({ a: 1, b: 1, c: 2 })  // { 1: 'b', 2: 'c' }
+```
+
+## `invoker`
+
+Returns a function by specified arity and name
+
+```js
+import { invoker } from 'nanoutils'
+
+const sliceFrom = invoker(1, 'slice')
+
+sliceFrom(3, 'abcdef')    // 'def'
+```
+
+## `is`
+
+Returns a predicate by a specified constructor name
+
+```js
+import { is } from 'nanoutils'
+
+const isNumber = is(Number)
+const isNull = is(null)
+const isUndefined = is(undefined)
+
+isNumber(NaN)     // true
+isNull(null)      // true
+isUndefined(null) // false
+```
+
+## `isEmpty`
+
+Checks if `array` or `string` is empty
+
+```js
+import { isEmpty } from 'nanoutils'
+
+isEmpty({ a: 1 })   // false
+isEmpty({})         // true
+isEmpty('123')      // false
+isEmpty('')         // true
+```
+
+## `isInteger`
+
+Checks if value is integer
+
+```js
+import { isInteger } from 'nanoutils'
+
+isInteger(undefined)  // false
+isInteger(NaN)        // false
+isInteger(0.1)        // false
+isInteger(0)          // true
+```
+
+## `isNil`
+
+Checks if value is `null`able
+
+```js
+import { isNil } from 'nanoutils'
+
+isNil(undefined)  // true
+isNil(null)       // true
+isNil(NaN)        // false
+```
+
+## `join`
+
+Returns `string` by joining `array`
+
+```js
+import { join } from 'nanoutils'
+
+join('-', [1, 2])   // '1-2'
+```
+
+## `juxt`
+
+Applies an `array` of functions to arguments
+
+```js
+import { juxt, mean, median } from 'nanoutils'
+
+const acceptArguments = f => (...args) => f(args)
+const statistics = [mean, median].map(acceptArguments)
+const countStatistics = juxt(statistics)
+
+countStatistics(1, 2, 2, 4)  // [2.25, 2]
+```
 
 ## `keys`
 

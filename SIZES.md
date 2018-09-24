@@ -109,10 +109,10 @@
 | invoker | 309 B | 3337 B | -3028 B |
 | is | 100 B | 252 B | -152 B |
 | isEmpty | 68 B | 1524 B | -1456 B |
-| isInteger | 48 B | n/a B | n/a B |
+| isInteger | 60 B | n/a B | n/a B |
 | isNil | 33 B | 146 B | -113 B |
 | join | 85 B | 3343 B | -3258 B |
-| juxt | 56 B | 2024 B | -1968 B |
+| juxt | 114 B | 2024 B | -1910 B |
 | keys | 34 B | 467 B | -433 B |
 | keysIn | 46 B | 161 B | -115 B |
 | last | 37 B | 302 B | -265 B |
@@ -132,7 +132,7 @@
 | mapObjIndexed | 111 B | 1253 B | -1142 B |
 | mapT | 45 B | n/a B | n/a B |
 | match | 90 B | 237 B | -147 B |
-| mathMod | 137 B | 281 B | -144 B |
+| mathMod | 148 B | 281 B | -133 B |
 | max | 84 B | 232 B | -148 B |
 | maxBy | 112 B | 342 B | -230 B |
 | mean | 71 B | 1078 B | -1007 B |
