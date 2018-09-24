@@ -2024,3 +2024,53 @@ const countStatistics = juxt(statistics)
 
 countStatistics(1, 2, 2, 4)  // [2.25, 2]
 ```
+
+## `keys`
+
+Returns `array` of keys of an `object`
+
+```js
+import { keys } from 'nanoutils'
+
+const obj = {
+  name: 'Adam Popov',
+  __proto__: {
+    dad: {
+      name: 'David Popov'
+    },
+    mom: {
+      name: 'Margaret Popova'
+    }
+  }
+}
+
+keys(obj)   // ['name']
+```
+
+::: tip
+It doesn't iterate `prototype`'s keys
+:::
+
+## `keysIn`
+
+```js
+import { keysIn } from 'nanoutils' 
+
+const obj = {
+  name: 'Adam Popov',
+  __proto__: {
+    dad: {
+      name: 'David Popov'
+    },
+    mom: {
+      name: 'Margaret Popova'
+    }
+  }
+}
+
+keysIn(obj)   // ['name', 'dad', 'mom']
+```
+
+::: tip
+It iterates `prototype`'s keys
+:::
