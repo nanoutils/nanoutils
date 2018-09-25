@@ -2074,3 +2074,25 @@ keysIn(obj)   // ['name', 'dad', 'mom']
 ::: tip
 It iterates `prototype`'s keys
 :::
+
+## `last`
+
+## `lastIndexOf`
+
+## `length`
+
+## `lens`
+
+## `lensIndex`
+
+## `lensPath`
+
+## `lensProp`
+
+## `lift`
+
+## `liftN`
+
+## `lt`
+
+## `lte`
