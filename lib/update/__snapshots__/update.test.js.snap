@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checks dev errors 1`] = `"[Nanoutils] update(index, *, *) accepts a number, string given"`;
+
+exports[`checks dev errors 2`] = `"[Nanoutils] update(*, *, array) accepts an array, string given"`;

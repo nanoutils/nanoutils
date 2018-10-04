@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checks dev errors 1`] = `"[Nanoutils] adjustIn(fn, *, *) accepts a function, number given"`;
+
+exports[`checks dev errors 2`] = `"[Nanoutils] adjustIn(*, predicate, *) accepts a function, boolean given"`;
+
+exports[`checks dev errors 3`] = `"[Nanoutils] adjustIn(*, *, array) accepts an array, number given"`;
