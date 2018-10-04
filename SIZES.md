@@ -5,7 +5,8 @@
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
 | addIndex | 117 B | 684 B | -567 B |
-| adjust | 122 B | 441 B | -319 B |
+| adjust | 133 B | 441 B | -308 B |
+| adjustIn | 189 B | n/a B | n/a B |
 | all | 111 B | 637 B | -526 B |
 | allPass | 110 B | 1993 B | -1883 B |
 | always | 32 B | 144 B | -112 B |
