@@ -29,9 +29,9 @@ export default curry2(function ${name}() {
 
 })
 `,
-    3: `import _curry3 from '../_internal/_curry3'
+    3: `import curry3 from '../_internal/_curry3'
 
-export default _curry3(function ${name}() {
+export default curry3(function ${name}() {
 
 })
 `,
