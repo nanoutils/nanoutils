@@ -122,7 +122,7 @@
 | lens | 47 B | 1745 B | -1698 B |
 | lensIndex | 84 B | 2049 B | -1965 B |
 | lensPath | 196 B | 2095 B | -1899 B |
-| lensProp | 105 B | 1967 B | -1862 B |
+| lensProp | 106 B | 1967 B | -1861 B |
 | lift | 440 B | 1897 B | -1457 B |
 | liftN | 441 B | 1878 B | -1437 B |
 | lt | 82 B | 230 B | -148 B |
