@@ -4,6 +4,7 @@ export * from 'nanoutils/__/index';
 export * from 'nanoutils/_internal/_a2p/index';
 export * from 'nanoutils/_internal/_p2a/index';
 export * from 'nanoutils/_internal/_placehold/index';
+export * from 'nanoutils/_internal/_types/index';
 export * from 'nanoutils/add/index';
 export * from 'nanoutils/always/index';
 export * from 'nanoutils/append/index';
@@ -65,17 +66,116 @@ declare module 'nanoutils/_internal/_placehold/index' {
     ): Function
 }
 
-declare module 'nanoutils/add/index' {
-    import {
-        CurriedFunction1,
-        CurriedFunction2
-    } from '../../misc/types/fn';
+declare module 'nanoutils/_internal/_types/index' {
+    export interface CurriedFunction1<T1, R> {
+        (): CurriedFunction1<T1, R>;
+        (t1: T1): R;
+    }
     
-    function add<T1, T2>(): CurriedFunction2<T1, T2, number>
-    function add<T1, T2>(t1: T1): CurriedFunction1<T2, number>
+    export interface CurriedFunction2<T1, T2, R> {
+        (): CurriedFunction2<T1, T2, R>;
+        (t1: T1): CurriedFunction1<T2, R>;
+        (t1: T1, t2: T2): R;
+    }
+    
+    export interface CurriedFunction3<T1, T2, T3, R> {
+        (): CurriedFunction3<T1, T2, T3, R>;
+        (t1: T1): CurriedFunction2<T2, T3, R>;
+        (t1: T1, t2: T2): CurriedFunction1<T3, R>;
+        (t1: T1, t2: T2, t3: T3): R;
+    }
+    
+    export interface CurriedFunction4<T1, T2, T3, T4, R> {
+        (): CurriedFunction4<T1, T2, T3, T4, R>;
+        (t1: T1): CurriedFunction3<T2, T3, T4, R>;
+        (t1: T1, t2: T2): CurriedFunction2<T3, T4, R>;
+        (t1: T1, t2: T2, t3: T3): CurriedFunction1<T4, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4): R;
+    }
+    
+    export interface CurriedFunction5<T1, T2, T3, T4, T5, R> {
+        (): CurriedFunction5<T1, T2, T3, T4, T5, R>;
+        (t1: T1): CurriedFunction4<T2, T3, T4, T5, R>;
+        (t1: T1, t2: T2): CurriedFunction3<T3, T4, T5, R>;
+        (t1: T1, t2: T2, t3: T3): CurriedFunction2<T4, T5, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction1<T5, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): R;
+    }
+    
+    export interface CurriedFunction6<T1, T2, T3, T4, T5, T6, R> {
+        (): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
+        (t1: T1): CurriedFunction5<T2, T3, T4, T5, T6, R>;
+        (t1: T1, t2: T2): CurriedFunction4<T3, T4, T5, T6, R>;
+        (t1: T1, t2: T2, t3: T3): CurriedFunction3<T4, T5, T6, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction2<T5, T6, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction1<T6, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): R;
+    }
+    
+    export interface CurriedFunction7<T1, T2, T3, T4, T5, T6, T7, R> {
+        (): CurriedFunction7<T1, T2, T3, T4, T5, T6, T7, R>;
+        (t1: T1): CurriedFunction6<T2, T3, T4, T5, T6, T7, R>;
+        (t1: T1, t2: T2): CurriedFunction5<T3, T4, T5, T6, T7, R>;
+        (t1: T1, t2: T2, t3: T3): CurriedFunction4<T4, T5, T6, T7, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction3<T5, T6, T7, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction2<T6, T7, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction1<T7, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): R;
+    }
+    
+    export interface CurriedFunction8<T1, T2, T3, T4, T5, T6, T7, T8, R> {
+        (): CurriedFunction8<T1, T2, T3, T4, T5, T6, T7, T8, R>;
+        (t1: T1): CurriedFunction7<T2, T3, T4, T5, T6, T7, T8, R>;
+        (t1: T1, t2: T2): CurriedFunction6<T3, T4, T5, T6, T7, T8, R>;
+        (t1: T1, t2: T2, t3: T3): CurriedFunction5<T4, T5, T6, T7, T8, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction4<T5, T6, T7, T8, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction3<T6, T7, T8, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction2<T7, T8, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction1<T8, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): R;
+    }
+    
+    
+    export interface CurriedFunction9<T1, T2, T3, T4, T5, T6, T7, T8, T9, R> {
+        (): CurriedFunction9<T1, T2, T3, T4, T5, T6, T7, T8, T9, R>;
+        (t1: T1): CurriedFunction8<T2, T3, T4, T5, T6, T7, T8, T9, R>;
+        (t1: T1, t2: T2): CurriedFunction7<T3, T4, T5, T6, T7, T8, T9, R>;
+        (t1: T1, t2: T2, t3: T3): CurriedFunction6<T4, T5, T6, T7, T8, T9, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction5<T5, T6, T7, T8, T9, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction4<T6, T7, T8, T9, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction3<T7, T8, T9, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction2<T8, T9, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): CurriedFunction1<T9, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9): R;
+    }
+    
+    export interface CurriedFunction10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> {
+        (): CurriedFunction10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R>;
+        (t1: T1): CurriedFunction9<T2, T3, T4, T5, T6, T7, T8, T9, T10, R>;
+        (t1: T1, t2: T2): CurriedFunction8<T3, T4, T5, T6, T7, T8, T9, T10, R>;
+        (t1: T1, t2: T2, t3: T3): CurriedFunction7<T4, T5, T6, T7, T8, T9, T10, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction6<T5, T6, T7, T8, T9, T10, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction5<T6, T7, T8, T9, T10, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction4<T7, T8, T9, T10, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction3<T8, T9, T10, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): CurriedFunction2<T9, T10, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9): CurriedFunction1<T10, R>;
+        (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9, t10: T10): R;
+    }
+    
+    export interface Functor<T> {
+        (t: T): T[] | Object;
+    }
+}
+
+declare module 'nanoutils/add/index' {
+    import * as I from 'nanoutils/_internal/_types/index'
+    
+    function add<T1, T2>(): I.CurriedFunction2<T1, T2, number>
+    function add<T1, T2>(t1: T1): I.CurriedFunction1<T2, number>
     function add<T1, T2>(t1: T1, t2: T2): number
     
-    export default add;
+    export default add
 }
 
 declare module 'nanoutils/always/index' {
@@ -83,9 +183,13 @@ declare module 'nanoutils/always/index' {
 }
 
 declare module 'nanoutils/append/index' {
-    import { CurriedFunction2 } from 'nanoutils/--/misc/types/fn';
+    import * as I from 'nanoutils/_internal/_types/index'
     
-    export default function append<T>(): CurriedFunction2<T, T[], T[]>
+    function append<T>(): I.CurriedFunction2<T, T[], T[]>
+    function append<T>(t: T): I.CurriedFunction1<T[], T[]>
+    function append<T>(t: T, array: T[]): T[]
+    
+    export default append
 }
 
 declare module 'nanoutils/ascend/index' {
@@ -373,16 +477,13 @@ declare module 'nanoutils/descend/index' {
 }
 
 declare module 'nanoutils/divide/index' {
-    import {
-        CurriedFunction1,
-        CurriedFunction2
-    } from '../../misc/types/fn';
+    import * as I from 'nanoutils/_internal/_types/index'
     
-    function divide<T1, T2>(): CurriedFunction2<T1, T2, number>
-    function divide<T1, T2>(t1: T1): CurriedFunction1<T2, number>
+    function divide<T1, T2>(): I.CurriedFunction2<T1, T2, number>
+    function divide<T1, T2>(t1: T1): I.CurriedFunction1<T2, number>
     function divide<T1, T2>(t1: T1, t2: T2): number
     
-    export default divide;
+    export default divide
 }
 
 declare module 'nanoutils/F/index' {
@@ -430,13 +531,13 @@ declare module 'nanoutils/last/index' {
 }
 
 declare module 'nanoutils/map/index' {
-    import { 
-        CurriedFunction1,
-        CurriedFunction2,
-        Functor,
-    } from '../../misc/types/fn';
+    import * as I from 'nanoutils/_internal/_types/index'
     
-    export default function map<T1, T2>(): CurriedFunction2<CurriedFunction1<T1, T2>, Functor<T1>, Functor<T2>>;
+    function map<T1, T2>(): I.CurriedFunction2<I.CurriedFunction1<T1, T2>, I.Functor<T1>, I.Functor<T2>>
+    function map<T1, T2>(f: I.CurriedFunction1<T1, T2>): I.CurriedFunction1<I.Functor<T1>, I.Functor<T2>>
+    function map<T1, T2>(f: I.CurriedFunction1<T1, T2>, functor: I.Functor<T2>): I.Functor<T2>
+    
+    export default map
 }
 
 declare module 'nanoutils/mean/index' {
@@ -448,16 +549,14 @@ declare module 'nanoutils/median/index' {
 }
 
 declare module 'nanoutils/multiply/index' {
-    import {
-        CurriedFunction1,
-        CurriedFunction2
-    } from '../../misc/types/fn';
+    import * as I from 'nanoutils/_internal/_types/index'
     
-    function multiply<T1, T2>(): CurriedFunction2<T1, T2, number>
-    function multiply<T1, T2>(t1: T1): CurriedFunction1<T2, number>
+    
+    function multiply<T1, T2>(): I.CurriedFunction2<T1, T2, number>
+    function multiply<T1, T2>(t1: T1): I.CurriedFunction1<T2, number>
     function multiply<T1, T2>(t1: T1, t2: T2): number
     
-    export default multiply;
+    export default multiply
 }
 
 declare module 'nanoutils/nAry/index' {
@@ -774,16 +873,13 @@ declare module 'nanoutils/reverse/index' {
 }
 
 declare module 'nanoutils/subtract/index' {
-    import {
-        CurriedFunction1,
-        CurriedFunction2
-    } from '../../misc/types/fn';
+    import * as I from 'nanoutils/_internal/_types/index'
     
-    function subtract<T1, T2>(): CurriedFunction2<T1, T2, number>
-    function subtract<T1, T2>(t1: T1): CurriedFunction1<T2, number>
+    function subtract<T1, T2>(): I.CurriedFunction2<T1, T2, number>
+    function subtract<T1, T2>(t1: T1): I.CurriedFunction1<T2, number>
     function subtract<T1, T2>(t1: T1, t2: T2): number
     
-    export default subtract;
+    export default subtract
 }
 
 declare module 'nanoutils/T/index' {
@@ -822,105 +918,5 @@ declare module 'nanoutils/when/index' {
         cond: (arg: A) => boolean,
         cb: (arg: A) => B
     ): (arg: A) => A | B
-}
-
-export interface CurriedFunction1<T1, R> {
-    (): CurriedFunction1<T1, R>;
-    (t1: T1): R;
-}
-
-export interface CurriedFunction2<T1, T2, R> {
-    (): CurriedFunction2<T1, T2, R>;
-    (t1: T1): CurriedFunction1<T2, R>;
-    (t1: T1, t2: T2): R;
-}
-
-export interface CurriedFunction3<T1, T2, T3, R> {
-    (): CurriedFunction3<T1, T2, T3, R>;
-    (t1: T1): CurriedFunction2<T2, T3, R>;
-    (t1: T1, t2: T2): CurriedFunction1<T3, R>;
-    (t1: T1, t2: T2, t3: T3): R;
-}
-
-export interface CurriedFunction4<T1, T2, T3, T4, R> {
-    (): CurriedFunction4<T1, T2, T3, T4, R>;
-    (t1: T1): CurriedFunction3<T2, T3, T4, R>;
-    (t1: T1, t2: T2): CurriedFunction2<T3, T4, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction1<T4, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): R;
-}
-
-export interface CurriedFunction5<T1, T2, T3, T4, T5, R> {
-    (): CurriedFunction5<T1, T2, T3, T4, T5, R>;
-    (t1: T1): CurriedFunction4<T2, T3, T4, T5, R>;
-    (t1: T1, t2: T2): CurriedFunction3<T3, T4, T5, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction2<T4, T5, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction1<T5, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): R;
-}
-
-export interface CurriedFunction6<T1, T2, T3, T4, T5, T6, R> {
-    (): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
-    (t1: T1): CurriedFunction5<T2, T3, T4, T5, T6, R>;
-    (t1: T1, t2: T2): CurriedFunction4<T3, T4, T5, T6, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction3<T4, T5, T6, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction2<T5, T6, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction1<T6, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): R;
-}
-
-export interface CurriedFunction7<T1, T2, T3, T4, T5, T6, T7, R> {
-    (): CurriedFunction7<T1, T2, T3, T4, T5, T6, T7, R>;
-    (t1: T1): CurriedFunction6<T2, T3, T4, T5, T6, T7, R>;
-    (t1: T1, t2: T2): CurriedFunction5<T3, T4, T5, T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction4<T4, T5, T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction3<T5, T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction2<T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction1<T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): R;
-}
-
-export interface CurriedFunction8<T1, T2, T3, T4, T5, T6, T7, T8, R> {
-    (): CurriedFunction8<T1, T2, T3, T4, T5, T6, T7, T8, R>;
-    (t1: T1): CurriedFunction7<T2, T3, T4, T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2): CurriedFunction6<T3, T4, T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction5<T4, T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction4<T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction3<T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction2<T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction1<T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): R;
-}
-
-
-export interface CurriedFunction9<T1, T2, T3, T4, T5, T6, T7, T8, T9, R> {
-    (): CurriedFunction9<T1, T2, T3, T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1): CurriedFunction8<T2, T3, T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2): CurriedFunction7<T3, T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction6<T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction5<T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction4<T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction3<T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction2<T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): CurriedFunction1<T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9): R;
-}
-
-export interface CurriedFunction10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> {
-    (): CurriedFunction10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1): CurriedFunction9<T2, T3, T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2): CurriedFunction8<T3, T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction7<T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction6<T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction5<T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction4<T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction3<T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): CurriedFunction2<T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9): CurriedFunction1<T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9, t10: T10): R;
-}
-
-export interface Functor<T> {
-    (t: T): T[] | Object;
 }
 

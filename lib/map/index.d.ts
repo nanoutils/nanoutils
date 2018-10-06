@@ -1,7 +1,8 @@
-import { 
-  CurriedFunction1,
-  CurriedFunction2,
-  Functor,
-} from '../../misc/types/fn';
+/// <reference path="../_internal/_types/index.d.ts" />
+import * as I from 'nanoutils/_internal/_types/index'
 
-export default function map<T1, T2>(): CurriedFunction2<CurriedFunction1<T1, T2>, Functor<T1>, Functor<T2>>;
+declare function map<T1, T2>(): I.CurriedFunction2<I.CurriedFunction1<T1, T2>, I.Functor<T1>, I.Functor<T2>>
+declare function map<T1, T2>(f: I.CurriedFunction1<T1, T2>): I.CurriedFunction1<I.Functor<T1>, I.Functor<T2>>
+declare function map<T1, T2>(f: I.CurriedFunction1<T1, T2>, functor: I.Functor<T2>): I.Functor<T2>
+
+export default map
