@@ -1,5 +1,3 @@
-import adjust from "./adjust/adjust";
-
 declare let nanoutils: Nanoutils.Static;
 
 declare namespace Nanoutils {
@@ -106,26 +104,26 @@ declare namespace Nanoutils {
 
   interface Static {
     // add
-    add(first: number): CurriedFunction1<number, number>;
+    add(first: number): Function1<number, number>;
     add(first: number, second: number): number;
 
     // addIndex
-    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>): CurriedFunction2<Function3<T1, Index, T2>, T1[], T2[]>
-    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>, reducer: Function3<T1, Index, T2>): CurriedFunction1<T1[], T2[]>
-    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>, reducer: Function3<T1, Index, T2>, array: T1[]): T2[]
+    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>): CurriedFunction2<Function2<T1, Index, T2>, T1[], T2[]>
+    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>, reducer: Function2<T1, Index, T2>): Function1<T1[], T2[]>
+    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>, reducer: Function2<T1, Index, T2>, array: T1[]): T2[]
 
     // adjust
     adjust<T1, T2>(change: Function1<T1, T2>): CurriedFunction2<Index, T1[], MixedArray<T1, T2>>
-    adjust<T1, T2>(change: Function1<T1, T2>, index: Index): CurriedFunction1<T1[], MixedArray<T1, T2>>
+    adjust<T1, T2>(change: Function1<T1, T2>, index: Index): Function1<T1[], MixedArray<T1, T2>>
     adjust<T1, T2>(change: Function1<T1, T2>, index: Index, array: T1[]): MixedArray<T1, T2>
 
     // adjustIn
     adjust<T1, T2>(change: Function1<T1, T2>): CurriedFunction2<Predicate1<T1>, T1[], MixedArray<T1, T2>>
-    adjust<T1, T2>(change: Function1<T1, T2>, predicate: Predicate1<T1>): CurriedFunction1<T1[], MixedArray<T1, T2>>
+    adjust<T1, T2>(change: Function1<T1, T2>, predicate: Predicate1<T1>): Function1<T1[], MixedArray<T1, T2>>
     adjust<T1, T2>(change: Function1<T1, T2>, predicate: Predicate1<T1>, array: T1[]): MixedArray<T1, T2>
 
     // all
-    all<T1>(predicate: Predicate1<T1>): CurriedFunction1<T1[], boolean>
+    all<T1>(predicate: Predicate1<T1>): Function1<T1[], boolean>
     all<T1>(predicate: Predicate1<T1>, array: T1[]): boolean
   }
 }
