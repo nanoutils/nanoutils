@@ -4,7 +4,7 @@
   "description": "Tiniest JavaScript utils library",
   "main": "cjs/index.js",
   "module": "lib/index.js",
-  "types": "./types.d.ts",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/nanoutils/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
