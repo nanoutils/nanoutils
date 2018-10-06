@@ -7,4 +7,4 @@ declare function add<T1, T2>(): CurriedFunction2<T1, T2, number>
 declare function add<T1, T2>(t1: T1): CurriedFunction1<T2, number>
 declare function add<T1, T2>(t1: T1, t2: T2): number
 
-export = add;
+export default add;

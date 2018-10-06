@@ -1,1 +1,1 @@
-export default function toArray<T>(...args: T): T
+export default function toArray<T>(...args: T[]): T

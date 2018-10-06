@@ -1,0 +1,5 @@
+{
+  "name": "nanoutils",
+  "main": "lib/**/*.d.ts",
+  "out": "index.d.ts"
+}

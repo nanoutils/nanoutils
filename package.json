@@ -4,6 +4,7 @@
   "description": "Tiniest JavaScript utils library",
   "main": "cjs/index.js",
   "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/nanoutils/nanoutils",
   "author": "Kelin2025 <kelin2025@yandex.ru>",
   "license": "MIT",
@@ -27,13 +28,15 @@
     "release": "np",
     "size": "node ./misc/cli/size.js",
     "test": "jest",
-    "time": "node ./misc/cli/time.js"
+    "time": "node ./misc/cli/time.js",
+    "types": "dts-bundle --configJson dtsconfig.json"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chalk": "^2.3.0",
     "create-index": "^2.3.0",
+    "dts-bundle": "^0.7.3",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",

@@ -246,8 +246,8 @@ export default function compose(
   f3: (a: any) => any,
   f2: (a: any) => any,
   f1: () => any,
-  ...funcs: Array<Many<(...args: any[]) => any>>
+  ...funcs: Array<(...args: any[]) => any>
 ): (...args: any[]) => any
 export default function compose(
-  funcs: Array<Many<(...args: any[]) => any>>
+  funcs: Array<(...args: any[]) => any>
 ): (...args: any[]) => any
