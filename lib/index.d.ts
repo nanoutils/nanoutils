@@ -1,130 +1,159 @@
-declare let nanoutils: Nanoutils.Static;
+import ascend from "./ascend";
+import az from "./az";
+import both from "./both";
+import { call } from "when/node";
+
+declare let nanoutils: Nanoutils.Static
 
 declare namespace Nanoutils {
-  type Function1<T1, R> = (t1: T1) => R;
-  type Function2<T1, T2, R> = (t1: T1, t2: T2) => R;
-  type Function3<T1, T2, T3, R> = (t1: T1, t2: T2, t3: T3) => R;
+  type Predicate1<T1> = (value: T1) => boolean
 
-  type Functor<T1> = (t: T1) => T1[] | Object;
+  // addIndex
+  interface ArrayIterator<T1, T2> {
+    (change: (value: T1) => T2, array: ReadonlyArray<T1>): T2[]
+  }
 
-  type Predicate1<T1> = (t1: T1) => boolean;
-  type Predicate2<T1, T2> = (t1: T1, t2: T2) => boolean;
+  interface IndexReducer<T1, T2> {
+    (value: T1, index: number): T2
+  }
 
-  type Index = number;
+  interface AddIndexCurried2<T1, T2> {
+    (reducer: IndexReducer<T1, T2>): (array: ReadonlyArray<T1>) => T2[]
+    (reducer: IndexReducer<T1, T2>, array: ReadonlyArray<T1>): T2[]
+  }
 
-  type MixedArray<T1, T2> = (T1 | T2)[]
-  
-  interface CurriedFunction2<T1, T2, R> {
-    (t1: T1): Function1<T2, R>;
-    (t1: T1, t2: T2): R;
+  // adjust
+  interface AdjustCurried2<T1, T2> {
+    (index: number): (array: ReadonlyArray<T1>) => T2[]
+    (index: number, array: ReadonlyArray<T1>): T2[]
   }
-  
-  interface CurriedFunction3<T1, T2, T3, R> {
-    (t1: T1): CurriedFunction2<T2, T3, R>;
-    (t1: T1, t2: T2): Function1<T3, R>;
-    (t1: T1, t2: T2, t3: T3): R;
+
+  // adjustIn
+  interface AdjustInCurried2<T1, T2> {
+    (predicate: Predicate1<T1>): (array: ReadonlyArray<T1>) => T2[]
+    (predicate: Predicate1<T1>, array: ReadonlyArray<T1>): T2[]
   }
-  
-  interface CurriedFunction4<T1, T2, T3, T4, R> {
-    (): CurriedFunction4<T1, T2, T3, T4, R>;
-    (t1: T1): CurriedFunction3<T2, T3, T4, R>;
-    (t1: T1, t2: T2): CurriedFunction2<T3, T4, R>;
-    (t1: T1, t2: T2, t3: T3): Function1<T4, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): R;
+
+  // applySpec
+  interface ApplySpecObject<T1> {
+    [key: string]: T1
+    [key: string]: ApplySpecObject<T1>
   }
-  
-  interface CurriedFunction5<T1, T2, T3, T4, T5, R> {
-    (): CurriedFunction5<T1, T2, T3, T4, T5, R>;
-    (t1: T1): CurriedFunction4<T2, T3, T4, T5, R>;
-    (t1: T1, t2: T2): CurriedFunction3<T3, T4, T5, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction2<T4, T5, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): Function1<T5, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): R;
+
+  // ascend
+  interface Comparator<T1> {
+    (first: T1, second: T1): -1 | 0 | 1
   }
-  
-  interface CurriedFunction6<T1, T2, T3, T4, T5, T6, R> {
-    (): CurriedFunction6<T1, T2, T3, T4, T5, T6, R>;
-    (t1: T1): CurriedFunction5<T2, T3, T4, T5, T6, R>;
-    (t1: T1, t2: T2): CurriedFunction4<T3, T4, T5, T6, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction3<T4, T5, T6, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction2<T5, T6, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): Function1<T6, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): R;
+
+  // assocPath
+  interface AssocPathObject<T1> {
+    [key: string]: T1
+    [key: string]: AssocPathObject<T1>
   }
-  
-  interface CurriedFunction7<T1, T2, T3, T4, T5, T6, T7, R> {
-    (): CurriedFunction7<T1, T2, T3, T4, T5, T6, T7, R>;
-    (t1: T1): CurriedFunction6<T2, T3, T4, T5, T6, T7, R>;
-    (t1: T1, t2: T2): CurriedFunction5<T3, T4, T5, T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction4<T4, T5, T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction3<T5, T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction2<T6, T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): Function1<T7, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): R;
+
+  // call
+  interface CallFunction<T1, T2> {
+    (): CallFunction<T1, T2>
+    (...array: T1[]): T2
   }
-  
-  interface CurriedFunction8<T1, T2, T3, T4, T5, T6, T7, T8, R> {
-    (): CurriedFunction8<T1, T2, T3, T4, T5, T6, T7, T8, R>;
-    (t1: T1): CurriedFunction7<T2, T3, T4, T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2): CurriedFunction6<T3, T4, T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction5<T4, T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction4<T5, T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction3<T6, T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction2<T7, T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): Function1<T8, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): R;
-  }
-  
-  interface CurriedFunction9<T1, T2, T3, T4, T5, T6, T7, T8, T9, R> {
-    (): CurriedFunction9<T1, T2, T3, T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1): CurriedFunction8<T2, T3, T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2): CurriedFunction7<T3, T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction6<T4, T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction5<T5, T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction4<T6, T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction3<T7, T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction2<T8, T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): Function1<T9, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9): R;
-  }
-  
-  interface CurriedFunction10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> {
-    (): CurriedFunction10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1): CurriedFunction9<T2, T3, T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2): CurriedFunction8<T3, T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3): CurriedFunction7<T4, T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFunction6<T5, T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): CurriedFunction5<T6, T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): CurriedFunction4<T7, T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): CurriedFunction3<T8, T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): CurriedFunction2<T9, T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9): Function1<T10, R>;
-    (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9, t10: T10): R;
-  }  
 
   interface Static {
     // add
-    add(first: number): Function1<number, number>;
-    add(first: number, second: number): number;
+    add(first: number): (second: number) => number
+    add(first: number, second: number): number
 
     // addIndex
-    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>): CurriedFunction2<Function2<T1, Index, T2>, T1[], T2[]>
-    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>, reducer: Function2<T1, Index, T2>): Function1<T1[], T2[]>
-    addIndex<T1, T2>(iterator: Function2<T1, T1[], T2[]>, reducer: Function2<T1, Index, T2>, array: T1[]): T2[]
+    addIndex<T1, T2>(iterator: ArrayIterator<T1, T2>): AddIndexCurried2<T1, T2>
+    addIndex<T1, T2>(iterator: ArrayIterator<T1, T2>, reducer: IndexReducer<T1, T2>): (array: ReadonlyArray<T1>) => T2[]
+    addIndex<T1, T2>(iterator: ArrayIterator<T1, T2>, reducer: IndexReducer<T1, T2>, array: ReadonlyArray<T1>): T2[]
 
     // adjust
-    adjust<T1, T2>(change: Function1<T1, T2>): CurriedFunction2<Index, T1[], MixedArray<T1, T2>>
-    adjust<T1, T2>(change: Function1<T1, T2>, index: Index): Function1<T1[], MixedArray<T1, T2>>
-    adjust<T1, T2>(change: Function1<T1, T2>, index: Index, array: T1[]): MixedArray<T1, T2>
+    adjust<T1, T2>(change: (value: T1) => T2): AdjustCurried2<T1, T2>
+    adjust<T1, T2>(change: (value: T1) => T2, index: number): (array: ReadonlyArray<T1>) => (T1 | T2)[]
+    adjust<T1, T2>(change: (value: T1) => T2, index: number, array: ReadonlyArray<T1>): (T1 | T2)[]
 
     // adjustIn
-    adjust<T1, T2>(change: Function1<T1, T2>): CurriedFunction2<Predicate1<T1>, T1[], MixedArray<T1, T2>>
-    adjust<T1, T2>(change: Function1<T1, T2>, predicate: Predicate1<T1>): Function1<T1[], MixedArray<T1, T2>>
-    adjust<T1, T2>(change: Function1<T1, T2>, predicate: Predicate1<T1>, array: T1[]): MixedArray<T1, T2>
+    adjust<T1, T2>(change: (value: T1) => T2): AdjustInCurried2<T1, T2>
+    adjust<T1, T2>(change: (value: T1) => T2, predicate: Predicate1<T1>): (array: ReadonlyArray<T1>) => T2[]
+    adjust<T1, T2>(change: (value: T1) => T2, predicate: Predicate1<T1>, array: ReadonlyArray<T1>): T2[]
 
     // all
-    all<T1>(predicate: Predicate1<T1>): Function1<T1[], boolean>
-    all<T1>(predicate: Predicate1<T1>, array: T1[]): boolean
+    all<T1>(predicate: Predicate<T1>): (predicate: Predicate1<T1>) => boolean
+    all<T1>(predicate: Predicate<T1>, predicate: Predicate1<T1>): boolean
+
+    // allPass
+    allPass<T1, T2>(callbacks: ReadonlyArray<(value: T1) => T2>): (value: T1) => boolean
+    allPass<T1, T2>(callbacks: ReadonlyArray<(value: T1) => T2>, value: T1): boolean
+
+    // always
+    always<T1>(value: T1): () => T1
+
+    // and
+    and(first: boolean): (second: boolean) => boolean
+    and(first: boolean, second: boolean): boolean
+
+    // any
+    any<T1>(callback: (value: T1) => boolean): (array: ReadonlyArray<T1>) => boolean
+    any<T1>(callback: (value: T1) => boolean, array: ReadonlyArray<T1>): boolean
+
+    // anyPass
+    anyPass<T1, T2>(callbacks: ReadonlyArray<(value: T1) => T2>): (value: T1) => T2
+    anyPass<T1, T2>(callbacks: ReadonlyArray<(value: T1) => T2>, value: T1): T2
+
+    // ap
+    ap<T1, T2>(callbacks: ReadonlyArray<(value: T1) => T2>): (array: ReadonlyArray<T1>) => T2[]
+    ap<T1, T2>(callbacks: ReadonlyArray<(value: T1) => T2>, array: ReadonlyArray<T1>): T2[]
+
+    // aperture
+    aperture<T1>(size: number): (array: ReadonlyArray<T1>) => T1[][]
+    aperture<T1>(size: number, array: ReadonlyArray<T1>): T1[][]
+
+    // concat
+    concat<T1>(value: T1): (array: ReadonlyArray<T1>) => T1[]
+    concat<T1>(value: T1, array: ReadonlyArray<T1>): T1[]
+
+    // apply
+    apply<T1, T2>(change: (value: T1) => T2): (value: T1) => T2
+    apply<T1, T2>(change: (value: T1) => T2, value: T1): T2
+
+    // applySpec
+    applySpec<T1, T2>(callbacks: ApplySpecObject<(...array: ReadonlyArray<T1>) => T2>): (...array: ReadonlyArray<T1>) => T2
+    applySpec<T1, T2>(callbacks: ApplySpecObject<(...array: ReadonlyArray<T1>) => T2>, ...array: ReadonlyArray<T1>): T2
+
+    // applyTo
+    applyTo<T1, T2>(value: T1): (change: (value: T1) => T2) => T2
+    applyTo<T1, T2>(value: T1, change: (value: T1) => T2): T2
+
+    // ascend
+    ascend<T1, T2>(callback: (value: T1) => T2): Comparator<T2>
+
+    // assoc
+    assoc<T1>(path: number, value: T1, array: ReadonlyArray<T1>): T1[]
+    assoc<T1>(path: string, value: T1, object: Object<string, T1>): Object<string, T1>
+
+    // assocPath
+    // TODO: make stricter
+    assocPath<T1>(paths: number[], value: any, array: ReadonlyArray<T1>): T1[]
+    assocPath<T1>(paths: string[], value: any, object: AssocPathObject<any>): AssocPathObject<any>
+    assocPath(paths: (number | string)[], value: any, functor: ReadonlyArray<any> | AssocPathObject<any>): any[] | AssocPathObject<any>
+
+    // az
+    az<T1>(propper: (value: T1) => string): Comparator<T1>
+
+    // binary
+    binary<T1, T2, T3>(callback: (first: T1, second: T2) => T3): (first: T1, second: T2) => T3
+    binary<T1, T2, T3>(callback: (first: T1, second: T2) => T3, first: T1, second: T2): T3
+
+    // bind
+    bind(callback: Function): (context: any) => Function
+    bind(callback: Function, context: any): Function
+
+    // both
+    both<T1>(first: (...array: T1[]) => boolean, second: (...array: T1[]) => boolean): (...array: T1[]) => boolean
+    both<T1>(first: (...array: T1[]) => boolean, second: (...array: T1[]) => boolean, ...array: T1[]): boolean
+
+    // call
+    call<T1, T2>(callback: (...args: T1[]) => T2): CallFunction<T1, T2>
   }
 }
 
