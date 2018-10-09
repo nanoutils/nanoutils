@@ -1,3 +1,5 @@
+import clamp from "./lib/clamp";
+
 declare let nanoutils: Nanoutils.Static
 
 declare namespace Nanoutils {
@@ -149,6 +151,20 @@ declare namespace Nanoutils {
 
     // call
     call<T1, T2>(callback: (...args: T1[]) => T2): CallFunction<T1, T2>
+
+    // camelCase
+    camelCase (string: string): string
+
+    // chain
+    chain<T1, T2, T3, T4>(callback: (first: T2) => (second: T3) => T4): (extractor: (array: T1) => T2) => (value: T3) => T4
+    chain<T1, T2, T3, T4>(callback: (first: T2) => (second: T3) => T4, extractor: (array: T1) => T2): (value: T3) => T4
+    chain<T1, T2>(callback: (value: T1) => T2 | T2[]): (array: T1[]) => T2[]
+    chain<T1, T2>(callback: (value: T1) => T2 | T2[], array: T1[]): T2[]
+
+    // clamp
+    clamp(minimum: number) : (maximum: number) => (value: number) => number
+    clamp(minimum: number, maximum: number): (value: number) => number
+    clamp(minimum: number, maximum: number, value: number): number
   }
 }
 
