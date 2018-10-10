@@ -34,9 +34,9 @@
 | compact | 50 B | n/a B | n/a B |
 | comparator | 48 B | 159 B | -111 B |
 | complement | 46 B | 1916 B | -1870 B |
-| compose | 93 B | 1314 B | -1221 B |
-| composeP | 83 B | 1330 B | -1247 B |
-| composeT | 102 B | n/a B | n/a B |
+| compose | 94 B | 1314 B | -1220 B |
+| composeP | 109 B | 1330 B | -1221 B |
+| composeT | 99 B | n/a B | n/a B |
 | concat | 124 B | 3228 B | -3104 B |
 | cond | 68 B | 1937 B | -1869 B |
 | construct | 321 B | 790 B | -469 B |
@@ -178,8 +178,8 @@
 | pick | 107 B | 266 B | -159 B |
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
-| pipe | 141 B | 1245 B | -1104 B |
-| pipeP | 145 B | 1260 B | -1115 B |
+| pipe | 138 B | 1245 B | -1107 B |
+| pipeP | 152 B | 1260 B | -1108 B |
 | pipeT | 97 B | n/a B | n/a B |
 | pluck | 90 B | 1783 B | -1693 B |
 | prepend | 89 B | 301 B | -212 B |
@@ -251,7 +251,7 @@
 | uniqWith | 138 B | 320 B | -182 B |
 | unless | 87 B | 338 B | -251 B |
 | unnest | 56 B | 1996 B | -1940 B |
-| unnestN | 246 B | n/a B | n/a B |
+| unnestN | 244 B | n/a B | n/a B |
 | until | 115 B | 351 B | -236 B |
 | unzip | 212 B | n/a B | n/a B |
 | unzipWith | 169 B | n/a B | n/a B |
