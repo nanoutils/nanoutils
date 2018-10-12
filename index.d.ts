@@ -22,8 +22,13 @@ declare namespace Nanoutils {
   type Truthy<T> = T extends Falsy ? never : T
 
   // composeT
-  interface Transducer<T1> {
-    (change: (value: any) => any): (reducer: (accumulator: T1, value: any) => T1) => (accumulator: T1, value: any) => T1
+  interface Transducer<T1, T2, T3> {
+    (extractor: (value: T2) => T3): (reducer: (accumulator: T1, value: T3) => T1) => (accumulator: T1, value: T2) => T1
+  }
+
+  // debounce
+  interface Cancelable {
+    cancel(): void
   }
 
   interface Static {
@@ -80,10 +85,6 @@ declare namespace Nanoutils {
     aperture<T1>(size: number): (array: ReadonlyArray<T1>) => T1[][]
     aperture<T1>(size: number, array: ReadonlyArray<T1>): T1[][]
 
-    // concat
-    concat<T1>(value: T1): (array: ReadonlyArray<T1>) => T1[]
-    concat<T1>(value: T1, array: ReadonlyArray<T1>): T1[]
-
     // apply
     apply<T1, T2>(change: (...arguments: T1[]) => T2[]): (...arguments: T1[]) => T2[]
     apply<T1, T2>(change: (...arguments: T1[]) => T2[], value: T1): T2
@@ -97,7 +98,7 @@ declare namespace Nanoutils {
     applyTo<T1, T2>(value: T1, change: (...arguments: T1[]) => T2[]): T2
 
     // ascend
-    ascend<T1, T2>(callback: (...arguments: T1[]) => T2[]): (first: T1, second: T1) => -1 | 0 | 1
+    ascend<T1, T2 extends string | number>(callback: (value: T1) => T2): (first: T1, second: T1) => -1 | 0 | 1
 
     // assoc
     assoc<T1>(path: number, value: T1, array: ReadonlyArray<T1>): T1[]
@@ -182,13 +183,97 @@ declare namespace Nanoutils {
     composeP(...callbacks: ((value: any) => Promise<any>)[]): (value: any) => any
 
     // composeT
-    composeT<T1, T2, T3>(...transducers: (
-      (transducer: 
-        (extractor: (value: T2) => T3) =>
-          (reducer: (accumulator: T1, value: T3) => any) =>
-            (accumulator: T1, value: T2) =>
-              any
-      ) => any)[]): (reducer: (accumulator: T1, value: T3) => any) => any
+    composeT<T1>(): (value: T1) => T1
+    composeT<T1, T2, T3>(first: Transducer<T1, T2, T3>): (reducer: (accumulator: T1, value: T3) => T1) => (accumulator: T1, value: T2) => T1
+    // TODO: complete types
+    composeT<T1, T2, T3>(...transducers:  Transducer<T1, T2, T3>[]): (reducer: (accumulator: T1, value: T3) => T1) => (accumulator: T1, value: T2) => T1
+
+    // concat
+    concat(first: string): (second: string) => string
+    concat(first: string, second: string): string
+    concat<T1>(first: ReadonlyArray<T1>): (second: ReadonlyArray<T1>) => ReadonlyArray<T1>
+    concat<T1>(first: ReadonlyArray<T1>, second: ReadonlyArray<T1>): ReadonlyArray<T1>
+
+    // cond
+    cond<T1, T2>(...conditions: [(value: T1) => boolean, () => T2][]): (value: T1) => T2
+
+    // construct
+    construct<T1>(constructor: new(...parameters: any[]) => T1): (...parameters: any[]) => T1
+
+    // constructN
+    // TODO
+
+    // contains
+    contains<T1>(value: T1): (array: ReadonlyArray<T1>) => boolean
+    contains<T1>(value: T1, array: ReadonlyArray<T1>): boolean
+
+    // converge
+    converge<T1, T2, T3>(callback: (first: T2) => T3): (enhancers: [(value: T1) => T2]) => (value: T1) => T3
+    converge<T1, T2, T3>(callback: (first: T2) => T3, enhancers: [(value: T1) => T2]): (value: T1) => T3
+    converge<T1, T2, T3, T4>(callback: (first: T2, second: T3) => T4): (enhancers: [(value: T1) => T2, (value: T1) => T3]) => (value: T1) => T4
+    converge<T1, T2, T3, T4>(callback: (first: T2, second: T3) => T4, enhancers: [(value: T1) => T2, (value: T1) => T3]): (value: T1) => T4
+    converge<T1, T2, T3, T4, T5>(callback: (first: T2, second: T3, third: T4) => T5): (enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4]) => (value: T1) => T5
+    converge<T1, T2, T3, T4, T5>(callback: (first: T2, second: T3, third: T4) => T5, enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4]): (value: T1) => T5
+    converge<T1, T2, T3, T4, T5, T6>(callback: (first: T2, second: T3, third: T4, fourth: T5) => T6): (enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5]) => (value: T1) => T6
+    converge<T1, T2, T3, T4, T5, T6>(callback: (first: T2, second: T3, third: T4, fourth: T5) => T6, enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5]): (value: T1) => T6
+    converge<T1, T2, T3, T4, T5, T6, T7>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6) => T7): (enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6]) => (value: T1) => T7
+    converge<T1, T2, T3, T4, T5, T6, T7>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6) => T7, enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6]): (value: T1) => T7
+    converge<T1, T2, T3, T4, T5, T6, T7, T8>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7) => T8): (enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7]) => (value: T1) => T8
+    converge<T1, T2, T3, T4, T5, T6, T7, T8>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7) => T8, enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7]): (value: T1) => T8
+    converge<T1, T2, T3, T4, T5, T6, T7, T8, T9>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7, seventh: T8) => T9): (enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7, (value: T1) => T8]) => (value: T1) => T9
+    converge<T1, T2, T3, T4, T5, T6, T7, T8, T9>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7, seventh: T8) => T9, enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7, (value: T1) => T8]): (value: T1) => T9
+    converge<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7, seventh: T8, eighth: T9) => T10): (enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7, (value: T1) => T8, (value: T1) => T9]) => (value: T1) => T10
+    converge<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7, seventh: T8, eighth: T9) => T10, enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7, (value: T1) => T8, (value: T1) => T9]): (value: T1) => T10
+    converge<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7, seventh: T8, eighth: T9, nineth: T10) => T11): (enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7, (value: T1) => T8, (value: T1) => T9, (value: T1) => T10]) => (value: T1) => T11
+    converge<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(callback: (first: T2, second: T3, third: T4, fourth: T5, fifth: T6, sixth: T7, seventh: T8, eighth: T9, nineth: T10) => T11, enhancers: [(value: T1) => T2, (value: T1) => T3, (value: T1) => T4, (value: T1) => T5, (value: T1) => T6, (value: T1) => T7, (value: T1) => T8, (value: T1) => T9, (value: T1) => T10]): (value: T1) => T11
+    converge<T1, T2>(callback: (...array: any[]) => T2): (enhancers: ReadonlyArray<(value: T1) => any>) => (value: T1) => T2
+    converge<T1, T2>(callback: (...array: any[]) => T2, enhancers: ReadonlyArray<(value: T1) => any>): (value: T1) => T2
+
+    // countBy
+    countBy<T1, T2 extends number | string>(counter: (value: T1) => T2): (array: ReadonlyArray<T1>) => { [times: T2]: number }
+    countBy<T1, T2 extends number | string>(counter: (value: T1) => T2, array: ReadonlyArray<T1>): { [times: T2]: number }
+
+    // curry
+    // TODO
+
+    // curryN
+    // TODO
+
+    // debounce
+    debounce(time: number, callback: (...array: any[]) => void, options: { leading: boolean }): Cancelable
+
+    // dec
+    dec(value: number): number
+
+    // defaultTo
+    defaultTo<T1>(defaultValue: T1): (value: undefined | null | T1) => T1
+    defaultTo<T1>(defaultValue: T1, value: undefined | null | T1): T1
+
+    // descend
+    descend<T1, T2 extends string | number>(callback: (value: T1) => T2): (first: T1, second: T1) => -1 | 0 | 1
+
+    // difference
+    difference<T1>(first: ReadonlyArray<T1>): (second: ReadonlyArray<T1>) => T1[]
+    difference<T1>(first: ReadonlyArray<T1>, second: ReadonlyArray<T1>): T1[]
+
+    // differenceWith
+    differenceWith<T1>(compare: (first: T1, second: T1) => boolean): (first: ReadonlyArray<T1>) => (second: ReadonlyArray<T1>) => T1[]
+    differenceWith<T1>(compare: (first: T1, second: T1) => boolean): (first: ReadonlyArray<T1>, second: ReadonlyArray<T1>) => T1[]
+    differenceWith<T1>(compare: (first: T1, second: T1) => boolean, first: ReadonlyArray<T1>): (second: ReadonlyArray<T1>) => T1[]
+    differenceWith<T1>(compare: (first: T1, second: T1) => boolean, first: ReadonlyArray<T1>, second: ReadonlyArray<T1>): T1[]
+
+    // dissoc
+    dissoc(deletedKey: string | number): (object: { [key: string | number]: any }) => { [key: string | number]: any }
+    dissoc(deletedKey: string | number, object: { [key: string | number]: any }): { [key: string | number]: any }
+
+    // dissocPath
+    dissocPath(path: ReadonlyArray<string>): (object: { [key: string | number]: any }) => { [key: string | number]: any }
+    dissocPath(path: ReadonlyArray<string>, object: { [key: string | number]: any }): { [key: string | number]: any }
+
+    // divide
+    divide(first: number): (second: number) => number
+    divide(first: number, second: number): number
+
   }
 }
 
