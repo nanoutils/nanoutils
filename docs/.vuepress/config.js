@@ -2,6 +2,7 @@ module.exports = {
   base: '/',
   title: "Nanoutils",
   themeConfig: {
+    repo: 'nanoutils/nanoutils',
     sidebar: [
       {
         collapsable: false,
