@@ -57,7 +57,7 @@
 | divide | 82 B | 230 B | -148 B |
 | drop | 92 B | 782 B | -690 B |
 | dropLast | 110 B | 983 B | -873 B |
-| dropLastWhile | 124 B | 1443 B | -1319 B |
+| dropLastWhile | 137 B | 1443 B | -1306 B |
 | dropRepeats | 428 B | 1845 B | -1417 B |
 | dropRepeatsWith | 139 B | 722 B | -583 B |
 | dropWhile | 115 B | 806 B | -691 B |
@@ -116,7 +116,7 @@
 | juxt | 114 B | 2024 B | -1910 B |
 | keys | 34 B | 467 B | -433 B |
 | keysIn | 46 B | 161 B | -115 B |
-| last | 37 B | 302 B | -265 B |
+| last | 39 B | 302 B | -263 B |
 | lastIndexOf | 115 B | 1462 B | -1347 B |
 | length | 47 B | 190 B | -143 B |
 | lens | 47 B | 1745 B | -1698 B |

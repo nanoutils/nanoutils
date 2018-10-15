@@ -1,16 +1,10 @@
+import drop from "./lib/drop";
+import either from "./lib/either";
+import evolve from "./lib/evolve";
+
 declare let nanoutils: Nanoutils.Static
 
 declare namespace Nanoutils {
-  // applySpec
-  interface ApplySpecObject<T1> {
-    [key: string]: T1 | ApplySpecObject<T1>
-  }
-
-  // assocPath
-  interface AssocPathObject<T1> {
-    [key: string]: T1 | AssocPathObject<T1>
-  }
-
   // call
   interface CallFunction<T1, T2> {
     (): CallFunction<T1, T2>
@@ -29,6 +23,16 @@ declare namespace Nanoutils {
   // debounce
   interface Cancelable {
     cancel(): void
+  }
+
+  // evolve
+  interface EvolveObject<T1, T2> {
+    [key: keyof T1]: (value: T1) => T2 | EvolveObject<keyof T1>
+  }
+
+  interface RecursiveObject<T1> {
+    [key: keyof T1]: T1 | RecursiveObject<T1[key]>
+    /* [key: keyof T1]: T1 | RecursiveObject<Pick<T1, key>> */
   }
 
   interface Static {
@@ -90,8 +94,8 @@ declare namespace Nanoutils {
     apply<T1, T2>(change: (...arguments: T1[]) => T2[], value: T1): T2
 
     // applySpec
-    applySpec<T1, T2>(callbacks: ApplySpecObject<(...array: T1[]) => T2>): (...array: T1[]) => T2
-    applySpec<T1, T2>(callbacks: ApplySpecObject<(...array: T1[]) => T2>, ...array: T1[]): T2
+    applySpec<T1, T2>(callbacks: RecursiveObject<(...array: T1[]) => T2>): (...array: T1[]) => T2
+    applySpec<T1, T2>(callbacks: RecursiveObject<(...array: T1[]) => T2>, ...array: T1[]): T2
 
     // applyTo
     applyTo<T1, T2>(value: T1): (change: (...arguments: T1[]) => T2[]) => T2
@@ -107,8 +111,8 @@ declare namespace Nanoutils {
     // assocPath
     // TODO: make stricter
     assocPath<T1>(paths: number[], value: any, array: ReadonlyArray<T1>): T1[]
-    assocPath<T1>(paths: string[], value: any, object: AssocPathObject<any>): AssocPathObject<any>
-    assocPath(paths: (number | string)[], value: any, functor: ReadonlyArray<any> | AssocPathObject<any>): any[] | AssocPathObject<any>
+    assocPath<T1>(paths: string[], value: any, object: RecursiveObject<any>): RecursiveObject<any>
+    assocPath(paths: (number | string)[], value: any, functor: ReadonlyArray<any> | RecursiveObject<any>): any[] | RecursiveObject<any>
 
     // az
     az<T1>(propper: (value: T1) => string): (first: T1, second: T1) => -1 | 0 | 1
@@ -274,6 +278,77 @@ declare namespace Nanoutils {
     divide(first: number): (second: number) => number
     divide(first: number, second: number): number
 
+    // drop
+    drop<T1>(size: number): (array: ReadonlyArray<T1>) => T1[]
+    drop<T1>(size: number, array: ReadonlyArray<T1>): T1[]
+    drop(size: number): (string: string) => string
+    drop(size: number, string: string): string
+    
+    // dropLast
+    dropLast<T1>(size: number): (array: ReadonlyArray<T1>) => T1[]
+    dropLast<T1>(size: number, array: ReadonlyArray<T1>): T1[]
+    dropLast(size: number): (string: string) => string
+    dropLast(size: number, string: string): string
+
+    // dropLastWhile
+    dropLastWhile<T1>(predicate: (value: T1) => boolean): (array: ReadonlyArray<T1>) => T1[]
+    dropLastWhile<T1>(predicate: (value: T1) => boolean, array: ReadonlyArray<T1>): T1[]
+    dropLastWhile(predicate: (value: string) => boolean): (string: string) => string
+    dropLastWhile(predicate: (value: string) => boolean, string: string): string
+
+    // dropRepeats
+    dropRepeats<T1>(array: ReadonlyArray<T1>): T1[]
+    dropRepeats(string: string): string
+
+    // dropRepeatsWith
+    dropRepeatsWith<T>(equal: (first: T, second: T) => boolean): (array: ReadonlyArray<T>) => T[]
+    dropRepeatsWith<T>(equal: (first: T, second: T) => boolean, array: ReadonlyArray<T>): T[]
+    dropRepeatsWith(equal: (first: string, second: string) => boolean): (string: string) => string
+    dropRepeatsWith(equal: (first: string, second: string) => boolean, string: string): string
+
+    // either
+    either(first: (...array: T1[]) => boolean, second: (...array: T1[]) => boolean): (...array: T1[]) => boolean
+
+    // empty
+    empty<T1>(value: T1): T1
+
+    // endsWith
+    endsWith<T1>(suffix: ReadonlyArray<T1>): (array: ReadonlyArray<T1>) => boolean
+    endsWith<T1>(suffix: ReadonlyArray<T1>, array: ReadonlyArray<T1>): boolean
+    endsWith(suffix: string): (string: string) => boolean
+    endsWith(suffix: string, string: string): boolean
+
+    // eqBy
+    eqBy<T1, T2>(getter: (value: T1) => T2): (first: T1) => (second: T1) => boolean
+    eqBy<T1, T2>(getter: (value: T1) => T2): (first: T1, second: T1) => boolean
+    eqBy<T1, T2>(getter: (value: T1) => T2, first: T1): (second: T1) => boolean
+    eqBy<T1, T2>(getter: (value: T1) => T2, first: T1, second: T1): boolean
+
+    // eqLens
+    eqLens<T1>(lens: (object: Object) => { get(): T1 }): (value: T1) => (object: Object) => boolean
+    eqLens<T1>(lens: (object: Object) => { get(): T1 }): (value: T1, object: Object) => boolean
+    eqLens<T1>(lens: (object: Object) => { get(): T1 }, value: T1): (object: Object) => boolean
+    eqLens<T1>(lens: (object: Object) => { get(): T1 }, value: T1, object: Object): boolean
+
+    // eqProps
+    eqProps<T1>(key: keyof T1): (first: T1) => (second: T1) => boolean
+    eqProps<T1>(key: keyof T1): (first: T1, second: T1) => boolean
+    eqProps<T1>(key: keyof T1, first: T1): (second: T1) => boolean
+    eqProps<T1>(key: keyof T1, first: T1, second: T1): boolean
+
+    // equals
+    equals<T1>(first: T1): (second: T1) => boolean
+    equals<T1>(first: T1, second: T1): boolean
+
+    // eqWith
+    eqWith<T1, T2>(compare: (first: T1, second: T2) => boolean): (first: T1) => (second: T2) => boolean
+    eqWith<T1, T2>(compare: (first: T1, second: T2) => boolean): (first: T1, second: T2) => boolean
+    eqWith<T1, T2>(compare: (first: T1, second: T2) => boolean, first: T1): (second: T2) => boolean
+    eqWith<T1, T2>(compare: (first: T1, second: T2) => boolean, first: T1, second: T2): boolean
+
+    // evolve
+    evolve<T1, T2>(callbacks: EvolveObject<T1, T2>): (object: RecursiveObject<T1>) => RecursiveObject<T2>
+    evolve<T1, T2>(callbacks: EvolveObject<T1, T2>, object: RecursiveObject<T1>): RecursiveObject<T2>
   }
 }
 
