@@ -9,25 +9,25 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-commit": "npm run size && npm run lint && git add SIZES.md"
+      "pre-commit": "yarn size && yarn lint && git add SIZES.md"
     }
   },
   "scripts": {
+    "build": "rimraf lib/index.js && create-index --ignoreUnsafe lib && yarn build:cjs && yarn size",
+    "build:cjs": "babel lib --out-dir cjs --ignore test.js",
     "dev": "jest --watchAll --verbose",
-    "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:publish": "npm run docs:build && node ./misc/cli/docs-publish.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:publish": "yarn docs:build && node ./misc/cli/docs-publish.js",
     "lint": "eslint --fix ./lib/*/index.js",
-    "test": "jest",
-    "size": "node ./misc/cli/size.js",
-    "time": "node ./misc/cli/time.js",
     "method:add": "node ./misc/cli/add-method.js",
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
-    "build:cjs": "babel lib --out-dir cjs --ignore test.js",
-    "build": "shx rm -f lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
-    "prepublish": "npm run build",
-    "release": "np"
+    "prepublish": "yarn build",
+    "release": "np",
+    "size": "node ./misc/cli/size.js",
+    "test": "jest",
+    "time": "node ./misc/cli/time.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -48,7 +48,6 @@
     "np": "^3.0.4",
     "ramda": "^0.25.0",
     "rimraf": "^2.6.2",
-    "shx": "^0.2.2",
     "size-limit": "^0.13.2",
     "vuepress": "^0.14.1"
   }
