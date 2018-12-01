@@ -9,21 +9,21 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-commit": "npm run size && npm run lint && git add SIZES.md"
+      "pre-commit": "yarn size && yarn lint && git add SIZES.md"
     }
   },
   "scripts": {
-    "build": "rimraf lib/index.js && create-index --ignoreUnsafe lib && npm run build:cjs && npm run size",
+    "build": "rimraf lib/index.js && create-index --ignoreUnsafe lib && yarn build:cjs && yarn size",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
     "dev": "jest --watchAll --verbose",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "docs:publish": "npm run docs:build && node ./misc/cli/docs-publish.js",
+    "docs:publish": "yarn docs:build && node ./misc/cli/docs-publish.js",
     "lint": "eslint --fix ./lib/*/index.js",
     "method:add": "node ./misc/cli/add-method.js",
     "method:check": "node ./misc/cli/check-methods.js",
     "method:rename": "node ./misc/cli/rename-method.js",
-    "prepublish": "npm run build",
+    "prepublish": "yarn build",
     "release": "np",
     "size": "node ./misc/cli/size.js",
     "test": "jest",
