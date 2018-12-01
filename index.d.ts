@@ -1,6 +1,7 @@
 import drop from "./lib/drop";
 import either from "./lib/either";
 import evolve from "./lib/evolve";
+import fill from "./lib/fill";
 
 declare let nanoutils: Nanoutils.Static
 
@@ -349,6 +350,140 @@ declare namespace Nanoutils {
     // evolve
     evolve<T1, T2>(callbacks: EvolveObject<T1, T2>): (object: RecursiveObject<T1>) => RecursiveObject<T2>
     evolve<T1, T2>(callbacks: EvolveObject<T1, T2>, object: RecursiveObject<T1>): RecursiveObject<T2>
+
+    // false
+    F(): false
+
+    // fill
+    fill<T1>(value: T1, start: number, end: number): (array: ReadonlyArray<T1>) => T1[]
+
+    // filter
+    filter<T1>(predicate: (value: T1) => boolean): (array: ReadonlyArray<T1>) => T1[]
+    filter<K1 extends string | number | symbol, T1>(predicate: (value: T1) => boolean): (object: Record<K1, T1>) => Record<K1, T1>
+    filter<T1>(predicate: (value: T1) => boolean, array: ReadonlyArray<T1>): T1[]
+    filter<K1 extends string | number | symbol, T1>(predicate: (value: T1) => boolean, object: Record<K1, T1>): Record<K1, T1>
+
+    // filterT
+    filterT<T1, T2>(predicate: (value: T1) => boolean): (reducer: (accumulator: T1, value: T2) => T1) => (accumulator: T1, value: T2) => T1
+
+    // find
+    find<T1>(predicate: (value: T1) => boolean): (array: ReadonlyArray<T1>) => T1 | undefined
+    find<T1>(predicate: (value: T1) => boolean, array: ReadonlyArray<T1>): T1 | undefined
+
+    // findIndex
+    findIndex<T1>(predicate: (value: T1) => boolean): (array: ReadonlyArray<T1>) => number
+    findIndex<T1>(predicate: (value: T1) => boolean, array: ReadonlyArray<T1>): number
+
+    // findLast
+    findLast<T1>(predicate: (value: T1) => boolean): (array: ReadonlyArray<T1>) => T1 | undefined
+    findLast<T1>(predicate: (value: T1) => boolean, array: ReadonlyArray<T1>): T1 | undefined
+
+    // findLastIndex
+    findLastIndex<T1>(predicate: (value: T1) => boolean): (array: ReadonlyArray<T1>) => number
+    findLastIndex<T1>(predicate: (value: T1) => boolean, array: ReadonlyArray<T1>): number
+
+    // flatten
+    flatten(array: any[]): any[]
+
+    // flattenObj
+    flattenObj(object: Object): Object
+
+    // flip
+    flip<T1, T2>(fn: (...args: T1[]) => T2): (...args: T1[]) => T2
+
+    // forEach
+    forEach<T1>(fn: (value: T1) => void): (array: ReadonlyArray<T1>) => T1[]
+    forEach<T1>(fn: (value: T1) => void, array: ReadonlyArray<T1>): T1[]
+
+    // forEachObjIndexed
+    forEachObjIndexed<K1 extends string | number | symbol, T1>(fn: (value: T1, key: K1, object: Record<K1, T1>) => void): (object: Record<K1, T1>) => Record<K1, T1>
+    forEachObjIndexed<K1 extends string | number | symbol, T1>(fn: (value: T1, key: K1, object: Record<K1, T1>) => void, object: Record<K1, T1>): Record<K1, T1>
+
+    // fromPairs
+    fromPairs<K1 extends string | number | symbol, T1>(array: ReadonlyArray<[K1, T1]>): Record<K1, T1>
+
+    // groupBy
+    groupBy<K1 extends string | number | symbol, T1>(groupifier: (value: T1) => K1): (array: ReadonlyArray<T1>) => Record<K1, T1>
+    groupBy<K1 extends string | number | symbol, T1>(groupifier: (value: T1) => K1, array: ReadonlyArray<T1>): Record<K1, T1>
+
+    // groupWith
+    groupWith<T1>(comparator: (left: T1, right: T1) => boolean): (array: ReadonlyArray<T1>) => T1[][]
+    groupWith<T1>(comparator: (left: T1, right: T1) => boolean, array: ReadonlyArray<T1>): T1[][]
+
+    // gt
+    gt<T1>(first: T1): (second: T1) => boolean
+    gt<T1>(first: T1, second: T1): boolean
+
+    // gte
+    gte<T1>(first: T1): (second: T1) => boolean
+    gte<T1>(first: T1, second: T1): boolean
+
+    // has
+    has<K1 extends string | number | symbol>(key: K1): (object: Record<K1, any>) => boolean
+    has<K1 extends string | number | symbol>(key: K1, object: Record<K1, any>): boolean
+
+    // hasIn
+    hasIn<K1 extends string | number | symbol>(key: K1): (object: Record<K1, any>) => boolean
+    hasIn<K1 extends string | number | symbol>(key: K1, object: Record<K1, any>): boolean
+
+    // head
+    head<T1>(array: ReadonlyArray<T1>): T1
+    head(string: string): string
+
+    // identical
+    identical<T1>(first: T1): (second: T1) => boolean
+    identical<T1>(first: T1, second: T1): boolean
+
+    // identity
+    identity<T1>(value: T1): T1
+
+    // ifElse
+    ifElse<T1, T2, T3>(predicate: (value: T1) => boolean): (thenFunction: (value: T1) => T2) => (elseFunction: (value: T1) => T3) => (value: T1) => T2 | T3
+    ifElse<T1, T2, T3>(predicate: (value: T1) => boolean, thenFunction: (value: T1) => T2): (elseFunction: (value: T1) => T3) => (value: T1) => T2 | T3
+    ifElse<T1, T2, T3>(predicate: (value: T1) => boolean, thenFunction: (value: T1) => T2, elseFunction: (value: T1) => T3): (value: T1) => T2 | T3
+
+    // inc
+    inc(value: number): number
+
+    // indexBy
+    indexBy<K1 extends string | number | symbol, T1>(indexifier: (value: T1) => K1): (array: ReadonlyArray<T1>) => Record<K1, T1>
+    indexBy<K1 extends string | number | symbol, T1>(indexifier: (value: T1) => K1, array: ReadonlyArray<T1>): Record<K1, T1>
+
+    // indexed
+    indexed<T1, T2>(fn: (value: T1, index: number) => T2): (value: T1) => T2
+
+    // indexOf
+    indexOf<T1>(value: T1): (array: ReadonlyArray<T1>) => number
+    indexOf(value: string): (array: string) => number
+    indexOf<T1>(value: T1, array: ReadonlyArray<T1>): number
+    indexOf(value: string, array: string): number
+
+    // init
+    init<T1>(array: ReadonlyArray<T1>): T1[]
+    init(array: string): string
+
+    // innerJoin
+    innerJoin<T1, T2>(comparator: (first: T1, second: T2) => boolean): (array: ReadonlyArray<T1>) => (checkArray: ReadonlyArray<T2>) => T1[]
+    innerJoin<T1, T2>(comparator: (first: T1, second: T2) => boolean, array: ReadonlyArray<T1>): (checkArray: ReadonlyArray<T2>) => T1[]
+    innerJoin<T1, T2>(comparator: (first: T1, second: T2) => boolean, array: ReadonlyArray<T1>, checkArray: ReadonlyArray<T2>): T1[]
+
+    // insert
+    insert<T1>(index: number): (value: T1) => (array: ReadonlyArray<T1>) => T1[]
+    insert<T1>(index: number, value: T1): (array: ReadonlyArray<T1>) => T1[]
+    insert<T1>(index: number, value: T1, array: ReadonlyArray<T1>): T1[]
+
+    // insertAll
+    insertAll<T1>(index: number): (values: ReadonlyArray<T1>) => (array: ReadonlyArray<T1>) => T1[]
+    insertAll<T1>(index: number, values: ReadonlyArray<T1>): (array: ReadonlyArray<T1>) => T1[]
+    insertAll<T1>(index: number, values: ReadonlyArray<T1>, array: ReadonlyArray<T1>): T1[]
+
+    // intersection
+    intersection<T1>(first: ReadonlyArray<T1>): (second: ReadonlyArray<T1>) => T1[]
+    intersection<T1>(first: ReadonlyArray<T1>, second: ReadonlyArray<T1>): T1[]
+
+    // intersperse
+    intersperse<T1>(separator: T1): (array: ReadonlyArray<T1>) => T1[]
+    intersperse<T1>(separator: T1, array: ReadonlyArray<T1>): T1[]
   }
 }
 
