@@ -114,6 +114,7 @@
 | isNil | 33 B | 146 B | -113 B |
 | join | 85 B | 3343 B | -3258 B |
 | juxt | 114 B | 2024 B | -1910 B |
+| kebabCase | 158 B | n/a B | n/a B |
 | keys | 34 B | 467 B | -433 B |
 | keysIn | 46 B | 161 B | -115 B |
 | last | 37 B | 302 B | -265 B |
