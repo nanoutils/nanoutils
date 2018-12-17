@@ -27,7 +27,7 @@
 | bind | 85 B | 401 B | -316 B |
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
-| camelCase | 169 B | n/a B | n/a B |
+| camelCase | 187 B | n/a B | n/a B |
 | chain | 161 B | 1980 B | -1819 B |
 | clamp | 110 B | 402 B | -292 B |
 | clone | 299 B | 463 B | -164 B |
@@ -114,7 +114,7 @@
 | isNil | 33 B | 146 B | -113 B |
 | join | 85 B | 3343 B | -3258 B |
 | juxt | 114 B | 2024 B | -1910 B |
-| kebabCase | 158 B | n/a B | n/a B |
+| kebabCase | 176 B | n/a B | n/a B |
 | keys | 34 B | 467 B | -433 B |
 | keysIn | 46 B | 161 B | -115 B |
 | last | 37 B | 302 B | -265 B |
@@ -206,7 +206,7 @@
 | scan | 148 B | 373 B | -225 B |
 | set | 115 B | 411 B | -296 B |
 | slice | 148 B | 473 B | -325 B |
-| snakeCase | 160 B | n/a B | n/a B |
+| snakeCase | 178 B | n/a B | n/a B |
 | sort | 91 B | 248 B | -157 B |
 | sortBy | 105 B | 273 B | -168 B |
 | sortWith | 138 B | 285 B | -147 B |
