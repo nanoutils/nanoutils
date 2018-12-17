@@ -95,9 +95,10 @@
 | identity | 29 B | 150 B | -121 B |
 | ifElse | 110 B | 687 B | -577 B |
 | inc | 32 B | 250 B | -218 B |
+| includes | 123 B | n/a B | n/a B |
 | indexBy | 110 B | 1438 B | -1328 B |
 | indexed | 40 B | n/a B | n/a B |
-| indexOf | 99 B | 1570 B | -1471 B |
+| indexOf | 111 B | 1570 B | -1459 B |
 | init | 70 B | 493 B | -423 B |
 | innerJoin | 155 B | 439 B | -284 B |
 | insert | 117 B | 378 B | -261 B |
