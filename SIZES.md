@@ -28,8 +28,9 @@
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
 | camelCase | 187 B | n/a B | n/a B |
+| ceil | 139 B | n/a B | n/a B |
 | chain | 161 B | 1980 B | -1819 B |
-| clamp | 110 B | 402 B | -292 B |
+| clamp | 121 B | 402 B | -281 B |
 | clone | 299 B | 463 B | -164 B |
 | compact | 50 B | n/a B | n/a B |
 | comparator | 48 B | 159 B | -111 B |
