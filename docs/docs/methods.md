@@ -448,6 +448,43 @@ Separators which are identified are:
 * Hyphen `-`
 :::
 
+::: tip
+Also see [`kebabCase`](#kebabCase) and [`snakeCase`](#snakeCase)
+:::
+
+::: warning
+Incorrect symbols such as non-separators, not Cyrrilic or Latin letters, are removed
+:::
+
+## `ceil`
+
+Rounds `number` up to a specified precision
+
+```js
+import { ceil } from 'nanoutils'
+
+ceil(15.002, 3)   // 15.002
+ceil(15.002, 2)   // 15.01
+ceil(15.002, 1)   // 15.1
+ceil(15.002, 0)   // 15.002
+ceil(15.002, -1)  // 20
+ceil(15.002, -2)  // 100
+ceil(15.002, -3)  // 1000
+```
+
+::: tip
+It works same to `Array.ceil` but is extended with a specified precision
+
+It equals to:
+
+```js
+const multiplier = Math.pow(10, precision)
+return Array.ceil(value / multiplier) * multiplier
+```
+
+but is also working with e-notation
+:::
+
 ## `chain`
 
 It chains binary and unary functions
@@ -1754,6 +1791,19 @@ inc([1, 2])   // NaN
 If you pass non-`number` value, it tries to convert it to `number` and to increment then. Otherwise, it returns `NaN`
 :::
 
+## `includes`
+
+Checks if value is found in `string` or `array`
+
+```js
+import { includes } from 'nanoutils'
+
+includes(5, [1, 2, 3, 4, 5])  // true
+includes(5, [1, 2, 3, 4])     // false
+includes('5', '12345')        // true
+includes('5', '1234')         // false
+```
+
 ## `indexBy`
 
 Indexes a list of `object`s into an `object` given a key generator function
@@ -2024,6 +2074,20 @@ const countStatistics = juxt(statistics)
 
 countStatistics(1, 2, 2, 4)  // [2.25, 2]
 ```
+
+## `kebabCase`
+
+Returns a `string` in a kebab case style
+
+```js
+import { kebabCase } from 'nanoutils'
+
+kebabCase('-to kebab_case')  // to-kebab-case
+```
+
+::: tip
+Also see [`camelCase`](#camelCase) and [`snakeCase`](#snakeCase)
+:::
 
 ## `keys`
 
