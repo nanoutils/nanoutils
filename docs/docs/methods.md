@@ -1407,19 +1407,18 @@ Creates a transducer with a filter
 ```js
 import { filterT } from 'nanoutils'
 
-const pushReducer = (array, value) => {
-  array.push(value)
-  return array
-}
-const isEven = value => value % 2 === 0
-const transducer = filterT(isEven)
-const rootReducer = transducer(pushReducer)
+const isQueueSkipped = value => value % 2 === 0
+const transducer = filterT(isQueueSkipped)
+const lineUp = transducer((queue, value) => {
+  queue.push(value)
+  return queue
+})
 
-rootReducer([], 1)      // []
-rootReducer([], 2)      // [2]
-rootReducer([2], 3)     // [2]
-rootReducer([2], 4)     // [2, 4]
-rootReducer([2, 4], 5)  // [2, 4]
+lineUp([], 1)      // []
+lineUp([], 2)      // [2]
+lineUp([2], 3)     // [2]
+lineUp([2], 4)     // [2, 4]
+lineUp([2, 4], 5)  // [2, 4]
 ```
 
 ## `find`
@@ -2323,3 +2322,492 @@ lte(1, 2)  // true
 lte(2, 2)  // true
 lte(3, 2)  // false
 ```
+
+## `map`
+
+Iterates over `array` or `object` and replace value with a specified function
+
+```js
+import { map } from 'nanoutils'
+
+map(value => value * 2, [1, 2])         // [2, 4]
+map(value => value * 2, { Sasha: 1, Mike: 2 })  // { Sasha : 2, Mike: 4 }
+```
+
+## `mapAccum`
+
+Iterates over `array` saving result and accumulated value with a specified function
+
+```js
+import { mapAccum } from 'nanoutils'
+
+const reducer = (result, value) => [
+  // result of summing values
+  result + value,
+  // to save history of changes
+  result + value
+]
+const initial = 0
+
+mapAccum(reducer, initial, [1, 2, 3])  // [6, [1, 3, 6]]
+```
+
+::: tip
+Order of accumulation is left to right
+:::
+
+## `mapAccumRight`
+
+Iterates over `array` saving result and accumulated value with a specified function
+
+```js
+import { mapAccumRight } from 'nanoutils'
+
+const reducer = (result, value) => [
+  // result of summing values
+  result + value,
+  // to save history of changes
+  result + value
+]
+const initial = 0
+
+mapAccumRight(reducer, initial, [1, 2, 3])  // [6, [6, 5, 3]]
+```
+
+::: tip
+Order of accumulation is right to left
+:::
+
+## `mapObjIndexed`
+
+Iterates over `object` saving result in `object` with a specified function
+
+```js
+import { mapObjIndexed } from 'nanoutils'
+
+const bank = {
+  Sasha: { value: 5000 },
+  Mark: { value: 2500 }
+}
+
+const receiveCashback = (account) => ({ ...account, value: account.value * 1.1 })
+
+mapObjIndexed(receiveCashback, bank)  // { Sasha: { value: 5500 }, Mark: { value: 2750 } }
+```
+
+## `mapT`
+
+Creates a transducer with a map
+
+```js
+import { mapT } from 'nanoutils'
+
+const receiveCashback = value => value * 1.1
+const transducer = mapT(receiveCashback)
+const updateBankAccount = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+updateBankAccount([], 1)          // [1.1]
+updateBankAccount([1.1], 2)       // [1.1, 2.2]
+updateBankAccount([1.1, 2.2], 3)  // [1.1, 2.2, 3.3]
+```
+
+## `match`
+
+Returns all found matches from `string` by a specified regular expression
+
+```js
+import { match } from 'nanoutils'
+
+match(/[\w]/g, 'man')   // ['m', 'a', 'n']
+```
+
+::: warning
+It returns empty `array` if no matches are found
+
+```js
+import { match } from 'nanoutils'
+
+match(/[\d]/g, 'man')   // []
+```
+:::
+
+## `mathMod`
+
+Returns mathematical modulo of integer `number`
+
+```js
+import { mathMod } from 'nanoutils'
+
+mathMod(-17, 5)   // 3
+mathMod(17, 5)    // 2
+```
+
+::: warning
+if `number` is not integer or either of `number`s are negative, the result will be `NaN`
+:::
+
+## `max`
+
+Returns maximum value with `>` comparator
+
+```js
+import { max } from 'nanoutils'
+
+max(1, 2)       // 2
+max('a', 'z')   // 'z'
+```
+
+::: tip JS-friendly
+If you pass values of different types, it compares them with conversion
+
+```js
+import { max } from 'nanoutils'
+
+max(1, 'z')     // 'z' as 1 > 'z' returns false
+```
+:::
+
+## `maxBy`
+
+Returns maximum value with `>` comparator and a specified function
+
+```js
+import { maxBy } from 'nanoutils'
+
+maxBy(a => a * 2, -1, -2)                                         // -2
+maxBy(ch => ch.charCodeAt(0)  - 'a'.charCodeAt(0) + 1, 'a', 'z')  // 'z'
+```
+
+## `mean`
+
+Returns mean by a specified `array` of `number`s
+
+```js
+import { mean } from 'nanoutils'
+
+mean([1, 2, 3])     // 2
+```
+
+::: tip
+It returns `NaN` if `array` is empty
+:::
+
+## `median`
+
+Returns median by a specified `array` of `number`s
+
+```js
+import { median } from 'nanoutils'
+
+median([1, 2, 3])     // 2
+```
+
+::: tip
+It returns `NaN` if `array` is empty
+:::
+
+::: tip
+Median is a value which is greater than 50% of values and is less than 50% of values
+
+If the number of elements is even, the median is mean of 2 values
+
+```js
+import { median } from 'nanoutils'
+
+median([1, 2, 3, 4])     // 2.5 = (2 + 3) / 2
+```
+:::
+
+## `memoize`
+
+Runs function and memoizes its result
+
+```js
+import { memoize } from 'nanoutils'
+
+const factorial = memoize(value => {
+  let result = 1
+  for (let index = 2; index <= value; index++) {
+    result *= index
+  }
+  return result
+})
+factorial(5)    // 120
+factorial(5)    // 120 (extracts from memoized function)
+```
+
+::: tip
+It's strongly recommended for expensive function calls such as factorial
+:::
+
+## `memoizeWith`
+
+Runs function and memoizes its result with a specified hash generator
+
+```js
+import { ascend, identity, mean as plainMean, memoizeWith } from 'nanoutils'
+
+const getHash = args => [...args].sort(ascend(identity)).join('-')
+const mean = memoizeWith(getHash, plainMean)
+
+mean([1, 2, 3])   // 2
+mean([1, 2, 3])   // 2 (extracts from memizedWith function with hash='1-2-3')
+mean([3, 1, 2])   // 2 (extracts from memizedWith function with hash='1-2-3')
+```
+
+## `merge`
+
+Shallowly merges 2 `object`s
+
+```js
+import { merge } from 'nanoutils'
+
+merge({ value: 2 }, { value: 3 })   // { value: 3 }
+```
+
+## `mergeAll`
+
+Shallowly merges `array` of `object`s
+
+```js
+import { mergeAll } from 'nanoutils'
+
+const gitHistory = [
+  { value: 1 },
+  { value: 1, comment: 'todo: *' },
+  { value: 2, comment: 'todo: *' }
+]
+
+mergeAll(gitHistory)    // { value: 2, comment: 'todo: *' }
+```
+
+## `mergeDeepLeft`
+
+Deeply merges 2 `object`s with priority to the left
+
+```js
+import { mergeDeepLeft } from 'nanoutils'
+
+const bankBeforeTransaction = {
+  Mike: { card: 500 }
+}
+const bankAfterTransaction = {
+  Mike: { debt: 1000, card: 1500 },
+  Anna: { debt: 0, card: 100 }
+}
+
+mergeDeepLeft(
+  bankAfterTransaction,
+  bankBeforeTransaction
+)    // { Mike: { debt: 1000, card: 1500 }, Anna: { debt: 0, card: 100 } }
+```
+
+::: tip
+Deeply means with a recursive call if exact same keys are met
+:::
+
+## `mergeDeepRight`
+
+Deeply merges 2 `object`s with priority to the right
+
+```js
+import { mergeDeepRight } from 'nanoutils'
+
+const bankBeforeTransaction = {
+  Mike: { card: 500 }
+}
+const bankAfterTransaction = {
+  Mike: { debt: 1000, card: 1500 },
+  Anna: { debt: 0, card: 100 }
+}
+
+mergeDeepRight(
+  bankBeforeTransaction,
+  bankAfterTransaction
+)    // { Mike: { debt: 1000, card: 1500 }, Anna: { debt: 0, card: 100 } }
+```
+
+::: tip
+Deeply means with a recursive call if exact same keys are met
+:::
+
+## `mergeDeepWith`
+
+Deeply merges 2 `object`s with custom diff resolver
+
+```js
+import { add, mergeDeepWith } from 'nanoutils'
+
+const productsSnapshot12102018 = {
+  banana: 2,
+  milk: 3
+}
+const productsSnapshot13102018 = {
+  apple: 2,
+  milk: 1
+}
+
+mergeDeepWith(add, productsSnapshot12102018, productsSnapshot13102018)    // { apple: 2, banana: 2, milk: 4 }  
+```
+
+::: tip
+Deeply means with a recursive call if exact same keys are met
+
+## `mergeDeepWithKey`
+
+Deeply merges 2 `object`s with key function diff resolver
+
+```js
+import { mergeDeepWithKey } from 'nanoutils'
+
+const strategy = (key, first, second) => {
+  return {
+    leftmost: first,
+    rightmost: second,
+    overlap: [ ...first, ...second ]
+  }[key]
+}
+const left = {
+  leftmost: [1, 2],
+  rightmost: [3, 4],
+  overlap: [5, 6]
+}
+const right = {
+  leftmost: [7, 8],
+  rightmost: [9, 10],
+  overlap: [11, 12]
+}
+
+mergeDeepWithKey(strategy, left, right)   // { leftmost: [1, 2], rightmost: [9, 10], overlap: [5, 6, 11, 12] }
+```
+
+::: tip
+Deeply means with a recursive call if exact same keys are met
+
+::: tip
+It can be convenient to skip a subset of keys or to specify a behaviour for different keys
+:::
+
+## `mergeWith`
+
+Shallowly merges 2+ `object`s with a specified diff resolver
+
+```js
+import { add, mergeWith } from 'nanoutils'
+
+const productsSnapshot12102018 = {
+  banana: 2,
+  milk: 3
+}
+const productsSnapshot13102018 = {
+  apple: 2,
+  milk: 1
+}
+const productsSnapshot14102018 = {
+  juice: 3,
+  milk: 1
+}
+
+mergeWith(add, productsSnapshot12102018, productsSnapshot13102018)    // { apple: 2, banana: 2, juice: 3 milk: 5 }  
+```
+
+## `mergeWithKey`
+
+Shallowly merges 2 `object`s with key function diff resolver
+
+```js
+import { mergeWithKey } from 'nanoutils'
+
+const strategy = (key, first, second) => {
+  return {
+    leftmost: first,
+    rightmost: second,
+    overlap: [ ...first, ...second ]
+  }[key]
+}
+const left = {
+  leftmost: [1, 2],
+  rightmost: [3, 4],
+  overlap: [5, 6]
+}
+const right = {
+  leftmost: [7, 8],
+  rightmost: [9, 10],
+  overlap: [11, 12]
+}
+
+mergeWithKey(strategy, left, right)   // { leftmost: [1, 2], rightmost: [9, 10], overlap: [5, 6, 11, 12] }
+```
+
+## `min`
+
+Returns minimum value with `<` comparator
+
+```js
+import { min } from 'nanoutils'
+
+min(1, 2)       // 1
+min('a', 'z')   // 'a'
+```
+
+::: tip JS-friendly
+If you pass values of different types, it compares them with conversion
+
+```js
+import { min } from 'nanoutils'
+
+min(1, 'z')     // 1 as 1 < 'z' returns true
+```
+:::
+
+## `minBy`
+
+Returns minimum value with `<` comparator and a specified function
+
+```js
+import { minBy } from 'nanoutils'
+
+minBy(a => a * 2, -1, -2)                                         // -1
+minBy(ch => ch.charCodeAt(0)  - 'a'.charCodeAt(0) + 1, 'a', 'z')  // 'a'
+```
+
+## `modulo`
+
+Returns modulo of `number`
+
+```js
+import { modulo } from 'nanoutils'
+
+modulo(-17, 5)    // -2
+modulo(17, 5)     // 2
+```
+
+::: tip JS-friendly
+If you pass non-`number` values, it tries to convert them to `number`s and to calculate modulo. Otherwise, it returns `NaN`
+:::
+
+## `multiply`
+
+Multiplies two values
+
+```js
+import { multiply } from 'nanoutils'
+
+multiply(1, 1)         // 1
+multiply(1)(1)         // 1
+multiply('1')(1)       // 1
+multiply('1')('1')     // 1
+multiply(1)('a')       // NaN
+multiply(null)(null)   // 0
+multiply(false)(false) // 0
+multiply(true)(true)   // 1
+multiply([])([])       // 0
+multiply([2])([2])     // 4
+```
+
+::: tip JS-friendly
+If you pass non-`number` values, it tries to convert them to `number`s and to add. Otherwise, it returns `NaN`
+:::
