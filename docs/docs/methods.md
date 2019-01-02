@@ -2811,3 +2811,77 @@ multiply([2])([2])     // 4
 ::: tip JS-friendly
 If you pass non-`number` values, it tries to convert them to `number`s and to add. Otherwise, it returns `NaN`
 :::
+
+## `none`
+
+## `noop`
+
+## `not`
+
+## `nth`
+
+## `nthArg`
+
+## `o`
+
+## `objOf`
+
+## `of`
+
+## `omit`
+
+## `omitBy`
+
+## `once`
+
+## `or`
+
+## `over`
+
+## `pair`
+
+## `partial`
+
+## `partialRight`
+
+## `partition`
+
+## `path`
+
+## `pathEq`
+
+## `pathOr`
+
+## `pathSatisfies`
+
+## `pick`
+
+## `pickAll`
+
+## `pickBy`
+
+## `pipe`
+
+## `pipeP`
+
+## `pipeT`
+
+## `pluck`
+
+## `prepend`
+
+## `product`
+
+## `project`
+
+## `prop`
+
+## `propEq`
+
+## `propIs`
+
+## `propOr`
+
+## `props`
+
+## `propSatisfies`
