@@ -2053,6 +2053,8 @@ It doesn't iterate `prototype`'s keys
 
 ## `keysIn`
 
+Returns `array` of keys of an `object` including `prototype`'s keys
+
 ```js
 import { keysIn } from 'nanoutils' 
 
@@ -2077,22 +2079,183 @@ It iterates `prototype`'s keys
 
 ## `last`
 
+Returns last element of `array` or `string`
+
+```js
+import { last } from 'nanoutils'
+
+const names = ['Adam', 'David', 'Margaret']
+
+last(names)         // 'Margaret'
+last(last(names))   // 't'
+```
+
 ## `lastIndexOf`
+
+Returns last index of value in `array` or `string`
+
+```js
+import { lastIndexOf } from 'nanoutils'
+
+const queue = ['Adam', 'David', 'Margaret', 'Adam']
+
+lastIndexOf('Adam', queue)    // 3
+lastIndexOf('a', 'Margaret')  // 4
+```
 
 ## `length`
 
+Returns length of `array` or `string`
+
+```js
+import { length } from 'nanoutils'
+
+length([1, 2, 3])   // 3
+length('Cat')       // 3
+```
+
 ## `lens`
+
+Returns lens with specified getter and setter functions
+
+```js
+import { lens } from 'nanoutils'
+
+const valueLens = lens(
+  ({ value }) => value,
+  (value, obj) => ({ ...obj, value })
+)
+
+const objectLens = valueLens({})
+objectLens.get()   // undefined
+objectLens.set(2)
+objectLens.get()   // 2
+```
 
 ## `lensIndex`
 
+Returns lens with predefined getter and setter functions for `array` only for specified `index`
+
+```js
+import { lensIndex } from 'nanoutils'
+
+const secondLens = lensIndex(1)
+
+const lens = secondLens([1, 2])
+lens.get()    // 2
+lens.set(3)
+lens.get()    // 3
+```
+
 ## `lensPath`
+
+Returns lens with specified path for `object` or `array`
+
+```js
+import { lensPath } from 'nanoutils'
+
+const object = {
+  left: {
+    left: null,
+    value: 6,
+    right: null
+  },
+  value: 10,
+  right: null
+}
+
+const leftValuePath = lensPath(['left', 'value'])
+const lens = leftValuePath(object)
+lens.get()   // 6
+lens.set(5)
+lens.get()   // 5
+```
+
+::: tip
+
+It also applies to `array`
+
+```js
+import { lensPath } from 'nanoutils'
+
+const array = [
+  [null, 6, null],
+  10,
+  null
+]
+
+const leftValuePath = lensPath([0, 1])
+const lens = leftValuePath(array)
+lens.get()   // 6
+lens.set(5)
+lens.get()   // 5
+```
+:::
 
 ## `lensProp`
 
+Returns lens with specified path for `object` only with deep=1
+
+```js
+import { lensProp } from 'nanoutils'
+
+const valueLens = lensProp('value')
+const lens = valueLens({ value: 2 })
+lens.get()    // 2
+lens.set(3)
+lens.get()    // 3
+```
+
 ## `lift`
+
+Lifts values into subset of values
+
+```js
+import { lift } from 'nanoutils'
+
+lift(a => [a], [1, 2])  // [[1], [2]]
+lift((a, b) => [a, b], [1, 2])  // [[1, 1], [1, 2], [2, 1], [2, 2]]
+```
 
 ## `liftN`
 
+Lifts a specified number of values into subset of values
+
+```js
+import { liftN } from 'nanoutils'
+
+const toArray = (...args) => args
+
+liftN(1, toArray, [1, 2])  // [[1], [2]]
+liftN(2, toArray, [1, 2])  // [[1, 1], [1, 2], [2, 1], [2, 2]]
+```
+
+::: tip
+`lift` has a predefined specified number of values in contrast to `liftN` where you need to specify number yourself
+
+This means that `lift(a => [a])` equals to `liftN(1, (...args) => args)` and so on.
+:::
+
 ## `lt`
 
+Checks if first value is less than second one
+
+```js
+import { lt } from 'nanoutils'
+
+lt(1, 2)  // true
+lt(2, 2)  // false
+lt(3, 2)  // false
+```
+
 ## `lte`
+
+Checks if first value is less or equals to second one
+
+```js
+import { lte } from 'nanoutils'
+
+lte(1, 2)  // true
+lte(2, 2)  // true
+lte(3, 2)  // false
+```
