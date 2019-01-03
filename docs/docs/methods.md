@@ -2814,45 +2814,329 @@ If you pass non-`number` values, it tries to convert them to `number`s and to ad
 
 ## `none`
 
+Returns `true` if a specified predicate returns `true` for all values of `array`
+
+```js
+import { none } from 'nanoutils'
+
+const accounts = [
+  { name: 'Mike', balance: 350 },
+  { name: 'Alice', balance: 200 },
+  { name: 'Ann', balance: 1000 }
+]
+
+none(({ balance }) => balance > 1000, accounts)   // true
+none(({ balance }) => balance > 500, accounts)    // false as Ann balance is 1000, > 500
+```
+
 ## `noop`
+
+Always returns `undefined`
+
+::: tip
+It can be used as fake or dummy implementation of anything
+:::
 
 ## `not`
 
+Returns opposite `boolean` value
+
+::: tip
+It replaces `!`-operator
+:::
+
 ## `nth`
+
+Returns value at a specified index for `string` or `array`
+
+```js
+import { nth } from 'nanoutils'
+
+nth(1, ['Mike', 'Ann'])   // 'Ann'
+nth(2, ['Mike', 'Ann'])   // undefined
+nth(-1, ['Mike', 'Ann'])  // 'Ann'
+```
+
+::: tip
+If `string` is placed and index if out of bounds of the string, empty string is returned
+:::
 
 ## `nthArg`
 
+Returns value at a specified index for a list of `arguments`
+
+```js
+import { nthArg } from 'nanoutils'
+
+nth(1)('Mike', 'Ann')   // 'Ann'
+nth(2)('Mike', 'Ann')   // undefined
+nth(-1)('Mike', 'Ann')  // 'Ann'
+```
+
+::: tip
+`nthArg(n)(...args)` is similar to `nth(n, args)`
+:::
+
 ## `o`
+
+A curried composition for 2 functions
+
+```js
+import { o } from 'nanoutils'
+
+o(({ name }) => name, ({ person }) => person)({ person: { name: 'Alexey' }})    // 'Alexey'
+```
 
 ## `objOf`
 
+Returns `object` with a specified key and value
+
+```js
+import { objOf } from 'nanoutils'
+
+objOf('name', 'Alexey')   // { name: 'Alexey' }
+```
+
 ## `of`
+
+Returns value which is passed to a function
+
+::: tip
+Synonym for `identity`
+:::
 
 ## `omit`
 
+Removes values by specified keys from `object`
+
+::: tip
+`omit(props, object)` is similar to
+
+```js
+for (let prop in props) {
+  if (object.hasOwnProperty(prop)) {
+    delete object[prop]
+  }
+}
+```
+:::
+
 ## `omitBy`
+
+Removes values by a specified predicate from `object`
+
+```js
+import { omitBy } from 'nanoutils'
+
+const bank = {
+  Ann: { balance: 1200 },
+  Mike: { balance: 500 }
+}
+const inabilityToPay = ({ balance }, _) => balance < 1000
+
+omitBy(inabilityToPay, bank)    // { Ann: { balance: 1200 } }
+```
 
 ## `once`
 
+Save a result of first call and always returns it
+
+```js
+import { once } from 'nanoutils'
+
+const buy = once(product => {
+  return `I told you to buy ${product}`
+})
+
+buy('apple')    // 'I told you to buy apple'
+buy('orange')   // 'I told you to buy apple'
+```
+
 ## `or`
+
+Curried analogue of `||`-operator
+
+| a | b | a || b |
+|:---:|:---:|:---:|
+| `false` | `false` | `false` |
+| `false` | `true` | `true` |
+| `true` | `false` | `true` |
+| `true` | `true` | `true` |
 
 ## `over`
 
+Changes value for `object` or `array` by a specified path
+
+```js
+import { lensPath, over } from 'nanoutils'
+
+const shop = {
+  tv: {
+    brand: 'Samsung',
+    serialNumber: 'AKZ43CPQ',
+    modelCode: 'LN32A3'
+  }
+}
+const tv = lensPath(['tv'])
+const fakify = real => ({
+  ...real,
+  serialNumber: `Я${real.serialNumber.slice(2)}П`,
+  modelCode: `Й${real.modelCode.slice(2)}Ж`
+})
+
+over(tv, fakify, shop)    // { tv: { brand: 'Samsung', serialNumber: 'ЯZ43CPQП',  modelCode: 'Й32A3Ж' } }
+```
+
 ## `pair`
+
+Returns 2-element `array` with specified values
+
+```js
+import { pair } from 'nanoutils'
+
+pair('firstName', 'secondName')   // ['firstName', 'secondName']
+```
 
 ## `partial`
 
+Applies function to a part of arguments delaying a call of function
+
+```js
+import { add as euroChange, partial } from 'nanoutils'
+
+const EXCHANGE_RATE_EURO = 78.66
+const calculateTomorrowEuro = partial(euroChange, [EXCHANGE_RATE_EURO])
+const probabilities = [{ p: 50, change: 0.5 }, { p: 0.5, change: -0.5 }]
+
+probabilities.reduce((euro, { p, change }) => euro + p * calculateTomorrowEuro(change) / 100, 0)  // 78.66
+```
+
+::: tip
+In case you need to find information among a set of values, specify part of parameters and then iterate over others
+:::
+
+::: tip
+It can be achieved with arrow functions meaning that `partial(fn, initialArgs)` equals to `args => fn(...initialArgs, ...args)`
+:::
+
+::: warning
+If a function accepts `3` parameters and you specify `2` of them in `partial`, it doesn't matter how many parameters you pass then as only first is passed to a given function
+
+This is the only different from arrow function
+:::
+
 ## `partialRight`
+
+Applies function to a part of arguments delaying a call of function
+
+```js
+import { add as euroChange, partialRight } from 'nanoutils'
+
+const EXCHANGE_RATE_EURO = 78.66
+const calculateTomorrowEuro = partialRight(euroChange, [EXCHANGE_RATE_EURO])
+const probabilities = [{ p: 50, change: 0.5 }, { p: 0.5, change: -0.5 }]
+
+probabilities.reduce((euro, { p, change }) => euro + p * calculateTomorrowEuro(change) / 100, 0)  // 78.66
+```
+
+::: tip
+[`partial`](#partial) applies arguments from left to right, `partialRight` is from right to left
+:::
 
 ## `partition`
 
+Splits `array` or `object` into 2 parts using a specified predicate
+
+```js
+import { partition } from 'nanoutils'
+
+const drivers = [
+  { name: 'Mike', car: 'Mercedes' },
+  { name: 'Jake', car: 'Toyota' },
+  { name: 'Ann', car: 'Mercedes' },
+  { name: 'Alex', car: 'BMW' }
+]
+const isMercedes = ({ car }) => car === 'Mercedes'
+
+partition(isMercedes, drivers)    // [[{ name: 'Mike', car: 'Mercedes' }, { name: 'Ann', car: 'Mercedes' }], [{ name: 'Jake', car: 'Toyota' }, { name: 'Alex', car: 'BMW' }]
+```
+
 ## `path`
+
+Retrieves a value of `object` by a given path
+
+```js
+import { path } from 'nanoutils'
+
+const person = {
+  childhood: {
+    school: {
+      number: 76
+    }
+  }
+}
+path(['childhood', 'school', 'number'], person)   // 76
+```
 
 ## `pathEq`
 
+A predicate, returns `true` if value for a given path equals to a specified value
+
+```js
+import { pathEq } from 'nanoutils'
+
+const person = {
+  childhood: {
+    school: {
+      number: 76
+    }
+  }
+}
+pathEq(['childhood', 'school', 'number'], 76, person)   // true
+pathEq(['childhood', 'school', 'number'], 64, person)   // false
+```
+
 ## `pathOr`
 
+Returns value by a given path or default specified value
+
+A predicate, returns `true` if value for a given path equals to a specified value
+
+```js
+import { pathOr } from 'nanoutils'
+
+const person = {
+  childhood: {
+    school: {
+      number: 76
+    }
+  }
+}
+pathOr({ status: 'not studied' }, ['childhood', 'school'], person)   // { number: 76 }
+pathOr({ status: 'not studied' }, ['adulthood', 'uni'], person)     // { status: 'not studied' }
+```
+
 ## `pathSatisfies`
+
+Returns `true` if a given predicate returns `true` for value by a specified path
+
+```js
+import { pathSatisfies } from 'nanoutils'
+
+const isMike = ({ name }) => name === 'Mike'
+
+const work = {
+  driver: {
+    name: 'Kim'
+  },
+  consultant: {
+    name: 'Mike'
+  }
+}
+
+pathSatisfies(isMike, ['driver'])       // false
+pathSatisfies(isMike, ['consultant'])   // true
+```
 
 ## `pick`
 
