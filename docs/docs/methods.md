@@ -3390,7 +3390,7 @@ const book = {
   title: 'War and Peace'
 }
 
-props(['author', 'title'])    // ['Leo Tolstoi', 'War and Peace']
+props(['author', 'title'], book)    // ['Leo Tolstoi', 'War and Peace']
 ```
 
 ::: warning
