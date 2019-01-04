@@ -2820,7 +2820,7 @@ If you pass non-`number` values, it tries to convert them to `number`s and to ad
 
 ## `none`
 
-Returns `true` if a specified predicate returns `true` for all values of `array`
+Returns `true` if a specified predicate returns `false` for all values of `array`
 
 ```js
 import { none } from 'nanoutils'
@@ -2864,12 +2864,12 @@ nth(-1, ['Mike', 'Ann'])  // 'Ann'
 ```
 
 ::: tip
-If `string` is placed and index if out of bounds of the string, empty string is returned
+If `string` is placed and index is out of bounds of the string, empty string is returned
 :::
 
 ## `nthArg`
 
-Returns value at a specified index for a list of `arguments`
+Returns value at a specified index for `arguments`
 
 ```js
 import { nthArg } from 'nanoutils'
@@ -2893,6 +2893,10 @@ import { o } from 'nanoutils'
 o(({ name }) => name, ({ person }) => person)({ person: { name: 'Alexey' }})    // 'Alexey'
 ```
 
+::: tip See also
+
+:::
+
 ## `objOf`
 
 Returns `object` with a specified key and value
@@ -2908,7 +2912,7 @@ objOf('name', 'Alexey')   // { name: 'Alexey' }
 Returns value which is passed to a function
 
 ::: tip
-Synonym for `identity`
+Synonym for [`identity`](#identity)
 :::
 
 ## `omit`
@@ -2916,7 +2920,7 @@ Synonym for `identity`
 Removes values by specified keys from `object`
 
 ::: tip
-`omit(props, object)` is similar to
+`omit(props, object)` is immutable but similar to
 
 ```js
 for (let prop in props) {
@@ -2945,7 +2949,7 @@ omitBy(inabilityToPay, bank)    // { Ann: { balance: 1200 } }
 
 ## `once`
 
-Save a result of first call and always returns it
+Saves a result of first call and always returns it
 
 ```js
 import { once } from 'nanoutils'
@@ -2962,7 +2966,7 @@ buy('orange')   // 'I told you to buy apple'
 
 Curried analogue of `||`-operator
 
-| a | b | a || b |
+| a | b | a \|\| b |
 |:---:|:---:|:---:|
 | `false` | `false` | `false` |
 | `false` | `true` | `true` |
@@ -3028,7 +3032,7 @@ It can be achieved with arrow functions meaning that `partial(fn, initialArgs)` 
 ::: warning
 If a function accepts `3` parameters and you specify `2` of them in `partial`, it doesn't matter how many parameters you pass then as only first is passed to a given function
 
-This is the only different from arrow function
+This is the only different from arrow functions
 :::
 
 ## `partialRight`
@@ -3046,7 +3050,7 @@ probabilities.reduce((euro, { p, change }) => euro + p * calculateTomorrowEuro(c
 ```
 
 ::: tip
-[`partial`](#partial) applies arguments from left to right, `partialRight` is from right to left
+[`partial`](#partial) applies arguments from left to right, `partialRight` - from right to left
 :::
 
 ## `partition`
@@ -3069,7 +3073,7 @@ partition(isMercedes, drivers)    // [[{ name: 'Mike', car: 'Mercedes' }, { name
 
 ## `path`
 
-Retrieves a value of `object` by a given path
+Retrieves value from `object` by a given path
 
 ```js
 import { path } from 'nanoutils'
@@ -3167,7 +3171,7 @@ pickAll(['name', 'age'], { name: 'Alex', school: 'SPSU' })   // { name: 'Alex', 
 
 ## `pickBy`
 
-Picks keys and/or values by a specified predicate and returns `object` with them
+Picks keys and values by a specified predicate and returns `object` with them
 
 ```js
 import { pickBy } from 'nanoutils'
@@ -3210,35 +3214,34 @@ pipeP(promiseTimeout(1000), fetchProfiles)    // fetch profiles in 1sec
 Combines transducers into a transducer from left to right
 
 ```js
-import { add, pipeT, mapT, takeT } from 'nanoutils'
+import { concat, pipeT, mapT, takeT } from 'nanoutils'
 
-const pushReducer = (array, value) => {
-  array.push(value)
-  return array
-}
-const transducer = pipeT(takeT(2), mapT(add(1)))
-const rootReducer = transducer(pushReducer)
+const transducer = pipeT(takeT(2), mapT(concat('Cooper ')))
+const lineUp = transducer((queue, name) => {
+  queue.push(name)
+  return queue
+})
 
-rootReducer([], 1)      // [2]
-rootReducer([2], 2)     // [2, 3]
-rootReducer([2, 3], 3)  // [2, 3]
+lineUp([], 'Alice')                               // ['Cooper Alice']
+lineUp(['Cooper Alice'], 'John')                  // ['Cooper Alice', 'Cooper John']
+lineUp(['Cooper Alice', 'Cooper John'], 'Alex')   // ['Cooper Alice', 'Cooper John']
 ```
 
 ::: tip
 It's basically used with [`transduce`](#transduce)
 
 ```js
-import { add, append, pipeT, flip, mapT, takeT, transduce } from 'nanoutils'
+import { append, concat, pipeT, flip, mapT, takeT, transduce } from 'nanoutils'
 
-const transducer = pipeT(takeT(2), mapT(add(1)))
+const transducer = pipeT(takeT(2), mapT(concat('Cooper ')))
 
-transduce(transducer, flip(append), [], [1, 2, 3])  // [2, 3]
+transduce(transducer, flip(append), [], ['Alice', 'John', 'Alex'])  // ['Cooper Alice', 'Cooper John']
 ```
 :::
 
 ## `pluck`
 
-Maps over `array` and replaces `object` with value by a specified key
+Iterates over `array` and replaces `object` with value by a specified key
 
 ```js
 import { pluck } from 'nanoutils'
@@ -3254,13 +3257,14 @@ pluck('name', bank)     // ['Alice', 'Kate', 'Mike']
 
 ## `prepend`
 
-Appends a value to the beginning of `array`
+Appends value to the beginning of `array`
 
 ```js
 import { prepend } from 'nanoutils'
 
-const array = [1, 2, 3]
-const array2 = prepend(0)(array)  // [0, 1, 2, 3]
+const array = ['Alice', 'Kate', 'Mike']
+
+prepend('John')(array)  // ['John', 'Alice', 'Kate', 'Mike']
 ```
 
 ## `product`
@@ -3362,8 +3366,6 @@ propIs(Number, 'license', driver)   // false
 
 Returns value by a given key or a default specified value
 
-A predicate, returns `true` if a value for a given path equals to a specified value
-
 ```js
 import { propOr } from 'nanoutils'
 
@@ -3377,7 +3379,7 @@ propOr('not studied', 'uni', person)      // 'not studied'
 
 ## `props`
 
-Returns `array` of values by spcified keys
+Returns `array` of values by specified keys
 
 ```js
 import { props } from 'nanoutils'
@@ -3392,7 +3394,7 @@ props(['author', 'title'])    // ['Leo Tolstoi', 'War and Peace']
 ```
 
 ::: warning
-`props` extracts valid values if a first parameter is not `array` of keys
+`props` doesn't extract valid values if a first parameter is not `array` of keys
 :::
 
 ## `propSatisfies`
