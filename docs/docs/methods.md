@@ -190,15 +190,13 @@ Passing negative integer leads to unexpected behaviour
 
 ## `append`
 
-Appends a value to an `array`
+Appends a value to the end of `array`
 
 ```js
 import { append } from 'nanoutils'
 
 const array = [1, 2, 3]
-const array2 = append(4)(array) // [1, 2, 3, 4]
-
-array === array2                // false
+const array2 = append(4)(array)   // [1, 2, 3, 4]
 ```
 
 ## `apply`
@@ -643,7 +641,7 @@ pipe(add(1), multiply(2))(1)      // 4 ((1 + 1) * 2)
 
 ## `composeP`
 
-It's similar to `compose` but combines actions (functions which return `Promise`)
+Combines actions (functions which return `Promise`) from right to left for a specified value
 
 ```js
 import { composeP } from 'nanoutils'
@@ -676,7 +674,7 @@ getFollowingsById(3).then(followings =>
 
 ## `composeT`
 
-Combines transducers into a transducer
+Combines transducers into a transducer from right to left
 
 ```js
 import { add, composeT, mapT, takeT } from 'nanoutils'
@@ -1391,12 +1389,14 @@ const people = [
   { name: 'Nick Oldman', age: 45 },
   { name: 'Jack Newton', age: 12 }
 ]
+
 filter(({ age }) => age >= 18, people)  // [{ name: 'Nick Oldman', age: 45 }]
 
 const peopleObj = {
   'Nick Oldman': 45,
   'Jack Newton': 12
 }
+
 filter(age => age >= 18, peopleObj)     // { 'Nick Oldman': 45 }
 ```
 
@@ -1502,6 +1502,7 @@ const people = {
     age: 18
   }
 }
+
 flattenObj(people)  //  { 'john.name': 'John Parker', 'john.age': 18 }
 ```
 
@@ -1523,6 +1524,7 @@ const pushReducer = (arr, v) => {
   return arr
 }
 const push = flip(pushReducer)
+
 push(2, [1])   // [1, 2]
 ```
 
@@ -1599,7 +1601,7 @@ if pairs are not an array it returns an empty object
 Divides into groups whose key is a result of a function applied to a value from arguments
 
 ```js
-import { groupBy } fronm 'nanoutils'
+import { groupBy } from 'nanoutils'
 
 const type = value => Array.isArray(value)
   ? 'array'
@@ -1921,9 +1923,9 @@ insert(0, 'a', ['b', 'c'])  // ['a', 'b', 'c']
 Inserts an `array` of values into an `array` from a specified index
 
 ```js
-import { insert } from 'nanoutils'
+import { insertAll } from 'nanoutils'
 
-insert(0, ['a', 'b'], ['c'])  // ['a', 'b', 'c']
+insertAll(0, ['a', 'b'], ['c'])  // ['a', 'b', 'c']
 ```
 
 ## `intersection`
@@ -1981,7 +1983,7 @@ Swaps keys and values with last-met value
 ```js
 import { invertObj } from 'nanoutils'
 
-invert({ a: 1, b: 1, c: 2 })  // { 1: 'b', 2: 'c' }
+invertObj({ a: 1, b: 1, c: 2 })  // { 1: 'b', 2: 'c' }
 ```
 
 ## `invoker`
@@ -2188,8 +2190,8 @@ const valueLens = lens(
   ({ value }) => value,
   (value, obj) => ({ ...obj, value })
 )
-
 const objectLens = valueLens({})
+
 objectLens.get()   // undefined
 objectLens.set(2)
 objectLens.get()   // 2
@@ -2203,8 +2205,8 @@ Returns lens with predefined getter and setter functions for `array` only for sp
 import { lensIndex } from 'nanoutils'
 
 const secondLens = lensIndex(1)
-
 const lens = secondLens([1, 2])
+
 lens.get()    // 2
 lens.set(3)
 lens.get()    // 3
@@ -2229,6 +2231,7 @@ const object = {
 
 const leftValuePath = lensPath(['left', 'value'])
 const lens = leftValuePath(object)
+
 lens.get()   // 6
 lens.set(5)
 lens.get()   // 5
@@ -2249,6 +2252,7 @@ const array = [
 
 const leftValuePath = lensPath([0, 1])
 const lens = leftValuePath(array)
+
 lens.get()   // 6
 lens.set(5)
 lens.get()   // 5
@@ -2264,6 +2268,7 @@ import { lensProp } from 'nanoutils'
 
 const valueLens = lensProp('value')
 const lens = valueLens({ value: 2 })
+
 lens.get()    // 2
 lens.set(3)
 lens.get()    // 3
@@ -2535,6 +2540,7 @@ const factorial = memoize(value => {
   }
   return result
 })
+
 factorial(5)    // 120
 factorial(5)    // 120 (extracts from memoized function)
 ```
@@ -2868,9 +2874,9 @@ Returns value at a specified index for a list of `arguments`
 ```js
 import { nthArg } from 'nanoutils'
 
-nth(1)('Mike', 'Ann')   // 'Ann'
-nth(2)('Mike', 'Ann')   // undefined
-nth(-1)('Mike', 'Ann')  // 'Ann'
+nthArg(1)('Mike', 'Ann')   // 'Ann'
+nthArg(2)('Mike', 'Ann')   // undefined
+nthArg(-1)('Mike', 'Ann')  // 'Ann'
 ```
 
 ::: tip
@@ -3075,6 +3081,7 @@ const person = {
     }
   }
 }
+
 path(['childhood', 'school', 'number'], person)   // 76
 ```
 
@@ -3092,15 +3099,14 @@ const person = {
     }
   }
 }
+
 pathEq(['childhood', 'school', 'number'], 76, person)   // true
 pathEq(['childhood', 'school', 'number'], 64, person)   // false
 ```
 
 ## `pathOr`
 
-Returns value by a given path or default specified value
-
-A predicate, returns `true` if value for a given path equals to a specified value
+Returns value by a given path or a default specified value
 
 ```js
 import { pathOr } from 'nanoutils'
@@ -3112,6 +3118,7 @@ const person = {
     }
   }
 }
+
 pathOr({ status: 'not studied' }, ['childhood', 'school'], person)   // { number: 76 }
 pathOr({ status: 'not studied' }, ['adulthood', 'uni'], person)     // { status: 'not studied' }
 ```
@@ -3134,38 +3141,274 @@ const work = {
   }
 }
 
-pathSatisfies(isMike, ['driver'])       // false
-pathSatisfies(isMike, ['consultant'])   // true
+pathSatisfies(isMike, ['driver'], work)       // false
+pathSatisfies(isMike, ['consultant'], work)   // true
 ```
 
 ## `pick`
 
+Picks all but missed keys and returns `object` with them
+
+```js
+import { pick } from 'nanoutils'
+
+pick(['name', 'age'], { name: 'Alex', school: 'SPSU' })   // { name: 'Alex' }
+```
+
 ## `pickAll`
+
+Picks all including missed keys and returns `object` with them
+
+```js
+import { pickAll } from 'nanoutils'
+
+pickAll(['name', 'age'], { name: 'Alex', school: 'SPSU' })   // { name: 'Alex', age: undefined }
+```
 
 ## `pickBy`
 
+Picks keys and/or values by a specified predicate and returns `object` with them
+
+```js
+import { pickBy } from 'nanoutils'
+
+const keyFromN = (_, key) => key[0].toLowerCase() === 'n'
+
+pickBy(keyFromN, { name: 'Mike', school: 'SPSU' })       // { name: 'Mike' }
+```
+
 ## `pipe`
+
+Combines functions from left to right
+
+```js
+import { not, pipe } from 'nanoutils'
+
+const isNotArray = pipe(Array.isArray, not)
+
+isNotArray(1)     // true
+isNotArray([1])   // false
+```
 
 ## `pipeP`
 
+Combines actions (functions which return `Promise`) from left to right
+
+```js
+import { pipeP } from 'nanoutils'
+
+const promiseTimeout = time => new Promise(resolve => {
+  setTimeout(resolve, time)
+})
+const fetchProfiles = ...
+
+pipeP(promiseTimeout(1000), fetchProfiles)    // fetch profiles in 1sec
+```
+
 ## `pipeT`
+
+Combines transducers into a transducer from left to right
+
+```js
+import { add, pipeT, mapT, takeT } from 'nanoutils'
+
+const pushReducer = (array, value) => {
+  array.push(value)
+  return array
+}
+const transducer = pipeT(takeT(2), mapT(add(1)))
+const rootReducer = transducer(pushReducer)
+
+rootReducer([], 1)      // [2]
+rootReducer([2], 2)     // [2, 3]
+rootReducer([2, 3], 3)  // [2, 3]
+```
+
+::: tip
+It's basically used with [`transduce`](#transduce)
+
+```js
+import { add, append, pipeT, flip, mapT, takeT, transduce } from 'nanoutils'
+
+const transducer = pipeT(takeT(2), mapT(add(1)))
+
+transduce(transducer, flip(append), [], [1, 2, 3])  // [2, 3]
+```
+:::
 
 ## `pluck`
 
+Maps over `array` and replaces `object` with value by a specified key
+
+```js
+import { pluck } from 'nanoutils'
+
+const bank = [
+  { name: 'Alice', balance: 300 },
+  { name: 'Kate', balance: 500 },
+  { name: 'Mike', balance: 200 },
+]
+
+pluck('name', bank)     // ['Alice', 'Kate', 'Mike']
+```
+
 ## `prepend`
+
+Appends a value to the beginning of `array`
+
+```js
+import { prepend } from 'nanoutils'
+
+const array = [1, 2, 3]
+const array2 = prepend(0)(array)  // [0, 1, 2, 3]
+```
 
 ## `product`
 
+Multiplies values of `array`
+
+```js
+import { product } from 'nanoutils'
+
+product([])             // 1
+product([1, 2, 3, 4])   // 24
+```
+
 ## `project`
+
+Gets values from `array` by specified keys and returns `array` of `object`s
+
+```js
+import { project } from 'nanoutils'
+
+const drivers = [
+  { name: 'Mike', car: 'Mercedes' },
+  { name: 'Jake', car: 'Toyota' },
+  { name: 'Ann', car: 'Mercedes' },
+  { name: 'Alex', car: 'BMW' }
+]
+
+const [ ,,, last ] = project(['name'], drivers)
+
+last      // { name: 'Alex' }
+```
+
+::: tip
+It's similar to SQL `select`
+:::
+
+::: tip
+It can also be applied to `string` or `array` in place of `object`
+
+```js
+import { project } from 'nanoutils'
+
+const names = ['Mike', 'Jake', 'Ann', 'Alex']
+
+const [ ,,, last ] = project([0, 1], names)
+
+last      // { 0: 'A', 1: 'l }
+```
+:::
 
 ## `prop`
 
+Returns value by a specified key from `array` or `object`
+
+```js
+import { prop } from 'nanoutils'
+
+const driver = {
+  name: 'Andrew',
+  license: 'LKS235MDA'
+}
+
+prop('name', driver)    // 'Andrew'
+```
+
 ## `propEq`
+
+A predicate, returns `true` if value for a given key equals to a specified value
+
+```js
+import { propEq } from 'nanoutils'
+
+const driver = {
+  name: 'Andrew',
+  license: 'LKS235MDA'
+}
+
+propEq('name', 'Andrew', driver)    // true
+propEq('name', 'Anna', driver)      // false
+```
 
 ## `propIs`
 
+A predicate, returns `true` if a given value is of a specified type
+
+```js
+import { propIs } from 'nanoutils'
+
+const driver = {
+  name: 'Andrew',
+  license: 'LKS235MDA'
+}
+
+propIs(String, 'name', driver)      // true
+propIs(Number, 'license', driver)   // false
+```
+
 ## `propOr`
+
+Returns value by a given key or a default specified value
+
+A predicate, returns `true` if a value for a given path equals to a specified value
+
+```js
+import { propOr } from 'nanoutils'
+
+const person = {
+  school: 76
+}
+
+propOr('not studied', 'school', person)   // 76
+propOr('not studied', 'uni', person)      // 'not studied'
+```
 
 ## `props`
 
+Returns `array` of values by spcified keys
+
+```js
+import { props } from 'nanoutils'
+
+const book = {
+  id: 2,
+  author: 'Leo Tolstoi',
+  title: 'War and Peace'
+}
+
+props(['author', 'title'])    // ['Leo Tolstoi', 'War and Peace']
+```
+
+::: warning
+`props` extracts valid values if a first parameter is not `array` of keys
+:::
+
 ## `propSatisfies`
+
+Returns `true` if a given predicate returns `true` for value by a specified key
+
+```js
+import { propSatisfies } from 'nanoutils'
+
+const isMike = name => name === 'Mike'
+
+const names = {
+  driver: 'Kim',
+  consultant: 'Mike'
+}
+
+propSatisfies(isMike, 'driver', names)       // false
+propSatisfies(isMike, 'consultant', names)   // true
+```
