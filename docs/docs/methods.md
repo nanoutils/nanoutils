@@ -3414,3 +3414,101 @@ const names = {
 propSatisfies(isMike, 'driver', names)       // false
 propSatisfies(isMike, 'consultant', names)   // true
 ```
+
+## `range`
+
+## `reduce`
+
+## `reduceBy`
+
+## `reduceRight`
+
+## `reduceWhile`
+
+## `reduceWhileRight`
+
+## `reject`
+
+## `remove`
+
+## `repeat`
+
+## `replace`
+
+## `reverse`
+
+## `scan`
+
+## `set`
+
+## `slice`
+
+## `snakeCase`
+
+## `sort`
+
+## `sortBy`
+
+## `sortWith`
+
+## `split`
+
+## `splitAt`
+
+## `splitEvery`
+
+## `splitWhen`
+
+## `startsWith`
+
+## `subtract`
+
+## `sum`
+
+## `symmetricDifference`
+
+## `symmetricDifferenceWith`
+
+## `T`
+
+## `tail`
+
+## `take`
+
+## `takeLast`
+
+## `takeLastWhile`
+
+## `takeT`
+
+## `takeWhile`
+
+## `tap`
+
+## `test`
+
+## `throttle`
+
+## `times`
+
+## `toArray`
+
+## `toLower`
+
+## `toPairs`
+
+## `toPairsIn`
+
+## `toString`
+
+## `toUpper`
+
+## `transduce`
+
+## `transpose`
+
+## `trim`
+
+## `tryCatch`
+
+## `type`
