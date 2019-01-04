@@ -81,7 +81,7 @@
 | findLastIndex | 112 B | 603 B | -491 B |
 | flatten | 83 B | 369 B | -286 B |
 | flattenObj | 295 B | n/a B | n/a B |
-| flip | 84 B | 591 B | -507 B |
+| flip | 52 B | 591 B | -539 B |
 | forEach | 102 B | 392 B | -290 B |
 | forEachObjIndexed | 105 B | 593 B | -488 B |
 | fromPairs | 60 B | 173 B | -113 B |
@@ -161,7 +161,7 @@
 | noop | 57 B | n/a B | n/a B |
 | not | 31 B | 144 B | -113 B |
 | nth | 115 B | 285 B | -170 B |
-| nthArg | 55 B | 633 B | -578 B |
+| nthArg | 54 B | 633 B | -579 B |
 | o | 106 B | 336 B | -230 B |
 | objOf | 90 B | 240 B | -150 B |
 | of | 29 B | 151 B | -122 B |
@@ -181,8 +181,8 @@
 | pick | 107 B | 266 B | -159 B |
 | pickAll | 102 B | 267 B | -165 B |
 | pickBy | 116 B | 257 B | -141 B |
-| pipe | 141 B | 1245 B | -1104 B |
-| pipeP | 145 B | 1260 B | -1115 B |
+| pipe | 133 B | 1245 B | -1112 B |
+| pipeP | 131 B | 1260 B | -1129 B |
 | pipeT | 97 B | n/a B | n/a B |
 | pluck | 90 B | 1783 B | -1693 B |
 | prepend | 89 B | 301 B | -212 B |
