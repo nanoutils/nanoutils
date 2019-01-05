@@ -94,6 +94,11 @@ export interface CurriedFunction10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> {
   (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9, t10: T10): R;
 }
 
+export type Fn<T1, T2> = (t: T1) => T2
+export type Predicate<T> = Fn<T, boolean>
+export type Index = number
+export type MixedArray<T1, T2> = (T1 | T2)[]
+
 export interface Functor<T> {
   (t: T): T[] | Object;
 }

@@ -5,8 +5,8 @@
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
 | addIndex | 117 B | 684 B | -567 B |
-| adjust | 133 B | 441 B | -308 B |
-| adjustIn | 189 B | n/a B | n/a B |
+| adjust | 136 B | 441 B | -305 B |
+| adjustIn | 192 B | n/a B | n/a B |
 | all | 111 B | 637 B | -526 B |
 | allPass | 110 B | 1993 B | -1883 B |
 | always | 32 B | 144 B | -112 B |
@@ -258,8 +258,8 @@
 | until | 115 B | 351 B | -236 B |
 | unzip | 212 B | n/a B | n/a B |
 | unzipWith | 169 B | n/a B | n/a B |
-| update | 139 B | 497 B | -358 B |
-| updateIn | 193 B | n/a B | n/a B |
+| update | 140 B | 497 B | -357 B |
+| updateIn | 195 B | n/a B | n/a B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
 | valuesIn | 47 B | 163 B | -116 B |
