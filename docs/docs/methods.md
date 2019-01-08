@@ -288,13 +288,13 @@ Given a getter function compares values in an ascending 📈 order
 ```js
 import { ascend, prop } from 'nanoutils'
 
-const a = { name: 'Anton' }
-const b = { name: 'Alex' }
+const anton = { name: 'Anton' }
+const alex = { name: 'Alex' }
 const compareNames = ascend(prop('name'))
 
-compareNames(b, a)  // -1
-compareNames(a, b)  // 1
-compareNames(a, a)  // 0
+compareNames(alex, anton)   // -1
+compareNames(anton, alex)   // 1
+compareNames(anton, anton)  // 0
 ```
 
 ## `assoc`
@@ -919,7 +919,7 @@ It's convenient when a function has arguments with values by default
 
 ## `debounce`
 
-Delays a call of function until specified time
+Runs a last call of a specified function in a specified `number` of milliseconds
 
 ```js
 import { debounce } from 'nanoutils'
@@ -931,6 +931,10 @@ click(2, 3)
 click(3, 4)
 // in 200 ms after a last call: 'Click with 3,4'
 ```
+
+::: tip
+If a debounced function is called more than 1 times within a specified number of milliseconds, the last call will be run then
+:::
  
 ## `dec`
 
@@ -1070,7 +1074,7 @@ If you pass non-`number` values, it tries to convert them to `number`s and to re
 
 ## `drop`
 
-Returns a `string` or an `array` with a specified number of dropped elements (from a beginning)
+Drops a specified `number` of values from the beginning of `string` or `array`
 
 ```js
 import { drop } from 'nanoutils'
@@ -1085,7 +1089,7 @@ Returns same `string` or `array` if a number is negative
 
 ## `dropLast`
 
-Returns a `string` or an `array` with a specified number of dropped elements (from an end)
+Drops a specified `number` of values from the end of `string` or `array`
 
 ```js
 import { dropLast } from 'nanoutils'
@@ -1100,7 +1104,7 @@ Returns same `string` or `array` if a number is negative
 
 ## `dropLastWhile`
 
-Returns a `string` or an `array` with a specified number of dropped elements (from an end while a condition returns `true`)
+Drops values from the end of `string` or `array` while a given predicate returns `true`
 
 ```js
 import { dropLastWhile } from 'nanoutils'
@@ -1112,12 +1116,12 @@ dropWhileGreater2([1, 2, 3, 4]) // [1, 2]
 ```
 
 ::: tip
-Returns a copy of a `string` or an `array` if a condition returns `false` for a last element
+Always returns a copy of `string` or `array`
 :::
 
 ## `dropRepeats`
 
-Returns a `string` or an `array` which has dropped next identical elements
+Returns `string` or `array` which drops next identical elements
 
 ```js
 import { dropRepeats } from 'nanoutils'
@@ -1132,7 +1136,7 @@ Identity is based on `equal`
 
 ## `dropRepeatsWith`
 
-Returns a `string` or an `array` which has dropped next elements based on a function
+Returns `string` or `array` which drops next elements based on a specified function
 
 ```js
 import { dropRepeatsWith } from 'nanoutils'
@@ -1145,7 +1149,7 @@ dropRepeatsWith(isNextEqual, '112334555')           // '11355'
 
 ## `dropWhile`
 
-Returns a `string` or an `array` with a specified number of dropped elements (from a beginning while a condition returns `true`)
+Drops values from the beginning of `string` or `array` while a given predicate returns `true`
 
 ```js
 import { dropWhile } from 'nanoutils'
@@ -1157,7 +1161,7 @@ dropWhileLess3([1, 2, 3, 4]) // [3, 4]
 ```
 
 ::: tip
-Returns a copy of a `string` or an `array` if a condition returns `false` for a first element
+Always returns a copy of `string` or `array`
 :::
 
 ## `either`
@@ -2815,7 +2819,7 @@ multiply([2])([2])     // 4
 ```
 
 ::: tip JS-friendly
-If you pass non-`number` values, it tries to convert them to `number`s and to add. Otherwise, it returns `NaN`
+If you pass non-`number` values, it tries to convert them to `number`s and to multiply. Otherwise, it returns `NaN`
 :::
 
 ## `none`
@@ -3417,98 +3421,912 @@ propSatisfies(isMike, 'consultant', names)   // true
 
 ## `range`
 
+Returns range within specified boundaries
+
+```js
+import { range } from 'nanoutils'
+
+range(1, 3)     // [1, 2]
+```
+
+::: warning
+Right boundary is excluded from a range
+:::
+
+::: tip
+Any `number` can be used as boundaries
+
+```js
+import { range } from 'nanoutils'
+
+range(1, 3.1)   // [1, 2, 3]
+range(1.1, 3)   // [1.1, 2.1]
+```
+:::
+
 ## `reduce`
+
+Iterates over a collection from left to right and returns value based on it
+
+```js
+import { add, concat, reduce } from 'nanoutils'
+
+const probabilities = [0.2, 0.3, 0.5]
+const children = ['Alex ', 'Max ', 'Phil']
+
+reduce(add, 0, probabilities)   // 1
+reduce(concat, '', children)    // 'Alex Max Phil'
+```
+
+::: tip
+If collection is empty, it returns a specified initial value
+
+```js
+import { add, reduce } from 'nanoutils'
+
+reduce(add, 0, [])   // 0
+```
+:::
+
+::: tip
+It can iterates over:
+* `Array`s
+* Reduceable `Object`s (e.g. with `reduce`-method)
+* Generators (e.g. `Object`s with `next`-method)
+* Iterators (e.g. `Object`s with implemented `Symbol.iterator`)
+:::
 
 ## `reduceBy`
 
+Groups values of `array` by a specified key function
+
+```js
+import { always, cond, gt, reduceBy, T } from 'nanoutils'
+
+const students = [
+  { name: 'Lucy', score: 92 },
+  { name: 'Drew', score: 85 },
+  { name: 'Bart', score: 62 }
+]
+
+const reduceToNamesBy = reduceBy((names, { name }) => names.concat(name), [])
+const namesByGrade = reduceToNamesBy(({ score }) => cond([
+  [lt_(65), always('E')],
+  [lt_(70), always('D')],
+  [lt_(80), always('C')],
+  [lt_(90), always('B')],
+  [T, always('A')]
+])(score))
+
+namesByGrade(students)      // { A: ['Lucy'], B: ['Drew'], E: ['Bart'] }
+```
+
+::: tip
+Don't use mutated methods as initial value is shared with every group
+
+It means if you use `push` with `array`, you will see groups having identical values as empty `array` was mutated and shared with all the groups
+
+```js
+import { always, cond, gt, reduceBy, T } from 'nanoutils'
+
+const students = [
+  { name: 'Lucy', score: 92 },
+  { name: 'Drew', score: 85 },
+  { name: 'Bart', score: 62 }
+]
+
+const reduceToNamesBy = reduceBy((names, { name }) => {
+  names.push(name)
+  return names 
+}, [])
+const namesByGrade = reduceToNamesBy(({ score }) => cond([
+  [lt_(65), always('E')],
+  [lt_(70), always('D')],
+  [lt_(80), always('C')],
+  [lt_(90), always('B')],
+  [T, always('A')]
+])(score))
+
+namesByGrade(students)      // { A: ['Lucy', 'Drew', 'Bart'], B: ['Lucy', 'Drew', 'Bart'], E: ['Lucy', 'Drew', 'Bart'] }
+```
+:::
+
 ## `reduceRight`
+
+Iterates over a collection from right to left and returns value based on it
+
+```js
+import { add, concat, reduceRight } from 'nanoutils'
+
+const probabilities = [0.2, 0.3, 0.5]
+const children = ['Alex', 'Max ', 'Phil ']
+
+reduceRight(add, 0, probabilities)   // 1
+reduceRight(concat, '', children)    // 'Phil Max Alex'
+```
 
 ## `reduceWhile`
 
+Iterates a collection from left to right while a given predicate returns `true`
+
+```js
+import { add, gt, reduceWhile } from 'nanoutils'
+
+const sortedAges = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+const isLessThan30 = gt(30)
+
+reduceWhile(isLessThan30, add, 0, sortedAges)     // 75
+```
+
+::: tip
+If a specified predicate always returns `true`, all `array` is iterated
+:::
+
 ## `reduceWhileRight`
+
+Iterates a collection from left to right while a given predicate returns `true`
+
+```js
+import { add, lt, reduceWhileRight } from 'nanoutils'
+
+const sortedAges = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+const isGreaterThan30 = lt(30)
+
+reduceWhileRight(isGreaterThan30, add, 0, sortedAges)     // 170
+```
+
+::: tip
+If a specified predicate always returns `true`, all `array` is iterated
+:::
 
 ## `reject`
 
+Iterates `array` or `object` and returns `array` or `object` respectively with values except for those which are `true` for a specified predicate
+
+```js
+import { isInteger, reject } from 'nanoutils'
+
+const person = {
+  name: 'Iwan',
+  age: 15,
+  school: 76,
+  uni: 'OmSU'
+}
+
+reject(isInteger, person)   // { name: 'Iwan', uni: 'OmSU' }
+```
+
 ## `remove`
+
+Removes a given number of values from a specified index
+
+```js
+import { remove } from 'nanoutils'
+
+const queue = ['Alex', 'Anton', 'Mikel', 'Ksenia']
+
+remove(0, 3, queue)   // ['Ksenia']
+```
 
 ## `repeat`
 
+Repeats value a specified number of times
+
+```js
+import { repeat } from 'nanoutils'
+
+repeat(0, 2)    // [0, 0]
+```
+
+::: tip
+It returns empty `array` if a specified number of times is non-positive
+:::
+
 ## `replace`
+
+Replaces a sub`string` inside `string`
+
+```js
+import { replace } from 'nanoutils'
+
+const sentence = 'Max is currently our team leader'
+const newTeamLeadName = 'Alex'
+
+replace(/Max/g, newTeamLeadName, sentence)    // 'Alex is currently our team leader'
+```
 
 ## `reverse`
 
+Reverses `string` or `array`
+
+```js
+import { reverse } from 'nanoutils'
+
+const queue = ['Alex', 'Anton', 'Mikel', 'Ksenia']
+
+reverse(queue)    // ['Ksenia', 'Mikel', 'Anton', 'Alex']
+```
+
 ## `scan`
+
+Adds initial value to the beginning, iterates `array` and puts value with a specified function
+
+```js
+import { multiply, scan } from 'nanoutils'
+
+const factorials = n => scan(
+  multiply,
+  1,
+  Array(Math.max(0, n - 1)).fill(0).map((_, i) => i + 1)
+)
+
+factorials(5)   // [1, 1, 2, 6, 24]
+```
 
 ## `set`
 
+Sets value with a specified `lens`-like function
+
+```js
+import { lens, set } from 'nanoutils'
+
+const person = {
+  name: 'Alexey',
+  age: 25
+}
+const nameLens = lens(({ name }) => name, (name, person) => ({ ...person, name }))
+
+set(nameLens, 'Alexus', person)   // { name: 'Alexus', age: 25 }
+```
+
+::: tip
+Despite setting new value or not, it returns new `object`
+:::
+
 ## `slice`
+
+Returns sliced sub`array` of a specified `array`
+
+```js
+import { slice } from 'nanoutils'
+
+const queue = ['Alex', 'Anton', 'Mikel', 'Ksenia']
+
+slice(1, Infinity, queue)   // ['Anton', 'Mikel', 'Ksenia']
+```
+
+::: tip
+It returns empty `array` if specified indices are not integer `number`s
+:::
+
+::: warning
+Out-of-bounds indices are transformed into `0` and length of `array` respectively
+:::
 
 ## `snakeCase`
 
+Returns a `string` in a snake case style
+
+```js
+import { snakeCase } from 'nanoutils'
+
+snakeCase('-to snakeCase')  // to_snake_case
+```
+
+::: tip
+Also see [`camelCase`](#camelCase) and [`kebabCase`](#kebabCase)
+:::
+
 ## `sort`
+
+Returns sorted `array`
+
+```js
+import { az, identity, sort } from 'nanoutils'
+
+const names = ['Mike', 'David', 'Alex']
+
+sort(az(identity), names)     // ['Alex', 'David', 'Mike']
+```
 
 ## `sortBy`
 
+Returns sorted `array` by a specified comparator
+
+```js
+import { ascend, az, prop, sortBy } from 'nanoutils'
+
+const consultants = [
+  { name: 'Mike', age: 30 },
+  { name: 'David', age: 35 },
+  { name: 'Alex', age: 25 }
+]
+
+sortBy(az(prop('name')), consultants)     // [{ name: 'Alex', age: 25 }, { name: 'David', age: 35 }, { name: 'Mike', age: 30 }]
+sortBy(ascend(prop('age')), consultants)     // [{ name: 'Alex', age: 25 }, { name: 'Mike', age: 30 }, { name: 'David', age: 35 }]
+```
+
 ## `sortWith`
+
+Returns sorted `array` by a specified `array` of comparators
+
+```js
+import { ascend, az, prop, sortWith } from 'nanoutils'
+
+const consultants = [
+  { name: 'Mike', age: 30 },
+  { name: 'David', age: 35 },
+  { name: 'Alex', age: 25 },
+  { name: 'Louis', age: 35 }
+]
+
+const sortByNameAndAge = sortWith([
+  ascend(prop('age')),
+  az(prop('name'))
+])
+
+sortByNameAndAge(consultants)     // [{ name: 'Alex', age: 25 }, { name: 'Mike', age: 30 }, { name: 'David', age: 35 }, { name: 'Louis', age: 35 }]
+```
+
+::: tip
+Comparison is taken by the first comparator. If values equal, next comparator is taken and so on.
+:::
+
+::: tip
+`sortWith([comparator], array)` equals to `sortBy(comparator, array)`
+:::
 
 ## `split`
 
+Splits `string` by a specified separator
+
+```js
+import { split } from 'nanoutils'
+
+const path = '/usr/local/bin/node'
+
+split('/', path)    // ['', 'usr', 'local', 'bin', 'node']
+```
+
+::: tip
+If a given separator is not found in a string, `split` returns `array` with whole `string` as unique element
+:::
+
 ## `splitAt`
+
+Splits `string` or `array` at a specified index
+
+```js
+import { splitAt } from 'nanoutils'
+
+const people = ['Alex', 'Anton', 'Mikel', 'Ksenia']
+
+splitAt(people.length / 2, people)    // [['Alex', 'Anton'], [Mikel', 'Ksenia']]
+```
+
+::: tip
+For `string`s it returns `array` of 2 `string`s
+
+```js
+import { spiltAt } from 'nanoutils'
+
+const line = 'This is first line'
+
+splitAt(line.length / 2, line)    // ['This is f', 'irst line']
+```
+:::
 
 ## `splitEvery`
 
+Splits `string` or `array` into sub`string`s or sub`array`s of a specified length
+
+```js
+import { splitEvery } from 'nanoutils'
+
+const people = ['Alex', 'Anton', 'Mikel', 'Ksenia', 'John']
+
+splitEvery(3, people)   // [['Alex', 'Anton', 'Mikel'], ['Ksenia', 'John']]
+```
+
 ## `splitWhen`
+
+Splits `string` or `array` when a specified predicate returns `true`
+
+```js
+import { splitWhen } from 'nanoutils'
+
+const euroExchangeRateHistory = [78.1, 78.3, 79.0, 78.7, 78.9]
+
+let previous = null
+const isGoingDown = value => {
+  if (!previous || (previous <= value)) {
+    previous = value
+    return false
+  }
+  return true
+}
+
+splitWhen(isGoingDown, euroExchangeRateHistory)   // [[78.1, 78.3, 79.0], [78.7, 78.9]]
+```
 
 ## `startsWith`
 
+A predicate, returns `true` if `string` or `array` has a specified prefix
+
+```js
+import { startsWith } from 'nanoutils'
+
+const names = ['Alex Ivanov', 'Max Borisov']
+const isMax = startsWith('Max')
+
+isMax(names[0])   // false
+isMax(names[1])   // true
+```
+
 ## `subtract`
+
+Returns a subtraction of two values
+
+```js
+import { subtract } from 'nanoutils'
+
+subtract(1, 1)          // 0
+subtract(1)(1)          // 0
+subtract('1')(1)        // 0
+subtract('1')('1')      // 0
+subtract(-1)(0)         // -1
+subtract(1)('a')        // NaN
+subtract(null)(null)    // 0
+subtract(false)(false)  // 0
+subtract(true)(true)    // 0
+subtract([])([])        // 0
+subtract([2])([1])      // 1
+```
+
+::: tip JS-friendly
+If you pass non-`number` values, it tries to convert them to `number`s and to return a subtraction. Otherwise, it returns `NaN`
+:::
 
 ## `sum`
 
+Adds values of `array`
+
+```js
+import { sum } from 'nanoutils'
+
+sum([])             // 0
+sum([1, 2, 3, 4])   // 10
+```
+
 ## `symmetricDifference`
+
+Returns values which are not included in both `array`s
+
+```js
+import { symmetricDifference } from 'nanoutils'
+
+symmetricDifference([1, 2, 3], [1, 2, 3, 4])            // [4]
+symmetricDifference([1, 2, 3], [1, 2])                  // [3]
+difference([{ a: 1 }, { b: 2 }], [{ b: 2 }, { c: 3 }])  // [{ a: 1 }, { c: 3 }]
+```
+
+::: tip
+`symmetricDifference` includes values from first `array` which are not included in second `array` and vice versa. While `difference` takes only those values which are present on first `array` but not second one.
+:::
 
 ## `symmetricDifferenceWith`
 
+Given a comparator returns a symmetric difference between `array`s
+
+```js
+import { symmetricDifferenceWith } from 'nanoutils'
+
+const withPropA = symmetricDifferenceWith((obj1, obj2) => obj1.a === obj2.a)
+
+withPropA([{ a: 1, b: 2 }], [{ a: 1 }])   // []
+withPropA([{ a: 1, b: 2 }], [{ a: 2 }])   // [{ a: 1, b: 2 }, { a: 2 }]
+```
+
 ## `T`
+
+Always returns `true`
+
+```js
+import { T } from 'nanoutils'
+
+T()       // true
+T(1)      // true
+T(false)  // true
+```
 
 ## `tail`
 
+Returns `string` or `array` but first letter or value of it respectively
+
+```js
+import { tail } from 'nanoutils'
+
+const queue = ['Adam', 'David', 'Margaret', 'Adam']
+const name = 'Adam'
+
+tail(queue)   // ['David', 'Margaret', 'Adam']
+tail(name)    // 'dam'
+```
+
 ## `take`
+
+Takes a specified `number` of values from the beginning of `string` or `array`
+
+```js
+import { take } from 'nanoutils'
+
+const queue = ['Adam', 'David', 'Margaret', 'Adam']
+const name = 'Adam'
+
+take(2, queue)  // ['Adam', 'David']
+take(1, name)   // 'A'
+```
+
+::: tip
+Returns same `string` or `array` if a number is negative
+:::
 
 ## `takeLast`
 
+Takes a specified `number` of values from the end of `string` or `array`
+
+```js
+import { takeLast } from 'nanoutils'
+
+const queue = ['Adam', 'David', 'Margaret', 'Adam']
+const name = 'Adam'
+
+takeLast(2, queue)  // ['Margaret', 'Adam']
+takeLast(1, name)   // 'm'
+```
+
+::: tip
+Returns same `string` or `array` if a number is negative
+:::
+
 ## `takeLastWhile`
+
+Takes values from the end of `string` or `array` while a given predicate returns `true`
+
+```js
+import { takeLastWhile } from 'nanoutils'
+
+const takeWhileLess3 = takeLastWhile(value => value < 3)
+
+takeWhileLess3('1234')       // '12'
+takeWhileLess3([1, 2, 3, 4]) // [1, 2]
+```
+
+::: tip
+Always returns a copy of `string` or `array`
+:::
 
 ## `takeT`
 
+Creates a transducer with a take
+
+```js
+import { takeT } from 'nanoutils'
+
+const transducer = takeT(2)
+const updateBankAccount = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+updateBankAccount([], 1)      // [1]
+updateBankAccount([1], 2)     // [1, 2]
+updateBankAccount([1, 2], 3)  // [1, 2]
+```
+
 ## `takeWhile`
+
+Takes values from the beginning of `string` or `array` while a given predicate returns `true`
+
+```js
+import { takeWhile } from 'nanoutils'
+
+const takeWhileLess3 = takeWhile(value => value < 3)
+
+takeWhileLess3('1234')       // '12'
+takeWhileLess3([1, 2, 3, 4]) // [1, 2]
+```
+
+::: tip
+Always returns a copy of `string` or `array`
+:::
 
 ## `tap`
 
+Applies specified value to a specified function and then returns value
+
+```js
+import { map, tap } from 'nanoutils'
+
+const log = value => console.log(value)
+const accounts = [
+  { name: 'Mike', balance: 350 },
+  { name: 'Alice', balance: 200 }
+]
+
+map(log, accounts)  // [{ name: 'Mike', balance: 350 }, { name: 'Alice', balance: 200 }] to log and to return
+```
+
 ## `test`
+
+Predicate, returns `true` if `string` corresponds to a specified regular expression
+
+```js
+import { test } from 'nanoutils'
+
+test(/[\w]/g, 'man')   // true
+test(/[\d]/g, 'man')   // false
+```
 
 ## `throttle`
 
+Calls a specified function and prohibits calling it within a specified `number` of milliseconds
+
+```js
+import { throttle } from 'nanoutils'
+
+let calls = 0
+const SEC = 1000
+const callInSecond = throttle(SEC, () => {
+  calls++
+})
+
+calls               // 0
+callInSecond()      // callback is waiting a sec...
+calls               // 1
+callInSecond()      // callback is not called
+setTimeout(() => {
+  callInSecond()    // callback is waiting a sec...
+  calls             // 2
+  callInSecond()    // callback is not called
+}, 1000)
+```
+
+::: tip
+If a throttled function is called more than 1 times within a specified number of milliseconds, the first call will only be run
+:::
+
 ## `times`
+
+Returns `array` of a specified length with values which is formed by a specified function
+
+```js
+import { times } from 'nanoutils'
+
+const generateAge = age => ({ age })
+
+times(generateAge, 5)   // [{ age: 0 }, { age: 1 }, { age: 2 }, { age: 3 }, { age: 4 }]
+```
 
 ## `toArray`
 
+Returns `array` of arguments
+
+```js
+import { toArray } from 'nanoutils'
+
+const toArrayFromArgs = function() {
+  return toArray(arguments)
+}
+
+toArrayFromArgs('David', 'Margaret', 'Adam')    // ['David', 'Margaret', 'Adam']
+toArray(['David', 'Margaret', 'Adam'])          // ['David', 'Margaret', 'Adam']
+toArray('David')                                // ['D', 'a', 'v', 'i', 'd']
+```
+
 ## `toLower`
+
+Returns `string` in a lower-case version
+
+```js
+import { toLower } from 'nanoutils'
+
+toLower('David')    // 'david'
+```
 
 ## `toPairs`
 
+Returns `array` of pairs from `object`
+
+```js
+import { toPairs } from 'nanoutils'
+
+const john = {
+  name: 'John Parker',
+  age: 18
+}
+
+toPairs(john)   // [['name', 'John Parker'], ['age', 18]]
+```
+
 ## `toPairsIn`
+
+Returns `array` of pairs from `object` including `prototype`
+
+```js
+import { toPairsIn } from 'nanoutils'
+
+const dna = {
+  father: {
+    name: 'Nick Parker',
+    age: 36
+  }
+}
+const john = {
+  name: 'John Parker',
+  age: 18,
+  __proto__: dna
+}
+
+toPairsIn(john)   // [['name', 'John Parker'], ['age', 18], ['father', { name: 'Nick Parker', age: 36 }]]
+```
 
 ## `toString`
 
+Returns `string` for any value
+
+```js
+import { toString } from 'nanoutils'
+
+const toStringArgs = function() {
+  return toString(arguments)
+}
+
+toString('Mark')                        // 'Mark'
+toString(18)                            // '18'
+toString(true)                          // 'true'
+toString(null)                          // 'null'
+toString(undefined)                     // 'undefined'
+toString(NaN)                           // 'NaN'
+toString({ name: 'Nick' })              // '{"name": "Nick"}'
+toString(['Nick', 'Mark'])              // '["Nick", "Mark"]'
+toString(function(){ return 'Mark'})    // 'function() { return 'Mark'}'
+toString(toStringArgs('Nick', 'Mark'))  // '(function() { return arguments; }('Nick', 'Mark'))'
+toString(new Date('11-12-13'))          // 'new Date("2013-11-11T21:00:00.000Z")'
+```
+
 ## `toUpper`
+
+Returns `string` in a upper-case version
+
+```js
+import { toUpper } from 'nanoutils'
+
+toLower('David')    // 'DAVID'
+```
 
 ## `transduce`
 
+Applies a given reducer function to a specified transducer function having initial value and a collection (see [`reduce`](#reduce))
+
+```js
+import { append, flip, takeT, transduce } from 'nanoutils'
+
+const queue = ['Adam', 'David', 'Margaret']
+
+transduce(takeT(2), flip(append), [], queue)    // ['Adam', 'David']
+```
+
+::: tip
+See also:
+* [`composeT`](#composeT)
+* [`filterT`](#filterT)
+* [`mapT`](#mapT)
+* [`pipeT`](#pipeT)
+* [`takeT`](#takeT)
+:::
+
 ## `transpose`
+
+Makes `i`th-index values of sub`array`s values of `i`th-index sub`array`s
+
+```js
+import { transpose } from 'nanoutils'
+
+const year5 = ['John', 'Mary']
+const year7 = ['Emmy', 'Ann']
+const year10 = ['Alex', 'Kate']
+
+transpose([year5, year7, year10])   // [['John', 'Emmy', 'Alex'], ['Mary', 'Ann', 'Kate']]
+```
+
+::: warning
+If one of sub`array`s has less values than next others, the result sub`array` may have less values than previous ones
+
+```js
+import { transpose } from 'nanoutils'
+
+const year5 = ['John', 'Mary', 'Kate']
+const year7 = ['Emmy', 'Oleg']
+const year10 = ['Alex']
+
+transpose([year5, year7, year10])   // [['John', 'Emmy', 'Alex'], ['Mary', 'Oleg'], ['Kate']]
+```
+:::
+
+::: warning
+Sparse sub`array`s result in different sub`array`s in final `array`
+
+```js
+import { transpose } from 'nanoutils'
+
+const year5 = ['John', 'Mary']
+const year7 = ['Emmy', undefined, 'Kate']
+const year10 = ['Alex']
+
+transpose([year5, year7, year10])   // [['John', 'Emmy', 'Alex'], ['Mary'], []]
+```
+:::
 
 ## `trim`
 
+Returns `string` without white spaces and terminators
+
+```js
+import { trim } from 'nanoutils'
+
+trim('  Hello, Jane!\n  ')    // 'Hello, Jane!'
+```
+
+::: tip
+It can eliminate:
+* Spaces
+  * Normal  ` `
+  * Nonbreaking `\u00A0`
+  * Byte order mark `\uFEFF`
+  * Form feed `\f`
+  * Tab `\t`
+  * Vertical tab `\v`
+* Terminators
+  * New line `\n`
+  * Carriage return `\r`
+  * Line separator `\u2028`
+  * Paragrath separator `\u2029`
+:::
+
 ## `tryCatch`
 
+Calls `try` or `catch` if it throws error
+
+```js
+import { tryCatch } from 'nanoutils'
+
+const EMPTY_NAME = 'Name is not specified'
+const getName = tryCatch(({ name }) => name, () => EMPTY_NAME)
+
+getName({ name: 'Alex' })     // 'Alex'
+getName(null)                 // 'Name is not specified'
+```
+
 ## `type`
+
+Returns type of anything
+
+```js
+import { type } from 'nanoutils'
+
+type('Alex')              // 'String'
+type(Symbol.iterator)     // 'Symbol'
+type(() => true))         // 'Function'
+type(false)               // 'Boolean'
+type(NaN)                 // 'Number'
+```
+
+::: tip JS-friendly
+It supports:
+* `Array`
+* `Null`
+* `RegExp`
+
+Except for `3` types, it tries to identify type according to `typeof` operator and returns it with first upper letter
+:::

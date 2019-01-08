@@ -106,7 +106,7 @@
 | insertAll | 130 B | 379 B | -249 B |
 | intersection | 525 B | 2360 B | -1835 B |
 | intersperse | 130 B | 409 B | -279 B |
-| into | 341 B | 1638 B | -1297 B |
+| into | 310 B | 1638 B | -1328 B |
 | invert | 58 B | 534 B | -476 B |
 | invertObj | 44 B | 520 B | -476 B |
 | invoker | 309 B | 3337 B | -3028 B |
@@ -194,8 +194,8 @@
 | propOr | 110 B | 362 B | -252 B |
 | props | 134 B | 263 B | -129 B |
 | propSatisfies | 106 B | 338 B | -232 B |
-| range | 107 B | 342 B | -235 B |
-| reduce | 295 B | 1021 B | -726 B |
+| range | 115 B | 342 B | -227 B |
+| reduce | 265 B | 1021 B | -756 B |
 | reduceBy | 320 B | 1424 B | -1104 B |
 | reduceRight | 129 B | 361 B | -232 B |
 | reduceWhile | 316 B | 1074 B | -758 B |
@@ -204,7 +204,7 @@
 | remove | 115 B | 362 B | -247 B |
 | repeat | 119 B | 364 B | -245 B |
 | replace | 107 B | 341 B | -234 B |
-| reverse | 91 B | 212 B | -121 B |
+| reverse | 63 B | 212 B | -149 B |
 | scan | 148 B | 373 B | -225 B |
 | set | 115 B | 411 B | -296 B |
 | slice | 148 B | 473 B | -325 B |
@@ -238,7 +238,7 @@
 | toPairsIn | 50 B | 166 B | -116 B |
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
-| transduce | 238 B | 1082 B | -844 B |
+| transduce | 209 B | 1082 B | -873 B |
 | transpose | 116 B | 204 B | -88 B |
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
