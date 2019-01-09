@@ -196,7 +196,7 @@
 | propSatisfies | 106 B | 338 B | -232 B |
 | range | 107 B | 342 B | -235 B |
 | reduce | 295 B | 1021 B | -726 B |
-| reduceBy | 687 B | 1424 B | -737 B |
+| reduceBy | 689 B | 1424 B | -735 B |
 | reduceRight | 129 B | 361 B | -232 B |
 | reduceWhile | 316 B | 1074 B | -758 B |
 | reduceWhileRight | 317 B | n/a B | n/a B |
