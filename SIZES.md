@@ -63,7 +63,7 @@
 | dropLastWhileT | 28 B | n/a B | n/a B |
 | dropRepeats | 428 B | 1845 B | -1417 B |
 | dropRepeatsWith | 139 B | 722 B | -583 B |
-| dropT | 28 B | n/a B | n/a B |
+| dropT | 54 B | n/a B | n/a B |
 | dropWhile | 115 B | 806 B | -691 B |
 | dropWhileT | 28 B | n/a B | n/a B |
 | either | 48 B | 1943 B | -1895 B |

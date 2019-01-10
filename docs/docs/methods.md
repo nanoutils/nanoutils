@@ -1089,6 +1089,24 @@ drop(2)([1, 2, 3, 4]) // [3, 4]
 Returns same `string` or `array` if a number is negative
 :::
 
+## `dropT`
+
+Creates a `drop`-like transducer with a specified number of non-accepting values
+
+```js
+import { dropT } from 'nanoutils'
+
+const transducer = dropT(1)
+const skipFirstBankAccount = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+skipFirstBankAccount([], 1)       // []
+skipFirstBankAccount([], 2)       // [2]
+skipFirstBankAccount([2], 3)      // [2, 3]
+```
+
 ## `dropLast`
 
 Drops a specified `number` of values from the end of `string` or `array`
