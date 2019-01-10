@@ -4112,6 +4112,24 @@ const accounts = [
 map(log, accounts)  // [{ name: 'Mike', balance: 350 }, { name: 'Alice', balance: 200 }] to log and to return
 ```
 
+## `tapT`
+
+Creates a transducer with a specified side-effect function
+
+```js
+import { tapT } from 'nanoutils'
+
+const transducer = tapT(console.log)
+const logEverything = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+logEverything([], 1)      // returns [1] and logs 1, []
+logEverything([1], 2)     // returns [1, 2] and logs 2, [1]
+logEverything([1, 2], 3)  // returns [1, 2, 3] and logs 3, [1, 2]
+```
+
 ## `test`
 
 Predicate, returns `true` if `string` corresponds to a specified regular expression

@@ -232,7 +232,7 @@
 | takeWhile | 115 B | 822 B | -707 B |
 | takeWhileT | 56 B | n/a B | n/a B |
 | tap | 100 B | 540 B | -440 B |
-| tapT | 28 B | n/a B | n/a B |
+| tapT | 44 B | n/a B | n/a B |
 | test | 85 B | 3235 B | -3150 B |
 | throttle | 72 B | n/a B | n/a B |
 | times | 122 B | 326 B | -204 B |
