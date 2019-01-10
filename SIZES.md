@@ -31,7 +31,7 @@
 | ceil | 139 B | n/a B | n/a B |
 | chain | 161 B | 1980 B | -1819 B |
 | clamp | 121 B | 402 B | -281 B |
-| clone | 299 B | 463 B | -164 B |
+| clone | 385 B | 463 B | -78 B |
 | compact | 50 B | n/a B | n/a B |
 | comparator | 48 B | 159 B | -111 B |
 | complement | 46 B | 1916 B | -1870 B |
@@ -196,7 +196,7 @@
 | propSatisfies | 106 B | 338 B | -232 B |
 | range | 107 B | 342 B | -235 B |
 | reduce | 295 B | 1021 B | -726 B |
-| reduceBy | 320 B | 1424 B | -1104 B |
+| reduceBy | 674 B | 1424 B | -750 B |
 | reduceRight | 129 B | 361 B | -232 B |
 | reduceWhile | 316 B | 1074 B | -758 B |
 | reduceWhileRight | 317 B | n/a B | n/a B |
