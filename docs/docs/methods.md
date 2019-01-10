@@ -3993,7 +3993,7 @@ Always returns a copy of `string` or `array`
 
 ## `takeT`
 
-Creates a transducer with a take
+Creates a `take`-like transducer with a specified number of accepting values
 
 ```js
 import { takeT } from 'nanoutils'
@@ -4024,6 +4024,32 @@ takeWhileLess3([1, 2, 3, 4]) // [1, 2]
 
 ::: tip
 Always returns a copy of `string` or `array`
+:::
+
+## `takeWhileT`
+
+Creates a `take`-like transducer with a given predicate
+
+```js
+import { takeWhileT } from 'nanoutils'
+
+const transducer = takeWhileT(value => value < 3)
+const updateBankAccount = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+updateBankAccount([], 1)      // [1]
+updateBankAccount([1], 2)     // [1, 2]
+updateBankAccount([1, 2], 3)  // [1, 2]
+updateBankAccount([1, 2], 2)  // [1, 2]
+updateBankAccount([1, 2], 1)  // [1, 2]
+```
+
+::: warning
+Once a given predicate returns `false` it doesn't accept any other values
+
+It you want a different behaviour, have a look at [`filterT`](#filtert)
 :::
 
 ## `tap`
