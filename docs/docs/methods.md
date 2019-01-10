@@ -3489,22 +3489,25 @@ const students = [
   { name: 'Bart', score: 62 }
 ]
 
-const reduceToNamesBy = reduceBy((names, { name }) => names.concat(name), [])
-const namesByGrade = reduceToNamesBy(({ score }) => cond([
-  [lt_(65), always('E')],
-  [lt_(70), always('D')],
-  [lt_(80), always('C')],
-  [lt_(90), always('B')],
-  [T, always('A')]
-])(score))
+const namesByGrade = reduceBy(
+  (names, { name }) => names.concat(name),
+  [],
+  ({ score }) => cond([
+    [lt_(65), always('E')],
+    [lt_(70), always('D')],
+    [lt_(80), always('C')],
+    [lt_(90), always('B')],
+    [T, always('A')]
+  ])(score)
+)
 
 namesByGrade(students)      // { A: ['Lucy'], B: ['Drew'], E: ['Bart'] }
 ```
 
 ::: tip
-Don't use mutated methods as initial value is shared with every group
+You can also use mutated methods as initial value is shallowly cloned for every group
 
-It means if you use `push` with `array`, you will see groups having identical values as empty `array` was mutated and shared with all the groups
+It means you can use either `push` or `concat` with `array`s
 
 ```js
 import { always, cond, gt, reduceBy, T } from 'nanoutils'
@@ -3527,7 +3530,7 @@ const namesByGrade = reduceToNamesBy(({ score }) => cond([
   [T, always('A')]
 ])(score))
 
-namesByGrade(students)      // { A: ['Lucy', 'Drew', 'Bart'], B: ['Lucy', 'Drew', 'Bart'], E: ['Lucy', 'Drew', 'Bart'] }
+namesByGrade(students)      // { A: ['Lucy'], B: ['Drew'], E: ['Bart'] }
 ```
 :::
 
@@ -3564,7 +3567,7 @@ If a specified predicate always returns `true`, all `array` is iterated
 
 ## `reduceWhileRight`
 
-Iterates a collection from left to right while a given predicate returns `true`
+Iterates a collection from right to left while a given predicate returns `true`
 
 ```js
 import { add, lt, reduceWhileRight } from 'nanoutils'
@@ -3680,7 +3683,7 @@ set(nameLens, 'Alexus', person)   // { name: 'Alexus', age: 25 }
 ```
 
 ::: tip
-Despite setting new value or not, it returns new `object`
+It always returns new `object`
 :::
 
 ## `slice`
@@ -3801,7 +3804,7 @@ import { splitAt } from 'nanoutils'
 
 const people = ['Alex', 'Anton', 'Mikel', 'Ksenia']
 
-splitAt(people.length / 2, people)    // [['Alex', 'Anton'], [Mikel', 'Ksenia']]
+splitAt(people.length / 2, people)    // [['Alex', 'Anton'], ['Mikel', 'Ksenia']]
 ```
 
 ::: tip
@@ -3911,7 +3914,7 @@ difference([{ a: 1 }, { b: 2 }], [{ b: 2 }, { c: 3 }])  // [{ a: 1 }, { c: 3 }]
 ```
 
 ::: tip
-`symmetricDifference` includes values from first `array` which are not included in second `array` and vice versa. While `difference` takes only those values which are present on first `array` but not second one.
+`symmetricDifference` includes values from first `array` which are not included in second `array` and vice versa. While `difference` takes only those values which are present on first `array` but not second one
 :::
 
 ## `symmetricDifferenceWith`
@@ -4098,7 +4101,7 @@ If a throttled function is called more than 1 times within a specified number of
 
 ## `times`
 
-Returns `array` of a specified length with values which is formed by a specified function
+Returns `array` of a specified length with values which are formed by a specified function
 
 ```js
 import { times } from 'nanoutils'
@@ -4219,11 +4222,11 @@ transduce(takeT(2), flip(append), [], queue)    // ['Adam', 'David']
 
 ::: tip
 See also:
-* [`composeT`](#composeT)
-* [`filterT`](#filterT)
-* [`mapT`](#mapT)
-* [`pipeT`](#pipeT)
-* [`takeT`](#takeT)
+* [`composeT`](#composet)
+* [`filterT`](#filtert)
+* [`mapT`](#mapt)
+* [`pipeT`](#pipet)
+* [`takeT`](#taket)
 :::
 
 ## `transpose`
