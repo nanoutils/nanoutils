@@ -58,14 +58,12 @@
 | divide | 82 B | 230 B | -148 B |
 | drop | 92 B | 782 B | -690 B |
 | dropLast | 110 B | 983 B | -873 B |
-| dropLastT | 28 B | n/a B | n/a B |
 | dropLastWhile | 124 B | 1443 B | -1319 B |
-| dropLastWhileT | 28 B | n/a B | n/a B |
 | dropRepeats | 428 B | 1845 B | -1417 B |
 | dropRepeatsWith | 139 B | 722 B | -583 B |
 | dropT | 54 B | n/a B | n/a B |
 | dropWhile | 115 B | 806 B | -691 B |
-| dropWhileT | 28 B | n/a B | n/a B |
+| dropWhileT | 57 B | n/a B | n/a B |
 | either | 48 B | 1943 B | -1895 B |
 | empty | 99 B | 380 B | -281 B |
 | endsWith | 425 B | 1943 B | -1518 B |
@@ -229,9 +227,7 @@
 | tail | 102 B | 509 B | -407 B |
 | take | 125 B | 827 B | -702 B |
 | takeLast | 125 B | 808 B | -683 B |
-| takeLastT | 28 B | n/a B | n/a B |
 | takeLastWhile | 124 B | 528 B | -404 B |
-| takeLastWhileT | 28 B | n/a B | n/a B |
 | takeT | 54 B | n/a B | n/a B |
 | takeWhile | 115 B | 822 B | -707 B |
 | takeWhileT | 56 B | n/a B | n/a B |
