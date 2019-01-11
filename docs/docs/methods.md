@@ -4333,3 +4333,67 @@ It supports:
 
 Except for `3` types, it tries to identify type according to `typeof` operator and returns it with first upper letter
 :::
+
+## `unapply`
+
+## `unary`
+
+## `uncurryN`
+
+## `unfold`
+
+## `union`
+
+## `unionWith`
+
+## `uniq`
+
+## `uniqBy`
+
+## `uniqWith`
+
+## `unless`
+
+## `unnest`
+
+## `unnestN`
+
+## `until`
+
+## `unzip`
+
+## `unzipWith`
+
+## `update`
+
+## `updateIn`
+
+## `useWith`
+
+## `values`
+
+## `valuesIn`
+
+## `view`
+
+## `when`
+
+## `where`
+
+## `whereEq`
+
+## `whilst`
+
+## `without`
+
+## `xprod`
+
+## `za`
+
+## `zip`
+
+## `zipObj`
+
+## `zipObjDeep`
+
+## `zipWith`
