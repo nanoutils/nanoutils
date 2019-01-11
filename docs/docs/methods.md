@@ -105,7 +105,7 @@ always({ a : 1 })() // { a : 1 }
 ```
 
 ::: tip
-As returned value is identical to what is passed, it will point to same reference (i.e. `object` and `array`)
+As returned value is identical to what is passed, it will point to same reference (e.g. `object` and `array`)
 
 ```js
 import { always } from 'nanoutils'
@@ -342,7 +342,7 @@ It also works for arrays as `assoc`
 
 ## `az`
 
-Given a getter function compares values in an alphabetical 🔤 order
+Given a getter function compares values in alphabetical 🔤 order
 
 ```js
 import { az, prop } from 'nanoutils'
@@ -1250,7 +1250,7 @@ It compares values using [`equals`](#equals)
 
 ## `eqLens`
 
-Compares a value with an argument which is passed to a lens-like function
+Compares a value with an argument which is passed to a `lens`-like function
 
 ```js
 import { eqLens, lens } from 'nanoutils'
@@ -1656,7 +1656,7 @@ gte(3, 2)  // true
 
 ## `has`
 
-Checks if an object has provided own property
+Checks if `object` has provided own property
 
 ```js
 import { has } from 'nanoutils'
@@ -1677,6 +1677,8 @@ Method doesn't use `prorotype` chain, only `object` itself
 :::
 
 ## `hasIn`
+
+Checks if `object` has provided property
 
 ```js
 import { hasIn } from 'nanoutils'
@@ -2096,7 +2098,7 @@ Also see [`camelCase`](#camelCase) and [`snakeCase`](#snakeCase)
 
 ## `keys`
 
-Returns `array` of keys of an `object`
+Returns `array` of keys of `object`
 
 ```js
 import { keys } from 'nanoutils'
@@ -2117,12 +2119,12 @@ keys(obj)   // ['name']
 ```
 
 ::: tip
-It doesn't iterate `prototype`'s keys
+It doesn't iterate `prototype`s' keys
 :::
 
 ## `keysIn`
 
-Returns `array` of keys of an `object` including `prototype`'s keys
+Returns `array` of keys of `object` including `prototype`s' keys
 
 ```js
 import { keysIn } from 'nanoutils' 
@@ -2143,7 +2145,7 @@ keysIn(obj)   // ['name', 'dad', 'mom']
 ```
 
 ::: tip
-It iterates `prototype`'s keys
+It iterates `prototype`s' keys
 :::
 
 ## `last`
@@ -2185,7 +2187,7 @@ length('Cat')       // 3
 
 ## `lens`
 
-Returns lens with specified getter and setter functions
+Returns `lens`-like function with a specified getter and setter functions
 
 ```js
 import { lens } from 'nanoutils'
@@ -2203,7 +2205,7 @@ objectLens.get()   // 2
 
 ## `lensIndex`
 
-Returns lens with predefined getter and setter functions for `array` only for specified `index`
+Returns `lens`-like function with predefined getter and setter functions for `array` only for specified `index`
 
 ```js
 import { lensIndex } from 'nanoutils'
@@ -2218,7 +2220,7 @@ lens.get()    // 3
 
 ## `lensPath`
 
-Returns lens with specified path for `object` or `array`
+Returns `lens`-like function with a specified path for `object` or `array`
 
 ```js
 import { lensPath } from 'nanoutils'
@@ -2242,7 +2244,6 @@ lens.get()   // 5
 ```
 
 ::: tip
-
 It also applies to `array`
 
 ```js
@@ -2265,7 +2266,7 @@ lens.get()   // 5
 
 ## `lensProp`
 
-Returns lens with specified path for `object` only with deep=1
+Returns `lens`-like function with a specified path for `object` only with `deep = 1`
 
 ```js
 import { lensProp } from 'nanoutils'
@@ -3471,9 +3472,9 @@ reduce(add, 0, [])   // 0
 ::: tip
 It can iterates over:
 * `Array`s
-* Reduceable `Object`s (e.g. with `reduce`-method)
-* Generators (e.g. `Object`s with `next`-method)
-* Iterators (e.g. `Object`s with implemented `Symbol.iterator`)
+* Reduceable `Object`s (i.e. with `reduce`-method)
+* Generators (i.e. `Object`s with `next`-method)
+* Iterators (i.e. `Object`s with implemented `Symbol.iterator`)
 :::
 
 ## `reduceBy`
@@ -4336,64 +4337,526 @@ Except for `3` types, it tries to identify type according to `typeof` operator a
 
 ## `unapply`
 
+Passes arguments to a specified function which takes an `array`
+
+```js
+import { mean, unapply } from 'nanoutils'
+
+const meanArgs = unapply(mean)
+
+meanArgs(1, 2, 3)  // 2
+```
+
 ## `unary`
+
+Passes exactly one argument
+
+```js
+import { unary } from 'nanoutils'
+
+const ages = ['15yo', 'fifteen years old', 15]
+
+ages.map(unary(parseInt))     // [15, NaN, 15]
+```
 
 ## `uncurryN`
 
+Returns uncurried function with a given curried version
+
+```js
+import { add, uncurryN } from 'nanoutils'
+
+const binaryAdd = uncurryN(2, add)
+
+binaryAdd(1)      // NaN
+binaryAdd(1, 2)   // 3
+```
+
 ## `unfold`
+
+Returns `array` of values with a specified generator-like function
+
+```js
+import { cond, F, lt, T, unfold } from 'nanoutils'
+
+const gt_ = than => what => lt(than, what)
+
+const generator = cond([
+  [gt_(50), F],
+  [T, value => [value, value + 10]]
+])
+
+unfold(generator, 10)   // [10, 20, 30, 40, 50]
+```
+
+::: tip
+Generator-like function looks like
+
+```js
+const endPredicate = /** predicate returns false when you need to finish iteration **/
+const getCurrentValue = /** **/
+const getStep = /** **/
+
+const generator = value => endPredicate(value) ? false : [getCurrentValue(value), getStep(value)]
+```
+:::
+
+::: tip
+A specified function can also be written like:
+
+```js
+const generator = value => endPredicate(value) && [getCurrentValue(value), getStep(value)]
+```
+:::
 
 ## `union`
 
+Returns `array` with values from both `array`s excluding duplicates with `identical`
+
+```js
+import { union } from 'nanoutils'
+
+const queue_14_30 = ['Ivan', 'Petr', 'Mike']
+const queue_14_40 = ['Petr', 'Mike', 'Jane']
+
+union(queue_14_30, queue_14_40)    // ['Ivan', 'Petr', 'Mike', 'Jane']
+```
+
 ## `unionWith`
+
+Returns `array` with values from both `array`s excluding duplicates with a specified function
+
+```js
+import { unionWith } from 'nanoutils'
+
+const equalsByName = (first, second) => first.name === second.name
+
+const queue_14_30 = [{ name: 'Ivan' }, { name: 'Petr' }, { name: 'Mike' }]
+const queue_14_40 = [{ name: 'Petr' }, { name: 'Mike' }, { name: 'Jane' }]
+
+unionWith(equalsByName, queue_14_30, queue_14_40)    // [{ name: 'Ivan' }, { name: 'Petr' }, { name: 'Mike' }, { name: 'Jane' }]
+```
 
 ## `uniq`
 
+Returns `array` without duplicates using `equals`
+
+```js
+import { uniq } from 'nanoutils'
+
+const images = ['1.png', '2.png', '1.png', '2.png']
+
+uniq(images)    // ['1.png', '2.png']
+```
+
 ## `uniqBy`
+
+Returns `array` without duplicates by a specified function using `equals`
+
+```js
+import { prop, uniqBy } from 'nanoutils'
+
+const images = [
+  { filename: '1', extension: 'png' },
+  { filename: '2', extension: 'png' },
+  { filename: '1', extension: 'jpeg' },
+  { filename: '2', extension: 'jpeg' }
+]
+
+uniqBy(prop('filename'), images)    // ['1', '2']
+```
+
+::: tip
+If you want to put `object` property into `array` and prevent all `duplicates`, that's exactly what it's doing
+:::
 
 ## `uniqWith`
 
+Returns `array` without duplicates with a specified predicate
+
+```js
+import { eqBy, prop, uniqWith } from 'nanoutils'
+
+const eqByFilename = eqBy(prop('filename'))
+
+const images = [
+  { filename: '1', extension: 'png' },
+  { filename: '2', extension: 'png' },
+  { filename: '1', extension: 'jpeg' },
+  { filename: '2', extension: 'jpeg' }
+]
+
+uniqWith(eqByFilename, images)    // [{ filename: '1', extension: 'png' }, { filename: '2', extension: 'png' }]
+```
+
+::: tip
+If you want to compare `object`s by property but put whole `object` into `array` and prevent all `duplicates`, that's exactly what it's doing
+:::
+
 ## `unless`
+
+Returns function which can return either value itself if a specified predicate returns `true` or apply value using a given reducer
+
+```js
+import { unless } from 'nanoutils'
+
+const buyCar = years => ['Bmw', 'Mercedes', 'Toyota'][years % 3]
+const whenYouGetOlderWeWillBuyYouCar = unless(years => years < 18, buyCar)
+
+whenYouGetOlderWeWillBuyYouCar(17)    // 17
+whenYouGetOlderWeWillBuyYouCar(18)    // 'Bmw'
+```
 
 ## `unnest`
 
+Returns `array` with one level of unnesting
+
+```js
+import { unnest } from 'nanoutils'
+
+unnest([1, [2], [3, [4]]])    // [1, 2, 3, [4]]
+```
+
+::: tip
+`unnest` equals to `chain(identity)`
+:::
+
+::: warning
+If not `array` is passed, it returns empty `array`
+:::
+
 ## `unnestN`
+
+Returns `array` with a specified times of unnesting
+
+```js
+import { unnestN } from 'nanoutils'
+
+unnestN(2, [1, [2], [3, [4]]])    // [1, 2, 3, 4]
+```
+
+::: tip
+`unnestN` equals to `unnest` which is applied N times
+:::
+
+::: warning
+If a specified number of times is `0`, it returns `array` as is
+:::
+
+::: warning
+If a specified number of times is negative, it returns empty `array`
+:::
 
 ## `until`
 
+Calls a specified function until a given predicate returns `true`
+
+```js
+import { until } from 'nanoutils'
+
+const initialSavings = { age: 10, balance: 1000 }
+const saveUpTo18yo = until(({ age }) => age >= 18, ({ age, balance }) => ({ age: age + 1, balance: balance * 2 }))
+
+saveUpTo18yo(initialSavings)    // { age: 18, balance: 256000 }
+```
+
 ## `unzip`
+
+Combines `i`th-index sub`array` values into sub`array`s
+
+```js
+import { unzip } from 'nanoutils'
+
+const company1 = [300e12, 350e12, 200e12]
+const company2 = [400e12, 350e12, 300e12]
+const revenues = [company1, company2]
+
+unzip(revenues)   // [[300e12, 400e12], [350e12, 350e12], [200e12, 300e12]]
+```
 
 ## `unzipWith`
 
+Combines `i`th-index `array` values with a specified function
+
+```js
+import { mean, unapply, unzipWith } from 'nanoutils'
+
+const meanArgs = unapply(mean)
+
+const company1 = [300e12, 350e12, 200e12]
+const company2 = [400e12, 350e12, 300e12]
+const revenues = [company1, company2]
+
+unzipWith(meanArgs, revenues)   // [350e12, 350e12, 250e12]
+```
+
 ## `update`
 
-## `updateIn`
+Returns `array` with updated value by a specified index
+
+```js
+import { update } from 'nanoutils'
+
+const queue = ['Alex', 'Mike', 'Jane']
+
+update(0, 'Taylor', queue)    // ['Taylor', 'Mike', 'Jane']
+```
+
+## `updateBy`
+
+Returns `array` with updated value by a specified predicate
+
+```js
+import { updateBy } from 'nanoutils'
+
+const isAlex = name => name === 'Alex'
+const queue = ['Alex', 'Mike', 'Jane']
+
+update(isAlex, 'Taylor', queue)    // ['Taylor', 'Mike', 'Jane']
+```
 
 ## `useWith`
 
+Changes arguments of calling a specified function
+
+```js
+import { identity, useWith } from 'nanoutils'
+
+const sendSalary = identity
+const countSalary = [value => 0.87 * value]
+const getSalary = useWith(sendSalary, countSalary)
+
+getSalary(10000)    // 8700
+```
+
 ## `values`
+
+Returns `array` of values of `object`
+
+```js
+import { values } from 'nanoutils'
+
+const obj = {
+  name: 'Adam Popov',
+  __proto__: {
+    dad: {
+      name: 'David Popov'
+    },
+    mom: {
+      name: 'Margaret Popova'
+    }
+  }
+}
+
+values(obj)   // ['Adam Popov']
+```
+
+::: tip
+It doesn't iterate `prototype`s' values
+:::
 
 ## `valuesIn`
 
+Returns `array` of values of `object` including `prototype`s' values
+
+```js
+import { valuesIn } from 'nanoutils' 
+
+const obj = {
+  name: 'Adam Popov',
+  __proto__: {
+    dad: {
+      name: 'David Popov'
+    },
+    mom: {
+      name: 'Margaret Popova'
+    }
+  }
+}
+
+valuesIn(obj)   // ['Adam Popov', 'David Popov', 'Margaret Popova']
+```
+
+::: tip
+It iterates `prototype`s' values
+:::
+
 ## `view`
+
+Gets value with a specified `lens`-like function
+
+```js
+import { lens, view } from 'nanoutils'
+
+const person = {
+  name: 'Alexey',
+  age: 25
+}
+const nameLens = lens(({ name }) => name, (name, person) => ({ ...person, name }))
+
+view(nameLens, person)   // 'Alexey'
+```
 
 ## `when`
 
+Returns function which can return either value itself if a specified predicate returns `false` or apply value using a given reducer
+
+```js
+import { when } from 'nanoutils'
+
+const buyCar = years => ['Bmw', 'Mercedes', 'Toyota'][years % 3]
+const whenYouGetOlderWeWillBuyYouCar = when(years => years >= 18, buyCar)
+
+whenYouGetOlderWeWillBuyYouCar(17)    // 17
+whenYouGetOlderWeWillBuyYouCar(18)    // 'Bmw'
+```
+
 ## `where`
+
+Tests specified `object` of predicates on a given `object`
+
+```js
+import { where } from 'nanoutils'
+
+const isAgeOfMajority = age => age >= 18
+const hasForeignPassport = foreignPassport => !!foreignPassport
+
+const canTravelAbroadByHerself = where({
+  age: isAgeOfMajority,
+  foreignPassport: hasForeignPassport
+})
+
+canTravelAbroadByHerself({ age: 15, foreignPassport: true })    // false
+canTravelAbroadByHerself({ age: 18, foreignPassport: false })   // false
+canTravelAbroadByHerself({ age: 18, foreignPassport: true })    // true
+```
 
 ## `whereEq`
 
-## `whilst`
+Tests specified `object` of predicates on a given `object` using `equals`
+
+```js
+import { whereEq } from 'nanoutils'
+
+const canTravelAbroadByHerself = whereEq({
+  age: 18,
+  foreignPassport: true
+})
+
+canTravelAbroadByHerself({ age: 15, foreignPassport: true })    // false
+canTravelAbroadByHerself({ age: 18, foreignPassport: false })   // false
+canTravelAbroadByHerself({ age: 18, foreignPassport: true })    // true
+```
 
 ## `without`
 
+Returns `array` without a specified `array` of values
+
+```js
+import { without } from 'nanoutils'
+
+const queue_14_30 = ['Ivan', 'Petr', 'Mike']
+const queue_14_40 = ['Petr', 'Mike', 'Jane']
+
+without(queue_14_30, queue_14_40)   // ['Jane']
+```
+
 ## `xprod`
+
+Returns subset of values from 2 `array`s
+
+```js
+import { xprod } from 'nanoutils'
+
+const probabilities = [0.14, 0.16, 0.29, 0.41]
+const values = ['⚪', '🔵']
+
+xprod(probabilities, values)  // [[0.14, '⚪'], [0.14, '🔵'], [0.16, '⚪'], [0.16, '🔵'], [0.29, '⚪'], [0.29, '🔵'], [0.41, '⚪'], [0.41, '🔵']]
+```
 
 ## `za`
 
+Given a getter function compares values in inversed alphabetical 🔤 order
+
+```js
+import { prop, za } from 'nanoutils'
+
+const nameComparator = za(prop('name'))
+
+nameComparator({ name: 'Alex' }, { name: 'Tony' })  // 1
+nameComparator({ name: 'Alex' }, { name: 'Alex' })  // 0
+nameComparator({ name: 'Tony' }, { name: 'Alex' })  // -1
+```
+
 ## `zip`
+
+Combines `i`th-index values into sub`array`s
+
+```js
+import { zip } from 'nanoutils'
+
+const company1 = [300e12, 350e12, 200e12]
+const company2 = [400e12, 350e12, 300e12]
+
+zip(company1, company2)   // [[300e12, 400e12], [350e12, 350e12], [200e12, 300e12]]
+```
+
+::: tip
+`zip(first, second)` equals to `unzip([first, second])`
+:::
 
 ## `zipObj`
 
+Returns `object` with keys from first `array` and values from second one
+
+```js
+import { zipObj } from 'nanoutils'
+
+zipObj(['name', 'age'], ['Alexey', 23])   // { name: 'Alexey', age: 23 }
+```
+
+::: tip
+Unlike [`zip`](#zip) `zipObj` uses first values as keys and second values as values for `object`
+:::
+
 ## `zipObjDeep`
 
+Returns `object` with paths from first `array` and values from second one
+
+```js
+import { zipObjDeep } from 'nanoutils'
+
+const keys = [
+  ['childhood', 'school', 'number'],
+  ['adulthood', 'uni', 'name']
+]
+
+const values = [
+  76, 'SPSU'
+]
+
+zipObjDeep(keys, values)    // { childhood: { school: { number: 76 } }, adulthood: { uni: { name: 'SPSU' } } }
+```
+
+::: tip
+You can specify long paths for every value
+:::
+
 ## `zipWith`
+
+Combines `i`th-index values with a specified function
+
+```js
+import { mean, unapply, zipWith } from 'nanoutils'
+
+const meanArgs = unapply(mean)
+
+const company1 = [300e12, 350e12, 200e12]
+const company2 = [400e12, 350e12, 300e12]
+
+zipWith(meanArgs, company1, company2)   // [350e12, 350e12, 250e12]
+```
+
+::: tip
+`zipWith(cb, first, second)` equals to `unzipWith(cb, [first, second])`
+:::
