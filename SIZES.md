@@ -259,7 +259,7 @@
 | unzip | 212 B | n/a B | n/a B |
 | unzipWith | 169 B | n/a B | n/a B |
 | update | 139 B | 497 B | -358 B |
-| updateIn | 193 B | n/a B | n/a B |
+| updateBy | 193 B | n/a B | n/a B |
 | useWith | 109 B | 618 B | -509 B |
 | values | 46 B | 509 B | -463 B |
 | valuesIn | 47 B | 163 B | -116 B |
@@ -267,7 +267,6 @@
 | when | 87 B | 338 B | -251 B |
 | where | 116 B | 273 B | -157 B |
 | whereEq | 397 B | 2551 B | -2154 B |
-| whilst | 117 B | n/a B | n/a B |
 | without | 98 B | 2713 B | -2615 B |
 | xprod | 142 B | 284 B | -142 B |
 | za | 53 B | n/a B | n/a B |
