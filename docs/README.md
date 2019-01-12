@@ -16,9 +16,8 @@ More nano's for the God of nano's!
 
 ## Can I use it in my project?
 
-It's production-ready, but still has following drawbacks:
+It's production-ready but still has following drawbacks:
 
-* No documentation (will be available soon)
 * No TS/Flow types
 
-But as it's a Ramda-supportive, you can see both docs and types here: [Ramda docs](https://ramdajs.com/docs/)
+It's also a Ramda-supportive, you can see both docs and types here: [Ramda docs](https://ramdajs.com/docs/)

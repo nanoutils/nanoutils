@@ -25,7 +25,7 @@ If you pass non-`number` values, it tries to convert them to `number`s and to ad
 
 ## `addIndex`
 
-Adds an index to iterate a collection
+Adds a specified index to iterate a collection
 
 ```js
 import { add, addIndex, map } from 'nanoutils'
@@ -33,19 +33,23 @@ import { add, addIndex, map } from 'nanoutils'
 const indexedMap = addIndex(map)
 
 indexedMap(add, [1, 2, 3])  // [1, 3, 5]
+```
 
-// or
+::: tip
+Also example with `filter`
 
+```js
 import { addIndex, filter } from 'nanoutils'
 
 const indexedFilter = addIndex(filter)
 
 indexedFilter((value, index) => index % 2 === 0, [1, 2, 3, 4, 5]) // [1, 3, 5]
 ```
+:::
 
 ## `adjust`
 
-Returns an `array` with a changed value at specified position
+Returns `array` with a specified value at given index
 
 ```js
 import { adjust, multiply } from 'nanoutils'
@@ -57,12 +61,12 @@ mult2(5, [1, 2, 3])  // [1, 2, 3]
 ```
 
 ::: tip
-It returns a copy of an `array` even if an index is out of `array` bounds
+It returns a copy of `array` even if a specified index is out of `array` bounds
 :::
 
 ## `all`
 
-Returns `true` iff a condition (technically, predicate) is `true` for every elements of an `array`. Otherwise, returns `false`
+Returns `true` iff a given predicate returns `true` for every elements of `array`. Otherwise, returns `false`
 
 ```js
 import { all } from 'nanoutils'
@@ -79,7 +83,7 @@ There is an early-return approach, so once it returns `false`, it will be `false
 
 ## `allPass`
 
-Returns `true` iff all conditions are `true` for an element. Otherwise, returns `false`
+Returns `true` iff all predicates return `true` for a specified value. Otherwise, returns `false`
 
 ```js
 import { allPass } from 'nanoutils'
@@ -93,7 +97,7 @@ allPass(conditions, [])               // false
 
 ## `always`
 
-Always returns the same value as is passed as an argument
+Returns function which always returns a specified value
 
 ```js
 import { always } from 'nanoutils'
@@ -130,7 +134,7 @@ Curried analogue of `&&`-operator
 
 ## `any`
 
-Returns `true` iff a condition is `true` to one of elements of an `array`. Otherwise, returns `false`
+Returns `true` iff a specified predicate returns `true` for any of `array` values. Otherwise, returns `false`
 
 ```js
 import { any } from 'nanoutils'
@@ -143,7 +147,7 @@ any(isGte5)([1, 2, 3, 4])     // false
 
 ## `anyPass`
 
-Returns `true` iff one of conditions is `true` for an element. Otherwise, returns `false`
+Returns `true` iff any of predicates retrn `true` for a specified value. Otherwise, returns `false`
 
 ```js
 import { anyPass } from 'nanoutils'
@@ -159,7 +163,7 @@ anyPass(conditions, [])     // false
 
 ## `ap`
 
-Applies an `array` of functions to an `array` and returns a flatten `array`
+Applies `array` of functions to `array` and returns flatten `array`
 
 ```js
 import { ap } from 'nanoutils'
@@ -174,7 +178,7 @@ ap(operations)([3, 4, 5])  // [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 ## `aperture`
 
-Returns an `array` of `array`s, composed of `array`s with a required amount of elements
+Returns subset of `array`s with sub`array`s of a required amount of values
 
 ```js
 import { aperture } from 'nanoutils'
@@ -190,7 +194,7 @@ Passing negative integer leads to unexpected behaviour
 
 ## `append`
 
-Appends a value to the end of `array`
+Appends a specified value to the end of `array`
 
 ```js
 import { append } from 'nanoutils'
@@ -201,7 +205,7 @@ const array2 = append(4)(array)   // [1, 2, 3, 4]
 
 ## `apply`
 
-Passes an `array` as arguments to a function
+Passes `array` as arguments to a specified function
 
 ```js
 import { apply } from 'nanoutils'
@@ -209,9 +213,12 @@ import { apply } from 'nanoutils'
 const toArray = apply(function() { return [].slice.call(arguments) })
 
 toArray([1, 2, 3])  // [1, 2, 3]
+```
 
-// or
+::: tip
+Another example
 
+```js
 import { apply } from 'nanoutils'
 
 const min = (...args) => args.reduce(
@@ -221,10 +228,11 @@ const min = (...args) => args.reduce(
 
 apply(min)([1, 2, 3, 4, 5, 6])  // 1
 ```
+:::
 
 ## `applySpec`
 
-Passes an array as arguments to all functions within an `object` and returns an `object` of applied functions
+Passes arguments to all functions within `object` and returns `object` of applied functions
 
 ```js
 import { applySpec } from 'nanoutils'
@@ -249,7 +257,7 @@ addSalary(150000) // { tax: 19500, medicine: 15000, rent: 45000, trip: 25500, fo
 
 ## `applyTo`
 
-Passes a value to a function
+Passes value to a function
 
 ```js
 import { apply, applyTo } from 'nanoutils'
@@ -263,7 +271,7 @@ applyTo(array)(last)  // 3
 ::: danger
 It acts not like `apply`, do not mix them together
 
-`apply` uses an array to pass elements of it step by step
+`apply` uses `array` to pass elements step by step
 
 ```js
 const argsSum = (...args) => args.reduce((sum, value) => sum + value, 0)
@@ -337,7 +345,7 @@ assocPath(path, 3, object)  // { a: { b: 3 } }
 ```
 
 ::: tip
-It also works for arrays as `assoc`
+It also works for `array`s as `assoc`
 :::
 
 ## `az`
@@ -358,7 +366,7 @@ compareLetters(a, b)  // 1
 
 ## `binary`
 
-Passes exactly 2 arguments
+Passes exactly `2` arguments
 
 ```js
 import { binary } from 'nanoutils'
@@ -401,7 +409,7 @@ john.cash           // 0
 
 ## `both`
 
-Checks if two functions are `true` for arguments
+Checks if `2` predicates return `true` for arguments
 
 ```js
 import { both } from 'nanoutils'
@@ -430,7 +438,7 @@ call(add)(1, 2) // 3
 
 ## `camelCase`
 
-Returns a `string` in a camel case style
+Returns `string` in a camel case style
 
 ```js
 import { camelCase } from 'nanoutils'
@@ -464,7 +472,7 @@ import { ceil } from 'nanoutils'
 ceil(15.002, 3)   // 15.002
 ceil(15.002, 2)   // 15.01
 ceil(15.002, 1)   // 15.1
-ceil(15.002, 0)   // 15.002
+ceil(15.002, 0)   // 16
 ceil(15.002, -1)  // 20
 ceil(15.002, -2)  // 100
 ceil(15.002, -3)  // 1000
@@ -496,7 +504,7 @@ chain(prepend, length)([1, 2, 3])  // [3, 1, 2, 3]
 ::: tip
 `chain` is also known as `flatMap` or `flatten`
 
-It takes a function which returns an array and combines all arrays into an array
+It takes a function which returns `array` and combines all `array`s into `array`
 
 ```js
 import { chain } from 'nanoutils'
@@ -509,7 +517,7 @@ chain(mapper)([1, 2, 3])  // [1, -1, 2, -2, 3, -3]
 
 ## `clamp`
 
-Returns a valid number within a specified interval
+Returns a valid `number` within a specified interval
 
 ```js
 import { clamp } from 'nanoutils'
@@ -527,7 +535,7 @@ A lower bound cannot be greater than an upper bound. It will lead to an unexpect
 
 ## `clone`
 
-Returns a deep clone of an argument
+Returns a deep clone of value
 
 ```js
 import { clone } from 'nanoutils'
@@ -560,7 +568,7 @@ clonedArray   // [Array], the same structure as array
 
 ## `compact`
 
-Removes falsy values from an `array`
+Removes falsy values from `array`
 
 ```js
 import { compact } from 'nanoutils'
@@ -569,7 +577,7 @@ compact([1, 0, 2, false, 3, null, 4, NaN, '5', '', 6, undefined]) // [1, 2, 3, 4
 ```
 
 ::: tip
-If an argument is not an array or `undefined`, it returns an empty array
+If value is not `array` or `undefined`, it returns an empty `array`
 :::
 
 ## `comparator`
@@ -766,7 +774,7 @@ cond([])(1) // undefined
 
 ## `construct`
 
-Passes arguments to a constructor to create an `object`
+Passes arguments to a constructor to create `object`
 
 ```js
 import { construct } from 'nanoutils'
@@ -784,7 +792,7 @@ john.address  // '2573 Carolyns Circle'
 
 ## `constructN`
 
-Passes a specified number of arguments to create an `object`
+Passes a specified number of arguments to create `object`
 
 ```js
 import { constructN } from 'nanoutils'
@@ -801,14 +809,14 @@ fruits.list // ['apple', 'orange', 'banana']
 ::: danger
 Do not mix `construct` and `constructN`
 
-`construct` is waiting for exact the same number of arguments a constructor takes (i.e. `Person` took 2 arguments: `name` and `address`)
+`construct` is waiting for exact same `number` of arguments constructor takes (i.e. `Person` took 2 arguments: `name` and `address`)
 
-However, with `constructN` you can specify a different number of arguments if at all it was set (i.e. if a constructor uses `arguments`, a number of arguments is not computed)
+However, with `constructN` you can specify a different `number` of arguments if at all it was set (i.e. if a constructor uses `arguments`, `number` of arguments is not computed)
 :::
 
 ## `contains`
 
-Checks if a value is presented in an `array`
+Checks if a value is presented in `array` using `equals`
 
 ```js
 import { contains } from 'nanoutils'
@@ -819,15 +827,9 @@ containsNull([1, 2, 3, 4, null])  // true
 containsNull([1, 2, 3, 4])        // false
 ```
 
-::: tip
-An equality is checked strictly by a value
-
-It means that complex objects are checked by identical keys and values recursively, primitives are checked with `===`
-:::
-
 ## `converge`
 
-Converges a value with a function which uses results of an `array` of functions
+Converges a value with a function which uses results of `array` of functions
 
 ```js
 import { converge, divide, length, sum } from 'nanoutils'
@@ -843,7 +845,7 @@ average([1, 1, 3, 3, 5, 5, 7, 7, 9])  // 4.555555555555555
 
 ## `countBy`
 
-Counts repetitions and saves them to an `object`
+Counts repetitions and saves them to `object`
 
 ```js
 import { countBy, identity } from 'nanoutils'
@@ -901,7 +903,7 @@ add3(1)          // 6
 
 ## `curryN`
 
-Similar to `curry` but can specify a number of arguments (accepted minimum)
+Similar to `curry` but can specify `number` of arguments (accepted minimum)
 
 ```js
 import { curryN } from 'nanoutils'
@@ -933,7 +935,7 @@ click(3, 4)
 ```
 
 ::: tip
-If a debounced function is called more than 1 times within a specified number of milliseconds, the last call will be run then
+If a debounced function is called more than `1` times within a specified number of milliseconds, the last call will be run then
 :::
  
 ## `dec`
@@ -961,7 +963,7 @@ If you pass non-`number` value, it tries to convert it to `number` and to decrem
 
 ## `defaultTo`
 
-Returns a value if it doesn't equal to `undefined`, `null` and `NaN`
+Returns a value if it doesn't equal to `undefined`, `null` or `NaN`
 
 ```js
 import { defaultTo } from 'nanoutils'
@@ -1015,7 +1017,7 @@ withPropA([{ a: 1, b: 2 }], [{ a: 2 }])   // [{ a: 1, b: 2 }]
 
 ## `dissoc`
 
-Returns an `object` without a specified field
+Returns `object` without a specified field
 
 ```js
 import { dissoc } from 'nanoutils'
@@ -1027,12 +1029,12 @@ withoutPropA({ a: 1, b: 2 })  // { b: 2 }
 ```
 
 ::: tip
-Returns a shallow copy of an object
+Returns a shallow copy of `object`
 :::
 
 ## `dissocPath`
 
-Returns an `object` without a specified field based on a given path
+Returns `object` without a specified field based on a given path
 
 ```js 
 import { dissocPath } from 'nanoutils'
@@ -1045,7 +1047,7 @@ dissoc({ a: { b: 2 })             // { a: { b: {} } }
 ```
 
 ::: warning
-If a path is not fully resolved, last resolved item will become an empty object
+If a path is not fully resolved, last resolved item will become empty `object`
 :::
 
 ## `divide`
@@ -1166,7 +1168,7 @@ Always returns a copy of `string` or `array`
 
 ## `either`
 
-Checks if at least one of functions is `true` for arguments
+Checks if at least one of predicates returns `true` for arguments
 
 ```js
 import { either } from 'nanoutils'
@@ -1195,7 +1197,7 @@ empty('1234')     // ''
 ```
 
 ::: tip
-If a value to a function is not within `value.constructor.empty`, not an `array`, an `object` or a `string`, it returns `Arguments`
+If a value to a function is not within `value.constructor.empty`, not `array`, `object` or `string`, it returns `Arguments`
 
 ```js
 import { empty } from 'nanoutils'
@@ -1208,7 +1210,7 @@ empty(123).toString() // '[object Arguments]'
 
 ## `endsWith`
 
-Check if an `array` or a `string` has a specifix suffix
+Check if `array` or `string` has a specified suffix
 
 ```js
 import { endsWith } from 'nanoutils'
@@ -1218,7 +1220,7 @@ endsWith([1, 1])([1, 1, 2]) // false
 ```
 
 ::: warning
-If both arguments are neither a `string` nor an `array`, a function returns `undefined`
+If both arguments are neither `string` nor `array`, a function returns `undefined`
 
 ```js
 import { endsWith } from 'nanoutils'
@@ -1232,7 +1234,7 @@ endsWith('34', 1234)              // undefined
 
 ## `eqBy`
 
-Compares two arguments which are passed to a function
+Compares `2` arguments which are passed to a function using `uquals`
 
 ```js
 import { eqBy, prop } from 'nanoutils'
@@ -1244,13 +1246,9 @@ eqBy(prop('firstName'), danAbramov, danIvanov)    // true
 eqBy(prop('lastName'), danAbramov, danIvanov)     // false
 ```
 
-::: tip
-It compares values using [`equals`](#equals)
-:::
-
 ## `eqLens`
 
-Compares a value with an argument which is passed to a `lens`-like function
+Compares a value with an argument which is passed to `lens`-like function using `equals`
 
 ```js
 import { eqLens, lens } from 'nanoutils'
@@ -1264,13 +1262,9 @@ eqLens(lastNameLens, lastName, danAbramov)    // true
 eqLens(lastNameLens, lastName, danIvanov)     // false
 ```
 
-::: tip
-It compares values using [`equals`](#equals)
-:::
-
 ## `eqProps`
 
-Compares properties of two objects by a key
+Compares properties of two `object`s by a specified key using `equals`
 
 ```js
 import { eqProps } from 'nanoutils'
@@ -1282,13 +1276,9 @@ eqProps('firstName', danIvanov, danAbramov)    // true
 eqProps('lastName', danIvanov, danAbramov)     // false
 ```
 
-::: tip
-It compares values using [`equals`](#equals)
-:::
-
 ## `equals`
 
-Compares two values deeply with possible circulars
+Compares two values deeply with possible circulars using `equals`
 
 ```js
 import { equals } from 'nanoutils'
@@ -1301,12 +1291,8 @@ equals(danAbramov, danIvanov)     // false
 equals(danIvanov, danIvanov)      // true
 ```
 
-::: tip
-It compares values using [`equals`](#equals)
-:::
-
 ::: warning
-A comparison of mirror arrays and objects is not working yet
+A comparison of mirror `array`s and `object`s is not working yet
 :::
 
 ## `eqWith`
@@ -1325,7 +1311,7 @@ eqWithLength([1, 2], [2, 3, 4]) // false
 
 ## `evolve`
 
-Transforms all properties of an `object` with an `object` whose properties are transformations
+Transforms all properties of `object` with `object` whose properties are transformations
 
 ```js
 import { add, evolve } from 'nanoutils'
@@ -1348,7 +1334,7 @@ Always returns a new object
 ::: warning
 Do not add properties which are absent in an object but are present in transformations
 
-It won't be present in a resulting object
+It won't be present in a resulting `object`
 :::
 
 ## `F`
@@ -1365,21 +1351,21 @@ F(true) // false
 
 ## `fill`
 
-Returns an `array` with filled values
+Returns `array` with specified values
 
 ```js
 import { fill } from 'nanoutils'
 
 let marks = [4, 5, 5, 3, 4]
 
-fill()(arr)         // [4, 5, 5, 3, 4] 
-fill(0)(arr)        // [0, 0, 0, 0, 0] 
-fill(0, 2)(arr)     // [4, 5, 0, 0, 0] 
-fill(0, 2, -1)(arr) // [4, 5, 0, 0, 4] 
+fill()(marks)         // [4, 5, 5, 3, 4] 
+fill(0)(marks)        // [0, 0, 0, 0, 0] 
+fill(0, 2)(marks)     // [4, 5, 0, 0, 0] 
+fill(0, 2, -1)(marks) // [4, 5, 0, 0, 4] 
 ```
 
 ::: tip
-It returns a new (but shallow copy of) array even though a value is `undefined`
+It returns a new (but shallow copy of) `array` even though a value is `undefined`
 :::
 
 ## `filter`
@@ -1427,7 +1413,7 @@ lineUp([2, 4], 5)  // [2, 4]
 
 ## `find`
 
-Finds a value in an `array` based on a predicate and returns it (a search is made from a beginning). Otherwise, returns `undefined`
+Finds a value in `array` based on a predicate and returns it (a search is made from a beginning). Otherwise, returns `undefined`
 
 ```js
 import { find } from 'nanoutils'
@@ -1440,7 +1426,7 @@ find(isLessThan10, [10, 2, 3])     // 2
 
 ## `findIndex`
 
-Finds a value in an `array` based on a predicate and returns an index of it (a search is made from a beginning). Otherwise, returns `-1`
+Finds a value in `array` based on a predicate and returns an index of it (a search is made from a beginning). Otherwise, returns `-1`
 
 ```js
 import { findIndex } from 'nanoutils'
@@ -1453,7 +1439,7 @@ findIndex(isLessThan10, [10, 2, 3])      // 1
 
 ## `findLast`
 
-Finds a value in an `array` based on a predicate and returns it (a search is made from an end). Otherwise, returns `undefined`
+Finds a value in `array` based on a predicate and returns it (a search is made from an end). Otherwise, returns `undefined`
 
 ```js
 import { findLast } from 'nanoutils'
@@ -1466,7 +1452,7 @@ findLast(isLessThan10, [10, 2, 3])     // 3
 
 ## `findLastIndex`
 
-Finds a value in an `array` based on a predicate and returns an index of it (a search is made from an end). Otherwise, returns `-1`
+Finds a value in `array` based on a predicate and returns an index of it (a search is made from an end). Otherwise, returns `-1`
 
 ```js
 import { findLastIndex } from 'nanoutils'
@@ -1533,7 +1519,7 @@ push(2, [1])   // [1, 2]
 ```
 
 ::: tip
-It reverses a list of arguments, not values
+It reverses an order of arguments, not values
 
 ```js
 import { flip } from 'nanoutils'
@@ -1546,7 +1532,7 @@ f(1, 2, 3)    // [3, 2, 1]
 
 ## `forEach`
 
-Applies a function to elements of an `array`
+Applies a function to elements of `array`
 
 ```js
 import { forEach } from 'nanoutils'
@@ -1586,7 +1572,7 @@ It doesn't iterate `prototype`'s keys and values
 
 ## `fromPairs`
 
-Collects an `object` from pairs of keys and values
+Collects `object` from pairs of keys and values
 
 ```js
 import { fromPairs } from 'nanoutils'
@@ -1597,7 +1583,7 @@ fromPairs(pairs)  // { a: 1, b: 2 }
 ```
 
 ::: tip
-if pairs are not an array it returns an empty object
+if pairs are not `array` it returns empty `object`
 :::
 
 ## `groupBy`
@@ -1700,7 +1686,7 @@ Unlike [`has`](#has), `hasIn` uses `prototype` chain to find a property
 
 ## `head`
 
-Returns first element of a list or a `string`
+Returns first element of `array` or `string`
 
 ```js
 import { head } from 'nanoutils'
@@ -1813,7 +1799,7 @@ includes('5', '1234')         // false
 
 ## `indexBy`
 
-Indexes a list of `object`s into an `object` given a key generator function
+Indexes `array` of `object`s into `object` given a key generator function
 
 ```js
 import { indexBy, prop } from 'nanoutils'
@@ -1826,12 +1812,7 @@ const changes = [
 
 const billChangeById = indexBy(prop('id'))
 
-billChangeById(changes)
-/*
-{
-  123: { id: 123, currency: 'usd' },
-  234: { id: 234, currency: 'usd' }
-}
+billChangeById(changes)     // { 123: { id: 123, currency: 'usd' }, 234: { id: 234, currency: 'usd' } }
 */
 ```
 
@@ -1866,7 +1847,7 @@ indexOf('abd', 'abcd')      // -1
 ```
 
 ::: tip
-Collection can be an `array` or a `string`
+Collection can be `array` or `string`
 :::
 
 ::: warning
@@ -1916,7 +1897,7 @@ It returns entries saving the order of original collection
 
 ## `insert`
 
-Inserts value into an `array` at a specified index
+Inserts value into `array` at a specified index
 
 ```js
 import { insert } from 'nanoutils'
@@ -1926,7 +1907,7 @@ insert(0, 'a', ['b', 'c'])  // ['a', 'b', 'c']
 
 ## `insertAll`
 
-Inserts an `array` of values into an `array` from a specified index
+Inserts `array` of values into `array` from a specified index
 
 ```js
 import { insertAll } from 'nanoutils'
@@ -1947,7 +1928,7 @@ intersection([1, 2, 3], [4, 3, 2])    // [3, 2]
 
 ## `intersperse`
 
-Returns an `array` whose elements are joined with a specified separator
+Returns `array` whose elements are joined with a specified separator
 
 ```js
 import { intersperse } from 'nanoutils'
@@ -2070,7 +2051,7 @@ join('-', [1, 2])   // '1-2'
 
 ## `juxt`
 
-Applies an `array` of functions to arguments
+Applies `array` of functions to arguments
 
 ```js
 import { juxt, mean, median } from 'nanoutils'
@@ -2084,7 +2065,7 @@ countStatistics(1, 2, 2, 4)  // [2.25, 2]
 
 ## `kebabCase`
 
-Returns a `string` in a kebab case style
+Returns `string` in a kebab case style
 
 ```js
 import { kebabCase } from 'nanoutils'
@@ -3709,7 +3690,7 @@ Out-of-bounds indices are transformed into `0` and length of `array` respectivel
 
 ## `snakeCase`
 
-Returns a `string` in a snake case style
+Returns `string` in a snake case style
 
 ```js
 import { snakeCase } from 'nanoutils'

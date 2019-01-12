@@ -19,18 +19,17 @@ More nano's for the God of nano's!
 
 ## Can I use it in my project?
 
-It's production-ready, but still has following drawbacks:
+It's production-ready but still has following drawbacks:
 
-* No documentation (will be available soon)
 * No TS/Flow types
 
-But as it's a Ramda-supportive, you can see both docs and types here: [Ramda docs](https://ramdajs.com/docs/)
+It's also a Ramda-supportive, you can see both docs and types here: [Ramda docs](https://ramdajs.com/docs/)
 
 ## Roadmap
 
 * [x] Create methods list
 * [x] Complete all needed methods (we get list of methods from Ramda) with 100% tests and types coverage
-* [ ] Add documentation for all methods
+* [x] Add documentation for all methods
 * [ ] Create a tool to split nanoutils to separated packages
 * [ ] Cover all methods with performance tests
 * [ ] Reduce methods sizes even more
