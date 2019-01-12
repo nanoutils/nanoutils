@@ -2098,7 +2098,7 @@ Also see [`camelCase`](#camelCase) and [`snakeCase`](#snakeCase)
 
 ## `keys`
 
-Returns `array` of keys of `object`
+Returns `array` of keys with a specified `object`
 
 ```js
 import { keys } from 'nanoutils'
@@ -2124,7 +2124,7 @@ It doesn't iterate `prototype`s' keys
 
 ## `keysIn`
 
-Returns `array` of keys of `object` including `prototype`s' keys
+Returns `array` of keys with a specified `object` including `prototype`s' keys
 
 ```js
 import { keysIn } from 'nanoutils' 
@@ -4337,7 +4337,7 @@ Except for `3` types, it tries to identify type according to `typeof` operator a
 
 ## `unapply`
 
-Passes arguments to a specified function which takes an `array`
+Passes arguments to a specified function which takes `array`
 
 ```js
 import { mean, unapply } from 'nanoutils'
@@ -4361,7 +4361,7 @@ ages.map(unary(parseInt))     // [15, NaN, 15]
 
 ## `uncurryN`
 
-Returns uncurried function with a given curried version
+Returns uncurried function having a specified curried function
 
 ```js
 import { add, uncurryN } from 'nanoutils'
@@ -4631,7 +4631,7 @@ getSalary(10000)    // 8700
 
 ## `values`
 
-Returns `array` of values of `object`
+Returns `array` of values with a specified `object`
 
 ```js
 import { values } from 'nanoutils'
@@ -4657,7 +4657,7 @@ It doesn't iterate `prototype`s' values
 
 ## `valuesIn`
 
-Returns `array` of values of `object` including `prototype`s' values
+Returns `array` of values with a specified `object` including `prototype`s' values
 
 ```js
 import { valuesIn } from 'nanoutils' 
@@ -4713,7 +4713,7 @@ whenYouGetOlderWeWillBuyYouCar(18)    // 'Bmw'
 
 ## `where`
 
-Tests specified `object` of predicates on a given `object`
+Checks if a specified `object` of predicates validates a given `object`
 
 ```js
 import { where } from 'nanoutils'
@@ -4733,7 +4733,7 @@ canTravelAbroadByHerself({ age: 18, foreignPassport: true })    // true
 
 ## `whereEq`
 
-Tests specified `object` of predicates on a given `object` using `equals`
+Checks if a specified `object` of predicates validates a given `object` using `equals`
 
 ```js
 import { whereEq } from 'nanoutils'
@@ -4750,7 +4750,7 @@ canTravelAbroadByHerself({ age: 18, foreignPassport: true })    // true
 
 ## `without`
 
-Returns `array` without a specified `array` of values
+Returns `array` with values which are presented in second `array` but not first one
 
 ```js
 import { without } from 'nanoutils'
