@@ -1,6 +1,6 @@
 ## Nanoutils methods size
 
-| Method | Nano | Ramda | Diff | 
+| Method | Nano | Ramda | Diff |
 | --- | --- | --- | --- |
 | __ | 27 B | 42 B | -15 B |
 | add | 85 B | 240 B | -155 B |
@@ -274,5 +274,10 @@
 | zipObj | 49 B | 271 B | -222 B |
 | zipObjDeep | 256 B | n/a B | n/a B |
 | zipWith | 170 B | 383 B | -213 B |
+| --- | --- | --- | --- |
+| minimum | 27 B | 42 B | -15 B |
+| median | 111 B | 467 B | -356 B |
+| mean | 140 B | 847 B | -707 B |
+| maximum | 674 B | 3404 B | -2730 B |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size

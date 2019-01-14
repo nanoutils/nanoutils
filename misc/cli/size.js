@@ -5,6 +5,14 @@ const chalk = require('chalk')
 const getSize = require('size-limit')
 const minimist = require('minimist')
 
+const nanoutilsCeil = require('../../cjs/ceil')
+const nanoutilsMax = require('../../cjs/max')
+const nanoutilsMin = require('../../cjs/min')
+const mean = args => nanoutilsCeil(require('../../cjs/mean')(args))
+const median = require('../../cjs/median')
+const maximum = args => nanoutilsCeil(args.reduce((maxValue, value) => nanoutilsMax(+value, +maxValue), Number.MIN_VALUE), 2)
+const minimum = args => nanoutilsCeil(args.reduce((minValue, value) => nanoutilsMin(+value, +minValue), Number.MAX_VALUE), 2)
+
 let longestName
 const args = minimist(process.argv.slice(2))
 const readdir = util.promisify(fs.readdir)
@@ -22,6 +30,20 @@ const formatDiff = (size, ramdaSize) => {
   return chalk[ok ? 'green' : 'red'](
     `${ok ? '' : '+'}${size - ramdaSize}`.padStart(7) + ' B'
   )
+}
+const saveToTable = i => `| ${i.name} | ${i.size} B | ${i.ramdaSize} B | ${getDiff(
+  i.size,
+  i.ramdaSize
+)} B |`
+const getStatisticsRows = methods => {
+  const ramdaMethodsStatistics = methods.filter(({ ramdaSize }) => ramdaSize !== 'n/a')
+
+  return [minimum, median, mean, maximum].map(f => saveToTable({
+    name: f.name,
+    size: f(methods.map(({ size }) => size)),
+    ramdaSize: f(ramdaMethodsStatistics.map(({ ramdaSize }) => ramdaSize)),
+    sizeNoRamda: f(ramdaMethodsStatistics.map(({ size }) => size))
+  }))
 }
 
 Promise
@@ -130,21 +152,15 @@ Promise
   .then(methods => {
     if (!args._.length) {
       const header = '## Nanoutils methods size'
-      const caption = `\n| Method | Nano | Ramda | Diff | \n| --- | --- | --- | --- |`
-      const str = methods
-        .map(
-          i =>
-            `| ${i.name} | ${i.size} B | ${i.ramdaSize} B | ${getDiff(
-              i.size,
-              i.ramdaSize
-            )} B |`
-        )
-        .join('\n')
+      const caption = `\n| Method | Nano | Ramda | Diff |`
+      const hrline = `| --- | --- | --- | --- |`
+      const str = methods.map(saveToTable).join('\n')
       const footer =
         '## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
+      const statistics = getStatisticsRows(methods).join('\n')
       return writeFile(
         'SIZES.md',
-        [header, caption, str, footer].join('\n')
+        [header, caption, hrline, str, hrline, statistics, footer].join('\n')
       ).then(() => methods)
     }
     return methods
