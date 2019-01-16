@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/nanoutils.svg)](https://badge.fury.io/js/nanoutils)
 [![npm download](https://img.shields.io/npm/dm/nanoutils.svg)](https://npmcharts.com/compare/nanoutils?minimal=true)
+[![npm download](https://img.shields.io/badge/telegram-join-blue.svg)](https://tele.gg/joinchat/BcQiRFh-eUXs8pbHBj-y5g)
 
 Tiniest JavaScript utils library
 
