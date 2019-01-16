@@ -1792,6 +1792,24 @@ identity(null)    // null
 Values which are passed to a function and returned by a function equal by reference
 :::
 
+## `identityT`
+
+Creates a transducer with an identity
+
+```js
+import { identityT } from 'nanoutils'
+
+const transducer = identityT()
+const lineUp = transducer((queue, name) => {
+  queue.push(name)
+  return queue
+})
+
+lineUp([], 'Alice')                 // ['Alice']
+lineUp(['Alice'], 'John')           // ['Alice', 'John']
+lineUp(['Alice', 'John'], 'Alex')   // ['Alice', 'John', 'Alex']
+```
+
 ## `ifElse`
 
 if-else analogue, returns value based on predicate, `onTrue` and `onFalse` functions which are applied to value

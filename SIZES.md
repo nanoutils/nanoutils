@@ -96,6 +96,7 @@
 | head | 31 B | 301 B | -270 B |
 | identical | 121 B | 249 B | -128 B |
 | identity | 29 B | 150 B | -121 B |
+| identityT | 38 B | n/a B | n/a B |
 | ifElse | 110 B | 687 B | -577 B |
 | inc | 32 B | 250 B | -218 B |
 | includes | 123 B | n/a B | n/a B |
