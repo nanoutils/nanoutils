@@ -243,6 +243,7 @@
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
 | transduce | 209 B | 1082 B | -873 B |
+| transduceRight | 140 B | n/a B | n/a B |
 | transpose | 116 B | 204 B | -88 B |
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |

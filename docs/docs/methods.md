@@ -4290,13 +4290,50 @@ const queue = ['Adam', 'David', 'Margaret']
 transduce(takeT(2), flip(append), [], queue)    // ['Adam', 'David']
 ```
 
-::: tip
-See also:
+::: tip See also
 * [`composeT`](#composet)
+* [`dropT`](#dropt)
+* [`dropWhileT`](#dropwhilet)
 * [`filterT`](#filtert)
 * [`mapT`](#mapt)
 * [`pipeT`](#pipet)
 * [`takeT`](#taket)
+* [`takeWhileT`](#takewhilet)
+* [`tapT`](#tapt)
+:::
+
+## `transduceRight`
+
+Applies a given reducer function to a specified transducer function having initial value and a collection (see [`reduceRight`](#reduceright))
+
+```js
+import { append, flip, takeT, transduceRight } from 'nanoutils'
+
+const queue = ['Adam', 'David', 'Margaret']
+
+transduceRight(takeT(2), flip(append), [], queue)    // ['Margaret', 'David']
+```
+
+::: tip See also
+* [`composeT`](#composet)
+* [`dropT`](#dropt)
+* [`dropWhileT`](#dropwhilet)
+* [`filterT`](#filtert)
+* [`mapT`](#mapt)
+* [`pipeT`](#pipet)
+* [`takeT`](#taket)
+* [`takeWhileT`](#takewhilet)
+* [`tapT`](#tapt)
+:::
+
+::: tip
+With `transduceRight` it's possible to immitate several methods
+
+For instance
+* `transduce(dropLastT(2), flip(append), [], queue)` equals `transduceRight(dropT(2), flip(prepend), [], queue)`
+* `transduce(dropLastWhileT(2), flip(append), [], queue)` equals `transduceRight(dropWhileT(2), flip(prepend), [], queue)`
+* `transduce(takeLastT(2), flip(append), [], queue)` equals `transduceRight(takeT(2), flip(prepend), [], queue)`
+* `transduce(takeLastWhileT(2), flip(append), [], queue)` equals `transduceRight(takeWhileT(2), flip(prepend), [], queue)`
 :::
 
 ## `transpose`
