@@ -1089,6 +1089,24 @@ drop(2)([1, 2, 3, 4]) // [3, 4]
 Returns same `string` or `array` if a number is negative
 :::
 
+## `dropT`
+
+Creates a `drop`-like transducer with a specified number of non-accepting values
+
+```js
+import { dropT } from 'nanoutils'
+
+const transducer = dropT(1)
+const skipFirstBankAccount = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+skipFirstBankAccount([], 1)       // []
+skipFirstBankAccount([], 2)       // [2]
+skipFirstBankAccount([2], 3)      // [2, 3]
+```
+
 ## `dropLast`
 
 Drops a specified `number` of values from the end of `string` or `array`
@@ -1164,6 +1182,32 @@ dropWhileLess3([1, 2, 3, 4]) // [3, 4]
 
 ::: tip
 Always returns a copy of `string` or `array`
+:::
+
+## `dropWhileT`
+
+Creates a `drop`-like transducer with a given predicate
+
+```js
+import { dropWhileT } from 'nanoutils'
+
+const transducer = dropWhileT(value => value < 3)
+const dropsBankAccountsLessThan3 = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+dropsBankAccountsLessThan3([], 1)       // []
+dropsBankAccountsLessThan3([], 2)       // []
+dropsBankAccountsLessThan3([], 3)       // [3]
+dropsBankAccountsLessThan3([3], 2)      // [3, 2]
+dropsBankAccountsLessThan3([3, 2], 1)   // [3, 2, 1]
+```
+
+::: warning
+Once a given predicate returns `false` it accepts any other values
+
+It you want a different behaviour, have a look at [`filterT`](#filtert) or [`takeWhileT`](#takewhilet)
 :::
 
 ## `either`
@@ -1747,6 +1791,24 @@ identity(null)    // null
 ::: tip
 Values which are passed to a function and returned by a function equal by reference
 :::
+
+## `identityT`
+
+Creates a transducer with an identity
+
+```js
+import { identityT } from 'nanoutils'
+
+const transducer = identityT()
+const lineUp = transducer((queue, name) => {
+  queue.push(name)
+  return queue
+})
+
+lineUp([], 'Alice')                 // ['Alice']
+lineUp(['Alice'], 'John')           // ['Alice', 'John']
+lineUp(['Alice', 'John'], 'Alex')   // ['Alice', 'John', 'Alex']
+```
 
 ## `ifElse`
 
@@ -3993,7 +4055,7 @@ Always returns a copy of `string` or `array`
 
 ## `takeT`
 
-Creates a transducer with a take
+Creates a `take`-like transducer with a specified number of accepting values
 
 ```js
 import { takeT } from 'nanoutils'
@@ -4026,6 +4088,32 @@ takeWhileLess3([1, 2, 3, 4]) // [1, 2]
 Always returns a copy of `string` or `array`
 :::
 
+## `takeWhileT`
+
+Creates a `take`-like transducer with a given predicate
+
+```js
+import { takeWhileT } from 'nanoutils'
+
+const transducer = takeWhileT(value => value < 3)
+const updateBankAccount = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+updateBankAccount([], 1)      // [1]
+updateBankAccount([1], 2)     // [1, 2]
+updateBankAccount([1, 2], 3)  // [1, 2]
+updateBankAccount([1, 2], 2)  // [1, 2]
+updateBankAccount([1, 2], 1)  // [1, 2]
+```
+
+::: warning
+Once a given predicate returns `false` it doesn't accept any other values
+
+It you want a different behaviour, have a look at [`dropWhileT`](#dropwhilet) [`filterT`](#filtert)
+:::
+
 ## `tap`
 
 Applies specified value to a specified function and then returns value
@@ -4040,6 +4128,24 @@ const accounts = [
 ]
 
 map(log, accounts)  // [{ name: 'Mike', balance: 350 }, { name: 'Alice', balance: 200 }] to log and to return
+```
+
+## `tapT`
+
+Creates a transducer with a specified side-effect function
+
+```js
+import { tapT } from 'nanoutils'
+
+const transducer = tapT(console.log)
+const logEverything = transducer((bank, value) => {
+  array.push(value)
+  return array
+})
+
+logEverything([], 1)      // returns [1] and logs 1, []
+logEverything([1], 2)     // returns [1, 2] and logs 2, [1]
+logEverything([1, 2], 3)  // returns [1, 2, 3] and logs 3, [1, 2]
 ```
 
 ## `test`
@@ -4202,13 +4308,50 @@ const queue = ['Adam', 'David', 'Margaret']
 transduce(takeT(2), flip(append), [], queue)    // ['Adam', 'David']
 ```
 
-::: tip
-See also:
+::: tip See also
 * [`composeT`](#composet)
+* [`dropT`](#dropt)
+* [`dropWhileT`](#dropwhilet)
 * [`filterT`](#filtert)
 * [`mapT`](#mapt)
 * [`pipeT`](#pipet)
 * [`takeT`](#taket)
+* [`takeWhileT`](#takewhilet)
+* [`tapT`](#tapt)
+:::
+
+## `transduceRight`
+
+Applies a given reducer function to a specified transducer function having initial value and a collection (see [`reduceRight`](#reduceright))
+
+```js
+import { append, flip, takeT, transduceRight } from 'nanoutils'
+
+const queue = ['Adam', 'David', 'Margaret']
+
+transduceRight(takeT(2), flip(append), [], queue)    // ['Margaret', 'David']
+```
+
+::: tip See also
+* [`composeT`](#composet)
+* [`dropT`](#dropt)
+* [`dropWhileT`](#dropwhilet)
+* [`filterT`](#filtert)
+* [`mapT`](#mapt)
+* [`pipeT`](#pipet)
+* [`takeT`](#taket)
+* [`takeWhileT`](#takewhilet)
+* [`tapT`](#tapt)
+:::
+
+::: tip
+With `transduceRight` it's possible to immitate several methods
+
+For instance
+* `transduce(dropLastT(2), flip(append), [], queue)` equals `transduceRight(dropT(2), flip(prepend), [], queue)`
+* `transduce(dropLastWhileT(2), flip(append), [], queue)` equals `transduceRight(dropWhileT(2), flip(prepend), [], queue)`
+* `transduce(takeLastT(2), flip(append), [], queue)` equals `transduceRight(takeT(2), flip(prepend), [], queue)`
+* `transduce(takeLastWhileT(2), flip(append), [], queue)` equals `transduceRight(takeWhileT(2), flip(prepend), [], queue)`
 :::
 
 ## `transpose`

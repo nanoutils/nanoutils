@@ -61,7 +61,9 @@
 | dropLastWhile | 124 B | 1443 B | -1319 B |
 | dropRepeats | 428 B | 1845 B | -1417 B |
 | dropRepeatsWith | 139 B | 722 B | -583 B |
+| dropT | 54 B | n/a B | n/a B |
 | dropWhile | 115 B | 806 B | -691 B |
+| dropWhileT | 57 B | n/a B | n/a B |
 | either | 48 B | 1943 B | -1895 B |
 | empty | 99 B | 380 B | -281 B |
 | endsWith | 425 B | 1943 B | -1518 B |
@@ -94,6 +96,7 @@
 | head | 31 B | 301 B | -270 B |
 | identical | 121 B | 249 B | -128 B |
 | identity | 29 B | 150 B | -121 B |
+| identityT | 38 B | n/a B | n/a B |
 | ifElse | 110 B | 687 B | -577 B |
 | inc | 32 B | 250 B | -218 B |
 | includes | 123 B | n/a B | n/a B |
@@ -228,7 +231,9 @@
 | takeLastWhile | 124 B | 528 B | -404 B |
 | takeT | 54 B | n/a B | n/a B |
 | takeWhile | 115 B | 822 B | -707 B |
+| takeWhileT | 56 B | n/a B | n/a B |
 | tap | 100 B | 540 B | -440 B |
+| tapT | 44 B | n/a B | n/a B |
 | test | 85 B | 3235 B | -3150 B |
 | throttle | 72 B | n/a B | n/a B |
 | times | 122 B | 326 B | -204 B |
@@ -239,6 +244,7 @@
 | toString | 223 B | 3086 B | -2863 B |
 | toUpper | 41 B | 3347 B | -3306 B |
 | transduce | 209 B | 1082 B | -873 B |
+| transduceRight | 140 B | n/a B | n/a B |
 | transpose | 116 B | 204 B | -88 B |
 | trim | 34 B | 317 B | -283 B |
 | tryCatch | 106 B | 487 B | -381 B |
