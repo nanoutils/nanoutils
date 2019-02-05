@@ -13,7 +13,8 @@
     }
   },
   "scripts": {
-    "build": "rimraf lib/index.js && create-index --ignoreUnsafe lib && yarn build:cjs && yarn size",
+    "build:create-index": "cd ./node_modules/create-index && yarn && yarn build && cd ../../",
+    "build": "rimraf lib/index.js && yarn build:create-index && node ./node_modules/create-index/dist/bin/create-index.js --ignoreUnsafe lib && yarn build:cjs && yarn size",
     "build:cjs": "babel lib --out-dir cjs --ignore test.js",
     "dev": "jest --watchAll --verbose",
     "docs:build": "vuepress build docs",
@@ -33,7 +34,7 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chalk": "^2.3.0",
-    "create-index": "^2.3.0",
+    "create-index": "git+https://git@github.com/Beraliv/create-index.git#master",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
