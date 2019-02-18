@@ -7,7 +7,7 @@ module.exports = {
       {
         collapsable: false,
         title: 'Nanoutils',
-        children: ['/', '/start/installation']
+        children: ['/']
       },
       {
         title: 'Documentation',
