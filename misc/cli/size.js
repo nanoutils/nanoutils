@@ -8,10 +8,16 @@ const minimist = require('minimist')
 const nanoutilsCeil = require('../../cjs/ceil')
 const nanoutilsMax = require('../../cjs/max')
 const nanoutilsMin = require('../../cjs/min')
+const nanoutilsSum = require('../../cjs/sum')
 const mean = args => nanoutilsCeil(require('../../cjs/mean')(args))
 const median = require('../../cjs/median')
 const maximum = args => nanoutilsCeil(args.reduce((maxValue, value) => nanoutilsMax(+value, +maxValue), Number.MIN_VALUE), 2)
 const minimum = args => nanoutilsCeil(args.reduce((minValue, value) => nanoutilsMin(+value, +minValue), Number.MAX_VALUE), 2)
+const total = args => nanoutilsSum(args)
+const light = (args) => args.reduce(({ count, ramdaCount }, { size, ramdaSize }) => ({
+  count: count + (size < ramdaSize ? 1 : 0),
+  ramdaCount: ramdaCount + (ramdaSize < size ? 1 : 0)
+}), { count: 0, ramdaCount: 0 })
 
 let longestName
 const args = minimist(process.argv.slice(2))
@@ -31,19 +37,30 @@ const formatDiff = (size, ramdaSize) => {
     `${ok ? '' : '+'}${size - ramdaSize}`.padStart(7) + ' B'
   )
 }
-const saveToTable = i => `| ${i.name} | ${i.size} B | ${i.ramdaSize} B | ${getDiff(
-  i.size,
-  i.ramdaSize
+const saveSizeToTable = ({ name, size, ramdaSize }) => `| ${name} | ${size} B | ${ramdaSize} B | ${getDiff(
+  size,
+  ramdaSize
 )} B |`
+const saveCountToTable = ({ name, count, ramdaCount }) => `| ${name} | ${count} | ${ramdaCount} | ${getDiff(
+  count,
+  ramdaCount
+)} |`
 const getStatisticsRows = methods => {
   const ramdaMethodsStatistics = methods.filter(({ ramdaSize }) => ramdaSize !== 'n/a')
 
-  return [minimum, median, mean, maximum].map(f => saveToTable({
+  const sizes = [minimum, median, mean, maximum, total].map(f => saveSizeToTable({
     name: f.name,
     size: f(methods.map(({ size }) => size)),
     ramdaSize: f(ramdaMethodsStatistics.map(({ ramdaSize }) => ramdaSize)),
     sizeNoRamda: f(ramdaMethodsStatistics.map(({ size }) => size))
   }))
+
+  const counts = [light].map(f => saveCountToTable({
+    name: f.name,
+    ...f(ramdaMethodsStatistics)
+  }))
+
+  return [...sizes, ...counts]
 }
 
 Promise
@@ -154,7 +171,7 @@ Promise
       const header = '## Nanoutils methods size'
       const caption = `\n| Method | Nano | Ramda | Diff |`
       const hrline = `| --- | --- | --- | --- |`
-      const str = methods.map(saveToTable).join('\n')
+      const str = methods.map(saveSizeToTable).join('\n')
       const footer =
         '## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
       const statistics = getStatisticsRows(methods).join('\n')
