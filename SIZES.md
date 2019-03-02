@@ -285,5 +285,7 @@
 | median | 216.5 B | 467 B | -250.5 B |
 | mean | 204 B | 847 B | -643 B |
 | maximum | 746 B | 3404 B | -2658 B |
+| total | 56653 B | 204067 B | -147414 B |
+| light | 240 | 1 | +239 |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
