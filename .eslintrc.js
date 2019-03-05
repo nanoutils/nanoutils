@@ -14,6 +14,8 @@ module.exports = {
     'standard/no-callback-literal': 0,
     'no-mixed-operators': 0,
     /* Prettier doesn't support space before paren */
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    /* Check for NaN */
+    'no-self-compare': 0,
   }
 }

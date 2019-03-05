@@ -94,7 +94,7 @@
 | has | 207 B | 240 B | -33 B |
 | hasIn | 206 B | 231 B | -25 B |
 | head | 31 B | 301 B | -270 B |
-| identical | 237 B | 249 B | -12 B |
+| identical | 233 B | 249 B | -16 B |
 | identity | 29 B | 150 B | -121 B |
 | identityT | 38 B | n/a B | n/a B |
 | ifElse | 217 B | 687 B | -470 B |
@@ -285,7 +285,7 @@
 | median | 216.5 B | 467 B | -250.5 B |
 | mean | 204 B | 847 B | -643 B |
 | maximum | 746 B | 3404 B | -2658 B |
-| total | 56653 B | 204067 B | -147414 B |
+| total | 56649 B | 204067 B | -147418 B |
 | light | 240 | 1 | +239 |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
