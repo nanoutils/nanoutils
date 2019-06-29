@@ -65,7 +65,7 @@ const getStatisticsRows = methods => {
 
 Promise
   // Get lib path
-  .resolve(path.resolve('lib'))
+  .resolve(path.resolve('cjs'))
   // Get list of methods
   .then(readdir)
   // Exclude index.js and _internals
