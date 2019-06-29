@@ -15,7 +15,7 @@
   "scripts": {
     "build:create-index": "cd ./node_modules/create-index && yarn && yarn build && cd ../../",
     "build": "rimraf lib/index.js && yarn build:create-index && node ./node_modules/create-index/dist/bin/create-index.js --ignoreUnsafe lib && yarn build:cjs && yarn size",
-    "build:cjs": "babel lib --out-dir cjs --ignore test.js",
+    "build:cjs": "babel lib --out-dir cjs --ignore \"lib/**/*.test.js\",\"lib/**/*.performance.js\"",
     "dev": "jest --watchAll --verbose",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
@@ -31,7 +31,9 @@
     "time": "node ./misc/cli/time.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chalk": "^2.3.0",
     "create-index": "git+https://git@github.com/Beraliv/create-index.git#master",
