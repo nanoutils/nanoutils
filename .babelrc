@@ -1,4 +1,7 @@
 {
+  "presets": [
+    "@babel/typescript"
+  ],
   "plugins": [
     [
       "transform-es2015-modules-simple-commonjs",
