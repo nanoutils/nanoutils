@@ -4199,22 +4199,6 @@ const generateAge = age => ({ age })
 times(generateAge, 5)   // [{ age: 0 }, { age: 1 }, { age: 2 }, { age: 3 }, { age: 4 }]
 ```
 
-## `toArray`
-
-Returns `array` of arguments
-
-```js
-import { toArray } from 'nanoutils'
-
-const toArrayFromArgs = function() {
-  return toArray(arguments)
-}
-
-toArrayFromArgs('David', 'Margaret', 'Adam')    // ['David', 'Margaret', 'Adam']
-toArray(['David', 'Margaret', 'Adam'])          // ['David', 'Margaret', 'Adam']
-toArray('David')                                // ['D', 'a', 'v', 'i', 'd']
-```
-
 ## `toLower`
 
 Returns `string` in a lower-case version
