@@ -10,6 +10,8 @@
       }
     ],
     "@babel/plugin-transform-arrow-functions",
-    "@babel/plugin-transform-function-name"
+    "@babel/plugin-transform-function-name",
+    "@babel/plugin-transform-spread",
+    "@babel/plugin-transform-parameters"
   ]
 }
