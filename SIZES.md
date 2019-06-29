@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | __ | 27 B | 42 B | -15 B |
 | add | 209 B | 240 B | -31 B |
-| addIndex | 221 B | 684 B | -463 B |
+| addIndex | 219 B | 684 B | -465 B |
 | adjust | 231 B | 441 B | -210 B |
 | adjustIn | 283 B | n/a B | n/a B |
 | all | 232 B | 637 B | -405 B |
@@ -23,7 +23,7 @@
 | assoc | 299 B | 361 B | -62 B |
 | assocPath | 386 B | 599 B | -213 B |
 | az | 51 B | n/a B | n/a B |
-| binary | 37 B | 430 B | -393 B |
+| binary | 34 B | 430 B | -396 B |
 | bind | 208 B | 401 B | -193 B |
 | both | 48 B | 1944 B | -1896 B |
 | call | 69 B | 580 B | -511 B |
@@ -285,7 +285,7 @@
 | median | 216.5 B | 467 B | -250.5 B |
 | mean | 204 B | 847 B | -643 B |
 | maximum | 746 B | 3404 B | -2658 B |
-| total | 56648 B | 204067 B | -147419 B |
+| total | 56643 B | 204067 B | -147424 B |
 | light | 240 | 1 | +239 |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
