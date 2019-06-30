@@ -65,8 +65,8 @@
 | dropWhile | 217 B | 806 B | -589 B |
 | dropWhileT | 59 B | n/a B | n/a B |
 | either | 38 B | 1943 B | -1905 B |
-| empty | 98 B | 380 B | -282 B |
-| endsWith | 507 B | 1943 B | -1436 B |
+| empty | 99 B | 380 B | -281 B |
+| endsWith | 509 B | 1943 B | -1434 B |
 | eqBy | 469 B | 1500 B | -1031 B |
 | eqLens | 469 B | n/a B | n/a B |
 | eqProps | 468 B | 1500 B | -1032 B |
@@ -82,7 +82,7 @@
 | findLast | 212 B | 582 B | -370 B |
 | findLastIndex | 214 B | 603 B | -389 B |
 | flatten | 83 B | 369 B | -286 B |
-| flattenObj | 289 B | n/a B | n/a B |
+| flattenObj | 291 B | n/a B | n/a B |
 | flip | 44 B | 591 B | -547 B |
 | forEach | 204 B | 392 B | -188 B |
 | forEachObjIndexed | 205 B | 593 B | -388 B |
@@ -144,7 +144,7 @@
 | maxBy | 193 B | 342 B | -149 B |
 | mean | 72 B | 1078 B | -1006 B |
 | median | 135 B | 1156 B | -1021 B |
-| memoize | 68 B | 3140 B | -3072 B |
+| memoize | 79 B | 3140 B | -3061 B |
 | memoizeWith | 213 B | 442 B | -229 B |
 | merge | 296 B | 390 B | -94 B |
 | mergeAll | 62 B | 316 B | -254 B |
@@ -158,7 +158,7 @@
 | minBy | 193 B | 342 B | -149 B |
 | modulo | 185 B | 230 B | -45 B |
 | multiply | 185 B | 230 B | -45 B |
-| nAry | 79 B | 410 B | -331 B |
+| nAry | 80 B | 410 B | -330 B |
 | negate | 31 B | 145 B | -114 B |
 | none | 213 B | 686 B | -473 B |
 | noop | 58 B | n/a B | n/a B |
@@ -232,7 +232,7 @@
 | takeT | 53 B | n/a B | n/a B |
 | takeWhile | 218 B | 822 B | -604 B |
 | takeWhileT | 59 B | n/a B | n/a B |
-| tap | 189 B | 540 B | -351 B |
+| tap | 193 B | 540 B | -347 B |
 | tapT | 43 B | n/a B | n/a B |
 | test | 188 B | 3235 B | -3047 B |
 | throttle | 64 B | n/a B | n/a B |
@@ -284,7 +284,7 @@
 | median | 198 B | 467 B | -269 B |
 | mean | 190 B | 847 B | -657 B |
 | maximum | 723 B | 3404 B | -2681 B |
-| total | 52554 B | 204067 B | -151513 B |
+| total | 52575 B | 204067 B | -151492 B |
 | light | 241 | 0 | +241 |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
