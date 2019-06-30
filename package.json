@@ -13,9 +13,9 @@
     }
   },
   "scripts": {
-    "build:create-index": "cd ./node_modules/create-index && yarn && yarn build && cd ../../",
-    "build": "rimraf lib/index.js && yarn build:create-index && node ./node_modules/create-index/dist/bin/create-index.js --ignoreUnsafe lib && yarn build:cjs && yarn size",
-    "build:cjs": "babel lib --out-dir cjs --ignore \"lib/**/*.test.js\",\"lib/**/*.performance.js\"",
+    "build:create-index": "rimraf lib/index.js && cd ./node_modules/create-index && yarn && yarn build && cd ../../ && node ./node_modules/create-index/dist/bin/create-index.js --ignoreUnsafe lib",
+    "build": "yarn build:create-index && yarn build:cjs",
+    "build:cjs": "rimraf cjs && babel lib --out-dir cjs --ignore \"lib/**/*.test.js\",\"lib/**/*.performance.js\"",
     "dev": "jest --watchAll --verbose",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
@@ -33,6 +33,10 @@
   "devDependencies": {
     "@babel/cli": "7.4.4",
     "@babel/core": "7.4.4",
+    "@babel/plugin-transform-arrow-functions": "^7.2.0",
+    "@babel/plugin-transform-function-name": "^7.4.4",
+    "@babel/plugin-transform-parameters": "^7.4.4",
+    "@babel/plugin-transform-spread": "^7.2.2",
     "@babel/preset-typescript": "^7.3.3",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chalk": "^2.3.0",
@@ -47,7 +51,7 @@
     "flow-bin": "^0.62.0",
     "gh-pages": "^1.2.0",
     "ghooks": "^2.0.2",
-    "jest": "^22.0.4",
+    "jest": "^24.8.0",
     "np": "^3.0.4",
     "ramda": "^0.25.0",
     "rimraf": "^2.6.2",
