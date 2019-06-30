@@ -146,14 +146,14 @@
 | median | 137 B | 1156 B | -1019 B |
 | memoize | 79 B | 3140 B | -3061 B |
 | memoizeWith | 236 B | 442 B | -206 B |
-| merge | 318 B | 390 B | -72 B |
+| merge | 271 B | 390 B | -119 B |
 | mergeAll | 62 B | 316 B | -254 B |
-| mergeDeepLeft | 372 B | 496 B | -124 B |
-| mergeDeepRight | 380 B | 496 B | -116 B |
-| mergeDeepWith | 361 B | 496 B | -135 B |
-| mergeDeepWithKey | 369 B | 481 B | -112 B |
-| mergeWith | 343 B | 430 B | -87 B |
-| mergeWithKey | 329 B | 401 B | -72 B |
+| mergeDeepLeft | 329 B | 496 B | -167 B |
+| mergeDeepRight | 329 B | 496 B | -167 B |
+| mergeDeepWith | 322 B | 496 B | -174 B |
+| mergeDeepWithKey | 325 B | 481 B | -156 B |
+| mergeWith | 300 B | 430 B | -130 B |
+| mergeWithKey | 287 B | 401 B | -114 B |
 | min | 207 B | 232 B | -25 B |
 | minBy | 213 B | 342 B | -129 B |
 | modulo | 204 B | 230 B | -26 B |
@@ -283,9 +283,9 @@
 | --- | --- | --- | --- |
 | minimum | 27 B | 42 B | -15 B |
 | median | 216.5 B | 467 B | -250.5 B |
-| mean | 204 B | 847 B | -643 B |
+| mean | 203 B | 847 B | -644 B |
 | maximum | 746 B | 3404 B | -2658 B |
-| total | 56649 B | 204067 B | -147418 B |
+| total | 56340 B | 204067 B | -147727 B |
 | light | 240 | 1 | +239 |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
