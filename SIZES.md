@@ -43,7 +43,7 @@
 | construct | 247 B | 790 B | -543 B |
 | constructN | 231 B | 783 B | -552 B |
 | contains | 472 B | 1534 B | -1062 B |
-| converge | 199 B | 2002 B | -1803 B |
+| converge | 195 B | 2002 B | -1807 B |
 | countBy | 209 B | 1437 B | -1228 B |
 | curry | 201 B | 550 B | -349 B |
 | curryN | 198 B | 527 B | -329 B |
@@ -118,7 +118,7 @@
 | isInteger | 60 B | n/a B | n/a B |
 | isNil | 33 B | 146 B | -113 B |
 | join | 189 B | 3343 B | -3154 B |
-| juxt | 92 B | 2024 B | -1932 B |
+| juxt | 87 B | 2024 B | -1937 B |
 | kebabCase | 186 B | n/a B | n/a B |
 | keys | 34 B | 467 B | -433 B |
 | keysIn | 46 B | 161 B | -115 B |
@@ -281,10 +281,10 @@
 | zipWith | 248 B | 383 B | -135 B |
 | --- | --- | --- | --- |
 | minimum | 27 B | 42 B | -15 B |
-| median | 198 B | 467 B | -269 B |
+| median | 197 B | 467 B | -270 B |
 | mean | 190 B | 847 B | -657 B |
 | maximum | 723 B | 3404 B | -2681 B |
-| total | 52575 B | 204067 B | -151492 B |
+| total | 52566 B | 204067 B | -151501 B |
 | light | 241 | 0 | +241 |
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
