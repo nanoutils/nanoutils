@@ -9166,6 +9166,10 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
+typescript@^3.6.0-dev.20190704:
+  version "3.6.0-dev.20190704"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.0-dev.20190704.tgz#7fce2a1f824c868b393e5291bc05cc192d266757"
+
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.5.tgz#0c65f15f815aa08b560a61ce8b4db7ffc3f45376"

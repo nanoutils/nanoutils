@@ -1,10 +1,10 @@
 {
   "presets": [
-    "@babel/typescript"
+    "@babel/preset-typescript"
   ],
   "plugins": [
     [
-      "transform-es2015-modules-simple-commonjs",
+      "babel-plugin-transform-es2015-modules-simple-commonjs",
       {
         "noInterop": true
       }
