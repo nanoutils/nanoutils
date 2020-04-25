@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "build:create-index": "rimraf lib/index.js && cd ./node_modules/create-index && yarn && yarn build && cd ../../ && node ./node_modules/create-index/dist/bin/create-index.js --ignoreUnsafe lib",
+    "build:create-index": "rimraf lib/index.js && node ./node_modules/create-index/dist/bin/create-index.js --ignoreUnsafe lib",
     "build": "yarn build:create-index && yarn build:cjs",
     "build:cjs": "rimraf cjs && babel lib --out-dir cjs --ignore \"lib/**/*.test.js\",\"lib/**/*.performance.js\"",
     "dev": "jest --watchAll --verbose",
@@ -40,7 +40,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chalk": "^2.3.0",
-    "create-index": "git+https://git@github.com/Beraliv/create-index.git#master",
+    "create-index": "2.5.0",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
