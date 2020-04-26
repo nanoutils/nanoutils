@@ -286,6 +286,6 @@
 | maximum | 723 B | 3404 B | -2681 B | 895 B | -172 B
 | total | 52566 B | 204067 B | -151501 B | 21501 B | +31065 B
 | lightRamda | 241 | 0 | +241 | undefined | +NaN
-| lightRambda | 45 | NaN | +NaN | undefined | +NaN
+| lightRambda | 45 | undefined | +NaN | 86 | -41
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size

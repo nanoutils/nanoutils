@@ -22,8 +22,8 @@ const lightRamda = (args) => args.reduce(({ count, ramdaCount }, { size, ramdaSi
 
 const lightRambda = (args) => args.reduce(({ count, rambdaCount }, { size, rambdaSize }) => ({
   count: count + (size < rambdaSize ? 1 : 0),
-  ramdaCount: rambdaCount + (rambdaSize < size ? 1 : 0)
-}), { count: 0, ramdaCount: 0 })
+  rambdaCount: rambdaCount + (rambdaSize < size ? 1 : 0)
+}), { count: 0, rambdaCount: 0 })
 
 let longestName
 const args = minimist(process.argv.slice(2))
