@@ -49,7 +49,7 @@ const saveSizeToTable = ({ name, size, ramdaSize, rambdaSize }) => `| ${name} | 
 )} B | ${rambdaSize} B | ${getDiff(
   size,
   rambdaSize,
-)}`
+)} B`
 
 const saveCountToTable = ({ name, count, ramdaCount, rambdaCount }) => `| ${name} | ${count} | ${ramdaCount} | ${getDiff(
   count,
