@@ -1,290 +1,291 @@
 ## Nanoutils methods size
 
-| Method | Nano | Ramda | Diff |
-| --- | --- | --- | --- |
-| __ | 27 B | 42 B | -15 B |
-| add | 187 B | 240 B | -53 B |
-| addIndex | 198 B | 684 B | -486 B |
-| adjust | 213 B | 441 B | -228 B |
-| adjustIn | 264 B | n/a B | n/a B |
-| all | 213 B | 637 B | -424 B |
-| allPass | 213 B | 1993 B | -1780 B |
-| always | 33 B | 144 B | -111 B |
-| and | 185 B | 229 B | -44 B |
-| any | 214 B | 635 B | -421 B |
-| anyPass | 214 B | 1990 B | -1776 B |
-| ap | 245 B | 1830 B | -1585 B |
-| aperture | 233 B | 750 B | -517 B |
-| append | 187 B | 301 B | -114 B |
-| apply | 189 B | 230 B | -41 B |
-| applySpec | 131 B | 2075 B | -1944 B |
-| applyTo | 185 B | 228 B | -43 B |
-| ascend | 58 B | 356 B | -298 B |
-| assoc | 283 B | 361 B | -78 B |
-| assocPath | 369 B | 599 B | -230 B |
-| az | 50 B | n/a B | n/a B |
-| binary | 36 B | 430 B | -394 B |
-| bind | 189 B | 401 B | -212 B |
-| both | 38 B | 1944 B | -1906 B |
-| call | 47 B | 580 B | -533 B |
-| camelCase | 197 B | n/a B | n/a B |
-| ceil | 142 B | n/a B | n/a B |
-| chain | 260 B | 1980 B | -1720 B |
-| clamp | 202 B | 402 B | -200 B |
-| clone | 382 B | 463 B | -81 B |
-| compact | 51 B | n/a B | n/a B |
-| comparator | 48 B | 159 B | -111 B |
-| complement | 38 B | 1916 B | -1878 B |
-| compose | 51 B | 1314 B | -1263 B |
-| composeP | 63 B | 1330 B | -1267 B |
-| composeT | 55 B | n/a B | n/a B |
-| concat | 222 B | 3228 B | -3006 B |
-| cond | 68 B | 1937 B | -1869 B |
-| construct | 247 B | 790 B | -543 B |
-| constructN | 231 B | 783 B | -552 B |
-| contains | 472 B | 1534 B | -1062 B |
-| converge | 195 B | 2002 B | -1807 B |
-| countBy | 209 B | 1437 B | -1228 B |
-| curry | 201 B | 550 B | -349 B |
-| curryN | 198 B | 527 B | -329 B |
-| debounce | 129 B | n/a B | n/a B |
-| dec | 32 B | 252 B | -220 B |
-| defaultTo | 197 B | 239 B | -42 B |
-| descend | 58 B | 356 B | -298 B |
-| difference | 555 B | 1561 B | -1006 B |
-| differenceWith | 272 B | 424 B | -152 B |
-| dissoc | 210 B | 258 B | -48 B |
-| dissocPath | 235 B | 708 B | -473 B |
-| divide | 185 B | 230 B | -45 B |
-| drop | 194 B | 782 B | -588 B |
-| dropLast | 203 B | 983 B | -780 B |
-| dropLastWhile | 224 B | 1443 B | -1219 B |
-| dropRepeats | 521 B | 1845 B | -1324 B |
-| dropRepeatsWith | 240 B | 722 B | -482 B |
-| dropT | 53 B | n/a B | n/a B |
-| dropWhile | 217 B | 806 B | -589 B |
-| dropWhileT | 59 B | n/a B | n/a B |
-| either | 38 B | 1943 B | -1905 B |
-| empty | 99 B | 380 B | -281 B |
-| endsWith | 509 B | 1943 B | -1434 B |
-| eqBy | 469 B | 1500 B | -1031 B |
-| eqLens | 469 B | n/a B | n/a B |
-| eqProps | 468 B | 1500 B | -1032 B |
-| equals | 457 B | 1369 B | -912 B |
-| eqWith | 187 B | n/a B | n/a B |
-| evolve | 87 B | 282 B | -195 B |
-| F | 54 B | 156 B | -102 B |
-| fill | 70 B | n/a B | n/a B |
-| filter | 272 B | 1549 B | -1277 B |
-| filterT | 43 B | n/a B | n/a B |
-| find | 210 B | 644 B | -434 B |
-| findIndex | 219 B | 652 B | -433 B |
-| findLast | 212 B | 582 B | -370 B |
-| findLastIndex | 214 B | 603 B | -389 B |
-| flatten | 83 B | 369 B | -286 B |
-| flattenObj | 291 B | n/a B | n/a B |
-| flip | 44 B | 591 B | -547 B |
-| forEach | 204 B | 392 B | -188 B |
-| forEachObjIndexed | 205 B | 593 B | -388 B |
-| fromPairs | 60 B | 173 B | -113 B |
-| groupBy | 229 B | 1519 B | -1290 B |
-| groupWith | 263 B | 291 B | -28 B |
-| gt | 185 B | 230 B | -45 B |
-| gte | 185 B | 231 B | -46 B |
-| has | 187 B | 240 B | -53 B |
-| hasIn | 187 B | 231 B | -44 B |
-| head | 31 B | 301 B | -270 B |
-| identical | 213 B | 249 B | -36 B |
-| identity | 29 B | 150 B | -121 B |
-| identityT | 36 B | n/a B | n/a B |
-| ifElse | 195 B | 687 B | -492 B |
-| inc | 32 B | 250 B | -218 B |
-| includes | 219 B | n/a B | n/a B |
-| indexBy | 212 B | 1438 B | -1226 B |
-| indexed | 38 B | n/a B | n/a B |
-| indexOf | 210 B | 1570 B | -1360 B |
-| init | 66 B | 493 B | -427 B |
-| innerJoin | 238 B | 439 B | -201 B |
-| insert | 202 B | 378 B | -176 B |
-| insertAll | 208 B | 379 B | -171 B |
-| intersection | 609 B | 2360 B | -1751 B |
-| intersperse | 231 B | 409 B | -178 B |
-| into | 379 B | 1638 B | -1259 B |
-| invert | 58 B | 534 B | -476 B |
-| invertObj | 44 B | 520 B | -476 B |
-| invoker | 229 B | 3337 B | -3108 B |
-| is | 200 B | 252 B | -52 B |
-| isEmpty | 68 B | 1524 B | -1456 B |
-| isInteger | 60 B | n/a B | n/a B |
-| isNil | 33 B | 146 B | -113 B |
-| join | 189 B | 3343 B | -3154 B |
-| juxt | 87 B | 2024 B | -1937 B |
-| kebabCase | 186 B | n/a B | n/a B |
-| keys | 34 B | 467 B | -433 B |
-| keysIn | 46 B | 161 B | -115 B |
-| last | 37 B | 302 B | -265 B |
-| lastIndexOf | 216 B | 1462 B | -1246 B |
-| length | 47 B | 190 B | -143 B |
-| lens | 47 B | 1745 B | -1698 B |
-| lensIndex | 82 B | 2049 B | -1967 B |
-| lensPath | 193 B | 2095 B | -1902 B |
-| lensProp | 103 B | 1967 B | -1864 B |
-| lift | 357 B | 1897 B | -1540 B |
-| liftN | 354 B | 1878 B | -1524 B |
-| lt | 185 B | 230 B | -45 B |
-| lte | 186 B | 231 B | -45 B |
-| map | 255 B | 1710 B | -1455 B |
-| mapAccum | 237 B | 383 B | -146 B |
-| mapAccumRight | 240 B | 383 B | -143 B |
-| mapObjIndexed | 209 B | 1253 B | -1044 B |
-| mapT | 42 B | n/a B | n/a B |
-| match | 191 B | 237 B | -46 B |
-| mathMod | 247 B | 281 B | -34 B |
-| max | 194 B | 232 B | -38 B |
-| maxBy | 193 B | 342 B | -149 B |
-| mean | 72 B | 1078 B | -1006 B |
-| median | 135 B | 1156 B | -1021 B |
-| memoize | 79 B | 3140 B | -3061 B |
-| memoizeWith | 213 B | 442 B | -229 B |
-| merge | 296 B | 390 B | -94 B |
-| mergeAll | 62 B | 316 B | -254 B |
-| mergeDeepLeft | 352 B | 496 B | -144 B |
-| mergeDeepRight | 361 B | 496 B | -135 B |
-| mergeDeepWith | 338 B | 496 B | -158 B |
-| mergeDeepWithKey | 343 B | 481 B | -138 B |
-| mergeWith | 314 B | 430 B | -116 B |
-| mergeWithKey | 308 B | 401 B | -93 B |
-| min | 195 B | 232 B | -37 B |
-| minBy | 193 B | 342 B | -149 B |
-| modulo | 185 B | 230 B | -45 B |
-| multiply | 185 B | 230 B | -45 B |
-| nAry | 80 B | 410 B | -330 B |
-| negate | 31 B | 145 B | -114 B |
-| none | 213 B | 686 B | -473 B |
-| noop | 58 B | n/a B | n/a B |
-| not | 31 B | 144 B | -113 B |
-| nth | 217 B | 285 B | -68 B |
-| nthArg | 50 B | 633 B | -583 B |
-| o | 189 B | 336 B | -147 B |
-| objOf | 193 B | 240 B | -47 B |
-| of | 29 B | 151 B | -122 B |
-| omit | 219 B | 285 B | -66 B |
-| omitBy | 211 B | n/a B | n/a B |
-| once | 50 B | 342 B | -292 B |
-| or | 185 B | 231 B | -46 B |
-| over | 207 B | 364 B | -157 B |
-| pair | 186 B | 232 B | -46 B |
-| partial | 53 B | 497 B | -444 B |
-| partialRight | 53 B | 704 B | -651 B |
-| partition | 190 B | 2175 B | -1985 B |
-| path | 226 B | 266 B | -40 B |
-| pathEq | 532 B | 1540 B | -1008 B |
-| pathOr | 240 B | 422 B | -182 B |
-| pathSatisfies | 235 B | 405 B | -170 B |
-| pick | 207 B | 266 B | -59 B |
-| pickAll | 200 B | 267 B | -67 B |
-| pickBy | 212 B | 257 B | -45 B |
-| pipe | 98 B | 1245 B | -1147 B |
-| pipeP | 106 B | 1260 B | -1154 B |
-| pipeT | 50 B | n/a B | n/a B |
-| pluck | 192 B | 1783 B | -1591 B |
-| prepend | 188 B | 301 B | -113 B |
-| product | 42 B | 1061 B | -1019 B |
-| project | 231 B | 738 B | -507 B |
-| prop | 186 B | 286 B | -100 B |
-| propEq | 466 B | 1498 B | -1032 B |
-| propIs | 216 B | 382 B | -166 B |
-| propOr | 194 B | 362 B | -168 B |
-| props | 234 B | 263 B | -29 B |
-| propSatisfies | 190 B | 338 B | -148 B |
-| range | 215 B | 342 B | -127 B |
-| reduce | 339 B | 1021 B | -682 B |
-| reduceBy | 586 B | 1424 B | -838 B |
-| reduceRight | 211 B | 361 B | -150 B |
-| reduceWhile | 231 B | 1074 B | -843 B |
-| reduceWhileRight | 233 B | n/a B | n/a B |
-| reject | 241 B | 1575 B | -1334 B |
-| remove | 200 B | 362 B | -162 B |
-| repeat | 218 B | 364 B | -146 B |
-| replace | 192 B | 341 B | -149 B |
-| reverse | 63 B | 212 B | -149 B |
-| scan | 229 B | 373 B | -144 B |
-| set | 199 B | 411 B | -212 B |
-| slice | 244 B | 473 B | -229 B |
-| snakeCase | 184 B | n/a B | n/a B |
-| sort | 193 B | 248 B | -55 B |
-| sortBy | 201 B | 273 B | -72 B |
-| sortWith | 225 B | 285 B | -60 B |
-| split | 190 B | 3344 B | -3154 B |
-| splitAt | 196 B | 556 B | -360 B |
-| splitEvery | 247 B | 592 B | -345 B |
-| splitWhen | 224 B | 284 B | -60 B |
-| startsWith | 265 B | 1969 B | -1704 B |
-| subtract | 185 B | 240 B | -55 B |
-| sum | 44 B | 1069 B | -1025 B |
-| symmetricDifference | 463 B | 3293 B | -2830 B |
-| symmetricDifferenceWith | 311 B | 3404 B | -3093 B |
-| T | 55 B | 156 B | -101 B |
-| tail | 204 B | 509 B | -305 B |
-| take | 226 B | 827 B | -601 B |
-| takeLast | 225 B | 808 B | -583 B |
-| takeLastWhile | 224 B | 528 B | -304 B |
-| takeT | 53 B | n/a B | n/a B |
-| takeWhile | 218 B | 822 B | -604 B |
-| takeWhileT | 59 B | n/a B | n/a B |
-| tap | 193 B | 540 B | -347 B |
-| tapT | 43 B | n/a B | n/a B |
-| test | 188 B | 3235 B | -3047 B |
-| throttle | 64 B | n/a B | n/a B |
-| times | 220 B | 326 B | -106 B |
-| toLower | 40 B | 3346 B | -3306 B |
-| toPairs | 56 B | 189 B | -133 B |
-| toPairsIn | 50 B | 166 B | -116 B |
-| toString | 223 B | 3086 B | -2863 B |
-| toUpper | 41 B | 3347 B | -3306 B |
-| transduce | 209 B | 1082 B | -873 B |
-| transduceRight | 140 B | n/a B | n/a B |
-| transpose | 116 B | 204 B | -88 B |
-| trim | 34 B | 317 B | -283 B |
-| tryCatch | 201 B | 487 B | -286 B |
-| type | 109 B | 186 B | -77 B |
-| unapply | 80 B | 161 B | -81 B |
-| unary | 34 B | 430 B | -396 B |
-| uncurryN | 211 B | 618 B | -407 B |
-| unfold | 216 B | 266 B | -50 B |
-| union | 429 B | 2988 B | -2559 B |
-| unionWith | 231 B | 504 B | -273 B |
-| uniq | 571 B | 1908 B | -1337 B |
-| uniqBy | 723 B | 1888 B | -1165 B |
-| uniqWith | 239 B | 320 B | -81 B |
-| unless | 191 B | 338 B | -147 B |
-| unnest | 56 B | 1996 B | -1940 B |
-| unnestN | 311 B | n/a B | n/a B |
-| until | 199 B | 351 B | -152 B |
-| unzip | 287 B | n/a B | n/a B |
-| unzipWith | 269 B | n/a B | n/a B |
-| update | 217 B | 497 B | -280 B |
-| updateBy | 267 B | n/a B | n/a B |
-| useWith | 199 B | 618 B | -419 B |
-| values | 44 B | 509 B | -465 B |
-| valuesIn | 47 B | 163 B | -116 B |
-| view | 189 B | 259 B | -70 B |
-| when | 191 B | 338 B | -147 B |
-| where | 214 B | 273 B | -59 B |
-| whereEq | 490 B | 2551 B | -2061 B |
-| without | 200 B | 2713 B | -2513 B |
-| xprod | 243 B | 284 B | -41 B |
-| za | 51 B | n/a B | n/a B |
-| zip | 255 B | 273 B | -18 B |
-| zipObj | 50 B | 271 B | -221 B |
-| zipObjDeep | 259 B | n/a B | n/a B |
-| zipWith | 248 B | 383 B | -135 B |
-| --- | --- | --- | --- |
-| minimum | 27 B | 42 B | -15 B |
-| median | 197 B | 467 B | -270 B |
-| mean | 190 B | 847 B | -657 B |
-| maximum | 723 B | 3404 B | -2681 B |
-| total | 52566 B | 204067 B | -151501 B |
-| light | 241 | 0 | +241 |
+| Method | Nano | Ramda | Diff | Rambda | Diff |
+| --- | --- | --- | --- | --- | --- |
+| __ | 27 B | 42 B | -15 B | n/a B | n/a B
+| add | 187 B | 240 B | -53 B | 66 B | +121 B
+| addIndex | 198 B | 684 B | -486 B | n/a B | n/a B
+| adjust | 213 B | 441 B | -228 B | 143 B | +70 B
+| adjustIn | 264 B | n/a B | n/a B | n/a B | n/a B
+| all | 213 B | 637 B | -424 B | 85 B | +128 B
+| allPass | 213 B | 1993 B | -1780 B | 71 B | +142 B
+| always | 33 B | 144 B | -111 B | 36 B | -3 B
+| and | 185 B | 229 B | -44 B | 58 B | +127 B
+| any | 214 B | 635 B | -421 B | 85 B | +129 B
+| anyPass | 214 B | 1990 B | -1776 B | 71 B | +143 B
+| ap | 245 B | 1830 B | -1585 B | n/a B | n/a B
+| aperture | 233 B | 750 B | -517 B | n/a B | n/a B
+| append | 187 B | 301 B | -114 B | 100 B | +87 B
+| apply | 189 B | 230 B | -41 B | n/a B | n/a B
+| applySpec | 131 B | 2075 B | -1944 B | 362 B | -231 B
+| applyTo | 185 B | 228 B | -43 B | n/a B | n/a B
+| ascend | 58 B | 356 B | -298 B | n/a B | n/a B
+| assoc | 283 B | 361 B | -78 B | 111 B | +172 B
+| assocPath | 369 B | 599 B | -230 B | 333 B | +36 B
+| az | 50 B | n/a B | n/a B | n/a B | n/a B
+| binary | 36 B | 430 B | -394 B | n/a B | n/a B
+| bind | 189 B | 401 B | -212 B | n/a B | n/a B
+| both | 38 B | 1944 B | -1906 B | 68 B | -30 B
+| call | 47 B | 580 B | -533 B | n/a B | n/a B
+| camelCase | 197 B | n/a B | n/a B | n/a B | n/a B
+| ceil | 142 B | n/a B | n/a B | n/a B | n/a B
+| chain | 260 B | 1980 B | -1720 B | n/a B | n/a B
+| clamp | 202 B | 402 B | -200 B | 121 B | +81 B
+| clone | 382 B | 463 B | -81 B | 135 B | +247 B
+| compact | 51 B | n/a B | n/a B | n/a B | n/a B
+| comparator | 48 B | 159 B | -111 B | n/a B | n/a B
+| complement | 38 B | 1916 B | -1878 B | 42 B | -4 B
+| compose | 51 B | 1314 B | -1263 B | 136 B | -85 B
+| composeP | 63 B | 1330 B | -1267 B | n/a B | n/a B
+| composeT | 55 B | n/a B | n/a B | n/a B | n/a B
+| concat | 222 B | 3228 B | -3006 B | 84 B | +138 B
+| cond | 68 B | 1937 B | -1869 B | 73 B | -5 B
+| construct | 247 B | 790 B | -543 B | n/a B | n/a B
+| constructN | 231 B | 783 B | -552 B | n/a B | n/a B
+| contains | 472 B | 1534 B | -1062 B | n/a B | n/a B
+| converge | 195 B | 2002 B | -1807 B | 585 B | -390 B
+| countBy | 209 B | 1437 B | -1228 B | n/a B | n/a B
+| curry | 201 B | 550 B | -349 B | 67 B | +134 B
+| curryN | 198 B | 527 B | -329 B | 347 B | -149 B
+| debounce | 129 B | n/a B | n/a B | n/a B | n/a B
+| dec | 32 B | 252 B | -220 B | 30 B | +2 B
+| defaultTo | 197 B | 239 B | -42 B | 175 B | +22 B
+| descend | 58 B | 356 B | -298 B | n/a B | n/a B
+| difference | 555 B | 1561 B | -1006 B | 825 B | -270 B
+| differenceWith | 272 B | 424 B | -152 B | n/a B | n/a B
+| dissoc | 210 B | 258 B | -48 B | 108 B | +102 B
+| dissocPath | 235 B | 708 B | -473 B | n/a B | n/a B
+| divide | 185 B | 230 B | -45 B | 61 B | +124 B
+| drop | 194 B | 782 B | -588 B | 67 B | +127 B
+| dropLast | 203 B | 983 B | -780 B | 75 B | +128 B
+| dropLastWhile | 224 B | 1443 B | -1219 B | n/a B | n/a B
+| dropRepeats | 521 B | 1845 B | -1324 B | n/a B | n/a B
+| dropRepeatsWith | 240 B | 722 B | -482 B | n/a B | n/a B
+| dropT | 53 B | n/a B | n/a B | n/a B | n/a B
+| dropWhile | 217 B | 806 B | -589 B | n/a B | n/a B
+| dropWhileT | 59 B | n/a B | n/a B | n/a B | n/a B
+| either | 38 B | 1943 B | -1905 B | 69 B | -31 B
+| empty | 99 B | 380 B | -281 B | n/a B | n/a B
+| endsWith | 509 B | 1943 B | -1434 B | 65 B | +444 B
+| eqBy | 469 B | 1500 B | -1031 B | n/a B | n/a B
+| eqLens | 469 B | n/a B | n/a B | n/a B | n/a B
+| eqProps | 468 B | 1500 B | -1032 B | n/a B | n/a B
+| equals | 457 B | 1369 B | -912 B | 679 B | -222 B
+| eqWith | 187 B | n/a B | n/a B | n/a B | n/a B
+| evolve | 87 B | 282 B | -195 B | n/a B | n/a B
+| F | 54 B | 156 B | -102 B | 30 B | +24 B
+| fill | 70 B | n/a B | n/a B | n/a B | n/a B
+| filter | 272 B | 1549 B | -1277 B | 161 B | +111 B
+| filterT | 43 B | n/a B | n/a B | n/a B | n/a B
+| find | 210 B | 644 B | -434 B | 59 B | +151 B
+| findIndex | 219 B | 652 B | -433 B | 100 B | +119 B
+| findLast | 212 B | 582 B | -370 B | 87 B | +125 B
+| findLastIndex | 214 B | 603 B | -389 B | 95 B | +119 B
+| flatten | 83 B | 369 B | -286 B | 96 B | -13 B
+| flattenObj | 291 B | n/a B | n/a B | n/a B | n/a B
+| flip | 44 B | 591 B | -547 B | 74 B | -30 B
+| forEach | 204 B | 392 B | -188 B | 177 B | +27 B
+| forEachObjIndexed | 205 B | 593 B | -388 B | n/a B | n/a B
+| fromPairs | 60 B | 173 B | -113 B | 60 B | 0 B
+| groupBy | 229 B | 1519 B | -1290 B | 114 B | +115 B
+| groupWith | 263 B | 291 B | -28 B | 216 B | +47 B
+| gt | 185 B | 230 B | -45 B | n/a B | n/a B
+| gte | 185 B | 231 B | -46 B | n/a B | n/a B
+| has | 187 B | 240 B | -53 B | 71 B | +116 B
+| hasIn | 187 B | 231 B | -44 B | n/a B | n/a B
+| head | 31 B | 301 B | -270 B | 51 B | -20 B
+| identical | 213 B | 249 B | -36 B | 109 B | +104 B
+| identity | 29 B | 150 B | -121 B | 33 B | -4 B
+| identityT | 36 B | n/a B | n/a B | n/a B | n/a B
+| ifElse | 195 B | 687 B | -492 B | 128 B | +67 B
+| inc | 32 B | 250 B | -218 B | 31 B | +1 B
+| includes | 219 B | n/a B | n/a B | 732 B | -513 B
+| indexBy | 212 B | 1438 B | -1226 B | 228 B | -16 B
+| indexed | 38 B | n/a B | n/a B | n/a B | n/a B
+| indexOf | 210 B | 1570 B | -1360 B | 97 B | +113 B
+| init | 66 B | 493 B | -427 B | 161 B | -95 B
+| innerJoin | 238 B | 439 B | -201 B | n/a B | n/a B
+| insert | 202 B | 378 B | -176 B | n/a B | n/a B
+| insertAll | 208 B | 379 B | -171 B | n/a B | n/a B
+| intersection | 609 B | 2360 B | -1751 B | 844 B | -235 B
+| intersperse | 231 B | 409 B | -178 B | 110 B | +121 B
+| into | 379 B | 1638 B | -1259 B | n/a B | n/a B
+| invert | 58 B | 534 B | -476 B | n/a B | n/a B
+| invertObj | 44 B | 520 B | -476 B | n/a B | n/a B
+| invoker | 229 B | 3337 B | -3108 B | n/a B | n/a B
+| is | 200 B | 252 B | -52 B | 82 B | +118 B
+| isEmpty | 68 B | 1524 B | -1456 B | 336 B | -268 B
+| isInteger | 60 B | n/a B | n/a B | n/a B | n/a B
+| isNil | 33 B | 146 B | -113 B | 44 B | -11 B
+| join | 189 B | 3343 B | -3154 B | 59 B | +130 B
+| juxt | 87 B | 2024 B | -1937 B | n/a B | n/a B
+| kebabCase | 186 B | n/a B | n/a B | n/a B | n/a B
+| keys | 34 B | 467 B | -433 B | 34 B | 0 B
+| keysIn | 46 B | 161 B | -115 B | n/a B | n/a B
+| last | 37 B | 302 B | -265 B | 57 B | -20 B
+| lastIndexOf | 216 B | 1462 B | -1246 B | 725 B | -509 B
+| length | 47 B | 190 B | -143 B | 54 B | -7 B
+| lens | 47 B | 1745 B | -1698 B | 83 B | -36 B
+| lensIndex | 82 B | 2049 B | -1967 B | 236 B | -154 B
+| lensPath | 193 B | 2095 B | -1902 B | 477 B | -284 B
+| lensProp | 103 B | 1967 B | -1864 B | 215 B | -112 B
+| lift | 357 B | 1897 B | -1540 B | n/a B | n/a B
+| liftN | 354 B | 1878 B | -1524 B | n/a B | n/a B
+| lt | 185 B | 230 B | -45 B | n/a B | n/a B
+| lte | 186 B | 231 B | -45 B | n/a B | n/a B
+| map | 255 B | 1710 B | -1455 B | 149 B | +106 B
+| mapAccum | 237 B | 383 B | -146 B | n/a B | n/a B
+| mapAccumRight | 240 B | 383 B | -143 B | n/a B | n/a B
+| mapObjIndexed | 209 B | 1253 B | -1044 B | n/a B | n/a B
+| mapT | 42 B | n/a B | n/a B | n/a B | n/a B
+| match | 191 B | 237 B | -46 B | 77 B | +114 B
+| mathMod | 247 B | 281 B | -34 B | 127 B | +120 B
+| max | 194 B | 232 B | -38 B | 60 B | +134 B
+| maxBy | 193 B | 342 B | -149 B | 79 B | +114 B
+| mean | 72 B | 1078 B | -1006 B | 71 B | +1 B
+| median | 135 B | 1156 B | -1021 B | 157 B | -22 B
+| memoize | 79 B | 3140 B | -3061 B | n/a B | n/a B
+| memoizeWith | 213 B | 442 B | -229 B | n/a B | n/a B
+| merge | 296 B | 390 B | -94 B | 70 B | +226 B
+| mergeAll | 62 B | 316 B | -254 B | n/a B | n/a B
+| mergeDeepLeft | 352 B | 496 B | -144 B | n/a B | n/a B
+| mergeDeepRight | 361 B | 496 B | -135 B | n/a B | n/a B
+| mergeDeepWith | 338 B | 496 B | -158 B | n/a B | n/a B
+| mergeDeepWithKey | 343 B | 481 B | -138 B | n/a B | n/a B
+| mergeWith | 314 B | 430 B | -116 B | n/a B | n/a B
+| mergeWithKey | 308 B | 401 B | -93 B | n/a B | n/a B
+| min | 195 B | 232 B | -37 B | 60 B | +135 B
+| minBy | 193 B | 342 B | -149 B | 79 B | +114 B
+| modulo | 185 B | 230 B | -45 B | 58 B | +127 B
+| multiply | 185 B | 230 B | -45 B | 62 B | +123 B
+| nAry | 80 B | 410 B | -330 B | n/a B | n/a B
+| negate | 31 B | 145 B | -114 B | 34 B | -3 B
+| none | 213 B | 686 B | -473 B | 67 B | +146 B
+| noop | 58 B | n/a B | n/a B | n/a B | n/a B
+| not | 31 B | 144 B | -113 B | 31 B | 0 B
+| nth | 217 B | 285 B | -68 B | 106 B | +111 B
+| nthArg | 50 B | 633 B | -583 B | n/a B | n/a B
+| o | 189 B | 336 B | -147 B | n/a B | n/a B
+| objOf | 193 B | 240 B | -47 B | n/a B | n/a B
+| of | 29 B | 151 B | -122 B | n/a B | n/a B
+| omit | 219 B | 285 B | -66 B | 129 B | +90 B
+| omitBy | 211 B | n/a B | n/a B | n/a B | n/a B
+| once | 50 B | 342 B | -292 B | n/a B | n/a B
+| or | 185 B | 231 B | -46 B | n/a B | n/a B
+| over | 207 B | 364 B | -157 B | 102 B | +105 B
+| pair | 186 B | 232 B | -46 B | n/a B | n/a B
+| partial | 53 B | 497 B | -444 B | 74 B | -21 B
+| partialRight | 53 B | 704 B | -651 B | n/a B | n/a B
+| partition | 190 B | 2175 B | -1985 B | n/a B | n/a B
+| path | 226 B | 266 B | -40 B | 140 B | +86 B
+| pathEq | 532 B | 1540 B | -1008 B | n/a B | n/a B
+| pathOr | 240 B | 422 B | -182 B | 338 B | -98 B
+| pathSatisfies | 235 B | 405 B | -170 B | n/a B | n/a B
+| pick | 207 B | 266 B | -59 B | 140 B | +67 B
+| pickAll | 200 B | 267 B | -67 B | 146 B | +54 B
+| pickBy | 212 B | 257 B | -45 B | n/a B | n/a B
+| pipe | 98 B | 1245 B | -1147 B | 170 B | -72 B
+| pipeP | 106 B | 1260 B | -1154 B | n/a B | n/a B
+| pipeT | 50 B | n/a B | n/a B | n/a B | n/a B
+| pluck | 192 B | 1783 B | -1591 B | 200 B | -8 B
+| prepend | 188 B | 301 B | -113 B | 95 B | +93 B
+| product | 42 B | 1061 B | -1019 B | 158 B | -116 B
+| project | 231 B | 738 B | -507 B | n/a B | n/a B
+| prop | 186 B | 286 B | -100 B | 63 B | +123 B
+| propEq | 466 B | 1498 B | -1032 B | 112 B | +354 B
+| propIs | 216 B | 382 B | -166 B | 169 B | +47 B
+| propOr | 194 B | 362 B | -168 B | 222 B | -28 B
+| props | 234 B | 263 B | -29 B | n/a B | n/a B
+| propSatisfies | 190 B | 338 B | -148 B | n/a B | n/a B
+| range | 215 B | 342 B | -127 B | 164 B | +51 B
+| reduce | 339 B | 1021 B | -682 B | 103 B | +236 B
+| reduceBy | 586 B | 1424 B | -838 B | n/a B | n/a B
+| reduceRight | 211 B | 361 B | -150 B | n/a B | n/a B
+| reduceWhile | 231 B | 1074 B | -843 B | n/a B | n/a B
+| reduceWhileRight | 233 B | n/a B | n/a B | n/a B | n/a B
+| reject | 241 B | 1575 B | -1334 B | 192 B | +49 B
+| remove | 200 B | 362 B | -162 B | n/a B | n/a B
+| repeat | 218 B | 364 B | -146 B | 76 B | +142 B
+| replace | 192 B | 341 B | -149 B | 65 B | +127 B
+| reverse | 63 B | 212 B | -149 B | 67 B | -4 B
+| scan | 229 B | 373 B | -144 B | n/a B | n/a B
+| set | 199 B | 411 B | -212 B | 149 B | +50 B
+| slice | 244 B | 473 B | -229 B | 102 B | +142 B
+| snakeCase | 184 B | n/a B | n/a B | n/a B | n/a B
+| sort | 193 B | 248 B | -55 B | 73 B | +120 B
+| sortBy | 201 B | 273 B | -72 B | 105 B | +96 B
+| sortWith | 225 B | 285 B | -60 B | n/a B | n/a B
+| split | 190 B | 3344 B | -3154 B | 61 B | +129 B
+| splitAt | 196 B | 556 B | -360 B | n/a B | n/a B
+| splitEvery | 247 B | 592 B | -345 B | 149 B | +98 B
+| splitWhen | 224 B | 284 B | -60 B | n/a B | n/a B
+| startsWith | 265 B | 1969 B | -1704 B | 66 B | +199 B
+| subtract | 185 B | 240 B | -55 B | 62 B | +123 B
+| sum | 44 B | 1069 B | -1025 B | 43 B | +1 B
+| symmetricDifference | 463 B | 3293 B | -2830 B | 895 B | -432 B
+| symmetricDifferenceWith | 311 B | 3404 B | -3093 B | n/a B | n/a B
+| T | 55 B | 156 B | -101 B | 29 B | +26 B
+| tail | 204 B | 509 B | -305 B | 89 B | +115 B
+| take | 226 B | 827 B | -601 B | 185 B | +41 B
+| takeLast | 225 B | 808 B | -583 B | 206 B | +19 B
+| takeLastWhile | 224 B | 528 B | -304 B | n/a B | n/a B
+| takeT | 53 B | n/a B | n/a B | n/a B | n/a B
+| takeWhile | 218 B | 822 B | -604 B | n/a B | n/a B
+| takeWhileT | 59 B | n/a B | n/a B | n/a B | n/a B
+| tap | 193 B | 540 B | -347 B | 58 B | +135 B
+| tapT | 43 B | n/a B | n/a B | n/a B | n/a B
+| test | 188 B | 3235 B | -3047 B | n/a B | n/a B
+| throttle | 64 B | n/a B | n/a B | n/a B | n/a B
+| times | 220 B | 326 B | -106 B | 314 B | -94 B
+| toLower | 40 B | 3346 B | -3306 B | 41 B | -1 B
+| toPairs | 56 B | 189 B | -133 B | 38 B | +18 B
+| toPairsIn | 50 B | 166 B | -116 B | n/a B | n/a B
+| toString | 223 B | 3086 B | -2863 B | 38 B | +185 B
+| toUpper | 41 B | 3347 B | -3306 B | 41 B | 0 B
+| transduce | 209 B | 1082 B | -873 B | n/a B | n/a B
+| transduceRight | 140 B | n/a B | n/a B | n/a B | n/a B
+| transpose | 116 B | 204 B | -88 B | 83 B | +33 B
+| trim | 34 B | 317 B | -283 B | 34 B | 0 B
+| tryCatch | 201 B | 487 B | -286 B | n/a B | n/a B
+| type | 109 B | 186 B | -77 B | 254 B | -145 B
+| unapply | 80 B | 161 B | -81 B | n/a B | n/a B
+| unary | 34 B | 430 B | -396 B | n/a B | n/a B
+| uncurryN | 211 B | 618 B | -407 B | n/a B | n/a B
+| unfold | 216 B | 266 B | -50 B | n/a B | n/a B
+| union | 429 B | 2988 B | -2559 B | n/a B | n/a B
+| unionWith | 231 B | 504 B | -273 B | n/a B | n/a B
+| uniq | 571 B | 1908 B | -1337 B | 777 B | -206 B
+| uniqBy | 723 B | 1888 B | -1165 B | n/a B | n/a B
+| uniqWith | 239 B | 320 B | -81 B | 168 B | +71 B
+| unless | 191 B | 338 B | -147 B | n/a B | n/a B
+| unnest | 56 B | 1996 B | -1940 B | n/a B | n/a B
+| unnestN | 311 B | n/a B | n/a B | n/a B | n/a B
+| until | 199 B | 351 B | -152 B | n/a B | n/a B
+| unzip | 287 B | n/a B | n/a B | n/a B | n/a B
+| unzipWith | 269 B | n/a B | n/a B | n/a B | n/a B
+| update | 217 B | 497 B | -280 B | 83 B | +134 B
+| updateBy | 267 B | n/a B | n/a B | n/a B | n/a B
+| useWith | 199 B | 618 B | -419 B | n/a B | n/a B
+| values | 44 B | 509 B | -465 B | 291 B | -247 B
+| valuesIn | 47 B | 163 B | -116 B | n/a B | n/a B
+| view | 189 B | 259 B | -70 B | 84 B | +105 B
+| when | 191 B | 338 B | -147 B | n/a B | n/a B
+| where | 214 B | 273 B | -59 B | n/a B | n/a B
+| whereEq | 490 B | 2551 B | -2061 B | n/a B | n/a B
+| without | 200 B | 2713 B | -2513 B | 844 B | -644 B
+| xprod | 243 B | 284 B | -41 B | n/a B | n/a B
+| za | 51 B | n/a B | n/a B | n/a B | n/a B
+| zip | 255 B | 273 B | -18 B | 106 B | +149 B
+| zipObj | 50 B | 271 B | -221 B | 222 B | -172 B
+| zipObjDeep | 259 B | n/a B | n/a B | n/a B | n/a B
+| zipWith | 248 B | 383 B | -135 B | n/a B | n/a B
+| --- | --- | --- | --- | --- | --- |
+| minimum | 27 B | 42 B | -15 B | 29 B | -2 B
+| median | 197 B | 467 B | -270 B | 95 B | +102 B
+| mean | 190 B | 847 B | -657 B | 159 B | +31 B
+| maximum | 723 B | 3404 B | -2681 B | 895 B | -172 B
+| total | 52566 B | 204067 B | -151501 B | 21501 B | +31065 B
+| lightRamda | 241 | 0 | +241 | undefined | +NaN
+| lightRambda | 45 | undefined | +NaN | 86 | -41
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size

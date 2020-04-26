@@ -14,10 +14,16 @@ const median = require('../../cjs/median')
 const maximum = args => nanoutilsCeil(args.reduce((maxValue, value) => nanoutilsMax(+value, +maxValue), Number.MIN_VALUE), 2)
 const minimum = args => nanoutilsCeil(args.reduce((minValue, value) => nanoutilsMin(+value, +minValue), Number.MAX_VALUE), 2)
 const total = args => nanoutilsSum(args)
-const light = (args) => args.reduce(({ count, ramdaCount }, { size, ramdaSize }) => ({
+
+const lightRamda = (args) => args.reduce(({ count, ramdaCount }, { size, ramdaSize }) => ({
   count: count + (size < ramdaSize ? 1 : 0),
   ramdaCount: ramdaCount + (ramdaSize < size ? 1 : 0)
 }), { count: 0, ramdaCount: 0 })
+
+const lightRambda = (args) => args.reduce(({ count, rambdaCount }, { size, rambdaSize }) => ({
+  count: count + (size < rambdaSize ? 1 : 0),
+  rambdaCount: rambdaCount + (rambdaSize < size ? 1 : 0)
+}), { count: 0, rambdaCount: 0 })
 
 let longestName
 const args = minimist(process.argv.slice(2))
@@ -26,41 +32,56 @@ const writeFile = util.promisify(fs.writeFile)
 const createRow = cols => '║ ' + cols.join(' ║ ') + ' ║'
 const formatName = name => chalk.bold(name.padEnd(longestName))
 const formatSize = size => `${size}`.padStart(6) + ' B'
-const getDiff = (size, ramdaSize) =>
-  ramdaSize === 'n/a'
+const getDiff = (size, anotherSize) =>
+  anotherSize === 'n/a'
     ? 'n/a'
-    : `${ramdaSize >= size ? '' : '+'}${size - ramdaSize}`
-const formatDiff = (size, ramdaSize) => {
-  if (ramdaSize === 'n/a') return 'n/a'.padStart(9)
-  const ok = ramdaSize >= size
+    : `${anotherSize >= size ? '' : '+'}${size - anotherSize}`
+const formatDiff = (size, anotherSize) => {
+  if (anotherSize === 'n/a') return 'n/a'.padStart(9)
+  const ok = anotherSize >= size
   return chalk[ok ? 'green' : 'red'](
-    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(7) + ' B'
+    `${ok ? '' : '+'}${size - anotherSize}`.padStart(7) + ' B'
   )
 }
-const saveSizeToTable = ({ name, size, ramdaSize }) => `| ${name} | ${size} B | ${ramdaSize} B | ${getDiff(
+const saveSizeToTable = ({ name, size, ramdaSize, rambdaSize }) => `| ${name} | ${size} B | ${ramdaSize} B | ${getDiff(
   size,
   ramdaSize
-)} B |`
-const saveCountToTable = ({ name, count, ramdaCount }) => `| ${name} | ${count} | ${ramdaCount} | ${getDiff(
+)} B | ${rambdaSize} B | ${getDiff(
+  size,
+  rambdaSize,
+)} B`
+
+const saveCountToTable = ({ name, count, ramdaCount, rambdaCount }) => `| ${name} | ${count} | ${ramdaCount} | ${getDiff(
   count,
   ramdaCount
-)} |`
+)} | ${rambdaCount} | ${getDiff(
+  count,
+  rambdaCount
+)}`
+
 const getStatisticsRows = methods => {
   const ramdaMethodsStatistics = methods.filter(({ ramdaSize }) => ramdaSize !== 'n/a')
+  const rambdaMethodsStatistics = methods.filter(({ rambdaSize }) => rambdaSize !== 'n/a')
 
   const sizes = [minimum, median, mean, maximum, total].map(f => saveSizeToTable({
     name: f.name,
     size: f(methods.map(({ size }) => size)),
     ramdaSize: f(ramdaMethodsStatistics.map(({ ramdaSize }) => ramdaSize)),
-    sizeNoRamda: f(ramdaMethodsStatistics.map(({ size }) => size))
+    rambdaSize: f(rambdaMethodsStatistics.map(({ rambdaSize }) => rambdaSize))
+    // sizeNoRamda: f(ramdaMethodsStatistics.map(({ size }) => size))
   }))
 
-  const counts = [light].map(f => saveCountToTable({
+  const countsRamda = [lightRamda].map(f => saveCountToTable({
     name: f.name,
-    ...f(ramdaMethodsStatistics)
+    ...f(ramdaMethodsStatistics),
   }))
 
-  return [...sizes, ...counts]
+  const countsRambda = [lightRambda].map(f => saveCountToTable({
+    name: f.name,
+    ...f(rambdaMethodsStatistics),
+  }))
+
+  return [...sizes, ...countsRamda, ...countsRambda]
 }
 
 Promise
@@ -88,22 +109,21 @@ Promise
     longestName = methods.reduce(getMaxLen, 6)
     const getIndex = name => path.resolve('lib', name, 'index.js')
     const getRamda = name => path.resolve('node_modules/ramda/es', `${name}.js`)
+    const getRambda = name => path.resolve('node_modules/rambda/src', `${name}.js`)
     const sizeLimit = name =>
       getSize(getIndex(name))
         .then(size => ({ name, size }))
-        .then(({ name, size }) =>
-          getSize(getRamda(name))
-            .then(ramdaSize => ({
-              name,
-              size,
-              ramdaSize
-            }))
-            .catch(() => ({
-              name,
-              size,
-              ramdaSize: 'n/a'
-            }))
-        )
+        .then(({ name, size }) => {
+          const getRamdaSize = getSize(getRamda(name)).catch(() => 'n/a')
+          const getRambdaSize = getSize(getRambda(name)).catch(() => 'n/a')
+
+          return Promise.all([getRamdaSize, getRambdaSize]).then(([ramdaSize, rambdaSize]) => ({
+            name,
+            size,
+            ramdaSize,
+            rambdaSize
+          }))
+        })
 
     return Promise.all(methods.map(sizeLimit)).catch(console.log)
   })
@@ -122,13 +142,15 @@ Promise
         formatName(i.name),
         formatSize(i.size),
         formatSize(i.ramdaSize),
-        formatDiff(i.size, i.ramdaSize)
+        formatDiff(i.size, i.ramdaSize),
+        formatSize(i.rambdaSize),
+        formatDiff(i.size, i.rambdaSize)
       ])
     }))
   })
   // Draw table
   .then(methods => {
-    const lens = [longestName + 2, 10, 10, 11]
+    const lens = [longestName + 2, 10, 10, 11, 10, 11]
     const sline = lens.map(len => '─'.repeat(len))
     const dline = lens.map(len => '═'.repeat(len))
     const topper = `╔${dline.join('╦')}╗`
@@ -138,6 +160,8 @@ Promise
       formatName('Method'),
       chalk.bold('Nano'.padStart(8)),
       chalk.bold('Ramda'.padStart(8)),
+      chalk.bold('Diff'.padStart(9)),
+      chalk.bold('Rambda'.padStart(8)),
       chalk.bold('Diff'.padStart(9))
     ])
     const content = methods.map(i => i.border).join('\n')
@@ -148,16 +172,23 @@ Promise
           cur.ramdaSize === 'n/a'
             ? res.ramdaSize
             : res.ramdaSize + cur.ramdaSize,
-        sizeNoRamda: cur.ramdaSize === 'n/a' ? res.size : res.size + cur.size
+        sizeNoRamda: cur.ramdaSize === 'n/a' ? res.size : res.size + cur.size,
+        rambdaSize: 
+          cur.rambdaSize === 'n/a'
+            ? res.rambdaSize
+            : res.rambdaSize + cur.rambdaSize,
+        sizeNoRambda: cur.rambdaSize === 'n/a' ? res.size : res.size + cur.size,
       }),
-      { size: 0, ramdaSize: 0 }
+      { size: 0, ramdaSize: 0, rambdaSize: 0 }
     )
 
     const totalRow = createRow([
       formatName('total'),
       formatSize(total.sizeNoRamda),
       formatSize(total.ramdaSize),
-      formatDiff(total.sizeNoRamda, total.ramdaSize)
+      formatDiff(total.sizeNoRamda, total.ramdaSize),
+      formatSize(total.rambdaSize),
+      formatDiff(total.sizeNoRambda, total.rambdaSize),
     ])
 
     console.log(
@@ -169,8 +200,8 @@ Promise
   .then(methods => {
     if (!args._.length) {
       const header = '## Nanoutils methods size'
-      const caption = `\n| Method | Nano | Ramda | Diff |`
-      const hrline = `| --- | --- | --- | --- |`
+      const caption = `\n| Method | Nano | Ramda | Diff | Rambda | Diff |`
+      const hrline = `| --- | --- | --- | --- | --- | --- |`
       const str = methods.map(saveSizeToTable).join('\n')
       const footer =
         '## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
