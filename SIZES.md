@@ -47,7 +47,7 @@
 | countBy | 141 B | 1224 B | -1083 B |
 | curry | 134 B | 445 B | -311 B |
 | curryN | 128 B | 432 B | -304 B |
-| debounce | 98 B | n/a B | n/a B |
+| debounce | 100 B | n/a B | n/a B |
 | dec | 5 B | 168 B | -163 B |
 | defaultTo | 130 B | 166 B | -36 B |
 | descend | 27 B | 268 B | -241 B |
@@ -144,7 +144,7 @@
 | maxBy | 125 B | 254 B | -129 B |
 | mean | 27 B | 916 B | -889 B |
 | median | 88 B | 995 B | -907 B |
-| memoize | 55 B | 2819 B | -2764 B |
+| memoize | 52 B | 2819 B | -2767 B |
 | memoizeWith | 143 B | 361 B | -218 B |
 | merge | 226 B | 289 B | -63 B |
 | mergeAll | 36 B | 232 B | -196 B |
@@ -284,7 +284,7 @@
 | median | 130 B | 364 B | -234 B |
 | mean | 133 B | 709 B | -576 B |
 | maximum | 641 B | 3058 B | -2417 B |
-| total | 36618 B | 170697 B | -134079 B |
+| total | 36617 B | 170697 B | -134080 B |
 | light | 241 | 0 | +241 |
 
 ## How it works?
