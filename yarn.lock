@@ -2756,9 +2756,9 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-"create-index@git+https://git@github.com/Beraliv/create-index.git#master":
-  version "1.1.0"
-  resolved "git+https://git@github.com/Beraliv/create-index.git#1c248298fbb0770e12839d8f02302c7ac2781135"
+create-index@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/create-index/-/create-index-2.5.0.tgz#06f5a74a658738d2c5ce225738de3f1b418259ee"
   dependencies:
     chalk "^1.1.3"
     glob "^7.1.1"
