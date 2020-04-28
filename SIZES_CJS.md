@@ -240,7 +240,7 @@
 | toLower | 34 B | 2995 B | -2961 B |
 | toPairs | 47 B | 120 B | -73 B |
 | toPairsIn | 43 B | 105 B | -62 B |
-| toString | 205 B | 2774 B | -2569 B |
+| toString | 209 B | 2774 B | -2565 B |
 | toUpper | 33 B | 2997 B | -2964 B |
 | transduce | 173 B | 923 B | -750 B |
 | transduceRight | 117 B | n/a B | n/a B |
@@ -281,10 +281,10 @@
 | zipWith | 417 B | 292 B | +125 B |
 | --- | --- | --- | --- |
 | minimum | 20 B | 17 B | +3 B |
-|  | 371 B | 364 B | +7 B |
+| median | 371 B | 364 B | +7 B |
 | mean | 303 B | 709 B | -406 B |
 | maximum | 879 B | 3058 B | -2179 B |
-| total | 83884 B | 170697 B | -86813 B |
+| total | 83888 B | 170697 B | -86809 B |
 | light | 146 | 94 | +52 |
 
 ## How it works?
