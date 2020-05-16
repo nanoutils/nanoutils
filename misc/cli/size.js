@@ -3,6 +3,7 @@ const path = require('path')
 const util = require('util')
 const chalk = require('chalk')
 const getSize = require('size-limit')
+const sizeLimitPreset = require('@size-limit/preset-small-lib')
 const minimist = require('minimist')
 
 const nanoutilsCeil = require('../../cjs/ceil')
@@ -73,8 +74,8 @@ const getIndex = name => path.resolve('lib', name, 'index.js')
 const getRamda = name => path.resolve('node_modules/ramda/es', `${name}.js`)
 
 const sizeLimit = async name => {
-  const size = await getSize(getIndex(name))
-  const ramdaSize = await getSize(getRamda(name)).catch(() => 'n/a')
+  const [{ size }] = await getSize(sizeLimitPreset, [getIndex(name)])
+  const [{ size: ramdaSize }] = await getSize(sizeLimitPreset, [getRamda(name)]).catch(() => [{ size: 'n/a' }])
 
   return { name, size, ramdaSize }
 }
