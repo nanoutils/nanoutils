@@ -2,7 +2,7 @@ const { readdir, writeFile } = require('fs').promises
 const path = require('path')
 const util = require('util')
 const chalk = require('chalk')
-const getSize = require('size-limit')
+const sizeLimit = require('size-limit')
 const sizeLimitPreset = require('@size-limit/preset-small-lib')
 const minimist = require('minimist')
 
@@ -73,16 +73,29 @@ const getIndex = name => path.resolve('lib', name, 'index.js')
 
 const getRamda = name => path.resolve('node_modules/ramda/es', `${name}.js`)
 
-const sizeLimit = async name => {
-  const [{ size }] = await getSize(sizeLimitPreset, [getIndex(name)])
-  const [{ size: ramdaSize }] = await getSize(sizeLimitPreset, [getRamda(name)]).catch(() => [{ size: 'n/a' }])
+const getSize = async (method, filepath) => {
+  const  [{ size }] = await sizeLimit(sizeLimitPreset, {
+    checks: [
+      {
+        path: filepath,
+        import: {
+          [filepath]: method
+        }
+      }
+    ]
+  })
 
-  return { name, size, ramdaSize }
+  return size
 }
 
 const sortByName = (a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
 
-const getSizes = (methodNames) => Promise.all(methodNames.map(sizeLimit))
+const getSizes = (methodNames) => Promise.all(methodNames.map( async name => {
+  const size = await getSize(name, getIndex(name))
+  const ramdaSize = await getSize(name, getRamda(name)).catch(() => 'n/a')
+
+  return { name, size, ramdaSize }
+}))
 
 const printTable = (methods, longestName) => {
   const lens = [longestName + 2, 10, 10, 11]
