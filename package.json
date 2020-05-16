@@ -9,7 +9,7 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-commit": "yarn size && yarn lint && git add SIZES.md"
+      "pre-commit": "yarn size && yarn lint && git add SIZES.md SIZES_CJS.md"
     }
   },
   "scripts": {

@@ -17,7 +17,7 @@ const mean = args => nanoutilsCeil(nanoutilsMean(args))
 const maximum = args => nanoutilsCeil(args.reduce((maxValue, value) => nanoutilsMax(+value, +maxValue), Number.MIN_VALUE), 2)
 const minimum = args => nanoutilsCeil(args.reduce((minValue, value) => nanoutilsMin(+value, +minValue), Number.MAX_VALUE), 2)
 const total = args => nanoutilsSum(args)
-const light = (args) => args.reduce(({ count, ramdaCount }, { size, ramdaSize }) => ({
+const light = args => args.reduce(({ count, ramdaCount }, { size, ramdaSize }) => ({
   count: count + (size < ramdaSize ? 1 : 0),
   ramdaCount: ramdaCount + (ramdaSize < size ? 1 : 0)
 }), { count: 0, ramdaCount: 0 })
@@ -25,19 +25,19 @@ const light = (args) => args.reduce(({ count, ramdaCount }, { size, ramdaSize })
 const args = minimist(process.argv.slice(2))
 const createRow = cols => '║ ' + cols.join(' ║ ') + ' ║'
 const formatName = (longestName, name) => chalk.bold(name.padEnd(longestName))
-const formatSize = size => `${size}`.padStart(6) + ' B'
+const formatSize = (size, pad = 8) => `${size}`.padStart(pad) + ' B'
 const getDiff = (size, ramdaSize) =>
   ramdaSize === 'n/a'
     ? 'n/a'
     : `${ramdaSize >= size ? '' : '+'}${size - ramdaSize}`
 const formatDiff = (size, ramdaSize) => {
-  if (ramdaSize === 'n/a') return 'n/a'.padStart(9)
+  if (ramdaSize === 'n/a') return 'n/a'.padStart(10)
   const ok = ramdaSize >= size
   return chalk[ok ? 'green' : 'red'](
-    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(7) + ' B'
+    `${ok ? '' : '+'}${size - ramdaSize}`.padStart(8) + ' B'
   )
 }
-const saveSizeToTable = ({ name, size, ramdaSize }) => `| ${name} | ${size} B | ${ramdaSize} B | ${getDiff(
+const saveSizeToTable = (sizeField, { name, ramdaSize, [sizeField]: size }) => `| ${name} | ${size} B | ${ramdaSize} B | ${getDiff(
   size,
   ramdaSize
 )} B |`
@@ -45,14 +45,17 @@ const saveCountToTable = ({ name, count, ramdaCount }) => `| ${name} | ${count} 
   count,
   ramdaCount
 )} |`
-const getStatisticsRows = methods => {
-  const ramdaMethodsStatistics = methods.filter(({ ramdaSize }) => ramdaSize !== 'n/a')
+const getStatisticsRows = (sizeField, methods) => {
+  const getSize = method => method[sizeField]
+  const ramdaMethodsStatistics = methods
+    .filter(({ ramdaSize }) => ramdaSize !== 'n/a')
+    .map(({ [sizeField]: size, ...method }) => ({ ...method, size }))
 
-  const sizes = [minimum, median, mean, maximum, total].map(f => saveSizeToTable({
+  const sizes = [minimum, median, mean, maximum, total].map(f => saveSizeToTable(sizeField, {
     name: f.name,
-    size: f(methods.map(({ size }) => size)),
+    [sizeField]: f(methods.map(getSize)),
     ramdaSize: f(ramdaMethodsStatistics.map(({ ramdaSize }) => ramdaSize)),
-    sizeNoRamda: f(ramdaMethodsStatistics.map(({ size }) => size))
+    sizeNoRamda: f(ramdaMethodsStatistics.map(getSize))
   }))
 
   const counts = [light].map(f => saveCountToTable({
@@ -69,7 +72,9 @@ const filterChoosedMethods = (methods) => args._.length ? methods.filter(m => ar
 
 const getMaxLen = (max, cur) => cur.length > max ? cur.length : max
 
-const getIndex = name => path.resolve('lib', name, 'index.js')
+const getEsm = name => path.resolve('lib', name, 'index.js')
+
+const getCjs = name => path.resolve('cjs', name, 'index.js')
 
 const getRamda = name => path.resolve('node_modules/ramda/es', `${name}.js`)
 
@@ -91,14 +96,15 @@ const getSize = async (method, filepath) => {
 const sortByName = (a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
 
 const getSizes = (methodNames) => Promise.all(methodNames.map( async name => {
-  const size = await getSize(name, getIndex(name))
+  const esmSize = await getSize(name, getEsm(name))
+  const cjsSize = await getSize(name, getCjs(name))
   const ramdaSize = await getSize(name, getRamda(name)).catch(() => 'n/a')
 
-  return { name, size, ramdaSize }
+  return { name, esmSize, cjsSize, ramdaSize }
 }))
 
 const printTable = (methods, longestName) => {
-  const lens = [longestName + 2, 10, 10, 11]
+  const lens = [longestName + 2, 12, 12, 10, 12, 12]
   const sline = lens.map(len => '─'.repeat(len))
   const dline = lens.map(len => '═'.repeat(len))
   const topper = `╔${dline.join('╦')}╗`
@@ -106,28 +112,38 @@ const printTable = (methods, longestName) => {
   const bottom = `╚${dline.join('╩')}╝`
   const header = createRow([
     formatName(longestName, 'Method'),
-    chalk.bold('Nano'.padStart(8)),
+    chalk.bold('Nano (ESM)'.padStart(10)),
+    chalk.bold('Nano (CJS)'.padStart(10)),
     chalk.bold('Ramda'.padStart(8)),
-    chalk.bold('Diff'.padStart(9))
+    chalk.bold('Diff (ESM)'.padStart(10)),
+    chalk.bold('Diff (CJS)'.padStart(10))
   ])
   const content = methods.map(i => i.border).join('\n')
   const total = methods.reduce(
     (res, cur) => ({
-      size: res.size + cur.size,
+      esmSize: res.esmSize + cur.esmSize,
+      cjsSize: res.cjsSize + cur.cjsSize,
       ramdaSize:
         cur.ramdaSize === 'n/a'
           ? res.ramdaSize
           : res.ramdaSize + cur.ramdaSize,
-      sizeNoRamda: cur.ramdaSize === 'n/a' ? res.size : res.size + cur.size
+      esmSizeNoRamda: cur.ramdaSize === 'n/a'
+        ? res.esmSize
+        : res.esmSize + cur.esmSize,
+      cjsSizeNoRamda: cur.ramdaSize === 'n/a'
+        ? res.cjsSize
+        : res.cjsSize + cur.cjsSize
     }),
-    { size: 0, ramdaSize: 0 }
+    { esmSize: 0, cjsSize: 0, ramdaSize: 0 }
   )
 
   const totalRow = createRow([
     formatName(longestName, 'total'),
-    formatSize(total.sizeNoRamda),
-    formatSize(total.ramdaSize),
-    formatDiff(total.sizeNoRamda, total.ramdaSize)
+    formatSize(total.esmSizeNoRamda),
+    formatSize(total.cjsSizeNoRamda),
+    formatSize(total.ramdaSize, 6),
+    formatDiff(total.esmSizeNoRamda, total.ramdaSize),
+    formatDiff(total.cjsSizeNoRamda, total.ramdaSize)
   ])
 
   const contents = [topper, header, hrline, content, hrline, totalRow, bottom].join('\n')
@@ -135,17 +151,17 @@ const printTable = (methods, longestName) => {
   console.log(contents)
 }
 
-const writeSizesFile = (methods) => {
+const writeSizesFile = (sizeField, fileName, methods) => {
   const header = '## Nanoutils methods size'
   const caption = `\n| Method | Nano | Ramda | Diff |`
   const hrline = `| --- | --- | --- | --- |`
-  const str = methods.map(saveSizeToTable).join('\n')
+  const str = methods.map((method) => saveSizeToTable(sizeField, method)).join('\n')
   const footer =
-    '## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
-  const statistics = getStatisticsRows(methods).join('\n')
+    '\n## How it works?\nWe use [size-limit](https://github.com/ai/size-limit) to check methods size'
+  const statistics = getStatisticsRows(sizeField, methods).join('\n')
   const contents = [header, caption, hrline, str, hrline, statistics, footer].join('\n')
 
-  return writeFile('SIZES.md', contents)
+  return writeFile(fileName, contents)
 }
 
 async function main() {
@@ -167,16 +183,21 @@ async function main() {
       ...method,
       border: createRow([
         formatName(longestName, method.name),
-        formatSize(method.size),
-        formatSize(method.ramdaSize),
-        formatDiff(method.size, method.ramdaSize)
+        formatSize(method.esmSize),
+        formatSize(method.cjsSize),
+        formatSize(method.ramdaSize, 6),
+        formatDiff(method.esmSize, method.ramdaSize),
+        formatDiff(method.cjsSize, method.ramdaSize)
       ])
     }))
   
   printTable(methodsWithSizes, longestName)
 
   if (!args._.length) {
-    await writeSizesFile(methodsWithSizes)
+    await Promise.all([
+      writeSizesFile('esmSize', 'SIZES.md', methodsWithSizes),
+      writeSizesFile('cjsSize', 'SIZES_CJS.md', methodsWithSizes)
+    ])
   }
 
   const failed = methodsWithSizes

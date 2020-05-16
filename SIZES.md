@@ -286,5 +286,6 @@
 | maximum | 630 B | 3058 B | -2428 B |
 | total | 36631 B | 170697 B | -134066 B |
 | light | 241 | 0 | +241 |
+
 ## How it works?
 We use [size-limit](https://github.com/ai/size-limit) to check methods size
