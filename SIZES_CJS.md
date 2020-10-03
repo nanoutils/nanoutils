@@ -127,7 +127,7 @@
 | length | 44 B | 122 B | -78 B |
 | lens | 43 B | 1504 B | -1461 B |
 | lensIndex | 73 B | 1774 B | -1701 B |
-| lensPath | 174 B | 1798 B | -1624 B |
+| lensPath | 251 B | 1798 B | -1547 B |
 | lensProp | 90 B | 1692 B | -1602 B |
 | lift | 573 B | 1627 B | -1054 B |
 | liftN | 574 B | 1615 B | -1041 B |
@@ -282,9 +282,9 @@
 | --- | --- | --- | --- |
 | minimum | 20 B | 17 B | +3 B |
 | median | 371 B | 364 B | +7 B |
-| mean | 303 B | 709 B | -406 B |
+| mean | 304 B | 709 B | -405 B |
 | maximum | 879 B | 3058 B | -2179 B |
-| total | 83883 B | 170697 B | -86814 B |
+| total | 83960 B | 170697 B | -86737 B |
 | light | 146 | 94 | +52 |
 
 ## How it works?
