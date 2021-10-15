@@ -177,6 +177,7 @@
 | partial | 245 B | 408 B | -163 B |
 | partialRight | 246 B | 580 B | -334 B |
 | partition | 172 B | 1839 B | -1667 B |
+| pascalCase | 184 B | n/a B | n/a B |
 | path | 393 B | 190 B | +203 B |
 | pathEq | 682 B | 1343 B | -661 B |
 | pathOr | 404 B | 313 B | +91 B |
@@ -281,10 +282,10 @@
 | zipWith | 417 B | 292 B | +125 B |
 | --- | --- | --- | --- |
 | minimum | 20 B | 17 B | +3 B |
-| median | 371 B | 364 B | +7 B |
-| mean | 304 B | 709 B | -405 B |
+| median | 370.5 B | 364 B | +6.5 B |
+| mean | 303 B | 709 B | -406 B |
 | maximum | 879 B | 3058 B | -2179 B |
-| total | 83960 B | 170697 B | -86737 B |
+| total | 84144 B | 170697 B | -86553 B |
 | light | 146 | 94 | +52 |
 
 ## How it works?

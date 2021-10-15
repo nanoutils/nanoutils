@@ -455,7 +455,7 @@ Separators which are identified are:
 :::
 
 ::: tip
-Also see [`kebabCase`](#kebabCase) and [`snakeCase`](#snakeCase)
+Also see [`kebabCase`](#kebabCase), [`snakeCase`](#snakeCase) and [`pascalCase`](#pascalCase)
 :::
 
 ::: warning
@@ -2136,7 +2136,7 @@ kebabCase('-to kebab_case')  // to-kebab-case
 ```
 
 ::: tip
-Also see [`camelCase`](#camelCase) and [`snakeCase`](#snakeCase)
+Also see [`camelCase`](#camelCase), [`snakeCase`](#snakeCase) and [`pascalCase`](#pascalCase)
 :::
 
 ## `keys`
@@ -3119,6 +3119,18 @@ const isMercedes = ({ car }) => car === 'Mercedes'
 partition(isMercedes, drivers)    // [[{ name: 'Mike', car: 'Mercedes' }, { name: 'Ann', car: 'Mercedes' }], [{ name: 'Jake', car: 'Toyota' }, { name: 'Alex', car: 'BMW' }]
 ```
 
+## `pascalCase`
+
+```js
+import { pascalCase } from 'nanoutils'
+
+pascalCase('-to pascal_CASE')  // ToPascalCase
+```
+
+::: tip
+Also see [`camelCase`](#camelCase), [`kebabCase`](#kebabCase) and [`snakeCase`](#snakeCase)
+:::
+
 ## `path`
 
 Retrieves value from `object` by a given path
@@ -3761,7 +3773,7 @@ snakeCase('-to snakeCase')  // to_snake_case
 ```
 
 ::: tip
-Also see [`camelCase`](#camelCase) and [`kebabCase`](#kebabCase)
+Also see [`camelCase`](#camelCase), [`kebabCase`](#kebabCase) and [`pascalCase`](#pascalCase)
 :::
 
 ## `sort`
