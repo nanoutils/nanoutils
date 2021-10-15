@@ -65,7 +65,7 @@
 | dropWhile | 388 B | 653 B | -265 B |
 | dropWhileT | 51 B | n/a B | n/a B |
 | either | 46 B | 1668 B | -1622 B |
-| empty | 84 B | 281 B | -197 B |
+| empty | 82 B | 281 B | -199 B |
 | endsWith | 647 B | 1705 B | -1058 B |
 | eqBy | 625 B | 1312 B | -687 B |
 | eqLens | 625 B | n/a B | n/a B |
@@ -144,7 +144,7 @@
 | maxBy | 370 B | 254 B | +116 B |
 | mean | 58 B | 916 B | -858 B |
 | median | 123 B | 995 B | -872 B |
-| memoize | 72 B | 2819 B | -2747 B |
+| memoize | 75 B | 2819 B | -2744 B |
 | memoizeWith | 392 B | 361 B | +31 B |
 | merge | 465 B | 289 B | +176 B |
 | mergeAll | 56 B | 232 B | -176 B |
@@ -281,10 +281,10 @@
 | zipWith | 417 B | 292 B | +125 B |
 | --- | --- | --- | --- |
 | minimum | 20 B | 17 B | +3 B |
-| median | 371 B | 364 B | +7 B |
+|  | 371 B | 364 B | +7 B |
 | mean | 304 B | 709 B | -405 B |
 | maximum | 879 B | 3058 B | -2179 B |
-| total | 83960 B | 170697 B | -86737 B |
+| total | 83961 B | 170697 B | -86736 B |
 | light | 146 | 94 | +52 |
 
 ## How it works?
