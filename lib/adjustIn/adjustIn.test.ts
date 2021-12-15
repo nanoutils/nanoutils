@@ -1,0 +1,53 @@
+import { expect } from "earljs";
+import { expectNumberOfArgs } from "../_internal/_test";
+import adjustIn from "../../cjs/adjustIn";
+import add from "../../cjs/add";
+import multiply from "../../cjs/multiply";
+
+const addTen = add(10);
+const multiplyByTwo = multiply(2);
+
+describe("adjustIn", () => {
+  it("accepts exact 3 arguments", () => {
+    expectNumberOfArgs(adjustIn, 3, [addTen, (v) => v === 1, [0, 1, 2]]);
+  });
+
+  it("applies function to array item with specified predicate", () => {
+    expect(adjustIn(addTen, (v) => v === 4, [2, 3, 4, 5, 6])).toEqual([
+      2,
+      3,
+      14,
+      5,
+      6,
+    ]);
+    expect(adjustIn(multiplyByTwo, (v) => v === 6, [2, 3, 4, 5, 6])).toEqual([
+      2,
+      3,
+      4,
+      5,
+      12,
+    ]);
+  });
+
+  it("returns array itself if no element is found", () => {
+    expect(adjustIn(addTen, (v) => v === 10, [2, 3, 4, 5, 6])).toEqual([
+      2,
+      3,
+      4,
+      5,
+      6,
+    ]);
+    expect(adjustIn(multiplyByTwo, (v) => v === 10, [2, 3, 4, 5, 6])).toEqual([
+      2,
+      3,
+      4,
+      5,
+      6,
+    ]);
+  });
+
+  it("returns a copy even if no element is found", () => {
+    const arr = [1, 2, 3];
+    expect(adjustIn(addTen, (v) => v === 4, arr) === arr).toEqual(false);
+  });
+});
