@@ -50,8 +50,6 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "flow": "^0.2.3",
-    "flow-bin": "^0.62.0",
     "gh-pages": "^1.2.0",
     "ghooks": "^2.0.2",
     "jest": "^24.8.0",

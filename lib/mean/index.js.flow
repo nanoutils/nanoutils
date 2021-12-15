@@ -1,2 +1,0 @@
-// @flow
-declare module.exports: (nums: number[]) => number

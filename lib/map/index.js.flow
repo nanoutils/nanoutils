@@ -1,3 +1,0 @@
-declare module.exports {
-  map<T1, T2>(mapper: T1 => T2, element: [T1] | { [any]: T1 }): [T2] | { [any]: T2 }
-}

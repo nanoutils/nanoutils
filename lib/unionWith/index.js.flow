@@ -1,2 +1,0 @@
-// @flow
-declare module.exports: (func: (a: mixed, b: mixed) => boolean) => (arr1: Array<mixed>) => (arr2: Array<mixed>) => Array<mixed>

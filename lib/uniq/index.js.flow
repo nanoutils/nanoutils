@@ -1,2 +1,0 @@
-// @flow
-declare module.exports: (arr: Array<?mixed>) => Array<?mixed>

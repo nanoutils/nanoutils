@@ -7,14 +7,14 @@ const args = minimist(process.argv.slice(2), { alias: { f: 'force' } })
 
 const names = args._
 
-const methodPath = name => path.resolve('lib', name)
+const methodPath = (name) => path.resolve('lib', name)
 
-const methodTemplate = name => `export default function ${name}() {
+const methodTemplate = (name) => `export default function ${name}() {
 
 }
 `
 
-const curriedMethodTemplate = name => `import curry from '../curry'
+const curriedMethodTemplate = (name) => `import curry from '../curry'
 
 export default curry(function ${name}() {
 
@@ -46,14 +46,10 @@ export default curryN(${num}, function ${name}() {
   return curried[num] || curried.n
 }
 
-const tsTemplate = name => `export default function ${name}(): void
+const tsTemplate = (name) => `export default function ${name}(): void
 `
 
-const flowTemplate = name => `// @flow
-declare module.exports: () => void
-`
-
-const performanceTemplate = name => `module.exports = function getData() {
+const performanceTemplate = (name) => `module.exports = function getData() {
   return {
     type: 'no_perf',
     argss: [[], [], []]
@@ -61,12 +57,12 @@ const performanceTemplate = name => `module.exports = function getData() {
 }
 `
 
-const testTemplate = name => `import ${name} from '.'
+const testTemplate = (name) => `import ${name} from '.'
 
 test('no tests yet', () => {})
 `
 
-names.forEach(name => {
+names.forEach((name) => {
   try {
     fs.mkdirSync(`${methodPath(name)}`)
   } catch (err) {
@@ -96,11 +92,6 @@ names.forEach(name => {
 
   if ('types' in args && args.types) {
     fs.writeFile(`${methodPath(name)}/index.d.ts`, tsTemplate(name), () => {})
-    fs.writeFile(
-      `${methodPath(name)}/index.js.flow`,
-      flowTemplate(name),
-      () => {}
-    )
   }
 
   if ('perf' in args && args.perf) {
