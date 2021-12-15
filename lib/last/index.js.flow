@@ -1,2 +1,0 @@
-// @flow
-declare module.exports: <T>(a: T[] | string) => T | string

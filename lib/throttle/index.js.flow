@@ -1,1 +1,0 @@
-declare export default <T>(time: number, cb: T) => T

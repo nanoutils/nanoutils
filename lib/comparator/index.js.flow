@@ -1,4 +1,0 @@
-// @flow
-declare module.exports: <T>(
-  cb: (a: T, b: T) => boolean
-) => (a: T, b: T) => number
