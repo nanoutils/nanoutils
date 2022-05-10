@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a single command using the runners shell
-    - name: Run Jest
+    - name: Run tests
       run: |
         yarn
         yarn test
