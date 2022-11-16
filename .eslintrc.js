@@ -1,10 +1,12 @@
 module.exports = {
-  extends: 'standard',
+  extends: ['standard', 'prettier'],
+
+  plugins: ['prettier'],
 
   env: {
     jest: true,
     node: true,
-    browser: true
+    browser: true,
   },
 
   rules: {
@@ -13,9 +15,10 @@ module.exports = {
     /* Removed to save some bytes */
     'standard/no-callback-literal': 0,
     'no-mixed-operators': 0,
-    /* Prettier doesn't support space before paren */
-    'space-before-function-paren': ['error', 'never'],
+    /* Prettier doesn't support following rules */
+    'space-before-function-paren': 0,
+    'indent': 0,
     /* Check for NaN */
     'no-self-compare': 0,
-  }
+  },
 }

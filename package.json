@@ -10,7 +10,7 @@
   "license": "MIT",
   "config": {
     "ghooks": {
-      "pre-commit": "yarn size && yarn lint && git add SIZES.md SIZES_CJS.md"
+      "pre-commit": "yarn size && yarn lint && yarn prettier:check && git add SIZES.md SIZES_CJS.md"
     }
   },
   "scripts": {
@@ -29,7 +29,9 @@
     "release": "np",
     "size": "node ./misc/cli/size.js",
     "test": "jest",
-    "time": "node ./misc/cli/time.js"
+    "time": "node ./misc/cli/time.js",
+    "prettier:check": "prettier --check './lib/**/*.{js,ts}'",
+    "prettier:format": "prettier --write './lib/**/*.{js,ts}'"
   },
   "devDependencies": {
     "@babel/cli": "7.4.4",
@@ -45,15 +47,18 @@
     "chalk": "^2.3.0",
     "create-index": "2.5.0",
     "eslint": "^4.16.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "gh-pages": "^1.2.0",
     "ghooks": "^2.0.2",
     "jest": "^24.8.0",
     "np": "^3.0.4",
+    "prettier": "^2.4.1",
     "ramda": "^0.25.0",
     "rimraf": "^2.6.2",
     "size-limit": "4.5.0",
